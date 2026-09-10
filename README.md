@@ -18,21 +18,33 @@ install prerequisites. It installs the published GitHub version, not local edits
 
 ### Install without downloading this repository
 
-In PowerShell 7, Bash, or Zsh, paste this single line:
+**PowerShell 7, Bash, or Zsh:** paste this single line:
 
 ```sh
 copilot plugin marketplace add AndrewGodlewsky/andrew-skills && copilot plugin install gt@andrew-skills
 ```
 
-In Windows PowerShell 5.1, run these separately, continuing only if the first
-command succeeds:
+**Windows PowerShell 5.1:** use this compatible single line:
 
 ```powershell
-copilot plugin marketplace add AndrewGodlewsky/andrew-skills
+copilot plugin marketplace add AndrewGodlewsky/andrew-skills; if ($LASTEXITCODE -eq 0) { copilot plugin install gt@andrew-skills }
+```
+
+Both versions install the plugin only if marketplace registration succeeds.
+Windows PowerShell 5.1 does not support `&&`; an error about `&` or `&&` can mean
+you pasted the PowerShell 7 command into the older shell. To check your version:
+
+```powershell
+$PSVersionTable.PSVersion
+```
+
+Copy `gt@andrew-skills` exactly, without a backslash before `@`.
+If the marketplace is already registered, run just:
+
+```powershell
 copilot plugin install gt@andrew-skills
 ```
 
-If the marketplace is already registered, run only the second command.
 In `gt@andrew-skills`, `gt` names the plugin and `andrew-skills` names its
 catalog. Both live in this repository. All skills install
 together, with no separate skill installation.
