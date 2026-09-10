@@ -1,6 +1,6 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
-  "name": "team-core",
+  "name": "andrew-skills",
   "description": "Shared team workflows, starting with a plan and design interview",
   "version": "0.1.0",
   "author": {

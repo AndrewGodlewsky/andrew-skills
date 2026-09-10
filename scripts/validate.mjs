@@ -79,53 +79,34 @@ function validateSkill(skillRoot, name) {
 }
 
 export function validate(root = repositoryRoot) {
-  const catalog = json(resolve(root, '.claude-plugin/marketplace.json'));
-  check(object(catalog) && text(catalog.name) && namePattern.test(catalog.name), 'Invalid marketplace name');
-  check(object(catalog.owner) && text(catalog.owner.name), 'Marketplace owner.name is required');
-  check(Array.isArray(catalog.plugins) && catalog.plugins.length > 0, 'Marketplace must contain plugins');
-  const listed = new Set();
-  let skillCount = 0;
-  for (const entry of catalog.plugins) {
-    check(object(entry) && text(entry.name) && namePattern.test(entry.name) && entry.name.length <= 64,
-      'Plugin entry requires a kebab-case name (up to 64 characters)');
-    check(!listed.has(entry.name), `Duplicate plugin: ${entry.name}`);
-    listed.add(entry.name);
-    check(entry.source === `./plugins/${entry.name}`, `${entry.name}: source must match its plugin folder`);
-    check(text(entry.description), `${entry.name}: catalog description is required`);
-    check(typeof entry.version === 'string' && versionPattern.test(entry.version), `${entry.name}: use an x.y.z version`);
-    const pluginRoot = resolve(root, entry.source);
-    const plugin = json(resolve(pluginRoot, 'plugin.json'));
-    check(object(plugin), `${entry.name}: manifest must be an object`);
-    check(plugin.$schema === schema, `${entry.name}: expected Agent Plugins 1.0 schema`);
-    check(plugin.name === entry.name, `${entry.name}: manifest name mismatch`);
-    check(plugin.version === entry.version, `${entry.name}: catalog and manifest versions differ`);
-    check(text(plugin.description), `${entry.name}: description is required`);
-    const allowed = new Set(['$schema', 'name', 'version', 'description', 'author', 'homepage', 'repository', 'license', 'keywords', 'extensions']);
-    for (const key of Object.keys(plugin)) check(allowed.has(key), `${entry.name}: unsupported manifest field ${key}`);
-    for (const key of ['homepage', 'repository', 'license']) {
-      check(!Object.hasOwn(plugin, key) || typeof plugin[key] === 'string', `${entry.name}: ${key} must be a string`);
-    }
-    if (Object.hasOwn(plugin, 'author')) {
-      check(object(plugin.author), `${entry.name}: author must be an object`);
-      for (const [key, value] of Object.entries(plugin.author)) {
-        check(['name', 'email', 'url'].includes(key) && typeof value === 'string', `${entry.name}: invalid author.${key}`);
-      }
-    }
-    if (Object.hasOwn(plugin, 'keywords')) {
-      check(Array.isArray(plugin.keywords) && plugin.keywords.every(value => typeof value === 'string'), `${entry.name}: keywords must be strings`);
-    }
-    if (Object.hasOwn(plugin, 'extensions')) {
-      check(object(plugin.extensions) && Object.values(plugin.extensions).every(object), `${entry.name}: extensions must contain objects`);
-    }
-    const skillsRoot = resolve(pluginRoot, 'skills');
-    const skills = directories(skillsRoot);
-    check(skills.length > 0, `${entry.name}: plugin must contain skills`);
-    for (const skill of skills) validateSkill(resolve(skillsRoot, skill), skill);
-    skillCount += skills.length;
+  const plugin = json(resolve(root, 'plugin.json'));
+  check(object(plugin), 'Plugin manifest must be an object');
+  check(plugin.$schema === schema, 'Expected Agent Plugins 1.0 schema');
+  check(plugin.name === 'andrew-skills', 'Plugin name must be andrew-skills');
+  check(typeof plugin.version === 'string' && versionPattern.test(plugin.version), 'Use an x.y.z plugin version');
+  check(text(plugin.description), `${plugin.name}: description is required`);
+  const allowed = new Set(['$schema', 'name', 'version', 'description', 'author', 'homepage', 'repository', 'license', 'keywords', 'extensions']);
+  for (const key of Object.keys(plugin)) check(allowed.has(key), `${plugin.name}: unsupported manifest field ${key}`);
+  for (const key of ['homepage', 'repository', 'license']) {
+    check(!Object.hasOwn(plugin, key) || typeof plugin[key] === 'string', `${plugin.name}: ${key} must be a string`);
   }
-  const actual = directories(resolve(root, 'plugins'));
-  check(actual.length === listed.size && actual.every(name => listed.has(name)), 'Every plugin folder must have exactly one catalog entry');
-  return `Validated ${listed.size} plugin(s) and ${skillCount} skill(s).`;
+  if (Object.hasOwn(plugin, 'author')) {
+    check(object(plugin.author), `${plugin.name}: author must be an object`);
+    for (const [key, value] of Object.entries(plugin.author)) {
+      check(['name', 'email', 'url'].includes(key) && typeof value === 'string', `${plugin.name}: invalid author.${key}`);
+    }
+  }
+  if (Object.hasOwn(plugin, 'keywords')) {
+    check(Array.isArray(plugin.keywords) && plugin.keywords.every(value => typeof value === 'string'), `${plugin.name}: keywords must be strings`);
+  }
+  if (Object.hasOwn(plugin, 'extensions')) {
+    check(object(plugin.extensions) && Object.values(plugin.extensions).every(object), `${plugin.name}: extensions must contain objects`);
+  }
+  const skillsRoot = resolve(root, 'skills');
+  const skills = directories(skillsRoot);
+  check(skills.length > 0, 'Plugin must contain skills');
+  for (const skill of skills) validateSkill(resolve(skillsRoot, skill), skill);
+  return `Validated ${plugin.name} ${plugin.version} and ${skills.length} skill(s).`;
 }
 
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {

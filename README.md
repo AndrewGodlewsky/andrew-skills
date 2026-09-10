@@ -1,99 +1,114 @@
 # Andrew Skills
 
-A GitHub-hosted skills catalog for GitHub Copilot in VS Code. Install a plugin
-to make its skills available while working in your own projects.
+One shared skills plugin for GitHub Copilot in VS Code and Copilot CLI.
+Installing `andrew-skills` includes every skill in this repository.
 
-| Plugin | Version | Skill | Invoke in Copilot Chat |
-| --- | --- | --- | --- |
-| `team-core` | `0.1.0` | [Grill me](plugins/team-core/skills/grill-me/SKILL.md): sharpen a plan through an interview | `/team-core:grill-me` |
+## Install
 
-## Install from GitHub
+After the repository contents are published to GitHub, run:
 
-These steps work after the repository contents have been committed and pushed.
-Use an up-to-date VS Code with GitHub Copilot access and agent plugins enabled.
+```sh
+copilot plugin install AndrewGodlewsky/andrew-skills
+```
 
-1. Open **Preferences: Open User Settings (JSON)** from the Command Palette.
-2. Add this repository to `chat.plugins.marketplaces`. Preserve any marketplaces
-   you already use; the example includes VS Code's default catalogs.
+This installs directly from the repository. No marketplace registration or
+separate skill installation is needed. The command works in PowerShell, Bash,
+and Zsh.
 
-   ```json
-   {
-     "chat.plugins.enabled": true,
-     "chat.plugins.marketplaces": [
-       "github/copilot-plugins",
-       "github/awesome-copilot",
-       "https://github.com/AndrewGodlewsky/andrew-skills.git"
-     ]
-   }
-   ```
+Requires a current [GitHub Copilot CLI](https://docs.github.com/en/copilot/how-tos/set-up/install-copilot-cli),
+Git, and repository access. Follow any authentication or trust prompts. Having the
+VS Code Copilot extension does not by itself mean the CLI is installed.
 
-3. Open Extensions (`Ctrl+Shift+X`) and search `@agentPlugins`.
-4. Find `team-core` in the `andrew-skills` marketplace, review the source trust
-   prompt, and install it.
-5. Start a new Copilot Chat and try:
+VS Code automatically discovers plugins installed by Copilot CLI under the same
+user account on the same machine. Use an up-to-date VS Code with Copilot access
+and agent plugins enabled. Reload the window if the plugin is not yet listed.
+[VS Code discovery documentation](https://code.visualstudio.com/docs/agent-customization/agent-plugins#plugins-installed-by-github-copilot-cli).
 
-   ```text
-   /team-core:grill-me I want to build a shared skills hub for my team.
-   ```
+### Install from VS Code without the CLI
 
-For a private repository, each teammate needs Git access to the repository.
-Organization policies may control which marketplaces are available.
+Run **Chat: Install Plugin From Source** from the Command Palette and enter
+`https://github.com/AndrewGodlewsky/andrew-skills`. Follow the installation prompts.
+[VS Code source installation](https://code.visualstudio.com/docs/agent-customization/agent-plugins#install-a-plugin-from-source).
 
-This repository is a marketplace containing a plugin under `plugins/team-core`.
-Use marketplace installation rather than **Install Plugin From Source** on the
-repository root, which is not a plugin root.
+## Use a skill
+
+Start a fresh Copilot Chat and enter:
+
+```text
+/andrew-skills:grill-me I want to build a shared skills hub for my team.
+```
+
+| Skill | Purpose | Command |
+| --- | --- | --- |
+| [Grill me](skills/grill-me/SKILL.md) | Sharpen a plan or design through an interview | `/andrew-skills:grill-me` |
+
+`grill-me` asks one question at a time, recommends an answer, and waits for shared
+understanding before implementing the plan. It is manual-only: invoke it explicitly.
+
+## Update
+
+For a CLI-installed copy, run:
+
+```sh
+copilot plugin update andrew-skills
+```
+
+Use this explicit update command for direct CLI installs; this setup does not
+configure automatic updates. See the
+[CLI plugin reference](https://docs.github.com/en/copilot/reference/copilot-cli-reference/cli-plugin-reference).
+
+For a VS Code-managed installation, run **Extensions: Check for Extension Updates**.
+VS Code also checks every 24 hours when `extensions.autoUpdate` is enabled.
+[VS Code update documentation](https://code.visualstudio.com/docs/agent-customization/agent-plugins#update-plugins).
+
+After updating, test in a fresh chat so previously loaded instructions do not
+affect the result.
 
 ## Test locally before publishing
 
-In VS Code's **User Settings (JSON)**, register the absolute path to the plugin:
+Register the checkout root in VS Code's **User Settings (JSON)**:
 
 ```json
 {
   "chat.plugins.enabled": true,
   "chat.pluginLocations": {
-    "A:/Claude/andrew-skills/plugins/team-core": true
+    "A:/Claude/andrew-skills": true
   }
 }
 ```
 
-On another machine, replace that path with the local checkout's
-`plugins/team-core` directory. This setting stays on your machine.
+Replace the path with your checkout location on another machine. Open
+**Chat: Configure Skills**, confirm `grill-me` is listed from `andrew-skills`,
+and try the command above in a fresh chat. If missing, confirm the plugin is
+enabled and reload the window.
 
-Open **Chat: Configure Skills** and confirm `grill-me` is listed from `team-core`.
-Start a fresh chat and use the example command above. The expected behavior is
-one question at a time, a recommended answer, and no implementation until you
-confirm shared understanding. The skill is manual-only, so invoke it explicitly.
+Local registration reads your checkout. Update the checkout yourself. Disable
+the local registration before testing a GitHub-installed copy.
 
-If the skill is missing, confirm the plugin is enabled, then reload the VS Code
-window and check again. Disable or remove the local registration before testing
-the marketplace-installed copy, so you are testing only one copy of `team-core`.
+### If you tested the earlier layout
 
-## Updates
-
-Maintainers edit skills and increment the plugin version in both manifests.
-After publication, VS Code checks for updates every 24 hours when
-`extensions.autoUpdate` is enabled. To request an update sooner, run
-**Extensions: Check for Extension Updates**. See the
-[official update documentation](https://code.visualstudio.com/docs/agent-customization/agent-plugins#update-plugins).
-
-A local plugin registration reads your checkout; it is not a managed marketplace
-installation. Update that checkout yourself. For testing revised instructions,
-start a fresh chat so previously loaded skill text does not affect the result.
+Uninstall the old `team-core` plugin through the client that installed it and
+remove its local registration if present. Replace a registration pointing to
+`plugins/team-core` with the checkout root above. Remove this repository from
+any old marketplace settings, then install `andrew-skills` using the new command.
 
 ## Repository layout
 
 ```text
-.claude-plugin/marketplace.json       Catalog of installable plugins
-plugins/team-core/plugin.json        Agent Plugins 1.0 manifest
-plugins/team-core/skills/grill-me/    Self-contained skill folder
-scripts/validate.mjs                 Local and CI validation
-.github/workflows/validate.yml       GitHub Actions checks
-CONTRIBUTING.md                      Adding skills and publishing updates
+plugin.json                  Plugin identity and version
+skills/
+  grill-me/
+    SKILL.md                 Self-contained interview skill
+scripts/validate.mjs         Local and CI validation
+.github/workflows/validate.yml
+README.md
+CONTRIBUTING.md
 ```
 
-The `.claude-plugin` catalog location is supported by the marketplace format;
-it does not require teammates to install Claude. Plugin content uses the
-Agent Plugins 1.0 format with a root `plugin.json` and `skills/` directory.
+The repository root is the plugin root. Its manifest uses
+[Agent Plugins 1.0](https://agent-plugins.org/plugin-authors/manifest).
+Add future skills under `skills/`; everyone installing the plugin receives them
+together.
 
 ## Contribute and validate
 
@@ -103,22 +118,13 @@ See [CONTRIBUTING.md](CONTRIBUTING.md). With Node.js 22 or newer installed:
 node scripts/validate.mjs
 ```
 
-No package installation is needed. Consumers do not need Node.js for `grill-me`.
-Validation checks repository conventions; installing and invoking the plugin in
-VS Code is the end-to-end acceptance check.
+No package installation is needed for validation. Consumers do not need Node.js
+to run the `grill-me` skill. Installing and invoking the plugin in VS Code is the
+end-to-end acceptance check.
 
 ## Skill provenance
 
 `grill-me` was imported from Andrew's user-level skill on September 10, 2026.
-The original was an alias for `/grilling`. This packaged version preserves the
-`grill-me` metadata and includes the original `grilling` instructions directly,
-so it has no dependency on another personal skill.
-
-## Format references
-
-- [VS Code agent plugins](https://code.visualstudio.com/docs/agent-customization/agent-plugins)
-- [VS Code agent skills](https://code.visualstudio.com/docs/agent-customization/agent-skills)
-- [Agent Plugins manifest](https://agent-plugins.org/plugin-authors/manifest)
-- [Marketplace format](https://code.claude.com/docs/en/plugin-marketplaces)
-
-Setup follows the documentation checked on September 10, 2026.
+The original was an alias for `/grilling`. This version preserves the `grill-me`
+metadata and includes the original `grilling` instructions directly, so it has
+no dependency on another personal skill.
