@@ -5,15 +5,41 @@ Installing `andrew-skills` includes every skill in this repository.
 
 ## Install
 
-After the repository contents are published to GitHub, run:
+After these repository changes are published to GitHub, download or clone the
+repository and run this from its root in PowerShell:
 
-```sh
-copilot plugin install AndrewGodlewsky/andrew-skills
+```powershell
+.\install.ps1
 ```
 
-This installs directly from the repository. No marketplace registration or
-separate skill installation is needed. The command works in PowerShell, Bash,
-and Zsh.
+The installer registers the marketplace, then installs the entire `andrew-skills`
+plugin. It stops if either step fails and does not change execution policies or
+install prerequisites. It installs the published GitHub version, not local edits.
+
+### Install without downloading this repository
+
+In PowerShell 7, Bash, or Zsh, paste this single line:
+
+```sh
+copilot plugin marketplace add AndrewGodlewsky/andrew-skills && copilot plugin install andrew-skills@andrew-skills
+```
+
+In Windows PowerShell 5.1, run these separately, continuing only if the first
+command succeeds:
+
+```powershell
+copilot plugin marketplace add AndrewGodlewsky/andrew-skills
+copilot plugin install andrew-skills@andrew-skills
+```
+
+If the marketplace is already registered, run only the second command.
+The first `andrew-skills` in `andrew-skills@andrew-skills` names the plugin;
+the second names its catalog. Both live in this repository. All skills install
+together, with no separate skill installation.
+
+Direct repository installation is deprecated by Copilot CLI. Use the marketplace
+commands above. See [GitHub's notice](https://github.com/github/awesome-copilot/blob/main/website/src/content/docs/learning-hub/installing-and-using-plugins.md)
+and [marketplace installation guide](https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/plugins-finding-installing).
 
 Requires a current [GitHub Copilot CLI](https://docs.github.com/en/copilot/how-tos/set-up/install-copilot-cli),
 Git, and repository access. Follow any authentication or trust prompts. Having the
@@ -26,9 +52,11 @@ and agent plugins enabled. Reload the window if the plugin is not yet listed.
 
 ### Install from VS Code without the CLI
 
-Run **Chat: Install Plugin From Source** from the Command Palette and enter
-`https://github.com/AndrewGodlewsky/andrew-skills`. Follow the installation prompts.
-[VS Code source installation](https://code.visualstudio.com/docs/agent-customization/agent-plugins#install-a-plugin-from-source).
+Add `https://github.com/AndrewGodlewsky/andrew-skills.git` to the
+`chat.plugins.marketplaces` array in VS Code User Settings, preserving existing
+entries. Search `@agentPlugins` in Extensions and install `andrew-skills` from
+the `andrew-skills` marketplace. Follow the trust prompt.
+[VS Code marketplace installation](https://code.visualstudio.com/docs/agent-customization/agent-plugins#configure-plugin-marketplaces).
 
 ## Use a skill
 
@@ -53,7 +81,7 @@ For a CLI-installed copy, run:
 copilot plugin update andrew-skills
 ```
 
-Use this explicit update command for direct CLI installs; this setup does not
+Use this explicit update command for CLI installs; this setup does not
 configure automatic updates. See the
 [CLI plugin reference](https://docs.github.com/en/copilot/reference/copilot-cli-reference/cli-plugin-reference).
 
@@ -85,17 +113,25 @@ enabled and reload the window.
 Local registration reads your checkout. Update the checkout yourself. Disable
 the local registration before testing a GitHub-installed copy.
 
-### If you tested the earlier layout
+### If you tested an earlier installation
+
+If you installed `andrew-skills` directly from the repository, uninstall that
+copy through the client that installed it, then use the marketplace installation
+above. For the CLI, the uninstall command is `copilot plugin uninstall andrew-skills`.
+The installer does not remove previous installations automatically.
 
 Uninstall the old `team-core` plugin through the client that installed it and
 remove its local registration if present. Replace a registration pointing to
-`plugins/team-core` with the checkout root above. Remove this repository from
-any old marketplace settings, then install `andrew-skills` using the new command.
+`plugins/team-core` with the checkout root above. If you already registered this
+marketplace, refresh it with `copilot plugin marketplace update andrew-skills`,
+then install `andrew-skills@andrew-skills`.
 
 ## Repository layout
 
 ```text
 plugin.json                  Plugin identity and version
+.claude-plugin/marketplace.json  Catalog listing this root plugin
+install.ps1                  One-command setup from a downloaded checkout
 skills/
   grill-me/
     SKILL.md                 Self-contained interview skill
@@ -107,6 +143,8 @@ CONTRIBUTING.md
 
 The repository root is the plugin root. Its manifest uses
 [Agent Plugins 1.0](https://agent-plugins.org/plugin-authors/manifest).
+The marketplace lists this same root with `"source": "./"`; there is no nested
+plugin bundle. See the [marketplace format](https://code.claude.com/docs/en/plugin-marketplaces).
 Add future skills under `skills/`; everyone installing the plugin receives them
 together.
 

@@ -85,6 +85,15 @@ export function validate(root = repositoryRoot) {
   check(plugin.name === 'andrew-skills', 'Plugin name must be andrew-skills');
   check(typeof plugin.version === 'string' && versionPattern.test(plugin.version), 'Use an x.y.z plugin version');
   check(text(plugin.description), `${plugin.name}: description is required`);
+  const marketplace = json(resolve(root, '.claude-plugin/marketplace.json'));
+  check(object(marketplace) && marketplace.name === 'andrew-skills', 'Marketplace name must be andrew-skills');
+  check(object(marketplace.owner) && text(marketplace.owner.name), 'Marketplace owner.name is required');
+  check(Array.isArray(marketplace.plugins) && marketplace.plugins.length === 1, 'Marketplace must list exactly one plugin');
+  const entry = marketplace.plugins[0];
+  check(object(entry) && entry.name === plugin.name, 'Marketplace plugin name must match the root manifest');
+  check(entry.source === './', 'Marketplace source must point to the repository root (./)');
+  check(entry.version === plugin.version, 'Marketplace and plugin versions must match');
+  check(text(entry.description), 'Marketplace plugin description is required');
   const allowed = new Set(['$schema', 'name', 'version', 'description', 'author', 'homepage', 'repository', 'license', 'keywords', 'extensions']);
   for (const key of Object.keys(plugin)) check(allowed.has(key), `${plugin.name}: unsupported manifest field ${key}`);
   for (const key of ['homepage', 'repository', 'license']) {
@@ -106,7 +115,7 @@ export function validate(root = repositoryRoot) {
   const skills = directories(skillsRoot);
   check(skills.length > 0, 'Plugin must contain skills');
   for (const skill of skills) validateSkill(resolve(skillsRoot, skill), skill);
-  return `Validated ${plugin.name} ${plugin.version} and ${skills.length} skill(s).`;
+  return `Validated marketplace, ${plugin.name} ${plugin.version}, and ${skills.length} skill(s).`;
 }
 
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {

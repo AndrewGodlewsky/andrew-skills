@@ -38,7 +38,8 @@ skill. Document adaptations in the README's provenance section.
 For each published plugin update:
 
 1. Increment `version` in the root `plugin.json` (for example,
-   `0.1.0` to `0.1.1` for an instruction fix).
+   `0.1.1` to `0.1.2` for an instruction fix). Update the plugin entry in
+   `.claude-plugin/marketplace.json` to the same version.
 2. Validate and test the new behavior in VS Code.
 3. The maintainer commits and pushes the reviewed changes to the default branch.
 
@@ -50,7 +51,8 @@ its root `skills/` folder.
 
 ## Validation scope
 
-The validator checks the root plugin identity and version format,
+The validator checks the root plugin identity and version format, the marketplace
+entry's root source and matching identity/version,
 the supported manifest fields, skill names and descriptions, invocation flags,
 nonempty instruction bodies, and inline relative Markdown resource links inside
 skill folders. Each skill directory must contain a `SKILL.md` file.

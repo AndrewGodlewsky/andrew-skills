@@ -16,5 +16,5 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Validate plugin and skills
+      - name: Validate marketplace, plugin, and skills
         run: node scripts/validate.mjs
