@@ -82,7 +82,7 @@ export function validate(root = repositoryRoot) {
   const plugin = json(resolve(root, 'plugin.json'));
   check(object(plugin), 'Plugin manifest must be an object');
   check(plugin.$schema === schema, 'Expected Agent Plugins 1.0 schema');
-  check(plugin.name === 'andrew-skills', 'Plugin name must be andrew-skills');
+  check(plugin.name === 'gt', 'Plugin name must be gt');
   check(typeof plugin.version === 'string' && versionPattern.test(plugin.version), 'Use an x.y.z plugin version');
   check(text(plugin.description), `${plugin.name}: description is required`);
   const marketplace = json(resolve(root, '.claude-plugin/marketplace.json'));

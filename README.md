@@ -1,7 +1,7 @@
 # Andrew Skills
 
 One shared skills plugin for GitHub Copilot in VS Code and Copilot CLI.
-Installing `andrew-skills` includes every skill in this repository.
+Installing the `gt` plugin includes every skill in this repository.
 
 ## Install
 
@@ -12,7 +12,7 @@ repository and run this from its root in PowerShell:
 .\install.ps1
 ```
 
-The installer registers the marketplace, then installs the entire `andrew-skills`
+The installer registers the marketplace, then installs the entire `gt`
 plugin. It stops if either step fails and does not change execution policies or
 install prerequisites. It installs the published GitHub version, not local edits.
 
@@ -21,7 +21,7 @@ install prerequisites. It installs the published GitHub version, not local edits
 In PowerShell 7, Bash, or Zsh, paste this single line:
 
 ```sh
-copilot plugin marketplace add AndrewGodlewsky/andrew-skills && copilot plugin install andrew-skills@andrew-skills
+copilot plugin marketplace add AndrewGodlewsky/andrew-skills && copilot plugin install gt@andrew-skills
 ```
 
 In Windows PowerShell 5.1, run these separately, continuing only if the first
@@ -29,12 +29,12 @@ command succeeds:
 
 ```powershell
 copilot plugin marketplace add AndrewGodlewsky/andrew-skills
-copilot plugin install andrew-skills@andrew-skills
+copilot plugin install gt@andrew-skills
 ```
 
 If the marketplace is already registered, run only the second command.
-The first `andrew-skills` in `andrew-skills@andrew-skills` names the plugin;
-the second names its catalog. Both live in this repository. All skills install
+In `gt@andrew-skills`, `gt` names the plugin and `andrew-skills` names its
+catalog. Both live in this repository. All skills install
 together, with no separate skill installation.
 
 Direct repository installation is deprecated by Copilot CLI. Use the marketplace
@@ -54,7 +54,7 @@ and agent plugins enabled. Reload the window if the plugin is not yet listed.
 
 Add `https://github.com/AndrewGodlewsky/andrew-skills.git` to the
 `chat.plugins.marketplaces` array in VS Code User Settings, preserving existing
-entries. Search `@agentPlugins` in Extensions and install `andrew-skills` from
+entries. Search `@agentPlugins` in Extensions and install `gt` from
 the `andrew-skills` marketplace. Follow the trust prompt.
 [VS Code marketplace installation](https://code.visualstudio.com/docs/agent-customization/agent-plugins#configure-plugin-marketplaces).
 
@@ -63,12 +63,12 @@ the `andrew-skills` marketplace. Follow the trust prompt.
 Start a fresh Copilot Chat and enter:
 
 ```text
-/andrew-skills:grill-me I want to build a shared skills hub for my team.
+/gt:grill-me I want to build a shared skills hub for my team.
 ```
 
 | Skill | Purpose | Command |
 | --- | --- | --- |
-| [Grill me](skills/grill-me/SKILL.md) | Sharpen a plan or design through an interview | `/andrew-skills:grill-me` |
+| [Grill me](skills/grill-me/SKILL.md) | Sharpen a plan or design through an interview | `/gt:grill-me` |
 
 `grill-me` asks one question at a time, recommends an answer, and waits for shared
 understanding before implementing the plan. It is manual-only: invoke it explicitly.
@@ -78,7 +78,7 @@ understanding before implementing the plan. It is manual-only: invoke it explici
 For a CLI-installed copy, run:
 
 ```sh
-copilot plugin update andrew-skills
+copilot plugin update gt
 ```
 
 Use this explicit update command for CLI installs; this setup does not
@@ -106,7 +106,7 @@ Register the checkout root in VS Code's **User Settings (JSON)**:
 ```
 
 Replace the path with your checkout location on another machine. Open
-**Chat: Configure Skills**, confirm `grill-me` is listed from `andrew-skills`,
+**Chat: Configure Skills**, confirm `grill-me` is listed from `gt`,
 and try the command above in a fresh chat. If missing, confirm the plugin is
 enabled and reload the window.
 
@@ -115,16 +115,19 @@ the local registration before testing a GitHub-installed copy.
 
 ### If you tested an earlier installation
 
-If you installed `andrew-skills` directly from the repository, uninstall that
-copy through the client that installed it, then use the marketplace installation
-above. For the CLI, the uninstall command is `copilot plugin uninstall andrew-skills`.
+The plugin was renamed from `andrew-skills` to `gt` in version `0.1.2`.
+If you installed the old plugin (directly or through the marketplace), uninstall
+that copy through the client that installed it, then install `gt` using the
+marketplace instructions above. For the CLI, the uninstall command is
+`copilot plugin uninstall andrew-skills`. An update to the old name does not
+replace this migration. The repository and marketplace remain `andrew-skills`.
 The installer does not remove previous installations automatically.
 
 Uninstall the old `team-core` plugin through the client that installed it and
 remove its local registration if present. Replace a registration pointing to
 `plugins/team-core` with the checkout root above. If you already registered this
 marketplace, refresh it with `copilot plugin marketplace update andrew-skills`,
-then install `andrew-skills@andrew-skills`.
+then install `gt@andrew-skills`.
 
 ## Repository layout
 

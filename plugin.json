@@ -1,8 +1,8 @@
 {
   "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
-  "name": "andrew-skills",
+  "name": "gt",
   "description": "Shared team workflows, starting with a plan and design interview",
-  "version": "0.1.1",
+  "version": "0.1.2",
   "author": {
     "name": "Andrew Godlewsky"
   },

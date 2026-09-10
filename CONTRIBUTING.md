@@ -38,13 +38,13 @@ skill. Document adaptations in the README's provenance section.
 For each published plugin update:
 
 1. Increment `version` in the root `plugin.json` (for example,
-   `0.1.1` to `0.1.2` for an instruction fix). Update the plugin entry in
+   `0.1.2` to `0.1.3` for an instruction fix). Update the plugin entry in
    `.claude-plugin/marketplace.json` to the same version.
 2. Validate and test the new behavior in VS Code.
 3. The maintainer commits and pushes the reviewed changes to the default branch.
 
 A GitHub release, package registry, or extension build is not required for this
-plugin. Teammates update their entire `andrew-skills` installation using the
+plugin. Teammates update their entire `gt` installation using the
 command or VS Code steps in the README. Do not edit an installed plugin cache
 to contribute changes. This repository ships one plugin; all skills belong in
 its root `skills/` folder.
