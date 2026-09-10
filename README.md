@@ -69,25 +69,112 @@ Start a fresh Copilot Chat and enter:
 | Skill | Purpose | Command |
 | --- | --- | --- |
 | [Grill me](skills/grill-me/SKILL.md) | Sharpen a plan or design through an interview | `/gt:grill-me` |
+| [Skills update](skills/skills-update/SKILL.md) | Refresh the marketplace and update the CLI-installed `gt` plugin | `/gt:skills-update` |
 
 `grill-me` asks one question at a time, recommends an answer, and waits for shared
 understanding before implementing the plan. It is manual-only: invoke it explicitly.
 
 ## Update
 
-For a CLI-installed copy, run:
+### Update from chat
+
+In a fresh Copilot chat with terminal tools available, invoke:
+
+```text
+/gt:skills-update
+```
+
+This manual-only skill asks Copilot to refresh `andrew-skills`, then update `gt`
+only if the refresh succeeds. It reports the result and recommends starting a
+fresh chat afterward. Terminal execution may require approval in your client.
+It requires Copilot CLI and targets the CLI installation for that machine and
+user account; VS Code-managed installations use the VS Code steps below.
+
+The skill is included starting with version `0.1.3`. Existing users must update
+once using the CLI commands below to receive it. It does not check or update
+automatically in the background.
+
+### CLI-installed plugin (including the installer script)
+
+For normal updates, run just:
 
 ```sh
 copilot plugin update gt
 ```
 
-Use this explicit update command for CLI installs; this setup does not
-configure automatic updates. See the
-[CLI plugin reference](https://docs.github.com/en/copilot/reference/copilot-cli-reference/cli-plugin-reference).
+This is GitHub's documented command for updating an installed plugin to its
+latest version. It updates the whole `gt` package, including new skills and
+changes to existing skills. You do not install each skill separately or rerun
+the installer. See [GitHub's update guide](https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/plugins-finding-installing#managing-installed-plugins).
 
-For a VS Code-managed installation, run **Extensions: Check for Extension Updates**.
-VS Code also checks every 24 hours when `extensions.autoUpdate` is enabled.
-[VS Code update documentation](https://code.visualstudio.com/docs/agent-customization/agent-plugins#update-plugins).
+### How to check for an available update
+
+In an interactive Copilot CLI session, enter `/plugin`. The dashboard flags
+available updates and offers an **Update** action. This setup does not enable
+automatic updates for our custom marketplace. If you only use the CLI-installed
+skills in VS Code, do not rely on a VS Code notification for that installation;
+check the CLI dashboard or run the update command when the team announces changes.
+
+### Refreshing the marketplace versus updating the plugin
+
+| Command | Purpose |
+| --- | --- |
+| `copilot plugin marketplace update andrew-skills` | Refresh the catalog so Copilot can discover its current plugin entries and versions. |
+| `copilot plugin update gt` | Update the installed `gt` plugin and its skills. |
+
+These commands are not interchangeable. A catalog refresh is not a substitute
+for requesting a plugin update. GitHub documents plugin update as a standalone
+command; a separate catalog refresh is not listed as a routine prerequisite.
+If an announced version or plugin entry is missing, refresh the catalog first,
+then update the plugin. Run the second command only if the first succeeds:
+
+```sh
+copilot plugin marketplace update andrew-skills
+copilot plugin update gt
+```
+
+To run both steps in one line in **PowerShell 7, Bash, or Zsh**:
+
+```sh
+copilot plugin marketplace update andrew-skills && copilot plugin update gt
+```
+
+`&&` runs the plugin update only after the catalog refresh succeeds.
+For **Windows PowerShell 5.1**, use this equivalent:
+
+```powershell
+copilot plugin marketplace update andrew-skills; if ($LASTEXITCODE -eq 0) { copilot plugin update gt }
+```
+
+The marketplace name is `andrew-skills`; the plugin name is lowercase `gt`.
+See the [CLI reference](https://docs.github.com/en/copilot/reference/copilot-cli-reference/cli-plugin-reference)
+for catalog refresh, update notices, and optional marketplace auto-update settings.
+
+### VS Code-installed plugin
+
+For a VS Code-managed installation, open the Command Palette (`Ctrl+Shift+P` on
+Windows/Linux or `Cmd+Shift+P` on macOS) and run
+**Extensions: Check for Extension Updates** to check immediately.
+
+To enable automatic updates, open the Command Palette and run
+**Extensions: Enable Auto Update for Extensions**. Alternatively, open Settings,
+search for `extensions.autoUpdate`, and enable it. VS Code's agent plugin
+documentation says plugin update checks run every 24 hours when this is enabled.
+
+For general extension update checking, also keep `extensions.autoCheckUpdates`
+enabled in Settings. It controls automatic checking; `extensions.autoUpdate`
+controls automatic installation. These settings affect other extensions too.
+Your organization may manage them centrally.
+
+Official documentation:
+
+- [Agent plugin updates in VS Code](https://code.visualstudio.com/docs/agent-customization/agent-plugins#update-plugins)
+- [Extension auto-update settings](https://code.visualstudio.com/docs/configure/extensions/extension-marketplace#extension-auto-update)
+- [Checking and updating extensions manually](https://code.visualstudio.com/docs/configure/extensions/extension-marketplace#update-an-extension-manually)
+
+These instructions apply to VS Code-managed updates. For a plugin installed by
+our CLI installer, use the CLI commands above; enabling VS Code auto-update does
+not configure Copilot CLI's marketplace auto-update setting.
 
 After updating, test in a fresh chat so previously loaded instructions do not
 affect the result.
@@ -138,6 +225,8 @@ install.ps1                  One-command setup from a downloaded checkout
 skills/
   grill-me/
     SKILL.md                 Self-contained interview skill
+  skills-update/
+    SKILL.md                 On-demand CLI plugin update skill
 scripts/validate.mjs         Local and CI validation
 .github/workflows/validate.yml
 README.md

@@ -6,8 +6,8 @@
   "plugins": [
     {
       "name": "gt",
-      "description": "Shared team workflows, starting with a plan and design interview",
-      "version": "0.1.2",
+      "description": "Shared team workflows for plan interviews and skill updates",
+      "version": "0.1.3",
       "source": "./"
     }
   ]

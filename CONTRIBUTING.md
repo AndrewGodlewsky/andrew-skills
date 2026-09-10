@@ -38,7 +38,7 @@ skill. Document adaptations in the README's provenance section.
 For each published plugin update:
 
 1. Increment `version` in the root `plugin.json` (for example,
-   `0.1.2` to `0.1.3` for an instruction fix). Update the plugin entry in
+   `0.1.3` to `0.1.4` for an instruction fix). Update the plugin entry in
    `.claude-plugin/marketplace.json` to the same version.
 2. Validate and test the new behavior in VS Code.
 3. The maintainer commits and pushes the reviewed changes to the default branch.
