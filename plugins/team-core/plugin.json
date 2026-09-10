@@ -1,0 +1,10 @@
+{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "team-core",
+  "description": "Shared team workflows, starting with a plan and design interview",
+  "version": "0.1.0",
+  "author": {
+    "name": "Andrew Godlewsky"
+  },
+  "repository": "https://github.com/AndrewGodlewsky/andrew-skills"
+}
