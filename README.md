@@ -254,6 +254,52 @@ together.
 
 ## Contribute and validate
 
+### Planned per-skill release convention
+
+The accepted versioning design gives each skill a **`release.yaml`** beside
+`SKILL.md`, containing its **`x.y.z` version** and a short user-facing release
+note. New skills start at **`1.0.0`**. Use patch increments for compatible fixes,
+minor increments for compatible additions, and major increments for incompatible
+changes to documented usage. A skill's version is separate from the containing
+`gt` plugin version; unchanged skills keep their versions. Even typo or release-note
+corrections get a new version. A removed skill reintroduced under the same name
+restarts at `1.0.0`; exact source snapshots distinguish repeated version labels.
+
+**Names inside the GT plugin stay unchanged**: `grill-me` stays `grill-me`.
+Only optional historical personal exports use names such as `grill-me-v1-2-0`.
+The planned `skills-restore` skill creates that personal copy and leaves it to the user;
+it never overwrites an existing destination or manages the copy afterward.
+Node and Git are prerequisites for that export operation only. See the
+[personal export contract](docs/planning/skill-personal-export-contract.md).
+
+The [reviewed interaction design](docs/planning/skill-interaction-prototype-notes.md)
+keeps `skills-update` direct: update the whole GT plugin, including additions and
+removals, then show a table of changed skills, previous versions, installed
+versions and short change notes. There is no removal-confirmation step.
+`skills-restore` separately lets users browse and select a historical release.
+These reporting and restore enhancements are planned, not implemented yet.
+
+The [implementation handoff](docs/planning/skill-versioning-implementation-handoff.md)
+tracks the work and owner pilot before team adoption. Existing users retain the
+native update path. Edits inside managed GT skills are unsupported and native
+updates replace them; personal and project-level skills remain user-owned.
+
+The planned [skills-status report](docs/planning/skill-status-prototype-notes.md)
+shows only installed GT skills: skill name, installed version and that release's
+short note. It reads the selected local installation without online release
+comparisons or personal-copy tracking. This status skill is not implemented yet.
+
+This is an accepted design direction, **not implemented release automation**.
+The intended workflow includes release information in the reviewed change and
+requires validation before PRs merge to `main`. Andrew will configure the merge
+enforcement later. The release catalog is derived from preserved merge/squash
+snapshots on `main`. Each bundle change increments the overall plugin patch
+version once, regardless of how many skills changed. Authors and agents
+creating skills should follow [the publishing design](docs/planning/skill-publishing-notes.md)
+and [contributor guidance](CONTRIBUTING.md); do not invent a competing convention.
+
+### Current validation
+
 See [CONTRIBUTING.md](CONTRIBUTING.md). With Node.js 22 or newer installed:
 
 ```sh

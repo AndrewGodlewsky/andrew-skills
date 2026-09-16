@@ -35,6 +35,65 @@ skill. Document adaptations in the README's provenance section.
 
 ## Publish an update
 
+### Planned independent skill versions
+
+The owner selected **`release.yaml` beside each `SKILL.md`**, with exactly the
+author-facing information needed here: **`version`** and a short **`notes`**
+string. Notes should explain the user-visible change in one or two sentences;
+no separate preparation backstory is required. The note is distinct from
+`SKILL.md`'s discovery description and the overall plugin version.
+
+Keep skill folders, frontmatter names and normal entry points inside GT free of
+version suffixes. Only a personal historical export receives a name such as
+`grill-me-v1-2-0`; source files in the repository keep the original name. Its
+exporter verifies the source before adapting the personal copy. Package skill
+resources with relative internal paths; known plugin-dependent or name-bound
+sources must not be silently rewritten for export. See the
+[create-only export contract](docs/planning/skill-personal-export-contract.md).
+
+```yaml
+version: "1.0.0"
+notes: "Initial release of this skill."
+```
+
+Start new and returning skills at **`1.0.0`**. Numbered history begins with the first
+metadata-complete release; do not invent versions for older unversioned snapshots.
+Use patch increments for fixes/clarifications preserving documented usage, minor
+increments for compatible additions, and major increments for incompatible
+changes to commands, inputs, required tools or documented workflow/output promises.
+Use the largest applicable increment and reset lower components accordingly.
+Authors/agents propose the category; review verifies its meaning. CI checks
+structure and consistency without a model deciding semantic compatibility.
+Changing one skill must not assign new versions to unchanged skills. Every
+published skill correction, including a typo or release-note correction, gets a
+new version. Draft PR edits do not each create a published release.
+
+A skill absent from a published main snapshot restarts at `1.0.0` when restored,
+even under the same name. A delete/re-add within one PR does not reset numbering
+if no published snapshot omitted it. Historical name/version labels can repeat;
+the catalog preserves their distinct commit/path sources. Existing archive copies
+are not migrated. Reverting an active skill's behavior still requires a new version.
+
+Increment the overall plugin patch version once per bundle change (including
+skill additions/removals and plugin behavior/configuration), and keep root and
+marketplace versions equal. A skill major bump does not require a plugin major
+bump. Repository-only documentation changes need neither bump.
+
+The intended authoring workflow includes the version and release information in
+the reviewed change. CI should validate that each skill meets the release
+requirements on pull requests to `main`. Agents authoring skills must account for
+this convention; agents do not decide when to commit or publish.
+
+**This publishing contract is not implemented yet.** The catalog derives exact
+release records from preserved merge/squash snapshots on `main`; no handwritten
+history ledger or bot commits are required. Andrew will
+configure required merge checks later; do not change repository settings as part
+of this planning work. See [the publishing notes](docs/planning/skill-publishing-notes.md)
+and [reviewed answers](docs/planning/skill-publishing-round-3.md). Do not claim the
+current validator already checks skill releases.
+
+### Current plugin publishing procedure
+
 For each published plugin update:
 
 1. Increment `version` in the root `plugin.json` (for example,

@@ -1,0 +1,67 @@
+{
+  "platform": "win32",
+  "osRelease": "10.0.26200",
+  "cli": "C:\\Users\\godle\\AppData\\Local\\Temp\\andrew-skills-compatibility-20260914\\runtime\\copilot.exe",
+  "results": [
+    {
+      "label": "--version",
+      "status": 0,
+      "stdout": "GitHub Copilot CLI 1.0.83.\nRun 'copilot update' to check for updates.\n",
+      "stderr": ""
+    },
+    {
+      "label": "plugin marketplace add C:\\Users\\godle\\AppData\\Local\\Temp\\andrew-skills-compatibility-20260914\\external\\market",
+      "status": 0,
+      "stdout": "Marketplace \"wf-external\" added successfully.\n",
+      "stderr": ""
+    },
+    {
+      "label": "plugin install gt@wf-external",
+      "status": 0,
+      "stdout": "Plugin \"gt\" installed successfully. Installed 1 skill.\n",
+      "stderr": ""
+    },
+    {
+      "label": "plugin list",
+      "status": 0,
+      "stdout": "No plugins installed.\n\nUse 'copilot plugin install <source>' to install a plugin.\n",
+      "stderr": ""
+    },
+    {
+      "label": "plugin marketplace update wf-external",
+      "status": 0,
+      "stdout": "Updating marketplace \"wf-external\"...\nMarketplace \"wf-external\" updated successfully.\n",
+      "stderr": ""
+    },
+    {
+      "label": "plugin update gt@wf-external",
+      "status": 1,
+      "stdout": "",
+      "stderr": "Failed to update plugin: Error: Request plugins.update failed with message: Plugin \"gt@wf-external\" is not installed\n"
+    },
+    {
+      "label": "plugin list",
+      "status": 0,
+      "stdout": "No plugins installed.\n\nUse 'copilot plugin install <source>' to install a plugin.\n",
+      "stderr": ""
+    },
+    {
+      "label": "plugin marketplace update wf-external",
+      "status": 0,
+      "stdout": "Updating marketplace \"wf-external\"...\nMarketplace \"wf-external\" updated successfully.\n",
+      "stderr": ""
+    },
+    {
+      "label": "plugin update gt@wf-external",
+      "status": 1,
+      "stdout": "",
+      "stderr": "Failed to update plugin: Error: Request plugins.update failed with message: Plugin \"gt@wf-external\" is not installed\n"
+    },
+    {
+      "label": "plugin list",
+      "status": 0,
+      "stdout": "No plugins installed.\n\nUse 'copilot plugin install <source>' to install a plugin.\n",
+      "stderr": ""
+    }
+  ]
+}

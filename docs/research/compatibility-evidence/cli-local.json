@@ -1,0 +1,267 @@
+{
+  "platform": "win32",
+  "osRelease": "10.0.26200",
+  "cli": "C:\\Users\\godle\\AppData\\Local\\Temp\\andrew-skills-compatibility-20260914\\runtime\\copilot.exe",
+  "results": [
+    {
+      "label": "--version",
+      "status": 0,
+      "stdout": "GitHub Copilot CLI 1.0.83.\nRun 'copilot update' to check for updates.\n",
+      "stderr": ""
+    },
+    {
+      "label": "plugin marketplace add C:\\Users\\godle\\AppData\\Local\\Temp\\andrew-skills-compatibility-20260914\\local-r3\\market",
+      "status": 0,
+      "stdout": "Marketplace \"wf-local\" added successfully.\n",
+      "stderr": ""
+    },
+    {
+      "label": "plugin install bundle@wf-local",
+      "status": 0,
+      "stdout": "Plugin \"bundle\" installed successfully. Installed 2 skills.\nEnabled \"bundle@wf-local\". It is loaded live from C:\\Users\\godle\\AppData\\Local\\Temp\\andrew-skills-compatibility-20260914\\local-r3\\market\\bundle, so edits take effect on the next session — nothing was copied.\n",
+      "stderr": ""
+    },
+    {
+      "label": "skill list --json",
+      "status": 0,
+      "stdout": [
+        {
+          "name": "wf-alpha",
+          "description": "Disposable compatibility fixture 1.0.0.",
+          "source": "plugin",
+          "path": "C:\\Users\\godle\\AppData\\Local\\Temp\\andrew-skills-compatibility-20260914\\local-r3\\market\\bundle\\skills\\wf-alpha",
+          "enabled": true
+        },
+        {
+          "name": "wf-beta",
+          "description": "Disposable compatibility fixture 1.0.0.",
+          "source": "plugin",
+          "path": "C:\\Users\\godle\\AppData\\Local\\Temp\\andrew-skills-compatibility-20260914\\local-r3\\market\\bundle\\skills\\wf-beta",
+          "enabled": true
+        }
+      ],
+      "stderr": ""
+    },
+    {
+      "label": "initial-directory-hashes",
+      "alpha": {
+        "release-notes.md": "8c8afcf39f53f8a0b84e42c94ff9f804bc00a810a272549b15e1bf33cd9a270a",
+        "resources/marker.txt": "ca8cceb42c4758f0c980acb7caa2f32cc3275517ce38ced9700e8a94f665d042",
+        "SKILL.md": "db1fac04c9f526f2dbee72391707a7798e2b3985c2cdb64e0012edf50806feb1"
+      },
+      "beta": {
+        "release-notes.md": "8c8afcf39f53f8a0b84e42c94ff9f804bc00a810a272549b15e1bf33cd9a270a",
+        "resources/marker.txt": "b1098b2a3006c248a2b6a5fe9bda7b9861c748c91716c66a54ba6038bb667ef3",
+        "SKILL.md": "7c48e4ccd2d00431649bc401503c366e82089feba9f1aa4ad21b5396e580614d"
+      }
+    },
+    {
+      "label": "retained-complete-snapshot",
+      "hashes": {
+        "release-notes.md": "8c8afcf39f53f8a0b84e42c94ff9f804bc00a810a272549b15e1bf33cd9a270a",
+        "resources/marker.txt": "ca8cceb42c4758f0c980acb7caa2f32cc3275517ce38ced9700e8a94f665d042",
+        "SKILL.md": "db1fac04c9f526f2dbee72391707a7798e2b3985c2cdb64e0012edf50806feb1"
+      }
+    },
+    {
+      "label": "skill list --json",
+      "status": 0,
+      "stdout": [
+        {
+          "name": "wf-alpha",
+          "description": "Disposable compatibility fixture 1.0.0.",
+          "source": "personal-copilot",
+          "path": "C:\\Users\\godle\\AppData\\Local\\Temp\\andrew-skills-compatibility-20260914\\local-r3\\config\\skills\\wf-alpha",
+          "enabled": true
+        },
+        {
+          "name": "wf-beta",
+          "description": "Disposable compatibility fixture 1.0.0.",
+          "source": "plugin",
+          "path": "C:\\Users\\godle\\AppData\\Local\\Temp\\andrew-skills-compatibility-20260914\\local-r3\\market\\bundle\\skills\\wf-beta",
+          "enabled": true
+        }
+      ],
+      "stderr": ""
+    },
+    {
+      "label": "skill list --json",
+      "status": 0,
+      "stdout": [
+        {
+          "name": "wf-alpha",
+          "description": "Disposable compatibility fixture 1.0.0.",
+          "source": "personal-copilot",
+          "path": "C:\\Users\\godle\\AppData\\Local\\Temp\\andrew-skills-compatibility-20260914\\local-r3\\config\\skills\\wf-alpha",
+          "enabled": true
+        },
+        {
+          "name": "wf-beta",
+          "description": "Disposable compatibility fixture 2.0.0.",
+          "source": "plugin",
+          "path": "C:\\Users\\godle\\AppData\\Local\\Temp\\andrew-skills-compatibility-20260914\\local-r3\\market\\bundle\\skills\\wf-beta",
+          "enabled": true
+        }
+      ],
+      "stderr": ""
+    },
+    {
+      "label": "source-mutated-before-update",
+      "discovered": [
+        {
+          "name": "wf-alpha",
+          "description": "Disposable compatibility fixture 1.0.0.",
+          "source": "personal-copilot",
+          "path": "C:\\Users\\godle\\AppData\\Local\\Temp\\andrew-skills-compatibility-20260914\\local-r3\\config\\skills\\wf-alpha",
+          "enabled": true
+        },
+        {
+          "name": "wf-beta",
+          "description": "Disposable compatibility fixture 2.0.0.",
+          "source": "plugin",
+          "path": "C:\\Users\\godle\\AppData\\Local\\Temp\\andrew-skills-compatibility-20260914\\local-r3\\market\\bundle\\skills\\wf-beta",
+          "enabled": true
+        }
+      ]
+    },
+    {
+      "label": "plugin marketplace update wf-local",
+      "status": 0,
+      "stdout": "Updating marketplace \"wf-local\"...\nMarketplace \"wf-local\" updated successfully.\n",
+      "stderr": ""
+    },
+    {
+      "label": "plugin update --all",
+      "status": 0,
+      "stdout": "Updating 2 installed plugins...\nPlugin \"extra@wf-local\" is always loaded live from C:\\Users\\godle\\AppData\\Local\\Temp\\andrew-skills-compatibility-20260914\\local-r3\\market; there is nothing to update.\nPlugin \"bundle@wf-local\" is always loaded live from C:\\Users\\godle\\AppData\\Local\\Temp\\andrew-skills-compatibility-20260914\\local-r3\\market; there is nothing to update.\n",
+      "stderr": ""
+    },
+    {
+      "label": "skill list --json",
+      "status": 0,
+      "stdout": [
+        {
+          "name": "wf-alpha",
+          "description": "Disposable compatibility fixture 1.0.0.",
+          "source": "personal-copilot",
+          "path": "C:\\Users\\godle\\AppData\\Local\\Temp\\andrew-skills-compatibility-20260914\\local-r3\\config\\skills\\wf-alpha",
+          "enabled": true
+        },
+        {
+          "name": "wf-beta",
+          "description": "Disposable compatibility fixture 2.0.0.",
+          "source": "plugin",
+          "path": "C:\\Users\\godle\\AppData\\Local\\Temp\\andrew-skills-compatibility-20260914\\local-r3\\market\\bundle\\skills\\wf-beta",
+          "enabled": true
+        }
+      ],
+      "stderr": ""
+    },
+    {
+      "label": "after-update-hashes",
+      "personal": {
+        "release-notes.md": "8c8afcf39f53f8a0b84e42c94ff9f804bc00a810a272549b15e1bf33cd9a270a",
+        "resources/marker.txt": "ca8cceb42c4758f0c980acb7caa2f32cc3275517ce38ced9700e8a94f665d042",
+        "SKILL.md": "db1fac04c9f526f2dbee72391707a7798e2b3985c2cdb64e0012edf50806feb1"
+      },
+      "pluginAlpha": {
+        "release-notes.md": "a791637ea65c72167878fb082d0aec3a3ab41926352b2f139e5a1c98de99dde2",
+        "resources/marker.txt": "cc867dfb6a87d24c8cba2f9b614feca707e6e8e124b2681c5bc75843c933e08a",
+        "SKILL.md": "8a06d430a73fa6c77972381c735334b4fe1a62a613016637a33f7fe6f2ed5c97"
+      },
+      "pluginBeta": {
+        "release-notes.md": "a791637ea65c72167878fb082d0aec3a3ab41926352b2f139e5a1c98de99dde2",
+        "resources/marker.txt": "533ce7b31e6b1d7f459503e9745cf120152567b6c02dfd86a9b391298ecc2db6",
+        "SKILL.md": "454a7f7da6d360eaec649f721ce946094b212f075ae63a2ed906bf1e09de2c0b"
+      }
+    },
+    {
+      "label": "plugin install extra@wf-local",
+      "status": 0,
+      "stdout": "Plugin \"extra\" installed successfully. Installed 1 skill.\nEnabled \"extra@wf-local\". It is loaded live from C:\\Users\\godle\\AppData\\Local\\Temp\\andrew-skills-compatibility-20260914\\local-r3\\market\\extra, so edits take effect on the next session — nothing was copied.\n",
+      "stderr": ""
+    },
+    {
+      "label": "skill list --json",
+      "status": 0,
+      "stdout": [
+        {
+          "name": "wf-alpha",
+          "description": "Disposable compatibility fixture 1.0.0.",
+          "source": "personal-copilot",
+          "path": "C:\\Users\\godle\\AppData\\Local\\Temp\\andrew-skills-compatibility-20260914\\local-r3\\config\\skills\\wf-alpha",
+          "enabled": true
+        },
+        {
+          "name": "wf-beta",
+          "description": "Disposable compatibility fixture 2.0.0.",
+          "source": "plugin",
+          "path": "C:\\Users\\godle\\AppData\\Local\\Temp\\andrew-skills-compatibility-20260914\\local-r3\\market\\bundle\\skills\\wf-beta",
+          "enabled": true
+        }
+      ],
+      "stderr": ""
+    },
+    {
+      "label": "collision-copy-refused",
+      "code": "",
+      "message": ", The file exists. '\\\\?\\C:\\Users\\godle\\AppData\\Local\\Temp\\andrew-skills-compatibility-20260914\\local-r3\\config\\skills\\wf-alpha'"
+    },
+    {
+      "label": "skill list --json",
+      "status": 0,
+      "stdout": [
+        {
+          "name": "bundle:wf-alpha",
+          "description": "Disposable compatibility fixture 2.0.0.",
+          "source": "plugin",
+          "path": "C:\\Users\\godle\\AppData\\Local\\Temp\\andrew-skills-compatibility-20260914\\local-r3\\market\\bundle\\skills\\wf-alpha",
+          "enabled": true
+        },
+        {
+          "name": "wf-beta",
+          "description": "Disposable compatibility fixture 2.0.0.",
+          "source": "plugin",
+          "path": "C:\\Users\\godle\\AppData\\Local\\Temp\\andrew-skills-compatibility-20260914\\local-r3\\market\\bundle\\skills\\wf-beta",
+          "enabled": true
+        },
+        {
+          "name": "extra:wf-alpha",
+          "description": "Disposable compatibility fixture 2.0.0.",
+          "source": "plugin",
+          "path": "C:\\Users\\godle\\AppData\\Local\\Temp\\andrew-skills-compatibility-20260914\\local-r3\\market\\extra\\skills\\wf-alpha",
+          "enabled": true
+        }
+      ],
+      "stderr": ""
+    },
+    {
+      "label": "plugin uninstall bundle@wf-local",
+      "status": 0,
+      "stdout": "Plugin \"bundle@wf-local\" disabled. It is still on disk at C:\\Users\\godle\\AppData\\Local\\Temp\\andrew-skills-compatibility-20260914\\local-r3\\market — nothing was removed.\n",
+      "stderr": ""
+    },
+    {
+      "label": "skill list --json",
+      "status": 0,
+      "stdout": [
+        {
+          "name": "wf-alpha",
+          "description": "Disposable compatibility fixture 1.0.0.",
+          "source": "personal-copilot",
+          "path": "C:\\Users\\godle\\AppData\\Local\\Temp\\andrew-skills-compatibility-20260914\\local-r3\\config\\skills\\wf-alpha",
+          "enabled": true
+        }
+      ],
+      "stderr": ""
+    },
+    {
+      "label": "after-retirement-personal-hashes",
+      "hashes": {
+        "release-notes.md": "8c8afcf39f53f8a0b84e42c94ff9f804bc00a810a272549b15e1bf33cd9a270a",
+        "resources/marker.txt": "ca8cceb42c4758f0c980acb7caa2f32cc3275517ce38ced9700e8a94f665d042",
+        "SKILL.md": "db1fac04c9f526f2dbee72391707a7798e2b3985c2cdb64e0012edf50806feb1"
+      }
+    }
+  ]
+}

@@ -1,0 +1,26 @@
+{
+  "requests": [],
+  "version": "1.137.0",
+  "home": "C:\\Users\\godle\\AppData\\Local\\Temp\\andrew-skills-compatibility-20260914\\vscode\\home",
+  "userProfile": "C:\\Users\\godle\\AppData\\Local\\Temp\\andrew-skills-compatibility-20260914\\vscode\\home",
+  "copilotHome": "C:\\Users\\godle\\AppData\\Local\\Temp\\andrew-skills-compatibility-20260914\\vscode\\home\\.copilot",
+  "models": [
+    {
+      "id": "wf-observer",
+      "vendor": "wf-observer"
+    }
+  ],
+  "skillLocations": {
+    ".agents/skills": true,
+    ".github/skills": true,
+    ".claude/skills": true,
+    "~/.agents/skills": true,
+    "~/.copilot/skills": true,
+    "~/.claude/skills": true,
+    "C:\\Users\\godle\\AppData\\Local\\Temp\\andrew-skills-compatibility-20260914\\vscode\\home\\.copilot\\skills": true
+  },
+  "pluginLocations": {
+    "C:\\Users\\godle\\AppData\\Local\\Temp\\andrew-skills-compatibility-20260914\\vscode\\extra": true
+  },
+  "error": "Error: No completed chat within 35 seconds\n\tat Timeout._onTimeout (c:\\Users\\godle\\AppData\\Local\\Temp\\andrew-skills-compatibility-20260914\\vscode\\extension\\probe.cjs:33:88)\n\tat listOnTimeout (node:internal/timers:605:17)\n\tat process.processTimers (node:internal/timers:541:7)"
+}

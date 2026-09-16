@@ -1,0 +1,70 @@
+[
+  {
+    "command": "/wf-alpha",
+    "requests": [
+      {
+        "url": "/v1/chat/completions",
+        "instructions": [],
+        "resourceMarkers": [],
+        "toolResults": []
+      },
+      {
+        "url": "/v1/chat/completions",
+        "instructions": [
+          "Report marker wf-alpha-1.0.0."
+        ],
+        "resourceMarkers": [],
+        "toolResults": [
+          "Skill \"wf-alpha\" loaded successfully. Follow the instructions in the skill context."
+        ]
+      }
+    ],
+    "status": 0,
+    "stdout": "● skill(wf-alpha)\n\nFixture observer completed.\n\n",
+    "stderr": "\n\nChanges    +0 -0\nDuration   0s\nTokens     ↑ 1 • ↓ 1\nResume     copilot --resume=2715d710-67c0-4b1a-98b3-9f9d05ccd263\n"
+  },
+  {
+    "command": "/extra:wf-alpha",
+    "requests": [
+      {
+        "url": "/v1/chat/completions",
+        "instructions": [],
+        "resourceMarkers": [],
+        "toolResults": []
+      },
+      {
+        "url": "/v1/chat/completions",
+        "instructions": [],
+        "resourceMarkers": [],
+        "toolResults": [
+          "Skill \"extra:wf-alpha\" not found. Available skill list omitted."
+        ]
+      }
+    ],
+    "status": 0,
+    "stdout": "✗ skill(extra:wf-alpha) Skill not found: extra:wf-alpha\n\nFixture observer completed.\n\n",
+    "stderr": "\n\nChanges    +0 -0\nDuration   0s\nTokens     ↑ 1 • ↓ 1\nResume     copilot --resume=2646e725-e501-45c0-b92f-b71396ca249c\n"
+  },
+  {
+    "command": "/extra/wf-alpha",
+    "requests": [
+      {
+        "url": "/v1/chat/completions",
+        "instructions": [],
+        "resourceMarkers": [],
+        "toolResults": []
+      },
+      {
+        "url": "/v1/chat/completions",
+        "instructions": [],
+        "resourceMarkers": [],
+        "toolResults": [
+          "Skill \"extra/wf-alpha\" not found. Available skill list omitted."
+        ]
+      }
+    ],
+    "status": 0,
+    "stdout": "✗ skill(extra/wf-alpha) Skill not found: extra/wf-alpha\n\nFixture observer completed.\n\n",
+    "stderr": "\n\nChanges    +0 -0\nDuration   0s\nTokens     ↑ 1 • ↓ 1\nResume     copilot --resume=59ec9839-4620-4273-a076-b150720be89b\n"
+  }
+]

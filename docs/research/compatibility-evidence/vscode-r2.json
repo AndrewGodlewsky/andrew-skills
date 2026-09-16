@@ -1,0 +1,26 @@
+{
+  "requests": [],
+  "version": "1.137.0",
+  "home": "C:\\Users\\godle\\AppData\\Local\\Temp\\andrew-skills-compatibility-20260914\\vscode-r2\\home",
+  "userProfile": "C:\\Users\\godle\\AppData\\Local\\Temp\\andrew-skills-compatibility-20260914\\vscode-r2\\home",
+  "copilotHome": "C:\\Users\\godle\\AppData\\Local\\Temp\\andrew-skills-compatibility-20260914\\vscode-r2\\home\\.copilot",
+  "models": [
+    {
+      "id": "wf-observer",
+      "vendor": "wf-observer"
+    }
+  ],
+  "skillLocations": {
+    ".agents/skills": true,
+    ".github/skills": true,
+    ".claude/skills": true,
+    "~/.agents/skills": true,
+    "~/.copilot/skills": true,
+    "~/.claude/skills": true
+  },
+  "pluginLocations": {
+    "C:\\Users\\godle\\AppData\\Local\\Temp\\andrew-skills-compatibility-20260914\\vscode-r2\\extra": true
+  },
+  "extensions": [],
+  "error": "Error: No completed chat within 70 seconds\n\tat Timeout._onTimeout (c:\\Users\\godle\\AppData\\Local\\Temp\\andrew-skills-compatibility-20260914\\vscode-r2\\extension\\probe.cjs:35:88)\n\tat listOnTimeout (node:internal/timers:605:17)\n\tat process.processTimers (node:internal/timers:541:7)"
+}
