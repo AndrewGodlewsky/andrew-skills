@@ -1,6 +1,6 @@
 # Skill architecture and contribution process — scope assessment
 
-**Status: new Wayfinder map charted; no skill standard adopted yet.** The owner requested a well-defined process for adding skills and a standard architecture usable by people and future skill-authoring agents. They explicitly chose **standards and template now; creator skill later**. Existing versioning decisions remain in force.
+**Status: architecture decision accepted September 17, 2026; process and blueprint remain open.** The owner confirmed the [minimal architecture contract](skill-architecture-contract.md), including compact runtime instructions, separate review evidence and the four-field header/extension policy. The coverage table below records the original gaps; the accepted contract resolves the architecture questions. Implementation and canonical contributor documentation remain downstream. The owner explicitly chose **standards and template now; creator skill later**. Existing versioning decisions remain in force.
 
 ## Coverage and gaps
 
@@ -30,8 +30,8 @@ The earlier versioning map remains complete for its destination. This is an addi
 
 Map: [Standardize skill architecture and the contribution process](https://github.com/AndrewGodlewsky/andrew-skills/issues/18).
 
-1. [Define the standard skill structure and invocation policy](https://github.com/AndrewGodlewsky/andrew-skills/issues/19) — first available planning issue; grounded in supported client metadata and existing release/export decisions.
-2. [Define the process for proposing and accepting new skills](https://github.com/AndrewGodlewsky/andrew-skills/issues/20) — ownership, evidence and acceptance; blocked by the architecture decision.
+1. [Define the standard skill structure and invocation policy](https://github.com/AndrewGodlewsky/andrew-skills/issues/19) — owner-confirmed architecture; see the accepted contract above.
+2. [Define the process for proposing and accepting new skills](https://github.com/AndrewGodlewsky/andrew-skills/issues/20) — ownership, evidence and acceptance; next in map order once the architecture decision is closed.
 3. [Review the skill authoring blueprint and enforcement handoff](https://github.com/AndrewGodlewsky/andrew-skills/issues/21) — starter template/checklist, canonical documentation, validator versus human review, current-skill adoption and implementation handoff; blocked by both decisions.
 
 A dedicated skill-creator is distinct from a template that a future creator can read. The owner explicitly left that additional feature for later. Final automated enforcement, current-skill migration and implementation slices follow the decisions above; no duplicate implementation issues are created before those decisions exist. Existing metadata and pilot issues now link this effort without imposing new blocking rules on settled versioning work.

@@ -2,7 +2,7 @@
 
 Issue: [Define the standard skill structure and invocation policy](https://github.com/AndrewGodlewsky/andrew-skills/issues/19).
 
-**Status: Round 2 answered; technical research ready for owner review before final policy confirmation.** Assigned to AndrewGodlewsky. Original answers are preserved. The owner supports the compact runtime/review-evidence direction, but requested a detailed subagent-led HTML explanation of what skill content enters context before confirming the header policy. Standards/template are in scope; a dedicated creator skill is deferred.
+**Status: architecture confirmed September 17, 2026.** The owner confirmed the compact runtime/review-evidence split, four explicit header fields and reviewed-extension policy after the research discussion. See the [accepted contract and checklist](skill-architecture-contract.md). Original answers are preserved. Standards/template are in scope; a dedicated creator skill is deferred. This decision does not implement enforcement.
 
 ## Skill-loading research — September 16, 2026
 
@@ -14,14 +14,14 @@ Read the [technical HTML explainer](../research/skill-context-loading.html) and 
 - Markdown headings do not create deferred loading. Optional resources require separate access for their contents; execution output and script source are different context surfaces.
 - Custom fields need a concrete consumer. `release.yaml` remains GT's release contract, not a native automatic-loading channel. Installed-version reporting cannot certify the instructions retained in a running conversation.
 
-These findings inform the proposal; they do not approve it. The owner asked to understand the report before confirming the field policy. Keep this issue open and downstream enforcement unchanged.
+These findings informed the proposal; the owner's subsequent September 17 confirmation supplied the policy decision. Research alone is not approval or a live compatibility pass. Downstream enforcement remains unimplemented.
 
 The owner's CLI follow-up is covered in [expanded section 4](../research/skill-context-loading.html#cli-installation): installing under `.copilot` and choosing a runtime harness are separate decisions. VS Code's Local and Copilot SDK-backed session targets must not be conflated. The report now explains the header fields and tool pre-approval in detail. Qualified invocation syntax remains a client/version verification question; documentation alone does not supersede the prior fixture's limitations or authorize changing the published usage contract.
 
 ## Local evidence
 
 - [Contribution guide](../../CONTRIBUTING.md): source skills under `skills/<name>`, matching name/frontmatter, descriptions, self-contained relative resources, review and a basic smoke check. It does not define a complete universal instruction layout.
-- Both current source skills, [grill-me](../../skills/grill-me/SKILL.md) and [skills-update](../../skills/skills-update/SKILL.md), explicitly disable model invocation and omit `user-invocable`. This is current practice, not an accepted default for future skills.
+- Both current source skills, [grill-me](../../skills/grill-me/SKILL.md) and [skills-update](../../skills/skills-update/SKILL.md), explicitly disable model invocation and omit `user-invocable`. The accepted explicit-field policy is not yet applied to them; adoption belongs to the blueprint handoff.
 - [Validator](../../scripts/validate.mjs) checks names, description length, nonempty bodies, supported simple header values, duplicate fields, boolean types for the two invocation flags and certain inline links. It does not enforce an allowlist of skill header keys, required flags, body headings, semantic quality or per-skill releases today.
 - [Release contract](skill-publishing-notes.md) already selects version/notes in `release.yaml`; implementation belongs to the existing metadata/catalog work. Do not duplicate it in frontmatter.
 - [Export contract](skill-personal-export-contract.md) already requires complete self-contained resources and limits name-bound/plugin-dependent exports. Instructions must not claim that a folder rename makes arbitrary dependencies portable.
@@ -42,20 +42,20 @@ Invocation eligibility, user-menu visibility and authorization to perform an act
 
 ## Accepted Round 1 direction
 
-1. Manual invocation by default, with deliberate model-invocation exceptions. The exact explicit-field policy was not separately answered; Round 2 makes that choice concrete.
-2. Lean, focused instruction packages rather than large workflows by default. The owner wants an objectively consistent minimum while limiting loaded context. They asked whether four content requirements belong inside or outside the skill; do not treat that placement as approved.
+1. Manual invocation by default, with deliberate model-invocation exceptions. Round 2 made the explicit-field policy concrete; the owner confirmed it September 17.
+2. Lean, focused instruction packages rather than large workflows by default. The owner wants an objectively consistent minimum while limiting loaded context. Round 2's accepted split keeps execution essentials inside the skill and review-only evidence outside by default.
 3. The minimum package and optional supporting structure were accepted. Interpret optionality in context as supporting files/folders, not removal of the established SKILL.md/release.yaml requirements. No empty scaffolding or mandatory extra README.
 
 No production enforcement or current-skill migration has occurred. There is no accepted hard token/line limit, mandatory workflow engine, or requirement to split every multi-step skill.
 
-## Round 2 proposals and downstream boundaries
+## Accepted Round 2 decisions and downstream boundaries
 
 - Separate compact execution instructions from authoring evidence. Purpose/trigger is in the description; inputs/behavior/output are in the body; long runtime guidance is conditionally referenced inside the skill. Review-only examples default outside the distributed folder. They are not runtime dependencies and do not need to be exported.
 - Four explicit core header fields; optional hints/license information and reviewed extensions. Document exception rationale in review, not repetitive runtime prose. Model-only visibility exceptions require separate review; no published active configuration with neither invocation route.
 - Structural validation is objective, but content quality/completeness requires human review. No automatic rule based merely on the presence of headings can prove meaningful coverage.
 - The process/blueprint issues will choose the canonical evidence location, review ownership, enforcement implementation and current-skill adoption. Do not decide those locations prematurely in this architecture interview.
 
-The owner supports separating compact runtime instructions from reviewer-only evidence, subject to understanding the requested research. The explicit header/extension policy remains unconfirmed; do not close this issue or enforce it yet. [VS Code's documented loading stages](https://code.visualstudio.com/docs/agent-customization/agent-skills#how-copilot-uses-skills) support separating descriptions, body and on-demand resources; no claim is made of zero context cost or exact token savings. Required runtime constraints still travel with the skill. The repository-only evidence placement is a GT design proposal, not a client requirement.
+The owner confirmed these decisions after discussing the requested research. [VS Code's documented loading stages](https://code.visualstudio.com/docs/agent-customization/agent-skills#how-copilot-uses-skills) support separating descriptions, body and on-demand resources; no claim is made of zero context cost or exact token savings. Required runtime constraints still travel with the skill. The repository-only evidence placement is an accepted GT design choice, not a client requirement.
 
 ## Handoff boundaries
 

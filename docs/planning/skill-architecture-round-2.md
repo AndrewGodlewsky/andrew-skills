@@ -2,7 +2,7 @@
 
 Issue: [Define the standard skill structure and invocation policy](https://github.com/AndrewGodlewsky/andrew-skills/issues/19).
 
-**Status: answered; research ready for your review.** You support the compact runtime/review-evidence direction and requested a subagent's detailed HTML explanation of skill loading. Read the [HTML explainer](../research/skill-context-loading.html) and its [source evidence](../research/skill-context-loading-evidence.md). You explicitly reserved confirmation of the field policy until reviewing that research. Original answers are preserved; the architecture issue remains open.
+**Status: confirmed September 17, 2026.** After reviewing and discussing the requested research, you confirmed the compact runtime/review-evidence split, four explicit header fields and reviewed-extension policy. See the [accepted architecture contract](skill-architecture-contract.md). Original questions and answers below are preserved as the interview record; their provisional wording describes the earlier review stage.
 
 ## What is settled
 
@@ -92,6 +92,6 @@ Yeah, I think this is what we're going to end up going with: we're going to have
 
 ## Next step
 
-Review the [technical HTML explainer](../research/skill-context-loading.html) first. It distinguishes metadata discovery, model requests, invocation, resource reads and later-turn retention, with pinned source findings and clearly marked unknowns. After discussing it, we can confirm or revise the proposed header policy and consolidate the architecture contract for the contribution-process and template issues. No production skill or validator has changed.
+The [accepted architecture contract](skill-architecture-contract.md) consolidates this round and the research for the contribution-process and blueprint issues. They still own evidence location, review responsibilities, final authoring documentation and enforcement/adoption planning. No production skill or validator has changed.
 
-[Wayfinder](C:/Users/godle/.agents/skills/wayfinder/SKILL.md) requires that “A HITL ticket only resolves through that live exchange.” Your answers and requested research are recorded; final policy confirmation awaits your review, as you requested.
+[Wayfinder](C:/Users/godle/.agents/skills/wayfinder/SKILL.md) requires that “A HITL ticket only resolves through that live exchange.” The owner supplied final confirmation in conversation on September 17, 2026: “Okay, I confirm. Let's continue with the current issue.”
