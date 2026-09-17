@@ -16,6 +16,8 @@ Read the [technical HTML explainer](../research/skill-context-loading.html) and 
 
 These findings inform the proposal; they do not approve it. The owner asked to understand the report before confirming the field policy. Keep this issue open and downstream enforcement unchanged.
 
+The owner's CLI follow-up is covered in [expanded section 4](../research/skill-context-loading.html#cli-installation): installing under `.copilot` and choosing a runtime harness are separate decisions. VS Code's Local and Copilot SDK-backed session targets must not be conflated. The report now explains the header fields and tool pre-approval in detail. Qualified invocation syntax remains a client/version verification question; documentation alone does not supersede the prior fixture's limitations or authorize changing the published usage contract.
+
 ## Local evidence
 
 - [Contribution guide](../../CONTRIBUTING.md): source skills under `skills/<name>`, matching name/frontmatter, descriptions, self-contained relative resources, review and a basic smoke check. It does not define a complete universal instruction layout.

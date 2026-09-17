@@ -2,7 +2,25 @@
 
 Research date: **September 16, 2026**. Requested during [skill architecture review](../planning/skill-architecture-round-2.md). This is supporting research, not approval of the proposed header policy or a client compatibility certification. No live client was run for this investigation.
 
+## Follow-up: CLI installation versus the active harness
+
+The owner requested a deeper CLI explanation while reading section 4. The [HTML report](skill-context-loading.html#cli-installation) now includes the installation path, session/harness distinction, field meanings, invocation combinations, tool-permission distinctions and remaining CLI unknowns. This follow-up was researched and integrated by the main agent; the original source investigation below was delegated.
+
+Additional primary references checked September 16, 2026:
+
+- [CLI plugin file locations](https://docs.github.com/en/copilot/reference/copilot-cli-reference/cli-plugin-reference#file-locations).
+- [VS Code discovery of CLI-installed plugins](https://code.visualstudio.com/docs/agent-customization/agent-plugins#plugins-installed-by-github-copilot-cli).
+- [VS Code harness selection](https://code.visualstudio.com/docs/agents/run/agent-harnesses).
+- [Agent Host architecture](https://code.visualstudio.com/blogs/2026/08/26/agent-host-architecture).
+- [CLI permission layers](https://docs.github.com/en/copilot/how-tos/copilot-cli/use-copilot-cli/allowing-tools).
+
+**Scope clarification for the earlier source findings:** the pinned extension SkillTool is evidence about that implementation path, not all sessions displayed in VS Code. A Copilot SDK-backed session needs its own runtime evidence. Installing through the CLI does not establish which harness is using the installed package.
+
+Local inputs inspected: `install.ps1`, `plugin.json`, `.claude-plugin/marketplace.json`, README, and both existing source skills. The illustrated installed path is derived from documented defaults and repository names, not a scan of the owner's installed copy. Current online CLI qualification examples differ from this repository's README; the report records this as a compatibility question, not a verified replacement syntax. No client setup or production configuration was changed, and final architecture confirmation remains pending.
+
 ## Read the evidence at the correct level
+
+The subsequent model-versus-harness question is answered in [section 4F and its interactive diagram](skill-context-loading.html#model-vs-harness). It separates Copilot CLI with an Opus model, VS Code Local with Opus, and a VS Code Claude Agent SDK session. Primary references are [VS Code's harness concepts](https://code.visualstudio.com/docs/agents/concepts/agent-harnesses), [session configuration](https://code.visualstudio.com/docs/agents/run/agent-harnesses), [CLI model usage](https://docs.github.com/en/copilot/concepts/agents/copilot-cli/about-copilot-cli#model-usage), [Claude Code architecture](https://code.claude.com/docs/en/how-claude-code-works) and [Anthropic's tool-use contract](https://platform.claude.com/docs/en/agents-and-tools/tool-use/how-tool-use-works). The diagram explains responsibility boundaries, not observed network endpoints. It does not establish that the Claude session discovers the CLI-installed GT package. No new live client verification was performed.
 
 Four different things are often called “loaded”: bytes read by the application, metadata registered in its inventory, text assembled for a model request, and text retained in later requests. They are not interchangeable. A parser can read an entire file locally while the model receives only a short catalog entry. Conversely, an ignored configuration key can still reach the model as ordinary text if a later loader inserts the raw file.
 

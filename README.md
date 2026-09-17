@@ -5,6 +5,25 @@ Installing the `gt` plugin includes every skill in this repository.
 
 ## Install
 
+For the usual setup, install the hub **once per user environment**, choosing
+**one** of these methods:
+
+| Setup | Installation method |
+| --- | --- |
+| VS Code without Copilot CLI | [Install through VS Code](#install-from-vs-code-without-the-cli). No install script is needed. |
+| Copilot CLI, including skills shared with VS Code | Use the PowerShell installer below or the CLI commands. |
+
+`install.ps1` requires Copilot CLI and creates a CLI-managed installation.
+For CLI and VS Code use in the same environment, install through the CLI and let
+VS Code discover that installation; a second VS Code installation is unnecessary.
+For VS Code-only use, install through VS Code instead. Windows and WSL are
+separate environments and do not need to share installed files. These are
+alternative onboarding routes to avoid accidental duplication, not a restriction
+on experienced users who deliberately choose separate installations. If you keep
+separate copies, identify which installation you intend to update.
+
+### Install with the CLI using PowerShell
+
 After these repository changes are published to GitHub, download or clone the
 repository and run this from its root in PowerShell:
 
@@ -64,10 +83,18 @@ and agent plugins enabled. Reload the window if the plugin is not yet listed.
 
 ### Install from VS Code without the CLI
 
-Add `https://github.com/AndrewGodlewsky/andrew-skills.git` to the
-`chat.plugins.marketplaces` array in VS Code User Settings, preserving existing
-entries. Search `@agentPlugins` in Extensions and install `gt` from
-the `andrew-skills` marketplace. Follow the trust prompt.
+Use a current VS Code with Copilot access and agent plugins enabled
+(`chat.plugins.enabled`). Repository access is required.
+
+1. Open **Preferences: Open User Settings (JSON)** from the Command Palette.
+2. Add `https://github.com/AndrewGodlewsky/andrew-skills.git` to the
+   `chat.plugins.marketplaces` array, preserving existing entries.
+3. Run **Chat: Open Customizations**, select **Plugins**, then **Browse Marketplace**.
+4. Find `gt` in `andrew-skills`, select **Install**, and follow the trust prompt.
+
+This installs the published plugin through VS Code. Do not run `install.ps1`
+for this route. Update this installation using the
+[VS Code update instructions](#vs-code-installed-plugin), rather than CLI commands.
 [VS Code marketplace installation](https://code.visualstudio.com/docs/agent-customization/agent-plugins#configure-plugin-marketplaces).
 
 ## Use a skill
