@@ -36,6 +36,12 @@ The skill release present in the GT collection, or the recorded origin version o
 **Skill installation**:
 A user's collection in one environment, used across projects in that environment. Windows and each WSL environment have separate installations.
 
+**GT installation target**:
+The particular installed GT collection selected for an update or status request. Several copies may coexist; selecting one does not establish which instructions an existing chat retains.
+
+**Installation owner**:
+The client that manages a GT installation, such as Copilot CLI or VS Code. Another client may use that same installation without becoming its owner.
+
 **Restoration**:
 Creating a personal copy from an earlier skill release without replacing the corresponding skill in the main GT collection. The supported workflow keeps one personal copy per source skill and leaves existing files to the user.
 _Avoid_: In-place rollback
@@ -45,4 +51,7 @@ A skill the team has removed from its actively distributed collection; historica
 
 **Returning skill**:
 A previously removed skill reintroduced under the same name, starting again at `1.0.0`. Its return does not migrate or replace existing personal copies.
+
+**Skill submission**:
+A user's proposed skill idea, completed draft or variation, change request, or feedback about confusing skill behavior, offered for maintainer consideration. A submission is not yet an accepted part of the GT collection.
 

@@ -1,6 +1,8 @@
-import { readFileSync, readdirSync, statSync } from 'node:fs';
-import { dirname, isAbsolute, relative, resolve, sep } from 'node:path';
+import { dirname, posix, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
+import { parseArgs } from 'node:util';
+import { parseRelease, validateReleaseChange } from './release-validation.mjs';
+import { readGitFiles, readWorkingFiles, readWorkingGitFiles, requireAncestor, resolveCommit } from './release-snapshots.mjs';
 
 const repositoryRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..');
 const schema = 'https://agent-plugins.org/schemas/1.0.0/plugin.schema.json';
@@ -19,19 +21,10 @@ function object(value) {
   return value !== null && typeof value === 'object' && !Array.isArray(value);
 }
 
-function inside(root, path) {
-  const child = relative(root, path);
-  return child !== '' && !isAbsolute(child) && child !== '..' && !child.startsWith(`..${sep}`);
-}
-
-function json(path) {
-  return JSON.parse(readFileSync(path, 'utf8'));
-}
-
-function directories(path) {
-  const entries = readdirSync(path, { withFileTypes: true });
-  check(!entries.some(entry => entry.isSymbolicLink()), `${path}: use real folders, not symlinks`);
-  return entries.filter(entry => entry.isDirectory()).map(entry => entry.name).sort();
+function source(files, path) {
+  const file = files.get(path);
+  check(file && ['100644', '100755'].includes(file.mode), `${path}: required regular file is missing or unsupported`);
+  return new TextDecoder('utf-8', { fatal: true }).decode(file.data);
 }
 
 function headerValue(raw, path) {
@@ -46,10 +39,13 @@ function headerValue(raw, path) {
   return raw;
 }
 
-function validateSkill(skillRoot, name) {
-  const path = resolve(skillRoot, 'SKILL.md');
-  const source = readFileSync(path, 'utf8').replaceAll('\r\n', '\n');
-  const match = source.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
+function validateSkill(files, name) {
+  const skillRoot = `skills/${name}/`;
+  const releasePath = `${skillRoot}release.yaml`;
+  parseRelease(source(files, releasePath), releasePath);
+  const path = `${skillRoot}SKILL.md`;
+  const body = source(files, path).replaceAll('\r\n', '\n');
+  const match = body.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
   check(match, `${path}: expected YAML frontmatter followed by instructions`);
   const fields = {};
   for (const line of match[1].split('\n')) {
@@ -72,20 +68,23 @@ function validateSkill(skillRoot, name) {
     const target = link[1] ?? link[2];
     if (/^(?:https?:|mailto:|#)/i.test(target)) continue;
     check(!/^[a-z][a-z\d+.-]*:|^[/\\]/i.test(target), `${path}: resource must use a relative path: ${target}`);
-    const resource = resolve(skillRoot, decodeURIComponent(target.split('#')[0]));
-    check(inside(skillRoot, resource), `${path}: resource must stay inside its skill folder: ${target}`);
-    check(statSync(resource).isFile(), `${path}: resource is not a file: ${target}`);
+    const decoded = decodeURIComponent(target.split('#')[0]);
+    check(!/\\|^[a-z][a-z\d+.-]*:|^\//i.test(decoded), `${path}: resource must use a relative path: ${target}`);
+    const resource = posix.normalize(posix.join(skillRoot, decoded));
+    check(resource.startsWith(skillRoot), `${path}: resource must stay inside its skill folder: ${target}`);
+    check(files.has(resource), `${path}: resource is not a file: ${target}`);
   }
 }
 
-export function validate(root = repositoryRoot) {
-  const plugin = json(resolve(root, 'plugin.json'));
+export function validateFiles(files) {
+  check(!files.has('skills'), 'skills must be a directory');
+  const plugin = JSON.parse(source(files, 'plugin.json'));
   check(object(plugin), 'Plugin manifest must be an object');
   check(plugin.$schema === schema, 'Expected Agent Plugins 1.0 schema');
   check(plugin.name === 'gt', 'Plugin name must be gt');
   check(typeof plugin.version === 'string' && versionPattern.test(plugin.version), 'Use an x.y.z plugin version');
   check(text(plugin.description), `${plugin.name}: description is required`);
-  const marketplace = json(resolve(root, '.claude-plugin/marketplace.json'));
+  const marketplace = JSON.parse(source(files, '.claude-plugin/marketplace.json'));
   check(object(marketplace) && marketplace.name === 'andrew-skills', 'Marketplace name must be andrew-skills');
   check(object(marketplace.owner) && text(marketplace.owner.name), 'Marketplace owner.name is required');
   check(Array.isArray(marketplace.plugins) && marketplace.plugins.length === 1, 'Marketplace must list exactly one plugin');
@@ -111,16 +110,40 @@ export function validate(root = repositoryRoot) {
   if (Object.hasOwn(plugin, 'extensions')) {
     check(object(plugin.extensions) && Object.values(plugin.extensions).every(object), `${plugin.name}: extensions must contain objects`);
   }
-  const skillsRoot = resolve(root, 'skills');
-  const skills = directories(skillsRoot);
-  check(skills.length > 0, 'Plugin must contain skills');
-  for (const skill of skills) validateSkill(resolve(skillsRoot, skill), skill);
+  for (const [path, file] of files) {
+    check(['100644', '100755'].includes(file.mode), `${path}: unsupported file mode ${file.mode}`);
+  }
+  const skills = [...new Set([...files.keys()].filter(path => path.startsWith('skills/')).map(path => path.split('/')[1]))].sort();
+  for (const skill of skills) validateSkill(files, skill);
   return `Validated marketplace, ${plugin.name} ${plugin.version}, and ${skills.length} skill(s).`;
+}
+
+export function validate(root = repositoryRoot) {
+  return validateFiles(readWorkingFiles(root));
 }
 
 if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
   try {
-    console.log(validate());
+    const { values } = parseArgs({ options: {
+      base: { type: 'string' }, candidate: { type: 'string' }, 'current-main': { type: 'string' },
+    } });
+    check(!values['current-main'] || values.base, '--current-main requires --base');
+    const baseCommit = values.base ? resolveCommit(repositoryRoot, values.base) : undefined;
+    const candidateCommit = values.candidate ? resolveCommit(repositoryRoot, values.candidate) : undefined;
+    const currentMainCommit = values['current-main']
+      ? (/^[0-9a-f]{40,64}$/.test(values['current-main']) ? values['current-main'] : resolveCommit(repositoryRoot, values['current-main']))
+      : baseCommit;
+    check(baseCommit === currentMainCommit, 'Stale comparison base: revalidate against current main');
+    if (baseCommit) requireAncestor(repositoryRoot, baseCommit, candidateCommit ?? resolveCommit(repositoryRoot, 'HEAD'));
+    const candidate = candidateCommit ? readGitFiles(repositoryRoot, candidateCommit)
+      : (baseCommit ? readWorkingGitFiles(repositoryRoot) : readWorkingFiles(repositoryRoot));
+    console.log(validateFiles(candidate));
+    if (baseCommit) {
+      const result = validateReleaseChange(readGitFiles(repositoryRoot, baseCommit), candidate, { baseCommit, currentMainCommit });
+      console.log(`Release comparison passed: ${JSON.stringify(result)}`);
+    } else {
+      console.log('Release metadata checked; version transitions need --base <published-ref>.');
+    }
   } catch (error) {
     console.error(`Validation failed: ${error.message}`);
     process.exitCode = 1;

@@ -264,8 +264,10 @@ install.ps1                  One-command setup from a downloaded checkout
 skills/
   grill-me/
     SKILL.md                 Self-contained interview skill
+    release.yaml             Independent skill version and release note
   skills-update/
     SKILL.md                 On-demand CLI plugin update skill
+    release.yaml             Independent skill version and release note
 scripts/validate.mjs         Local and CI validation
 .github/workflows/validate.yml
 README.md
@@ -281,22 +283,23 @@ together.
 
 ## Contribute and validate
 
-### Planned per-skill release convention
+### Per-skill releases
 
-The accepted versioning design gives each skill a **`release.yaml`** beside
+Each skill has a **`release.yaml`** beside
 `SKILL.md`, containing its **`x.y.z` version** and a short user-facing release
 note. New skills start at **`1.0.0`**. Use patch increments for compatible fixes,
 minor increments for compatible additions, and major increments for incompatible
 changes to documented usage. A skill's version is separate from the containing
 `gt` plugin version; unchanged skills keep their versions. Even typo or release-note
-corrections get a new version. A removed skill reintroduced under the same name
+corrections get a new version; note-only corrections use a patch. A removed skill reintroduced under the same name
 restarts at `1.0.0`; exact source snapshots distinguish repeated version labels.
 
 **Names inside the GT plugin stay unchanged**: `grill-me` stays `grill-me`.
 Only optional historical personal exports use names such as `grill-me-v1-2-0`.
 The planned `skills-restore` skill creates that personal copy and leaves it to the user;
 it never overwrites an existing destination or manages the copy afterward.
-Node and Git are prerequisites for that export operation only. See the
+The planned exporter requires Node and Git; normal skill use does not add those
+requirements. See the
 [personal export contract](docs/planning/skill-personal-export-contract.md).
 
 The [reviewed interaction design](docs/planning/skill-interaction-prototype-notes.md)
@@ -316,14 +319,14 @@ shows only installed GT skills: skill name, installed version and that release's
 short note. It reads the selected local installation without online release
 comparisons or personal-copy tracking. This status skill is not implemented yet.
 
-This is an accepted design direction, **not implemented release automation**.
-The intended workflow includes release information in the reviewed change and
-requires validation before PRs merge to `main`. Andrew will configure the merge
-enforcement later. The release catalog is derived from preserved merge/squash
-snapshots on `main`. Each bundle change increments the overall plugin patch
-version once, regardless of how many skills changed. Authors and agents
-creating skills should follow [the publishing design](docs/planning/skill-publishing-notes.md)
-and [contributor guidance](CONTRIBUTING.md); do not invent a competing convention.
+The validator checks release metadata and version transitions, including the
+first complete `1.0.0` baseline. The **Validate skills and releases** CI job checks
+prospective PR merges against current `main`. Andrew will configure required
+merge checks later. Each bundle change increments the overall plugin patch
+version once, regardless of how many skills changed. The historical catalog and
+its history-wide checks are still planned. Authors and agents should follow the
+[contributor guidance](CONTRIBUTING.md) for the supported metadata format and
+workflow.
 
 ### Current validation
 
@@ -331,7 +334,15 @@ See [CONTRIBUTING.md](CONTRIBUTING.md). With Node.js 22 or newer installed:
 
 ```sh
 node scripts/validate.mjs
+node scripts/validate.mjs --base origin/main --current-main origin/main
+node --test scripts/release-validation.test.mjs scripts/release-snapshots.test.mjs
 ```
+
+The plain validator checks metadata and structure. The comparison command also
+checks version transitions against your local `origin/main`; ensure that ref is
+current first. It does not contact GitHub. Release comparisons and snapshot tests
+require Git. See [validation details](CONTRIBUTING.md#run-validation) for committed
+candidates, stale-base checks and CI behavior.
 
 No package installation is needed for validation. Consumers do not need Node.js
 to run the `grill-me` skill. Installing and invoking the plugin in VS Code is the

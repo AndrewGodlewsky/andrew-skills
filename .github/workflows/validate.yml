@@ -2,7 +2,9 @@ name: Validate skills hub
 
 on:
   push:
+    branches: [main]
   pull_request:
+    branches: [main]
   workflow_dispatch:
 
 permissions:
@@ -10,11 +12,63 @@ permissions:
 
 jobs:
   validate:
+    name: Validate skills and releases
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
       - uses: actions/setup-node@v4
         with:
           node-version: '22'
-      - name: Validate marketplace, plugin, and skills
-        run: node scripts/validate.mjs
+      - name: Test release validation
+        run: node --test scripts/release-validation.test.mjs scripts/release-snapshots.test.mjs
+      - name: Select the published comparison base
+        id: comparison
+        env:
+          GH_TOKEN: ${{ github.token }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          candidate="$(git rev-parse HEAD)"
+          current_main="$(gh api "repos/$GITHUB_REPOSITORY/git/ref/heads/main" --jq .object.sha)"
+          live_main=""
+          if [[ "$GITHUB_EVENT_NAME" == "pull_request" ]]; then
+            base="$(git rev-parse HEAD^1)"
+            live_main="$current_main"
+          elif [[ "$GITHUB_EVENT_NAME" == "workflow_dispatch" && "$candidate" != "$current_main" ]]; then
+            base="$current_main"
+            live_main="$current_main"
+          else
+            base="$(git rev-parse HEAD^1)"
+          fi
+          echo "base=$base" >> "$GITHUB_OUTPUT"
+          echo "candidate=$candidate" >> "$GITHUB_OUTPUT"
+          echo "live-main=$live_main" >> "$GITHUB_OUTPUT"
+      - name: Validate the prospective release
+        env:
+          BASE_SHA: ${{ steps.comparison.outputs.base }}
+          CANDIDATE_SHA: ${{ steps.comparison.outputs.candidate }}
+          LIVE_MAIN_SHA: ${{ steps.comparison.outputs.live-main }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          args=(--base "$BASE_SHA" --candidate "$CANDIDATE_SHA")
+          if [[ -n "$LIVE_MAIN_SHA" ]]; then
+            args+=(--current-main "$LIVE_MAIN_SHA")
+          fi
+          node scripts/validate.mjs "${args[@]}"
+      - name: Check main did not advance during validation
+        if: steps.comparison.outputs.live-main != ''
+        env:
+          GH_TOKEN: ${{ github.token }}
+          CHECKED_MAIN_SHA: ${{ steps.comparison.outputs.live-main }}
+        shell: bash
+        run: |
+          set -euo pipefail
+          latest="$(gh api "repos/$GITHUB_REPOSITORY/git/ref/heads/main" --jq .object.sha)"
+          if [[ "$latest" != "$CHECKED_MAIN_SHA" ]]; then
+            echo "Main advanced during validation. Refresh and revalidate the prospective change."
+            exit 1
+          fi
