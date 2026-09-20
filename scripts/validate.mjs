@@ -1,7 +1,9 @@
 import { dirname, posix, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parseArgs } from 'node:util';
-import { parseRelease, validateReleaseChange } from './release-validation.mjs';
+import { parseRelease } from './release-validation.mjs';
+import { readReleaseCatalog } from './release-catalog-reader.mjs';
+import { validateCatalogCandidate } from './release-catalog.mjs';
 import { readGitFiles, readWorkingFiles, readWorkingGitFiles, requireAncestor, resolveCommit } from './release-snapshots.mjs';
 
 const repositoryRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..');
@@ -34,6 +36,8 @@ function headerValue(raw, path) {
     check(/^'(?:[^']|'')*'$/.test(raw), `${path}: invalid single-quoted value`);
     return raw.slice(1, -1).replaceAll("''", "'");
   }
+  check(!/^(?:null|~|true|false|[-+]?(?:\d[\d_]*(?:\.[\d_]*)?|\.[\d_]+)(?:e[-+]?\d+)?|0[xob][0-9a-f_]+|[-+]?\.(?:inf|nan))$/i.test(raw),
+    `${path}: expected a string; quote numeric, boolean or null text`);
   check(text(raw) && !/^[>|[\]{&*!]/.test(raw) && !/\s#|:\s/.test(raw),
     `${path}: use a single-line string; quote values containing YAML punctuation`);
   return raw;
@@ -48,10 +52,12 @@ function validateSkill(files, name) {
   const match = body.match(/^---\n([\s\S]*?)\n---\n([\s\S]*)$/);
   check(match, `${path}: expected YAML frontmatter followed by instructions`);
   const fields = {};
+  const allowedFields = new Set(['name', 'description', 'user-invocable', 'disable-model-invocation', 'argument-hint', 'license']);
   for (const line of match[1].split('\n')) {
     if (!line.trim() || line.trimStart().startsWith('#')) continue;
     const field = line.match(/^([a-z][a-z-]*):\s*(.*?)\s*$/);
     check(field, `${path}: unsupported header line: ${line}`);
+    check(allowedFields.has(field[1]), `${path}: unsupported header field ${field[1]}`);
     check(!Object.hasOwn(fields, field[1]), `${path}: duplicate field ${field[1]}`);
     fields[field[1]] = headerValue(field[2], path);
   }
@@ -60,8 +66,11 @@ function validateSkill(files, name) {
   check(text(fields.description) && fields.description.length <= 1024,
     `${path}: description must contain 1–1024 characters`);
   for (const flag of ['disable-model-invocation', 'user-invocable']) {
-    check(!Object.hasOwn(fields, flag) || typeof fields[flag] === 'boolean',
-      `${path}: ${flag} must be true or false`);
+    check(typeof fields[flag] === 'boolean', `${path}: ${flag} is required and must be true or false`);
+  }
+  check(fields['user-invocable'] || !fields['disable-model-invocation'], `${path}: at least one invocation route must remain available`);
+  for (const key of ['argument-hint', 'license']) {
+    check(!Object.hasOwn(fields, key) || text(fields[key]), `${path}: ${key} must be a nonempty string`);
   }
   check(text(match[2]), `${path}: instruction body is empty`);
   for (const link of match[2].matchAll(/!?\[[^\]]*\]\((?:<([^>]+)>|([^\s)]+))(?:\s+"[^"]*")?\)/g)) {
@@ -139,7 +148,9 @@ if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.ur
       : (baseCommit ? readWorkingGitFiles(repositoryRoot) : readWorkingFiles(repositoryRoot));
     console.log(validateFiles(candidate));
     if (baseCommit) {
-      const result = validateReleaseChange(readGitFiles(repositoryRoot, baseCommit), candidate, { baseCommit, currentMainCommit });
+      const catalog = readReleaseCatalog(repositoryRoot, { ref: baseCommit });
+      const result = validateCatalogCandidate(catalog, readGitFiles(repositoryRoot, baseCommit), candidate, { baseCommit, currentMainCommit });
+      console.log(`Published history checked: ${catalog.records.length} release record(s); baseline ${catalog.baselineCommit ?? 'not established'}.`);
       console.log(`Release comparison passed: ${JSON.stringify(result)}`);
     } else {
       console.log('Release metadata checked; version transitions need --base <published-ref>.');

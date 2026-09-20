@@ -1,5 +1,7 @@
 # Skill architecture — Round 2: a small runtime, a clear standard
 
+**Historical decision record.** The proposals, observations and owner answers below are preserved as recorded. For current authoring requirements, examples, release checks and evidence placement, use [CONTRIBUTING.md](../../CONTRIBUTING.md). For implementation status, see the [authoring handoff](skill-authoring-implementation-handoff.md).
+
 Issue: [Define the standard skill structure and invocation policy](https://github.com/AndrewGodlewsky/andrew-skills/issues/19).
 
 **Status: confirmed September 17, 2026.** After reviewing and discussing the requested research, you confirmed the compact runtime/review-evidence split, four explicit header fields and reviewed-extension policy. See the [accepted architecture contract](skill-architecture-contract.md). Original questions and answers below are preserved as the interview record; their provisional wording describes the earlier review stage.

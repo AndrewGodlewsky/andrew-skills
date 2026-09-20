@@ -1,5 +1,10 @@
 # Skill publishing — accepted contract
 
+> **Execution update:** metadata validation and the [catalog reader](../release-catalog.md)
+> now implement this contract. [CONTRIBUTING.md](../../CONTRIBUTING.md) describes
+> current authoring and checks. The original planning snapshots below remain
+> historical context; exporter and native-client pilot work remain pending.
+
 > **Consumer handoff update:** [Create-only personal copies](skill-personal-copy-direction.md) now replace the archive-plugin destination referenced below. The publishing/catalog/numbering contract remains accepted. Verify exact source bytes before any personal-name adaptation, then record the adapted result separately; published source identities are unchanged.
 
 Issue: [Define automatic skill versioning and immutable release history — resolution](https://github.com/AndrewGodlewsky/andrew-skills/issues/5#issuecomment-5675205215).

@@ -1,5 +1,7 @@
 # Skill architecture — working notes
 
+**Historical decision record.** The proposals, observations and owner answers below are preserved as recorded. For current authoring requirements, examples, release checks and evidence placement, use [CONTRIBUTING.md](../../CONTRIBUTING.md). For implementation status, see the [authoring handoff](skill-authoring-implementation-handoff.md).
+
 Issue: [Define the standard skill structure and invocation policy](https://github.com/AndrewGodlewsky/andrew-skills/issues/19).
 
 **Status: architecture confirmed September 17, 2026.** The owner confirmed the compact runtime/review-evidence split, four explicit header fields and reviewed-extension policy after the research discussion. See the [accepted contract and checklist](skill-architecture-contract.md). Original answers are preserved. Standards/template are in scope; a dedicated creator skill is deferred. This decision does not implement enforcement.

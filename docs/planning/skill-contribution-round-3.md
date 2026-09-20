@@ -1,5 +1,7 @@
 # Skill contribution process — Round 3: improve a skill or add one?
 
+**Historical decision record.** The proposals, observations and owner answers below are preserved as recorded. For current authoring requirements, examples, release checks and evidence placement, use [CONTRIBUTING.md](../../CONTRIBUTING.md). For implementation status, see the [authoring handoff](skill-authoring-implementation-handoff.md).
+
 Issue: [Define the process for proposing and accepting new skills](https://github.com/AndrewGodlewsky/andrew-skills/issues/20).
 
 **Status: owner direction recorded September 20, 2026; contribution planning complete.** Users may submit freely, while maintainers decide skill boundaries, type and invocation within the accepted architecture. The owner does not want classification logic or an elaborate contribution process. The proposed rule below is preserved as discussion history, not adopted policy. See the [accepted contribution contract](skill-contribution-contract.md).

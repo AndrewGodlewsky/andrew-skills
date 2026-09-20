@@ -29,7 +29,7 @@ const marketplace = version => JSON.stringify({
   name: 'andrew-skills', owner: { name: 'Fixture' },
   plugins: [{ name: 'gt', source: './', version, description: 'Fixture plugin' }],
 });
-const instructions = name => `---\nname: ${name}\ndescription: Explain a design.\n---\nExplain the supplied design.\n`;
+const instructions = name => `---\nname: ${name}\ndescription: Explain a design.\nuser-invocable: true\ndisable-model-invocation: true\n---\nExplain the supplied design.\n`;
 const release = (version = '1.0.0', notes = 'Initial release.') =>
   `version: ${JSON.stringify(version)}\nnotes: ${JSON.stringify(notes)}\n`;
 function bundle(version = '0.1.0') {

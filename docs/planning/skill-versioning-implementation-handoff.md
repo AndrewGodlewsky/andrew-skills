@@ -1,6 +1,6 @@
 # Skill versioning — implementation handoff
 
-**Status: planning decisions complete; metadata/validation implementation is in the working tree.** Issue #12 adds the initial per-skill metadata, release comparisons, fixtures and read-only CI job. Changes remain uncommitted and unpublished; hosted CI and the owner pilot have not run for them. The owner approved a complete feature set and small owner pilot before wider team adoption, with development allowed in stages. Source: [migration resolution](https://github.com/AndrewGodlewsky/andrew-skills/issues/9#issuecomment-5692675491).
+**Status: metadata baseline published; catalog, update/status instructions and authoring/architecture implementation are in the working tree.** The owner published issue #12 in `bf74bca587d80502394f27fc5984816081c92a12`. The current parallel wave covers #13, #15, #16, #23 and #24 and remains uncommitted. Its hosted CI and owner pilot have not run. Exporter #14, restore #11 and final pilot #17 remain pending. The owner approved a complete feature set and small owner pilot before wider team adoption, with development allowed in stages. Source: [migration resolution](https://github.com/AndrewGodlewsky/andrew-skills/issues/9#issuecomment-5692675491).
 
 ## Execution issues
 
@@ -18,7 +18,7 @@ These sit outside the completed [Wayfinder planning map](https://github.com/Andr
 | [Enforce the GT skill architecture and adopt it in existing skills](https://github.com/AndrewGodlewsky/andrew-skills/issues/24) | Accepted authoring blueprint; coordinate shared validator/skill edits with metadata implementation |
 | [Complete the owner pilot and team adoption readiness checks](https://github.com/AndrewGodlewsky/andrew-skills/issues/17) | Restore, update reporting, status, canonical authoring guide and architecture adoption (catalog/exporter included transitively) |
 
-Metadata validation establishes the stable CI job. Catalog implementation completes history-dependent checks before the owner enables the final required-check policy. Update/status work does not acquire the exporter's runtime prerequisite.
+Metadata validation established the stable CI job. Catalog implementation now adds history-dependent checks to that same job; required-check settings remain an owner action. Update/status work does not acquire the exporter's runtime prerequisite.
 
 The September 20 [authoring handoff](skill-authoring-implementation-handoff.md) adds guidance and architecture-adoption prerequisites to complete rollout. It introduces no blocker for settled metadata work and no second release schema or CI job. Coordinate shared files; combine baseline/adoption edits where practical, otherwise follow normal release increments.
 
@@ -35,7 +35,7 @@ The linked issue resolutions are the remote decision record. Local planning file
 
 ## Delivery and evidence boundaries
 
-- Local metadata/release checks are covered by issue #12's automated fixtures. End-to-end product acceptance remains pending. Historical compatibility research is partial evidence, not a pass for the new implementation.
+- Local metadata/release, catalog and architecture checks have automated fixtures. Update/status instruction scenarios use supplied evidence and are not native-client tests. End-to-end product acceptance remains pending. Historical compatibility research is partial evidence, not a pass for the new implementation.
 - Native updates replace managed GT edits without a preservation system; personal/project files and development checkouts remain outside that policy. Native no-op behavior requires evidence before claiming it repaired edits.
 - The pilot records actual client invocation, resources, fresh/existing chats and Windows/WSL targets; inventory or created files alone is insufficient.
 - No separate historical branch, archive plugin, selective main updates, personal-copy tracking or online status comparison is in scope.

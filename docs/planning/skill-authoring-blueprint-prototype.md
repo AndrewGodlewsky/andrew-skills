@@ -1,5 +1,7 @@
 # Skill authoring blueprint — written prototype
 
+**Historical decision record.** The proposals, observations and owner answers below are preserved as recorded. For current authoring requirements, examples, release checks and evidence placement, use [CONTRIBUTING.md](../../CONTRIBUTING.md). For implementation status, see the [authoring handoff](skill-authoring-implementation-handoff.md).
+
 Issue: [Review the skill authoring blueprint and enforcement handoff](https://github.com/AndrewGodlewsky/andrew-skills/issues/21).
 
 **Status: owner accepted September 20, 2026.** The owner confirmed: "Yeah, I think this is good. I think this is the practical blueprint I'm looking for." This document is retained as the reviewed design snapshot; the original proposal and answer remain below. It is not installed skills or implemented validation. See the [implementation handoff](skill-authoring-implementation-handoff.md) for execution issues. The [architecture](skill-architecture-contract.md) and [contribution process](skill-contribution-contract.md) remain accepted inputs; `CONTRIBUTING.md` becomes the canonical authoring guide when that implementation ships.

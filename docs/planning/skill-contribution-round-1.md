@@ -1,5 +1,7 @@
 # Skill contribution process — Round 1: starting a contribution
 
+**Historical decision record.** The proposals, observations and owner answers below are preserved as recorded. For current authoring requirements, examples, release checks and evidence placement, use [CONTRIBUTING.md](../../CONTRIBUTING.md). For implementation status, see the [authoring handoff](skill-authoring-implementation-handoff.md).
+
 Issue: [Define the process for proposing and accepting new skills](https://github.com/AndrewGodlewsky/andrew-skills/issues/20).
 
 **Status: owner direction recorded September 20, 2026.** Issues provide intake and feedback for ideas, completed skill drafts, change requests and confusing behavior. Andrew or an approved maintainer prepares the repository contribution on a branch and merges it into main. See the [working decisions](skill-contribution-notes.md) and [next round](skill-contribution-round-2.md). The original recommendation below is preserved as discussion history; it does not establish a mandatory issue-before-drafting gate.

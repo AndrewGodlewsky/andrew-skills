@@ -1,5 +1,7 @@
 # Skill architecture — Round 1
 
+**Historical decision record.** The proposals, observations and owner answers below are preserved as recorded. For current authoring requirements, examples, release checks and evidence placement, use [CONTRIBUTING.md](../../CONTRIBUTING.md). For implementation status, see the [authoring handoff](skill-authoring-implementation-handoff.md).
+
 Issue: [Define the standard skill structure and invocation policy](https://github.com/AndrewGodlewsky/andrew-skills/issues/19), assigned to AndrewGodlewsky.
 
 **Status: answered and reviewed.** You chose manual invocation by default with deliberate model-invocation exceptions, and lean packages with supporting files only when needed. You asked where the required content belongs so skills stay small; that placement is not settled yet. Original answers remain below. [Round 2](skill-architecture-round-2.md) explains a concrete minimum without requiring four runtime sections.

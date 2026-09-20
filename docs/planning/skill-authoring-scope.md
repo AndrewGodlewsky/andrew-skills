@@ -1,5 +1,7 @@
 # Skill architecture and contribution process — scope assessment
 
+**Historical decision record.** The proposals, observations and owner answers below are preserved as recorded. For current authoring requirements, examples, release checks and evidence placement, use [CONTRIBUTING.md](../../CONTRIBUTING.md). For implementation status, see the [authoring handoff](skill-authoring-implementation-handoff.md).
+
 **Status: all decisions in this planning map accepted by September 20, 2026; implementation pending.** The owner confirmed the [minimal architecture contract](skill-architecture-contract.md), [simple contribution flow](skill-contribution-contract.md), [authoring blueprint](skill-authoring-blueprint-prototype.md) and [installation-targeting flow](skill-installation-targeting-handoff.md). The [authoring implementation handoff](skill-authoring-implementation-handoff.md) tracks canonical guidance and architecture enforcement/adoption; existing update/status/pilot issues own targeting integration. GitHub approval rules remain owner-managed, and no intake classification/routing logic is requested. The coverage table below records original gaps, not questions to reopen. The owner explicitly chose **standards and template now; creator skill later**. Existing versioning decisions remain in force.
 
 ## Coverage and gaps

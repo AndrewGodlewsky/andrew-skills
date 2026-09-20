@@ -1,2 +1,2 @@
-version: "1.0.0"
-notes: "Interview the user to sharpen a plan or design before implementation."
+version: "1.0.1"
+notes: "Declare explicit user invocation while preserving the manual design interview."

@@ -23,7 +23,7 @@ jobs:
         with:
           node-version: '22'
       - name: Test release validation
-        run: node --test scripts/release-validation.test.mjs scripts/release-snapshots.test.mjs
+        run: node --test scripts/release-validation.test.mjs scripts/release-snapshots.test.mjs scripts/skill-architecture.test.mjs scripts/release-catalog.test.mjs scripts/release-catalog-reader.test.mjs
       - name: Select the published comparison base
         id: comparison
         env:

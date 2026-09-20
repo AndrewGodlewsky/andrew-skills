@@ -1,5 +1,7 @@
 # Skill contribution process — Round 2: who accepts a contribution?
 
+**Historical decision record.** The proposals, observations and owner answers below are preserved as recorded. For current authoring requirements, examples, release checks and evidence placement, use [CONTRIBUTING.md](../../CONTRIBUTING.md). For implementation status, see the [authoring handoff](skill-authoring-implementation-handoff.md).
+
 Issue: [Define the process for proposing and accepting new skills](https://github.com/AndrewGodlewsky/andrew-skills/issues/20).
 
 **Status: owner excluded this decision from the planning scope on September 20, 2026.** Andrew will handle GitHub rules and who can approve what. The self-review recommendation below was not accepted; it is preserved only as discussion history. Do not reopen approval roles or reviewer permissions in subsequent rounds. Continue with [Round 3](skill-contribution-round-3.md).

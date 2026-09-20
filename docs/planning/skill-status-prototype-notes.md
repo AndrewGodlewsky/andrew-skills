@@ -1,5 +1,10 @@
 # Skill status — prototype notes
 
+> **Execution update:** [skills-status](../../skills/skills-status/SKILL.md) is
+> implemented in the working tree, with [instruction scenario results](../testing/skills-status-results.json).
+> These are simulated evidence checks; live client acceptance remains pending.
+> The mockups and owner decisions below are historical design evidence.
+
 Issue: [Prototype skill version status and concise release notes](https://github.com/AndrewGodlewsky/andrew-skills/issues/8).
 
 **Status: accepted through both review rounds; implementation handoff.** Assigned to AndrewGodlewsky. Original answers remain in [Round 1](skill-status-round-1.md) and [Round 2](skill-status-round-2.md). Production implementation and live client validation remain deferred.

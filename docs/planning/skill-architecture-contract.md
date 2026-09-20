@@ -1,5 +1,7 @@
 # GT skill architecture — accepted planning contract
 
+**Historical decision record.** The proposals, observations and owner answers below are preserved as recorded. For current authoring requirements, examples, release checks and evidence placement, use [CONTRIBUTING.md](../../CONTRIBUTING.md). For implementation status, see the [authoring handoff](skill-authoring-implementation-handoff.md).
+
 Accepted by the owner on September 17, 2026, following two Markdown review rounds and the skill-loading research. Decision: [Define the standard skill structure and invocation policy](https://github.com/AndrewGodlewsky/andrew-skills/issues/19). The issue's resolution is the canonical decision; this asset supplies the checklist and example for downstream work. This is not yet implemented validation or a completed contributor template.
 
 ## Required, optional and conditional content

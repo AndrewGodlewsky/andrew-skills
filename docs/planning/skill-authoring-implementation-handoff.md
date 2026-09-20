@@ -1,5 +1,12 @@
 # GT skill authoring — implementation handoff
 
+**Current execution:** issues #23 and #24 are implemented in the working tree.
+[CONTRIBUTING.md](../../CONTRIBUTING.md) is the canonical guide; the existing
+validator enforces the accepted header rules. Both illustrative packages and
+the architecture fixtures passed local structural checks. These changes are
+uncommitted; client invocation and the owner pilot remain pending. The following
+handoff preserves the accepted planning context.
+
 **Status: blueprint accepted and planning issue closed September 20, 2026; implementation pending.** Decision: [Review the skill authoring blueprint and enforcement handoff — resolution](https://github.com/AndrewGodlewsky/andrew-skills/issues/21#issuecomment-5752731424). The owner accepted the [written blueprint](skill-authoring-blueprint-prototype.md), including its examples, canonical guide, evidence placement, validation boundary and implementation slices. The original answer is preserved there.
 
 ## Accepted handoff

@@ -1,5 +1,11 @@
 # GT installation targeting — accepted handoff
 
+> **Execution update:** the working-tree [updater](../../skills/skills-update/SKILL.md)
+> and [status skill](../../skills/skills-status/SKILL.md) now carry this selection
+> contract in their own bundled resources. Supplied-evidence instruction checks
+> cover the branches; real client registration, routing and activation still need
+> the owner pilot. The accepted planning record below is preserved.
+
 **Status: owner accepted and decision/map closed September 20, 2026; implementation and live client verification pending.** Decision: [Define installation ownership and update targeting across Copilot CLI and VS Code — resolution](https://github.com/AndrewGodlewsky/andrew-skills/issues/22#issuecomment-5752852987). The complete [reviewed flow, decision table and evidence plan](skill-installation-targeting-round-1.md) retain the owner's original answer.
 
 ## Accepted behavior

@@ -1,5 +1,7 @@
 # GT skill contribution process — accepted planning contract
 
+**Historical decision record.** The proposals, observations and owner answers below are preserved as recorded. For current authoring requirements, examples, release checks and evidence placement, use [CONTRIBUTING.md](../../CONTRIBUTING.md). For implementation status, see the [authoring handoff](skill-authoring-implementation-handoff.md).
+
 Decision: [Define the process for proposing and accepting new skills — resolution](https://github.com/AndrewGodlewsky/andrew-skills/issues/20#issuecomment-5752536726). Closed September 20, 2026 after three written rounds. The issue resolution is the canonical decision; this asset consolidates it for the authoring blueprint.
 
 ## Simple contribution flow

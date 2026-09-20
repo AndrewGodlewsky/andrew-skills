@@ -1,5 +1,7 @@
 # Skill contribution process — working decisions
 
+**Historical decision record.** The proposals, observations and owner answers below are preserved as recorded. For current authoring requirements, examples, release checks and evidence placement, use [CONTRIBUTING.md](../../CONTRIBUTING.md). For implementation status, see the [authoring handoff](skill-authoring-implementation-handoff.md).
+
 Issue: [Define the process for proposing and accepting new skills](https://github.com/AndrewGodlewsky/andrew-skills/issues/20).
 
 **Status: owner discussion complete September 20, 2026.** The [accepted contribution contract](skill-contribution-contract.md) consolidates the flow and existing requirements for the blueprint handoff. These notes preserve the decision trail; implementation and enforcement remain separate.

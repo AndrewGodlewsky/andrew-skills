@@ -108,7 +108,8 @@ Start a fresh Copilot Chat and enter:
 | Skill | Purpose | Command |
 | --- | --- | --- |
 | [Grill me](skills/grill-me/SKILL.md) | Sharpen a plan or design through an interview | `/gt:grill-me` |
-| [Skills update](skills/skills-update/SKILL.md) | Refresh the marketplace and update the CLI-installed `gt` plugin | `/gt:skills-update` |
+| [Skills update](skills/skills-update/SKILL.md) | Update the intended managed GT copy and report verified skill changes | `/gt:skills-update` |
+| [Skills status](skills/skills-status/SKILL.md) | Show versions and release notes in one selected local GT installation | `/gt:skills-status` |
 
 `grill-me` asks one question at a time, recommends an answer, and waits for shared
 understanding before implementing the plan. It is manual-only: invoke it explicitly.
@@ -117,21 +118,31 @@ understanding before implementing the plan. It is manual-only: invoke it explici
 
 ### Update from chat
 
-In a fresh Copilot chat with terminal tools available, invoke:
+In a fresh Copilot chat, invoke:
 
 ```text
 /gt:skills-update
 ```
 
-This manual-only skill asks Copilot to refresh `andrew-skills`, then update `gt`
-only if the refresh succeeds. It reports the result and recommends starting a
-fresh chat afterward. Terminal execution may require approval in your client.
-It requires Copilot CLI and targets the CLI installation for that machine and
-user account; VS Code-managed installations use the VS Code steps below.
+This manual-only skill identifies the intended managed installation. It asks
+which copy you mean when the available evidence is ambiguous. For a verified
+CLI-owned copy, it refreshes `andrew-skills`, then updates `gt` only if refresh
+succeeds. That route needs matching CLI/terminal access and respects client
+approvals. For a VS Code-owned copy, it guides native update controls and resumes
+after you report completion; it does not update a different CLI copy.
 
-The skill is included starting with version `0.1.3`. Existing users must update
-once using the CLI commands below to receive it. It does not check or update
-automatically in the background.
+The skill captures available before-state in task/session state, then rechecks
+the same installation and reports verified changes in four columns: Skill,
+Previous version, Updated version and What changed. Missing prior state or
+unverifiable identity limits comparison. It labels final-only notes and separates
+user-reported completion, native results and observed file changes. There is no
+Node, Git or release-catalog prerequisite for ordinary updates. A fresh chat is
+recommended after success. Actual client behavior remains in the owner pilot.
+
+The original updater shipped in plugin `0.1.3`; this working-tree enhancement is
+part of plugin `0.1.5`. Until published, installed copies retain their earlier
+behavior. Use your installation owner's native update route below to receive
+published changes. The skill does not update automatically in the background.
 
 ### CLI-installed plugin (including the installer script)
 
@@ -268,6 +279,10 @@ skills/
   skills-update/
     SKILL.md                 On-demand CLI plugin update skill
     release.yaml             Independent skill version and release note
+  skills-status/
+    SKILL.md                 Read-only installed skill report
+    release.yaml             Independent skill version and release note
+    references/              Bundled installation selection procedure
 scripts/validate.mjs         Local and CI validation
 .github/workflows/validate.yml
 README.md
@@ -282,6 +297,13 @@ Add future skills under `skills/`; everyone installing the plugin receives them
 together.
 
 ## Contribute and validate
+
+To propose a skill or report confusing behavior, open an issue with the task,
+draft or experience you want considered; a finished package is not required.
+Authors and agents changing skills should use [CONTRIBUTING.md](CONTRIBUTING.md),
+the single current guide with complete examples, the header standard, a short
+checklist and release workflow. Keep change-specific expectations and observed
+checks in the existing issue or PR carrying the change.
 
 ### Per-skill releases
 
@@ -306,25 +328,31 @@ The [reviewed interaction design](docs/planning/skill-interaction-prototype-note
 keeps `skills-update` direct: update the whole GT plugin, including additions and
 removals, then show a table of changed skills, previous versions, installed
 versions and short change notes. There is no removal-confirmation step.
-`skills-restore` separately lets users browse and select a historical release.
-These reporting and restore enhancements are planned, not implemented yet.
+Update reporting is implemented in the skill instructions, with supplied-evidence
+scenario checks. The separate `skills-restore` browse/select flow remains planned;
+it is not shipped yet. Native-client acceptance remains pending.
 
 The [implementation handoff](docs/planning/skill-versioning-implementation-handoff.md)
 tracks the work and owner pilot before team adoption. Existing users retain the
 native update path. Edits inside managed GT skills are unsupported and native
 updates replace them; personal and project-level skills remain user-owned.
 
-The planned [skills-status report](docs/planning/skill-status-prototype-notes.md)
-shows only installed GT skills: skill name, installed version and that release's
-short note. It reads the selected local installation without online release
-comparisons or personal-copy tracking. This status skill is not implemented yet.
+The manual [skills-status report](skills/skills-status/SKILL.md) shows only
+installed GT skills: skill name, installed version and that release's short note.
+It reads one selected local installation without online release comparisons or
+personal-copy tracking. Invoke `/gt:skills-status`; when several installations
+are plausible it asks which one to report. It requires file-read access, with
+no Node.js or Copilot CLI requirement. Client verification remains in the pilot.
 
 The validator checks release metadata and version transitions, including the
 first complete `1.0.0` baseline. The **Validate skills and releases** CI job checks
 prospective PR merges against current `main`. Andrew will configure required
 merge checks later. Each bundle change increments the overall plugin patch
-version once, regardless of how many skills changed. The historical catalog and
-its history-wide checks are still planned. Authors and agents should follow the
+version once, regardless of how many skills changed. The
+[historical catalog and versioned reader API](docs/release-catalog.md) derive
+exact release records from complete preserved first-parent history and extend
+the same release check. The exporter and restore skill remain planned.
+Authors and agents should follow the
 [contributor guidance](CONTRIBUTING.md) for the supported metadata format and
 workflow.
 
@@ -335,11 +363,11 @@ See [CONTRIBUTING.md](CONTRIBUTING.md). With Node.js 22 or newer installed:
 ```sh
 node scripts/validate.mjs
 node scripts/validate.mjs --base origin/main --current-main origin/main
-node --test scripts/release-validation.test.mjs scripts/release-snapshots.test.mjs
+node --test scripts/release-validation.test.mjs scripts/release-snapshots.test.mjs scripts/skill-architecture.test.mjs scripts/release-catalog.test.mjs scripts/release-catalog-reader.test.mjs
 ```
 
 The plain validator checks metadata and structure. The comparison command also
-checks version transitions against your local `origin/main`; ensure that ref is
+checks published history and version transitions against your local `origin/main`; ensure that ref is
 current first. It does not contact GitHub. Release comparisons and snapshot tests
 require Git. See [validation details](CONTRIBUTING.md#run-validation) for committed
 candidates, stale-base checks and CI behavior.
