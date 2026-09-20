@@ -3,11 +3,19 @@ import { execFileSync } from 'node:child_process';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import test from 'node:test';
-import { readReleaseCatalog } from './release-catalog-reader.mjs';
+import { readReleaseCatalog, repositoryIdentity } from './release-catalog-reader.mjs';
 import { readGitFiles, resolveCommit } from './release-snapshots.mjs';
 import { skillContentIdentity } from './release-catalog.mjs';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
+
+test('trusted GitHub HTTPS and SSH origins share one credential-free repository identity', () => {
+  for (const origin of ['https://github.com/AndrewGodlewsky/andrew-skills.git',
+    'git@github.com:AndrewGodlewsky/andrew-skills.git', 'ssh://git@github.com/AndrewGodlewsky/andrew-skills.git']) {
+    assert.equal(repositoryIdentity(origin), 'https://github.com/AndrewGodlewsky/andrew-skills');
+  }
+  assert.throws(() => repositoryIdentity('https://token@github.com/AndrewGodlewsky/andrew-skills'), /credential-free/);
+});
 
 test('Git reader pins one complete head and verifies exact source folder objects without history writes', () => {
   const head = resolveCommit(root, 'HEAD');

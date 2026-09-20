@@ -23,7 +23,9 @@ jobs:
         with:
           node-version: '22'
       - name: Test release validation
-        run: node --test scripts/release-validation.test.mjs scripts/release-snapshots.test.mjs scripts/skill-architecture.test.mjs scripts/release-catalog.test.mjs scripts/release-catalog-reader.test.mjs
+        run: node --test scripts/release-validation.test.mjs scripts/release-snapshots.test.mjs scripts/skill-architecture.test.mjs scripts/release-catalog.test.mjs scripts/release-catalog-reader.test.mjs scripts/export-source.test.mjs
+      - name: Check bundled exporter
+        run: node scripts/build-exporter.mjs --check
       - name: Select the published comparison base
         id: comparison
         env:
@@ -43,6 +45,7 @@ jobs:
           else
             base="$(git rev-parse HEAD^1)"
           fi
+
           echo "base=$base" >> "$GITHUB_OUTPUT"
           echo "candidate=$candidate" >> "$GITHUB_OUTPUT"
           echo "live-main=$live_main" >> "$GITHUB_OUTPUT"
@@ -72,3 +75,20 @@ jobs:
             echo "Main advanced during validation. Refresh and revalidate the prospective change."
             exit 1
           fi
+
+  exporter-windows:
+    name: Exporter Windows / Node ${{ matrix.node }}
+    runs-on: windows-latest
+    strategy:
+      matrix:
+        node: ['22', '24']
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - run: node scripts/build-exporter.mjs --check
+      - run: node --test scripts/export-source.test.mjs scripts/export-filesystem.test.mjs scripts/export-protocol.test.mjs scripts/export-cli.test.mjs

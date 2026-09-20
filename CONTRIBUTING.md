@@ -269,8 +269,13 @@ Release metadata, adjacent-snapshot validation and the history-derived
 also validate the complete preserved first-parent history from the baseline,
 including missing metadata, version resets and exact source identity. A supplied
 prior catalog can detect rewritten history; no reader can recover an erased
-history without retained evidence. Export and the restore skill remain future
-work. See
+history without retained evidence. The [fixed exporter](exporter/README.md)
+implements direct historical export; WSL acceptance and the restore chat skill
+remain outstanding. Maintain its modules under `scripts/`, then run
+`node scripts/build-exporter.mjs` and `node scripts/build-exporter.mjs --check`.
+The generated `exporter/` directory is a distributed runtime input: any change
+requires one plugin patch without changing unrelated skills. The restore wrapper
+will package this complete helper with its runtime resources. See
 [the publishing notes](docs/planning/skill-publishing-notes.md) and
 [reviewed answers](docs/planning/skill-publishing-round-3.md).
 
@@ -302,6 +307,8 @@ comparisons and the snapshot tests; no package installation is needed.
 node --test scripts/release-validation.test.mjs scripts/release-snapshots.test.mjs scripts/skill-architecture.test.mjs scripts/release-catalog.test.mjs scripts/release-catalog-reader.test.mjs
 node scripts/validate.mjs
 node scripts/validate.mjs --base origin/main --current-main origin/main
+node scripts/build-exporter.mjs --check
+node --test scripts/export-*.test.mjs
 ```
 
 The plain command checks the working files, including required metadata. Adding

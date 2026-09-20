@@ -48,6 +48,13 @@ function releasedBundle(pluginVersion = '0.1.1', skillVersion = '1.0.0', notes =
   return { ...bundle(pluginVersion), 'skills/explain-design/release.yaml': release(skillVersion, notes) };
 }
 
+test('bundled exporter changes bump only the plugin version', () => {
+  const before = snapshot(releasedBundle());
+  const after = { ...releasedBundle('0.1.2'), 'exporter/run.mjs': 'Fixed exporter.' };
+  assert.deepEqual(validateReleaseChange(before, snapshot(after)).changedSkills, []);
+  assert.throws(() => validateReleaseChange(before, snapshot({ ...releasedBundle(), 'exporter/run.mjs': 'Fixed exporter.' })), /plugin version/);
+});
+
 test('repository validation requires release metadata beside every skill', t => {
   const root = fixture(t, bundle());
   assert.throws(() => validate(root), /release\.yaml/);

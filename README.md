@@ -320,8 +320,11 @@ restarts at `1.0.0`; exact source snapshots distinguish repeated version labels.
 Only optional historical personal exports use names such as `grill-me-v1-2-0`.
 The planned `skills-restore` skill creates that personal copy and leaves it to the user;
 it never overwrites an existing destination or manages the copy afterward.
-The planned exporter requires Node and Git; normal skill use does not add those
-requirements. See the
+The [fixed exporter helper](exporter/README.md) implements direct list, plan,
+create-only export and read-only recovery inspection. It requires Node and Git;
+normal skill use does not add those requirements. Windows implementation checks
+are recorded in [issue #14](https://github.com/AndrewGodlewsky/andrew-skills/issues/14);
+WSL acceptance and the chat wrapper remain outstanding. See the
 [personal export contract](docs/planning/skill-personal-export-contract.md).
 
 The [reviewed interaction design](docs/planning/skill-interaction-prototype-notes.md)
@@ -351,7 +354,11 @@ merge checks later. Each bundle change increments the overall plugin patch
 version once, regardless of how many skills changed. The
 [historical catalog and versioned reader API](docs/release-catalog.md) derive
 exact release records from complete preserved first-parent history and extend
-the same release check. The exporter and restore skill remain planned.
+the same release check. The fixed helper is bundled in `exporter/`; the restore
+skill remains planned. Run `node scripts/build-exporter.mjs --check` to check
+bundle freshness and `node --test scripts/export-*.test.mjs` in the selected
+Windows or WSL environment for exporter tests. These tests use isolated
+temporary homes and existing Git objects; they create no Git history.
 Authors and agents should follow the
 [contributor guidance](CONTRIBUTING.md) for the supported metadata format and
 workflow.

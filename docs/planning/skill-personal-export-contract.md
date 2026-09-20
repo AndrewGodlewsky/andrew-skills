@@ -2,6 +2,12 @@
 
 **Status: resolved; planning handoff, not implemented.** Canonical [Define historical skill export and personal copy handoff — resolution](https://github.com/AndrewGodlewsky/andrew-skills/issues/6#issuecomment-5689786832). Original answers: [Round 1](skill-archive-round-1.md), [Round 2](skill-archive-round-2.md), [Round 3](skill-archive-round-3.md).
 
+**Implementation update (September 20, 2026):** The contract below preserves the
+accepted planning text. Issue #14 now has a [fixed helper](../../exporter/README.md)
+and Windows test coverage in the working tree. WSL acceptance remains outstanding;
+the chat wrapper belongs to #11 and live client activation to #17. See the
+[implementation evidence](../testing/exporter-results.md) for verified scope.
+
 ## Behavior and naming
 
 - Native GT stays a whole-plugin installation/update. **Plugin skill names never gain version suffixes**: folder and frontmatter stay `grill-me`, for example. Source version/notes are separate metadata.
