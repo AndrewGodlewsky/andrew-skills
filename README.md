@@ -110,6 +110,7 @@ Start a fresh Copilot Chat and enter:
 | [Grill me](skills/grill-me/SKILL.md) | Sharpen a plan or design through an interview | `/gt:grill-me` |
 | [Skills update](skills/skills-update/SKILL.md) | Update the intended managed GT copy and report verified skill changes | `/gt:skills-update` |
 | [Skills status](skills/skills-status/SKILL.md) | Show versions and release notes in one selected local GT installation | `/gt:skills-status` |
+| [Skills restore](skills/skills-restore/SKILL.md) | Browse exact historical releases and create an independent personal copy | `/gt:skills-restore` |
 
 `grill-me` asks one question at a time, recommends an answer, and waits for shared
 understanding before implementing the plan. It is manual-only: invoke it explicitly.
@@ -283,6 +284,12 @@ skills/
     SKILL.md                 Read-only installed skill report
     release.yaml             Independent skill version and release note
     references/              Bundled installation selection procedure
+  skills-restore/
+    SKILL.md                 Browse/select personal historical export
+    release.yaml             Independent skill version and release note
+    references/operations.md Fixed helper calls and recovery procedure
+    scripts/exporter/        Complete bundled exporter and direct guide
+exporter/                    Same fixed helper for checkout-based recovery
 scripts/validate.mjs         Local and CI validation
 .github/workflows/validate.yml
 README.md
@@ -318,13 +325,13 @@ restarts at `1.0.0`; exact source snapshots distinguish repeated version labels.
 
 **Names inside the GT plugin stay unchanged**: `grill-me` stays `grill-me`.
 Only optional historical personal exports use names such as `grill-me-v1-2-0`.
-The planned `skills-restore` skill creates that personal copy and leaves it to the user;
+The [skills-restore skill](skills/skills-restore/SKILL.md) creates that personal copy and leaves it to the user;
 it never overwrites an existing destination or manages the copy afterward.
 The [fixed exporter helper](exporter/README.md) implements direct list, plan,
 create-only export and read-only recovery inspection. It requires Node and Git;
 normal skill use does not add those requirements. Windows implementation checks
 are recorded in [issue #14](https://github.com/AndrewGodlewsky/andrew-skills/issues/14);
-WSL acceptance and the chat wrapper remain outstanding. See the
+WSL and live-client acceptance remain outstanding. See the
 [personal export contract](docs/planning/skill-personal-export-contract.md).
 
 The [reviewed interaction design](docs/planning/skill-interaction-prototype-notes.md)
@@ -332,8 +339,14 @@ keeps `skills-update` direct: update the whole GT plugin, including additions an
 removals, then show a table of changed skills, previous versions, installed
 versions and short change notes. There is no removal-confirmation step.
 Update reporting is implemented in the skill instructions, with supplied-evidence
-scenario checks. The separate `skills-restore` browse/select flow remains planned;
-it is not shipped yet. Native-client acceptance remains pending.
+scenario checks. For a personal copy, invoke `/gt:skills-restore` and name the
+skill you want to browse. It shows release notes, the target environment and
+proposed personal paths. Selecting a displayed source requests creation without
+another confirmation; an exact initial version request still gets a selection
+step. Portability review can reject a source before creation. The complete helper
+travels inside the skill, with no runtime package installation. Implementation
+evidence is tracked in [issue #11](https://github.com/AndrewGodlewsky/andrew-skills/issues/11);
+live Copilot discovery and invocation remain pending in the owner pilot.
 
 The [implementation handoff](docs/planning/skill-versioning-implementation-handoff.md)
 tracks the work and owner pilot before team adoption. Existing users retain the
@@ -354,8 +367,8 @@ merge checks later. Each bundle change increments the overall plugin patch
 version once, regardless of how many skills changed. The
 [historical catalog and versioned reader API](docs/release-catalog.md) derive
 exact release records from complete preserved first-parent history and extend
-the same release check. The fixed helper is bundled in `exporter/`; the restore
-skill remains planned. Run `node scripts/build-exporter.mjs --check` to check
+the same release check. The fixed helper is bundled both in root `exporter/`
+and inside `skills-restore`. Run `node scripts/build-exporter.mjs --check` to check
 bundle freshness and `node --test scripts/export-*.test.mjs` in the selected
 Windows or WSL environment for exporter tests. These tests use isolated
 temporary homes and existing Git objects; they create no Git history.

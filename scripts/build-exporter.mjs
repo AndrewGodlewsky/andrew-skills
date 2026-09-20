@@ -13,12 +13,16 @@ const hash = bytes => createHash('sha256').update(bytes).digest('hex');
 const manifest = Buffer.from(JSON.stringify({ schemaVersion: 1, files: Object.fromEntries([...files].map(([name, bytes]) => [name, hash(bytes)])) }, null, 2) + '\n');
 files.set('bundle.json', manifest);
 files.set('run.mjs', Buffer.from(source('export-launcher.mjs').toString().replace('__MANIFEST_HASH__', hash(manifest))));
-const output = join(root, 'exporter');
-if (!process.argv.includes('--check')) mkdirSync(output, { recursive: true });
-for (const [name, bytes] of files) {
-  const path = join(output, name);
-  if (process.argv.includes('--check')) {
-    if (!existsSync(path) || !readFileSync(path).equals(bytes)) throw new Error(`Stale exporter bundle: ${name}; run node scripts/build-exporter.mjs`);
-  } else writeFileSync(path, bytes);
+const guide = Buffer.from(readFileSync(join(root, 'exporter/README.md'), 'utf8').replaceAll('\r\n', '\n'));
+for (const directory of ['exporter', 'skills/skills-restore/scripts/exporter']) {
+  const output = join(root, directory);
+  if (!process.argv.includes('--check')) mkdirSync(output, { recursive: true });
+  const bundled = directory === 'exporter' ? files : new Map([...files, ['README.md', guide]]);
+  for (const [name, bytes] of bundled) {
+    const path = join(output, name);
+    if (process.argv.includes('--check')) {
+      if (!existsSync(path) || !readFileSync(path).equals(bytes)) throw new Error(`Stale exporter bundle: ${directory}/${name}; run node scripts/build-exporter.mjs`);
+    } else writeFileSync(path, bytes);
+  }
 }
 console.log(process.argv.includes('--check') ? 'Exporter bundle matches maintained sources.' : 'Built self-contained exporter bundle.');

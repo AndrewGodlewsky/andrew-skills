@@ -5,7 +5,7 @@ import { isDeepStrictEqual } from 'node:util';
 import { readReleaseCatalog, repositoryIdentity } from './release-catalog-reader.mjs';
 import { readFirstParentCommits, readGitFiles, readGitSkillTrees, readRepositoryOrigin, resolveCommit } from './release-snapshots.mjs';
 import { checkedPath, createCopy, ensureDirectory, isSecurityError, targetPaths } from './export-filesystem.mjs';
-import { EXPORTER_VERSION, PROTOCOL_VERSION, REPOSITORY, prepareSource, requireExport, sha256 } from './export-source.mjs';
+import { EXPORTER_VERSION, PROTOCOL_VERSION, REPOSITORY, fileManifest, prepareSource, requireExport, sha256 } from './export-source.mjs';
 
 function git(root, args, input) {
   const env = { ...process.env };
@@ -117,6 +117,23 @@ export function makePlan({ target, cache, skill, commit }) {
     headCommit: selection.catalog.headCommit, catalogHash: selection.saved.catalogHash, freshness: 'cached head; may be stale',
     source: selection.record, personalName: prepared.personalName, destination: join(paths.skills, prepared.personalName),
     sourceFiles: prepared.sourceFiles, installedFiles: prepared.installedFiles, portabilityReviewRequired: true };
+}
+
+export function reviewPlan({ target, cache, skill, commit }) {
+  const plan = makePlan({ target, cache, skill, commit });
+  const selection = sourceSelection(target, cache, skill, commit);
+  requireExport(isDeepStrictEqual(selection.record, plan.source) && isDeepStrictEqual(fileManifest(selection.files), plan.sourceFiles),
+    'source changed between planning and review');
+  const files = [...selection.files].map(([path, file]) => {
+    let encoding = 'utf8';
+    let content;
+    try {
+      if (file.data.includes(0)) throw new Error('Binary resource');
+      content = new TextDecoder('utf8', { fatal: true, ignoreBOM: true }).decode(file.data);
+    } catch { encoding = 'base64'; content = file.data.toString('base64'); }
+    return { path, sourceMode: file.mode, encoding, content };
+  });
+  return { protocolVersion: PROTOCOL_VERSION, exporterVersion: EXPORTER_VERSION, plan, files };
 }
 
 export function executePlan({ target, plan, portabilityReviewed }) {

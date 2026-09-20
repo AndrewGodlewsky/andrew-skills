@@ -270,12 +270,17 @@ also validate the complete preserved first-parent history from the baseline,
 including missing metadata, version resets and exact source identity. A supplied
 prior catalog can detect rewritten history; no reader can recover an erased
 history without retained evidence. The [fixed exporter](exporter/README.md)
-implements direct historical export; WSL acceptance and the restore chat skill
-remain outstanding. Maintain its modules under `scripts/`, then run
+implements direct historical export and is packaged with `skills-restore`.
+WSL and live-client acceptance remain outstanding. Maintain its modules under
+root `scripts/` and the direct guide at `exporter/README.md`, then run
 `node scripts/build-exporter.mjs` and `node scripts/build-exporter.mjs --check`.
-The generated `exporter/` directory is a distributed runtime input: any change
-requires one plugin patch without changing unrelated skills. The restore wrapper
-will package this complete helper with its runtime resources. See
+The build checks both root `exporter/` and the complete helper/guide under
+`skills/skills-restore/scripts/exporter/`. Do not edit generated copies manually.
+Helper or guide changes change the restore skill's complete package, so update
+its release metadata plus one plugin patch without changing unrelated skills.
+Keep the helper's exporter version aligned with its behavior; a version mismatch
+requires old plans to be regenerated. Protocol and source-skill versions remain
+separate. See
 [the publishing notes](docs/planning/skill-publishing-notes.md) and
 [reviewed answers](docs/planning/skill-publishing-round-3.md).
 

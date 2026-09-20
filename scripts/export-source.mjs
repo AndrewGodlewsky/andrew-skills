@@ -4,7 +4,7 @@ import { parseRelease } from './release-validation.mjs';
 import { skillContentIdentity } from './release-catalog.mjs';
 
 export const PROTOCOL_VERSION = 1;
-export const EXPORTER_VERSION = '1.0.0';
+export const EXPORTER_VERSION = '1.1.0';
 export const REPOSITORY = 'https://github.com/AndrewGodlewsky/andrew-skills';
 
 export function requireExport(condition, message) {

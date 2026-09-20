@@ -1,6 +1,6 @@
 # Skill versioning — implementation handoff
 
-**Status: metadata baseline published; catalog, update/status instructions and authoring/architecture implementation are in the working tree.** The owner published issue #12 in `bf74bca587d80502394f27fc5984816081c92a12`. The current parallel wave covers #13, #15, #16, #23 and #24 and remains uncommitted. Its hosted CI and owner pilot have not run. Exporter #14, restore #11 and final pilot #17 remain pending. The owner approved a complete feature set and small owner pilot before wider team adoption, with development allowed in stages. Source: [migration resolution](https://github.com/AndrewGodlewsky/andrew-skills/issues/9#issuecomment-5692675491).
+**Status: exporter and preceding implementation published; restore implementation is in the working tree.** The owner published the metadata baseline in `bf74bca`, catalog/update/status/authoring work in `701a95f`, and exporter work in `90b979f`. Restore #11 now supplies a self-contained chat skill and the same fixed direct helper; its current changes are uncommitted. Exporter #14 remains open for WSL filesystem acceptance, and restore/client acceptance remains open with the owner pilot #17. Building the wrapper against the published exporter does not waive those gates or authorize team adoption. The owner approved a complete feature set and small owner pilot before wider team adoption, with development allowed in stages. Source: [migration resolution](https://github.com/AndrewGodlewsky/andrew-skills/issues/9#issuecomment-5692675491).
 
 ## Execution issues
 
