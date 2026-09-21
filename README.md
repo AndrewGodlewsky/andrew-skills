@@ -140,10 +140,13 @@ in [#35](https://github.com/AndrewGodlewsky/andrew-skills/issues/35) and
 [#36](https://github.com/AndrewGodlewsky/andrew-skills/issues/36).
 
 `create-skills` starts with a detailed specification, then attempts a package and
-checks. It submits the specification, produced files and actual check results
-as separate parts of one issue through `create-issue`. Failed/unavailable checks
-do not block intake; maintainers independently validate before adoption. Long
-text uses indexed comments; essential binaries can use a manual ZIP attachment.
+checks. It submits an intent recap, interview record, specification, produced
+files and actual check results as separate parts of one issue through
+`create-issue`. Failed/unavailable checks
+do not block intake; unresolved intent is explicit for maintainer follow-up. It
+builds useful settled portions, or explains why core ambiguity prevents an attempt.
+Maintainers independently validate before adoption. Long text uses indexed
+comments; essential binaries can use a manual ZIP attachment.
 After verified delivery it offers an ordinary-name personal copy, only on your
 explicit yes. You own that copy's future maintenance. This workflow creates new
 skills; changes to existing skills are outside its scope. Local tools need Node
@@ -153,6 +156,10 @@ skills; changes to existing skills are outside its scope. Local tools need Node
 `skill-tweak` collects relevant conversation evidence when a GT skill behaves
 unexpectedly or produces an unwanted result. It keeps incident-time diagnostics
 separate from current readings and records unavailable telemetry honestly.
+Both intake skills preserve requirements, corrections and consequential approvals
+in a reviewed intent recap and interview record, with gaps and interpretations
+labeled. Long feedback also uses verified indexed comments; see
+[#46](https://github.com/AndrewGodlewsky/andrew-skills/issues/46).
 It previews the complete report and requires your approval before submission
 through `create-issue`. You can request a draft without publishing; an unavailable
 dependency also leaves a useful draft. It does not fix or rerun the affected skill.
@@ -452,7 +459,8 @@ node scripts/validate.mjs
 node scripts/build-issue-submission.mjs --check
 node --test scripts/issue-submission*.test.mjs
 node scripts/build-create-skills.mjs --check
-node --test scripts/create-skills*.test.mjs
+node scripts/build-skill-tweak.mjs --check
+node --test scripts/create-skills*.test.mjs scripts/skill-tweak*.test.mjs scripts/intent-record.test.mjs
 node scripts/validate.mjs --base origin/main --current-main origin/main
 node --test scripts/release-validation.test.mjs scripts/release-snapshots.test.mjs scripts/skill-architecture.test.mjs scripts/release-catalog.test.mjs scripts/release-catalog-reader.test.mjs
 ```
@@ -482,7 +490,8 @@ exporter guards to make this submission skill exportable.
 [#45](https://github.com/AndrewGodlewsky/andrew-skills/issues/45) through the GT
 `create-skills` workflow. At review, the installed creator skill was 1.0.0 in
 GT plugin 0.1.10; the originating execution's artifact identity was not recovered.
-The package includes no copied upstream writing-guide text or helper code.
+The package includes no copied upstream writing-guide text. Its local delivery
+helper shares the maintained GT handoff planner with create-skills.
 It delegates submission to the enabled GT `create-issue` dependency. The issue
 records independent review, checks and the refinement to check submission
 readiness before asking for publication approval.
@@ -499,7 +508,11 @@ adaptation. Exact reviewed source hashes are recorded in
 
 Maintain creator tools under `scripts/create-skills/`, shared package validation
 under `scripts/skill-package-validation.mjs`, and GT rules in CONTRIBUTING.md.
-Run `node scripts/build-create-skills.mjs` after changing these sources, and use
+Maintain shared intent guidance in `scripts/intent-capture.md`, input validation
+in `scripts/intent-record.mjs`, delivery in `scripts/review-handoff.mjs`, and tweak
+commands in `scripts/skill-tweak/`. Both builds copy shared resources into their
+self-contained packages. Run `node scripts/build-skill-tweak.mjs` for tweak and
+`node scripts/build-create-skills.mjs` for creator changes, and use
 `--check` for freshness verification. The generated package-rules excerpt uses
 declared unique anchors in the guide; adjust the generator deliberately if those
 sections move. Do not edit generated skill scripts or package-rules.md directly.

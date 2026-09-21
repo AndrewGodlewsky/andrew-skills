@@ -7,7 +7,7 @@ import { join } from 'node:path';
 import { sha256 } from './create-skills/package.mjs';
 const repository = 'AndrewGodlewsky/andrew-skills';
 const issueUrl = `https://github.com/${repository}/issues/88`;
-const input = { title: 'New skill', specification: 'Complete specification.', implementation: 'No package built: unavailable runtime.', verification: 'Structural check not run; no generated package.' };
+const input = { title: 'New skill', intent: 'Preserve the supplied sample behavior.', interview: { status: 'none', text: 'The initial request supplied these requirements; no questions were needed.' }, specification: 'Complete specification.', implementation: 'No package built: unavailable runtime.', verification: 'Structural check not run; no generated package.' };
 function reply(request, plan) {
   const op = { operation: request.operation, status: 'verified', issue: 88, url: issueUrl, verifiedLink: true };
   if (request.operation === 'read') op.snapshot = { state: 'open', authorId: 7, body: plan.initialBody };

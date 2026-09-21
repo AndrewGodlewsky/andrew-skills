@@ -2,7 +2,10 @@
 
 Replace placeholders with evidence. Keep unknowns explicit. This layout is for
 the report body; show the destination, exact title and requested labels alongside
-it for user approval. Do not post this instructional text or empty placeholders.
+it for user approval. Prepare this report with a separate intent recap and
+interview record using the [submission guide](../references/submission.md); both
+must be present in the preview and delivered issue or indexed comments. Do not
+post this instructional text or empty placeholders.
 
 Destination: AndrewGodlewsky/andrew-skills
 

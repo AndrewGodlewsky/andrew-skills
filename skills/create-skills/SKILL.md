@@ -11,18 +11,21 @@ files or this conversation. Changing an existing skill belongs to a separate
 workflow; explain that boundary and retain the user's context if that is their
 request. An unrelated skill must not be submitted merely because GT is installed.
 
-1. Read the [interview and specification guide](references/specification.md).
+1. Read the [intent capture guide](references/intent-capture.md) at the start,
+   then the [interview and specification guide](references/specification.md).
    Reuse supplied context and inspect relevant available facts. Ask related
    missing questions with recommendations, adapting the grouping to the user.
-   Finish when every applicable specification topic has a decision, an explicit
-   non-goal or a supported environmental fact. Resolve user-impacting ambiguities
-   with the user; do not invent their requirements. If they pause, preserve the
-   unfinished work and identify the unanswered decisions.
-2. Write the detailed specification first and review its consequential choices
-   with the user. Read the [writing guidance](references/writing.md) before
+   Record settled requirements and unresolved intent separately. Unclear desired
+   behavior can be submitted for maintainer follow-up without further clarification;
+   do not invent requirements. If they pause, preserve the unfinished work.
+2. Write the detailed specification first. Review its consequential choices,
+   intent recap and interview record with the user as the intent guide describes.
+   Read the [writing guidance](references/writing.md) before
    drafting instructions and the [GT package rules](references/package-rules.md)
    before preparing files. Attempt a new package in an authorized draft location,
-   preserving existing files. Include every needed resource, with the ordinary
+   preserving existing files. Implement settled portions when useful independently;
+   if unresolved intent determines core behavior, skip implementation and explain
+   why. Include every needed resource for the declared scope, with the ordinary
    skill name and initial release metadata. Keep the specification separately
    readable; implementation details cannot silently change it.
 3. Read [local tools and checks](references/tools.md). Attempt applicable
@@ -30,7 +33,8 @@ request. An unrelated skill must not be submitted merely because GT is installed
    passed, failed or not run with its reason and input identity. Try reasonable
    fixes, but **failed builds/checks and unavailable tools do not block issue
    submission**. Include produced files and missing pieces, or explicitly say
-   that no package could be built. A complete specification remains submittable.
+   that no package could be built. A specification with explicit unresolved intent
+   remains submittable; distinguish intake readiness from implementation readiness.
    Repository adoption will require independent maintainer validation.
 4. Read [submission and recovery](references/submission.md). Resolve the intended
    enabled GT **create-issue** model-invocable dependency using the client-supplied
@@ -39,8 +43,9 @@ request. An unrelated skill must not be submitted merely because GT is installed
    creator writes the content; the dependency owns all GitHub operations. Return
    an unavailable result for missing/disabled/shadowed/ambiguous dependencies.
    Never substitute another skill, an on-disk disabled copy or a direct network
-   command. Submit the specification, implementation attempt and check evidence
-   visibly and independently in the same issue. Preserve every operation result.
+   command. Submit the intent recap, interview record, specification,
+   implementation attempt and check evidence visibly and independently in the
+   same issue. Preserve every operation result.
 5. Once all declared content has verified delivery, return the issue link and
    separate check/build status. Then offer a personal installation. Only if the
    user says yes, read [personal installation](references/personal-installation.md)

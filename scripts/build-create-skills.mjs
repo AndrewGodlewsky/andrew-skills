@@ -22,8 +22,9 @@ export function guidance(source) {
 
 export function buildBundle({ base = root, output = join(base, 'skills/create-skills'), check = false } = {}) {
   const maintained = ['package.mjs', 'run.mjs', 'submission.mjs', 'install.mjs'];
-  const files = new Map(maintained.map(name => [`scripts/${name}`, normalize(readFileSync(join(base, 'scripts/create-skills', name), 'utf8')).replace("from '../skill-package-validation.mjs'", "from './skill-package-validation.mjs'")]));
-  for (const name of ['skill-package-validation.mjs', 'release-validation.mjs']) files.set(`scripts/${name}`, normalize(readFileSync(join(base, 'scripts', name), 'utf8')));
+  const files = new Map(maintained.map(name => [`scripts/${name}`, normalize(readFileSync(join(base, 'scripts/create-skills', name), 'utf8')).replaceAll("from '../", "from './")]));
+  for (const name of ['skill-package-validation.mjs', 'release-validation.mjs', 'review-handoff.mjs', 'intent-record.mjs']) files.set(`scripts/${name}`, normalize(readFileSync(join(base, 'scripts', name), 'utf8')));
+  files.set('references/intent-capture.md', normalize(readFileSync(join(base, 'scripts/intent-capture.md'), 'utf8')));
   files.set('references/package-rules.md', guidance(readFileSync(join(base, 'CONTRIBUTING.md'), 'utf8')));
   const scripts = join(output, 'scripts');
   if (existsSync(scripts)) {

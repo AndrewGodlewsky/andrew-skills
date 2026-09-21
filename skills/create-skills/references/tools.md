@@ -31,5 +31,6 @@ Build a check report with the request, expected result, actual result/status and
 package identity. Attempt applicable checks with available tools and actual
 authority. Avoid running scripts from an unreviewed draft merely to validate its
 structure. Fix feasible defects and report any remaining failed/unrun checks.
-The issue may still be submitted with a complete specification and those findings.
+The issue may still be submitted with the specification, explicit unresolved
+intent and those findings.
 Security denials remain stops, not ordinary unavailable-test results.

@@ -22,18 +22,23 @@ Write enough detail for these topics, using headings that fit the actual skill:
 - Acceptance: normal use, missing input and a relevant failure/edge case with
   expected observations. Separate expectations from tests actually performed.
 
-Make defaults visible. Ask about undecided user-impacting behavior; choose routine
-implementation details consistent with the agreed intent and record them. The
-specification is complete when it can explain intended behavior independently of
-generated code, with no known unresolved product decision. This is not a promise
-that implementation cannot uncover another question. If it does, resolve the
-question and update the specification rather than silently changing the product.
+Make defaults and interpretations visible. Choose routine implementation details
+consistent with the supplied intent and record them. Cover each applicable topic
+with a decision, non-goal, supported fact or explicit unresolved question. The
+specification must explain settled intent independently of generated code and
+identify what the maintainer still needs to clarify. Unresolved intent does not
+block intake. If implementation uncovers ambiguity, update the record and scope
+of the attempt rather than silently choosing consequential behavior.
 
 A missing runtime or failing generated script is an implementation finding, not
 necessarily a missing requirement. For example, a fully specified output with
 “Node unavailable; structural check not run” is valid review intake. “Decide later
-whether the skill sends the email” is an unresolved consequential requirement.
+whether the skill sends the email” is an unresolved consequential requirement;
+record it for maintainer follow-up. Implement useful settled portions independently,
+or skip implementation with a reason when that decision determines core behavior.
 
-Preserve the specification as its own artifact. Then attempt the complete package
-and review it against that specification. The issue must expose each independently
-so a maintainer can replace the generated implementation without losing intent.
+Preserve the specification as its own artifact alongside the intent recap and
+interview record. Review the attempt against the settled specification and disclose
+unimplemented or unresolved behavior. The maintainer must be able to compare the
+specification with the requester's words and replace the generated implementation
+without losing intent; an agent interpretation is not evidence of user agreement.

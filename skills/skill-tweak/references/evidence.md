@@ -8,6 +8,11 @@ turn/time references when available. Mark summaries as summaries. Do not quote
 compaction summaries as an exact transcript or claim to have recovered missing
 turns. State which evidence was unavailable, omitted or redacted.
 
+Keep the intent recap and ordered interview record alongside incident evidence,
+following the [intent capture guide](intent-capture.md). Incident evidence explains
+what happened; the record preserves what the requester wants and why. Either may
+contain an explicit gap, but an agent's proposed explanation is not a user answer.
+
 Where useful, inspect the instruction in the affected skill that bears on the
 incident. Distinguish a possible instruction defect from agent noncompliance,
 tool failure and a user preference. These are hypotheses unless evidence

@@ -1,2 +1,2 @@
-version: "1.0.0"
-notes: "Specify new GT skills, attempt packages and checks, submit complete review handoffs, and offer optional personal installation."
+version: "2.0.0"
+notes: "Preserve requester intent and interview evidence in required handoff inputs; submit explicit unresolved requirements and scope implementation to settled behavior."

@@ -88,7 +88,7 @@ test('packaged JSON commands preserve shell-looking content and install only in 
     const child = spawnSync(process.execPath, [join(output, 'scripts/run.mjs'), command], { env, cwd: home, shell: false, input: JSON.stringify(input), encoding: 'utf8' });
     assert.equal(child.status, 0, child.stderr + child.stdout); return JSON.parse(child.stdout);
   };
-  const plan = run('prepare', { title: 'Keep `$HOME` literally', specification: 'No command execution: $(echo injected).', implementation: 'Generated sample.', verification: 'Structural result provided separately.', packageDirectory: root });
+  const plan = run('prepare', { title: 'Keep `$HOME` literally', intent: 'Preserve the supplied sample behavior.', interview: { status: 'none', text: 'The initial request supplied these requirements; no questions were needed.' }, specification: 'No command execution: $(echo injected).', implementation: 'Generated sample.', verification: 'Structural result provided separately.', packageDirectory: root });
   assert.match(plan.initialBody, /\$\(echo injected\)/);
   const next = run('next', { plan, actorId: 7, authorized: true });
   assert.equal(next.request.operation, 'create');

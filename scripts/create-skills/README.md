@@ -16,13 +16,14 @@ dependency boundary; the local planner cannot prove model selection occurred.
 | --- | --- |
 | skill-package-validation.mjs | Extracted pure GT header/release/link rules, shared by repository validation. |
 | package.mjs | Bounded regular-file snapshot, source identity, standalone diagnostic report. No draft execution. |
-| submission.mjs | Canonical text/file serialization and stateless next-operation calculation from actual evidence. |
+| submission.mjs | Creator sections and file representations passed to the shared handoff planner. |
+| ../review-handoff.mjs | Bounded text serialization and stateless next-operation calculation from actual evidence. |
 | install.mjs | Explicitly approved, ordinary-name, create-only copy to the active user's home. |
 | run.mjs | Command/input validation and bounded JSON I/O. |
 
 Input/status contracts are documented in the bundled conditional references.
-Issue checks are advisory: a complete specification remains submittable when
-package construction or checking fails. Installation requires a stable input
+Issue checks are advisory: a specification with explicit unresolved intent remains
+submittable when package construction or checking fails. Installation requires a stable input
 identity and structurally usable package; adoption retains repository release
 validation. Neither copying nor a structural pass proves client invocation.
 
@@ -49,3 +50,9 @@ copied-package CLI runs, a temporary isolated personal home and injected local
 write failures. These are offline tests, not a Copilot conversation or a live
 GitHub submission. Windows/Linux Node 22/24 jobs are configured in CI; report the
 actual executed matrix separately.
+
+Shared intent guidance, record validation and multipart planning are maintained in
+`../intent-capture.md`, `../intent-record.mjs` and `../review-handoff.mjs`. Rebuild
+both creator and tweak packages after shared changes. Preparation now requires
+`intent` and `interview`; see the bundled intent guide. Missing records fail
+preparation, while an explicit history limitation remains valid intake.

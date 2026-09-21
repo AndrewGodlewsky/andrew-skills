@@ -6,11 +6,13 @@ to AndrewGodlewsky/andrew-skills, including when called from another checkout.
 Submission authority must describe this workflow's actual intent; a JSON flag is
 not consent. Use existing authority when it covers the content and destination.
 
-Prepare visibly separate Specification, Implementation attempt and Verification
-sections. Include the complete specification, every produced file intended for
-review, missing-file/build limitations and actual passed/failed/unrun evidence.
-No package is acceptable if explicitly explained; no detailed specification is
-not. The generated implementation must not become the only statement of intent.
+Prepare visibly separate Intent recap, Interview record, Specification,
+Implementation attempt and Verification sections. Include the specification,
+explicit unresolved intent, every produced file intended for review,
+missing-file/build limitations and actual passed/failed/unrun evidence.
+No package is acceptable if explicitly explained; a missing statement of intended
+behavior is not. Preserve uncertain behavior as uncertain rather than inventing
+requirements to fill the specification. Generated files cannot replace intent.
 
 Read [local tools](tools.md) before using the bundled `prepare` command to produce
 bounded issue/comment content. Its output is a local delivery plan, not a sent
@@ -18,8 +20,10 @@ issue. Inspect its summary/manifest before writing. The dependency receives the
 prepared content unchanged and the appropriate existing `new-skill` label when
 available. A label failure never causes content to be resubmitted.
 
-`prepare` accepts JSON with nonempty `title`, `specification`, `implementation`
-and `verification` strings, plus optional `packageDirectory`. The directory is
+`prepare` accepts JSON with nonempty `title`, `specification`, `implementation`,
+`verification` and `intent` strings, required `interview` as described in the
+[intent capture guide](intent-capture.md), plus optional `packageDirectory`.
+Omitted records and empty absence explanations fail preparation. The directory is
 read with the same bounds as checking; structural failures do not prevent copying
 its produced regular files into the handoff. Text uses UTF-8/LF; binary entries
 become required manual attachments. Limit: 32 comments. Oversized input returns
@@ -86,9 +90,9 @@ permitted tools, or report attachment verification unavailable. Never claim a
 local path or unreadable URL delivered the resource. Do not add an upload service,
 push a branch or omit required resources to make the plan fit.
 
-Report specification delivery, declared package delivery, check quality and label
-status separately. A complete specification with an accurately described failed
-build can be fully delivered. An advertised but undelivered attachment keeps the
+Report intent/interview delivery, specification delivery, declared package delivery,
+unresolved requirements, check quality and label status separately. A specification
+with explicit gaps and an accurately described failed build can be fully delivered. An advertised but undelivered attachment keeps the
 whole handoff partial. Offer personal installation only after all declared content
 and the final index are verified. Stop on the dependency's security result;
 retain its meanings for missing tools, unavailable dependencies and manual handoff.

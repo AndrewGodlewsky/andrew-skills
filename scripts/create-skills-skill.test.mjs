@@ -1,6 +1,5 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { readFileSync } from 'node:fs';
 import { posix, resolve } from 'node:path';
 import { readPackage, checkPackage } from './create-skills/package.mjs';
 
@@ -22,5 +21,4 @@ test('bundled Matt notice matches the pinned reviewed MIT source', () => {
   const pkg = readPackage(resolve('skills/create-skills'));
   const notice = checkPackage(pkg).manifest.find(x => x.path === 'assets/matt-pocock-license.txt');
   assert.equal(notice.sha256, '4981c5f6a90eb3a969dacabb9350f5a75695ff3910b39b6534952908dfdc5ff7');
-  assert.match(readFileSync('skills/create-skills/release.yaml', 'utf8'), /version: "1\.0\.0"/);
 });
