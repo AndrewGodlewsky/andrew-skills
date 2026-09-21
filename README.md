@@ -112,6 +112,7 @@ Start a fresh Copilot Chat and enter:
 | [Skills status](skills/skills-status/SKILL.md) | Show versions and release notes in one selected local GT installation | `/gt:skills-status` |
 | [Skills restore](skills/skills-restore/SKILL.md) | Browse exact historical releases and create an independent personal copy | `/gt:skills-restore` |
 | [Create issue](skills/create-issue/SKILL.md) | Submit caller-prepared GT proposals and feedback to this repository | Model-only dependency; no manual command |
+| [Create skills](skills/create-skills/SKILL.md) | Specify a new GT skill, attempt its package/checks, and submit it for review | `/gt:create-skills` |
 
 `grill-me` asks one question at a time, recommends an answer, and waits for shared
 understanding before implementing the plan. It is manual-only: invoke it explicitly.
@@ -127,6 +128,17 @@ separate content/label outcomes and recovery without replay. Model discovery,
 composition and authenticated writes in actual clients remain acceptance work
 in [#35](https://github.com/AndrewGodlewsky/andrew-skills/issues/35) and
 [#36](https://github.com/AndrewGodlewsky/andrew-skills/issues/36).
+
+`create-skills` starts with a detailed specification, then attempts a package and
+checks. It submits the specification, produced files and actual check results
+as separate parts of one issue through `create-issue`. Failed/unavailable checks
+do not block intake; maintainers independently validate before adoption. Long
+text uses indexed comments; essential binaries can use a manual ZIP attachment.
+After verified delivery it offers an ordinary-name personal copy, only on your
+explicit yes. You own that copy's future maintenance. This workflow creates new
+skills; changes to existing skills are outside its scope. Local tools need Node
+22+; actual Copilot acceptance is tracked in
+[#43](https://github.com/AndrewGodlewsky/andrew-skills/issues/43).
 
 ## Update
 
@@ -307,9 +319,17 @@ skills/
     release.yaml             Independent skill version and release note
     references/              Helper protocol and label meanings
     scripts/                 Five generated runtime modules
+  create-skills/
+    SKILL.md                 Specification-first authoring workflow
+    release.yaml             Independent skill version and release note
+    references/              Interview, writing, checks, delivery and installation
+    scripts/                 Generated local checking/preparation/installation tools
+    assets/                  Attribution/license notice
 exporter/                    Same fixed helper for checkout-based recovery
 scripts/issue-submission/    Maintained submission helper and development guide
 scripts/build-issue-submission.mjs  Deterministic bundle build / --check
+scripts/create-skills/       Maintained creator tools; no network client
+scripts/build-create-skills.mjs  Deterministic tools/rules bundle build / --check
 scripts/validate.mjs         Local and CI validation
 .github/workflows/validate.yml
 README.md
@@ -404,6 +424,8 @@ See [CONTRIBUTING.md](CONTRIBUTING.md). With Node.js 22 or newer installed:
 node scripts/validate.mjs
 node scripts/build-issue-submission.mjs --check
 node --test scripts/issue-submission*.test.mjs
+node scripts/build-create-skills.mjs --check
+node --test scripts/create-skills*.test.mjs
 node scripts/validate.mjs --base origin/main --current-main origin/main
 node --test scripts/release-validation.test.mjs scripts/release-snapshots.test.mjs scripts/skill-architecture.test.mjs scripts/release-catalog.test.mjs scripts/release-catalog-reader.test.mjs
 ```
@@ -428,6 +450,26 @@ establish eligibility for the conservative personal exporter. Do not relax
 exporter guards to make this submission skill exportable.
 
 ## Skill provenance
+
+`create-skills` adapts Matt Pocock's former `write-a-skill` process from commit
+`985d8fce764dae479e7b77b632429abe38891ee8` of `mattpocock/skills` and the
+`writing-for-agents` guidance/skill mechanics in his installed plugin 1.2.3.
+It includes an adapted interview, specification-first submission, GT-specific
+invocation/architecture rules and an optional personal copy. It omits obsolete
+line-count limits and upstream client-specific invocation claims. The
+[MIT notice](skills/create-skills/assets/matt-pocock-license.txt) travels with the
+adaptation. Exact reviewed source hashes are recorded in
+[the architecture notes](docs/planning/create-skills-architecture-notes.md#source-identity-recorded-for-adaptation).
+
+Maintain creator tools under `scripts/create-skills/`, shared package validation
+under `scripts/skill-package-validation.mjs`, and GT rules in CONTRIBUTING.md.
+Run `node scripts/build-create-skills.mjs` after changing these sources, and use
+`--check` for freshness verification. The generated package-rules excerpt uses
+declared unique anchors in the guide; adjust the generator deliberately if those
+sections move. Do not edit generated skill scripts or package-rules.md directly.
+The Windows/Linux Node 22/24 CI matrix runs offline creator tests; it does not
+prove model behavior or client invocation. See the
+[creator acceptance record](docs/research/create-skills-acceptance.md).
 
 `grill-me` was imported from Andrew's user-level skill on September 10, 2026.
 The original was an alias for `/grilling`. This version preserves the `grill-me`

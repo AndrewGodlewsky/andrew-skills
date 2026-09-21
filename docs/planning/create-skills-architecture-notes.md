@@ -1,7 +1,10 @@
 # Create Skills — implementation design notes
 
 Issue: [Plan Create Skills authoring and submission workflow](https://github.com/AndrewGodlewsky/andrew-skills/issues/38).
-Status: implementation design after owner review; no production implementation.
+Status: design after owner review, now implemented locally under issues 39–42.
+See [implementation evidence](../research/create-skills-acceptance.md) for exact
+coverage and outstanding client checks. The inspected pre-extraction boundary
+below records the rationale for the shared module.
 Confirmed scope follows the owner's [round 1 answers](create-skills-round-1.md):
 new skills only, implementation-ready handoff and optional personal installation
 after submission. [Round 2](create-skills-round-2.md) settles specification-first
@@ -37,8 +40,9 @@ Recommended extraction:
    22/24. Keep specification authoring useful without Node; package checks remain unrun
    when their runtime is unavailable.
 
-No code has been moved. Exact function/CLI names can be settled during the
-implementation handoff; they are not user-facing product choices.
+The implementation extracts `validateSkill` into
+`scripts/skill-package-validation.mjs`; the repository validator imports it.
+The bundled entry point supports `check`, `prepare`, `next` and `install`.
 
 ## What structural checking does and does not cover
 

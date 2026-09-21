@@ -1,7 +1,10 @@
 # Create Skills — workflow and implementation plan
 
 Status: decisions settled after the owner's round 2 answers, September 21, 2026.
-No production skill or validation behavior has changed.
+Implementation update: the local creator package and shared checks are now
+implemented under issues 39–42. Integration evidence and outstanding client checks
+are in the [acceptance record](../research/create-skills-acceptance.md); issue 43
+remains open. Changes are uncommitted and not yet published.
 
 Tracking: [issue 38](https://github.com/AndrewGodlewsky/andrew-skills/issues/38),
 assigned to Andrew. Original answers remain in [round 1](create-skills-round-1.md).
