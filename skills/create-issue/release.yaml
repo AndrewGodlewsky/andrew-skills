@@ -1,0 +1,2 @@
+version: "1.0.0"
+notes: "Submit caller-prepared GT issues and follow-ups through a fixed-repository helper with explicit outcome and recovery handling."

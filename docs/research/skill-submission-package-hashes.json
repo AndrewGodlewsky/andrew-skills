@@ -1,0 +1,56 @@
+{
+  "schemaVersion": 1,
+  "repository": "AndrewGodlewsky/andrew-skills",
+  "baseCommit": "a8eda1ac4f8c7179b516cb2588bd58adb09fc293",
+  "candidate": "uncommitted working tree",
+  "pluginVersion": "0.1.8",
+  "skillVersion": "1.0.0",
+  "identityScope": "Exact local bytes of every file under skills/create-issue; checkout line-ending conversion changes hashes.",
+  "files": [
+    {
+      "path": "references/helper.md",
+      "bytes": 9565,
+      "sha256": "de5cd3fca67fd79fed69b14b4f92813632aef0205f9afc2680fe8624ed43e7d9"
+    },
+    {
+      "path": "references/labels.md",
+      "bytes": 1208,
+      "sha256": "86990b9e7ac001dc2df641f4b51c8c15f45401508f2f175121c803b6188521da"
+    },
+    {
+      "path": "release.yaml",
+      "bytes": 153,
+      "sha256": "a569191b435d67df155986c533c1bc636c2693023c98bf63ad7f87c5c7b2667b"
+    },
+    {
+      "path": "scripts/api.mjs",
+      "bytes": 6793,
+      "sha256": "6e5f24463e5bd97b08deba0fbeb51510e8da70b9a10d84c9c177bf137c086c2c"
+    },
+    {
+      "path": "scripts/contract.mjs",
+      "bytes": 6587,
+      "sha256": "ae9df9e24a63cd3daf7b545818a6a66991d9a1cc320a6c6b786d633420661787"
+    },
+    {
+      "path": "scripts/run.mjs",
+      "bytes": 2688,
+      "sha256": "19c69230a8c2251203522fe7ef5a4dcc04a2bf695a8845917f6f13f69e80bdf7"
+    },
+    {
+      "path": "scripts/runtime.mjs",
+      "bytes": 8646,
+      "sha256": "a72bd1475f34ba5f734ae917c95b1ad3222698dc72c9b200504d1efd083b2da1"
+    },
+    {
+      "path": "scripts/service.mjs",
+      "bytes": 16024,
+      "sha256": "048a9b27bf64ad09b81ca693cc279416173210addd6c3fa9edfebb5a87bb07db"
+    },
+    {
+      "path": "SKILL.md",
+      "bytes": 5489,
+      "sha256": "3b161966c2f29474f34186219a0616896d877526d5067d1a60d6623a56d3d6e0"
+    }
+  ]
+}

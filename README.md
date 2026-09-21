@@ -111,9 +111,22 @@ Start a fresh Copilot Chat and enter:
 | [Skills update](skills/skills-update/SKILL.md) | Update the intended managed GT copy and report verified skill changes | `/gt:skills-update` |
 | [Skills status](skills/skills-status/SKILL.md) | Show versions and release notes in one selected local GT installation | `/gt:skills-status` |
 | [Skills restore](skills/skills-restore/SKILL.md) | Browse exact historical releases and create an independent personal copy | `/gt:skills-restore` |
+| [Create issue](skills/create-issue/SKILL.md) | Submit caller-prepared GT proposals and feedback to this repository | Model-only dependency; no manual command |
 
 `grill-me` asks one question at a time, recommends an answer, and waits for shared
 understanding before implementing the plan. It is manual-only: invoke it explicitly.
+
+`create-issue` is a shared dependency for calling workflows that already have
+the issue content and submission authorization. It preserves the caller's layout
+and always targets `AndrewGodlewsky/andrew-skills`, even from another workspace.
+It requires Node.js 22+, an already authenticated GitHub CLI 2.90.0+, and safe
+process/stdin access in the selected Windows or WSL environment. It does not
+install tools, sign in, or copy credentials. Configured proxy environments stop
+until proxy integration is reviewed. Read its bundled instructions for ownership,
+separate content/label outcomes and recovery without replay. Model discovery,
+composition and authenticated writes in actual clients remain acceptance work
+in [#35](https://github.com/AndrewGodlewsky/andrew-skills/issues/35) and
+[#36](https://github.com/AndrewGodlewsky/andrew-skills/issues/36).
 
 ## Update
 
@@ -289,7 +302,14 @@ skills/
     release.yaml             Independent skill version and release note
     references/operations.md Fixed helper calls and recovery procedure
     scripts/exporter/        Complete bundled exporter and direct guide
+  create-issue/
+    SKILL.md                 Model-only GT submission dependency
+    release.yaml             Independent skill version and release note
+    references/              Helper protocol and label meanings
+    scripts/                 Five generated runtime modules
 exporter/                    Same fixed helper for checkout-based recovery
+scripts/issue-submission/    Maintained submission helper and development guide
+scripts/build-issue-submission.mjs  Deterministic bundle build / --check
 scripts/validate.mjs         Local and CI validation
 .github/workflows/validate.yml
 README.md
@@ -382,6 +402,8 @@ See [CONTRIBUTING.md](CONTRIBUTING.md). With Node.js 22 or newer installed:
 
 ```sh
 node scripts/validate.mjs
+node scripts/build-issue-submission.mjs --check
+node --test scripts/issue-submission*.test.mjs
 node scripts/validate.mjs --base origin/main --current-main origin/main
 node --test scripts/release-validation.test.mjs scripts/release-snapshots.test.mjs scripts/skill-architecture.test.mjs scripts/release-catalog.test.mjs scripts/release-catalog-reader.test.mjs
 ```
@@ -395,6 +417,15 @@ candidates, stale-base checks and CI behavior.
 No package installation is needed for validation. Consumers do not need Node.js
 to run the `grill-me` skill. Installing and invoking the plugin in VS Code is the
 end-to-end acceptance check.
+
+Maintain submission runtime code under `scripts/issue-submission/`, then run
+`node scripts/build-issue-submission.mjs`; do not edit the generated skill copies.
+The issue-submission CI matrix runs its offline tests and bundle check on Windows
+and Linux with Node 22/24, without live credentials or writes. A local pass does
+not establish that pending remote jobs or Copilot client checks passed. The
+helper stays bound to GT when copied or renamed; relative resources alone do not
+establish eligibility for the conservative personal exporter. Do not relax
+exporter guards to make this submission skill exportable.
 
 ## Skill provenance
 
