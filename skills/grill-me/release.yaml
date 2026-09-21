@@ -1,2 +1,2 @@
-version: "1.0.1"
-notes: "Declare explicit user invocation while preserving the manual design interview."
+version: "1.1.0"
+notes: "Allow model invocation for calling workflows while retaining manual invocation and the existing interview instructions."

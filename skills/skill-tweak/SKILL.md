@@ -25,14 +25,15 @@ promise a fix, create a PR or schedule the maintainer's review.
    unrelated tasks or directories. Retrieve enough surrounding context to
    explain the incident. Preserve gaps and redactions rather than inventing
    inaccessible history.
-3. **Clarify the user's experience.** Establish the original task, circumstances,
-   observed behavior, expectation and what the user disliked. Reuse facts already
-   supplied; ask concise, grouped questions only for missing or contradictory
-   substantive incident facts. Preserve unclear desired behavior or conflicting
-   requirements for maintainer follow-up without making clarification a condition
-   of submission. A user may be dissatisfied without knowing the solution. Missing
-   telemetry does not block intake. If the core incident cannot be established,
-   keep a draft and identify the missing facts.
+3. **Interview through GT Grill Me.** Resolve and invoke the selected enabled
+   **GT grill-me** skill using the intent guide's handoff rules. Pass the original
+   task, incident evidence, expectations, impact, desired improvement, prior
+   answers and unresolved points. Let Grill Me conduct its existing interview
+   about both the problem and the proposed improvement. Resume only after the
+   user confirms that their idea has been captured, including any undecided
+   behavior for maintainer follow-up. A user need not know the solution. Missing
+   telemetry does not block intake. A missing interview dependency, pause,
+   unconfirmed understanding or unestablished core incident leaves a draft.
 4. **Prepare a complete issue.** Use the
    [issue template](templates/issue.md) when drafting. Separate observed behavior,
    user statements and possible causes; do not declare a skill defect proven by

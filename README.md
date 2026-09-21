@@ -117,7 +117,12 @@ Start a fresh Copilot Chat and enter:
 | [Skill tweak](skills/skill-tweak/SKILL.md) | Capture a GT skill incident and submit feedback after approval of the complete draft | `/gt:skill-tweak` |
 
 `grill-me` asks one question at a time, recommends an answer, and waits for shared
-understanding before implementing the plan. It is manual-only: invoke it explicitly.
+understanding before implementing the plan. Manual and model invocation are enabled.
+Create Skills and Skill Tweak invoke the selected GT Grill Me for their interviews,
+passing existing context and retaining its confirmed understanding. Its interview
+instructions are unchanged; a missing or disabled dependency leaves a draft.
+Caller integration and live-client acceptance are recorded in
+[#47](https://github.com/AndrewGodlewsky/andrew-skills/issues/47).
 
 `why-not` gives one read-only review of an idea, skill, design or returned agent
 work against the user's actual goal. It prefers a fresh sub-agent, with a labeled

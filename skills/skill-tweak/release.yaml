@@ -1,2 +1,2 @@
-version: "1.1.0"
-notes: "Preserve requester intent and interview evidence, with verified numbered comments for long feedback reports."
+version: "2.0.0"
+notes: "Require the selected GT Grill Me interview and user-confirmed understanding before resuming feedback intake, preserving intent and dependency failures."

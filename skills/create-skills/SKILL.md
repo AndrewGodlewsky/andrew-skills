@@ -13,11 +13,12 @@ request. An unrelated skill must not be submitted merely because GT is installed
 
 1. Read the [intent capture guide](references/intent-capture.md) at the start,
    then the [interview and specification guide](references/specification.md).
-   Reuse supplied context and inspect relevant available facts. Ask related
-   missing questions with recommendations, adapting the grouping to the user.
-   Record settled requirements and unresolved intent separately. Unclear desired
-   behavior can be submitted for maintainer follow-up without further clarification;
-   do not invent requirements. If they pause, preserve the unfinished work.
+   Resolve and invoke the selected enabled **GT grill-me** skill for the interview,
+   following the intent guide's handoff rules. Pass the initial idea, known facts,
+   previous answers and open specification topics. Let Grill Me conduct its
+   existing interview; resume only after the user confirms the captured idea.
+   Preserve explicit undecided requirements for maintainer follow-up. A missing
+   dependency, pause or unconfirmed understanding leaves a preserved draft.
 2. Write the detailed specification first. Review its consequential choices,
    intent recap and interview record with the user as the intent guide describes.
    Read the [writing guidance](references/writing.md) before

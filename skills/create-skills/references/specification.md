@@ -1,16 +1,18 @@
 # Interview toward a rebuildable specification
 
 Start from the user's actual task and examples. Look up facts in the selected
-available sources; ask the user for decisions. Give a recommendation with each
-meaningful choice. Group related questions when useful, or slow to one question
-when the user prefers. Reuse previous answers; do not require a prescribed number
-of rounds. For a complete request, proceed without an artificial interview.
+available sources and pass them, prior answers and the topics below to the
+selected GT grill-me dependency using the [intent guide](intent-capture.md).
+Grill Me owns the questions, recommendations, one-at-a-time pacing and confirmation
+of shared understanding. Complete initial context needs no redundant questions,
+but still needs that confirmation before the caller resumes.
 
 Write enough detail for these topics, using headings that fit the actual skill:
 
 - Intent: who uses it, the recurring problem, desired result and why existing GT
   capabilities do not meet the need. Check the available catalog, state overlap
   or catalog uncertainty, and avoid silently modifying an existing skill.
+  Catalog overlap is context for the maintainer, not a verdict on the idea's merit.
 - Invocation: when to start, required and optional input, what may be discovered,
   and how missing, contradictory or unreadable input is handled.
 - Behavior: ordered steps, consequential choices, exact useful outputs and
