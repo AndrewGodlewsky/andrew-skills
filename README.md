@@ -114,6 +114,7 @@ Start a fresh Copilot Chat and enter:
 | [Skills restore](skills/skills-restore/SKILL.md) | Browse exact historical releases and create an independent personal copy | `/gt:skills-restore` |
 | [Create issue](skills/create-issue/SKILL.md) | Submit caller-prepared GT proposals and feedback to this repository | Model-only dependency; no manual command |
 | [Create skills](skills/create-skills/SKILL.md) | Specify a new GT skill, attempt its package/checks, and submit it for review | `/gt:create-skills` |
+| [Skill tweak](skills/skill-tweak/SKILL.md) | Capture a GT skill incident and submit feedback after approval of the complete draft | `/gt:skill-tweak` |
 
 `grill-me` asks one question at a time, recommends an answer, and waits for shared
 understanding before implementing the plan. It is manual-only: invoke it explicitly.
@@ -148,6 +149,15 @@ explicit yes. You own that copy's future maintenance. This workflow creates new
 skills; changes to existing skills are outside its scope. Local tools need Node
 22+; actual Copilot acceptance is tracked in
 [#43](https://github.com/AndrewGodlewsky/andrew-skills/issues/43).
+
+`skill-tweak` collects relevant conversation evidence when a GT skill behaves
+unexpectedly or produces an unwanted result. It keeps incident-time diagnostics
+separate from current readings and records unavailable telemetry honestly.
+It previews the complete report and requires your approval before submission
+through `create-issue`. You can request a draft without publishing; an unavailable
+dependency also leaves a useful draft. It does not fix or rerun the affected skill.
+Client discovery and complete submission acceptance remain tracked in
+[#45](https://github.com/AndrewGodlewsky/andrew-skills/issues/45).
 
 ## Update
 
@@ -337,6 +347,11 @@ skills/
     references/              Interview, writing, checks, delivery and installation
     scripts/                 Generated local checking/preparation/installation tools
     assets/                  Attribution/license notice
+  skill-tweak/
+    SKILL.md                 GT incident intake and approved feedback submission
+    release.yaml             Independent skill version and release note
+    references/evidence.md   Diagnostic provenance and evidence collection
+    templates/issue.md       Complete outgoing issue draft layout
 exporter/                    Same fixed helper for checkout-based recovery
 scripts/issue-submission/    Maintained submission helper and development guide
 scripts/build-issue-submission.mjs  Deterministic bundle build / --check
@@ -462,6 +477,15 @@ establish eligibility for the conservative personal exporter. Do not relax
 exporter guards to make this submission skill exportable.
 
 ## Skill provenance
+
+`skill-tweak` contains original instructions proposed in
+[#45](https://github.com/AndrewGodlewsky/andrew-skills/issues/45) through the GT
+`create-skills` workflow. At review, the installed creator skill was 1.0.0 in
+GT plugin 0.1.10; the originating execution's artifact identity was not recovered.
+The package includes no copied upstream writing-guide text or helper code.
+It delegates submission to the enabled GT `create-issue` dependency. The issue
+records independent review, checks and the refinement to check submission
+readiness before asking for publication approval.
 
 `create-skills` adapts Matt Pocock's former `write-a-skill` process from commit
 `985d8fce764dae479e7b77b632429abe38891ee8` of `mattpocock/skills` and the
