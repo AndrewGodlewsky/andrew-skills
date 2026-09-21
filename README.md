@@ -108,6 +108,7 @@ Start a fresh Copilot Chat and enter:
 | Skill | Purpose | Command |
 | --- | --- | --- |
 | [Grill me](skills/grill-me/SKILL.md) | Sharpen a plan or design through an interview | `/gt:grill-me` |
+| [Why not](skills/why-not/SKILL.md) | Check intent drift and suggest simpler designs at a high level | `/gt:why-not` or model selection |
 | [Skills update](skills/skills-update/SKILL.md) | Update the intended managed GT copy and report verified skill changes | `/gt:skills-update` |
 | [Skills status](skills/skills-status/SKILL.md) | Show versions and release notes in one selected local GT installation | `/gt:skills-status` |
 | [Skills restore](skills/skills-restore/SKILL.md) | Browse exact historical releases and create an independent personal copy | `/gt:skills-restore` |
@@ -116,6 +117,14 @@ Start a fresh Copilot Chat and enter:
 
 `grill-me` asks one question at a time, recommends an answer, and waits for shared
 understanding before implementing the plan. It is manual-only: invoke it explicitly.
+
+`why-not` gives one read-only review of an idea, skill, design or returned agent
+work against the user's actual goal. It prefers a fresh sub-agent, with a labeled
+same-conversation fallback when sub-agents are unavailable. Expect up to three
+concrete simplification suggestions, or an explanation that the design is already
+appropriate. It preserves necessary complexity and leaves changes to the parent
+model. Both user invocation and model selection are enabled; this is not an
+automatic review hook. Supply the original goal and the proposal to review.
 
 `create-issue` is a shared dependency for calling workflows that already have
 the issue content and submission authorization. It preserves the caller's layout
@@ -301,6 +310,9 @@ install.ps1                  One-command setup from a downloaded checkout
 skills/
   grill-me/
     SKILL.md                 Self-contained interview skill
+    release.yaml             Independent skill version and release note
+  why-not/
+    SKILL.md                 High-level intent and simplicity reviewer
     release.yaml             Independent skill version and release note
   skills-update/
     SKILL.md                 On-demand CLI plugin update skill
