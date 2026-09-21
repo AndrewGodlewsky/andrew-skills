@@ -108,6 +108,9 @@ Start a fresh Copilot Chat and enter:
 | Skill | Purpose | Command |
 | --- | --- | --- |
 | [Grill me](skills/grill-me/SKILL.md) | Sharpen a plan or design through an interview | `/gt:grill-me` |
+| [Grill with docs](skills/grill-with-docs/SKILL.md) | Interview about a plan while recording agreed terms and selected architectural decisions | `/gt:grill-with-docs` |
+| [Grilling](skills/grilling/SKILL.md) | Explore a design in rounds of questions whose prerequisites are settled | `/gt:grilling` or model selection |
+| [Domain modeling](skills/domain-modeling/SKILL.md) | Refine domain vocabulary and write glossary entries and qualifying ADRs | `/gt:domain-modeling` or model selection |
 | [Why not](skills/why-not/SKILL.md) | Check intent drift and suggest simpler designs at a high level | `/gt:why-not` or model selection |
 | [Skills update](skills/skills-update/SKILL.md) | Update the intended managed GT copy and report verified skill changes | `/gt:skills-update` |
 | [Skills status](skills/skills-status/SKILL.md) | Show versions and release notes in one selected local GT installation | `/gt:skills-status` |
@@ -123,6 +126,17 @@ passing existing context and retaining its confirmed understanding. Its intervie
 instructions are unchanged; a missing or disabled dependency leaves a draft.
 Caller integration and live-client acceptance are recorded in
 [#47](https://github.com/AndrewGodlewsky/andrew-skills/issues/47).
+
+`grill-with-docs` invokes the enabled GT `grilling` and `domain-modeling` skills
+from the same installation. All three are included in this plugin. It uses
+upstream-style rounds of independent questions, captures agreed terms in
+`CONTEXT.md` during the interview, and offers ADRs for consequential tradeoffs.
+Existing repository documentation locations take precedence over the default
+`docs/adr/`. Supply a plan or domain-documentation goal and the target repository.
+Missing dependencies stop the composed workflow; unavailable file access leaves
+proposed text. The existing `grill-me` keeps its one-question-at-a-time behavior.
+These additions are prepared for plugin 0.1.14; live-client checks remain pending
+in [#48](https://github.com/AndrewGodlewsky/andrew-skills/issues/48).
 
 `why-not` gives one read-only review of an idea, skill, design or returned agent
 work against the user's actual goal. It prefers a fresh sub-agent, with a labeled
@@ -490,6 +504,21 @@ establish eligibility for the conservative personal exporter. Do not relax
 exporter guards to make this submission skill exportable.
 
 ## Skill provenance
+
+`grill-with-docs`, `grilling` and `domain-modeling` adapt the corresponding skills
+and the two domain document formats from Matt Pocock's
+[`mattpocock/skills` at c55ee460](https://github.com/mattpocock/skills/tree/c55ee46073ed923f86ce59a5eb3b6d895095d1b7).
+The wrapper resolves both enabled GT dependencies instead of requiring a
+client-specific Skill tool. Adaptations add GT headers and release metadata,
+missing-input/access handling, repository documentation conventions, cancellation
+boundaries, user-selected question pacing, and local fact-finding when delegation
+is unavailable. The two dependencies permit model invocation so the wrapper can
+compose them; the wrapper remains manual-only. Each package includes Matt's
+2026 MIT notice: [wrapper](skills/grill-with-docs/assets/matt-pocock-license.txt),
+[interview](skills/grilling/assets/matt-pocock-license.txt), and
+[domain modeling](skills/domain-modeling/assets/matt-pocock-license.txt).
+The request, invocation rationale, expected behavior and actual validation are
+tracked in [#48](https://github.com/AndrewGodlewsky/andrew-skills/issues/48).
 
 `skill-tweak` contains original instructions proposed in
 [#45](https://github.com/AndrewGodlewsky/andrew-skills/issues/45) through the GT

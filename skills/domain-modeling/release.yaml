@@ -1,0 +1,2 @@
+version: "1.0.0"
+notes: "Refine domain language, record agreed glossary terms during discussion, and capture consequential tradeoffs as ADRs."
