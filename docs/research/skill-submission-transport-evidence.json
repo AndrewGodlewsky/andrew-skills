@@ -1,0 +1,60 @@
+{
+  "observed_at_utc": "2026-09-21T00:59:27.3349519Z",
+  "issue": "https://github.com/AndrewGodlewsky/andrew-skills/issues/27",
+  "scope": "Read-only CLI checks. No helper, Copilot MCP, WSL, token retrieval or submission test.",
+  "checks": [
+    {
+      "exit_code": 0,
+      "name": "version",
+      "arguments": [
+        "--version"
+      ],
+      "executable": "gh",
+      "stdout": "gh version 2.90.0 (2026-04-16)\nhttps://github.com/cli/cli/releases/tag/v2.90.0"
+    },
+    {
+      "exit_code": 0,
+      "name": "identity",
+      "arguments": [
+        "api",
+        "--hostname",
+        "github.com",
+        "user",
+        "--jq",
+        "{login,id}"
+      ],
+      "executable": "gh",
+      "stdout": "{\"id\":59547542,\"login\":\"AndrewGodlewsky\"}"
+    },
+    {
+      "exit_code": 0,
+      "name": "repository",
+      "arguments": [
+        "api",
+        "--hostname",
+        "github.com",
+        "repos/AndrewGodlewsky/andrew-skills",
+        "--jq",
+        "{id,full_name,html_url,has_issues,archived,visibility}"
+      ],
+      "executable": "gh",
+      "stdout": "{\"archived\":false,\"full_name\":\"AndrewGodlewsky/andrew-skills\",\"has_issues\":true,\"html_url\":\"https://github.com/AndrewGodlewsky/andrew-skills\",\"id\":1364861754,\"visibility\":\"public\"}"
+    },
+    {
+      "exit_code": 0,
+      "name": "issue_readback",
+      "arguments": [
+        "api",
+        "--hostname",
+        "github.com",
+        "repos/AndrewGodlewsky/andrew-skills/issues/27",
+        "--jq",
+        "{number,title,repository_url,html_url,is_pull_request:has(\"pull_request\")}"
+      ],
+      "executable": "gh",
+      "stdout": "{\"html_url\":\"https://github.com/AndrewGodlewsky/andrew-skills/issues/27\",\"is_pull_request\":false,\"number\":27,\"repository_url\":\"https://api.github.com/repos/AndrewGodlewsky/andrew-skills\",\"title\":\"Compare GitHub issue creation paths in VS Code and WSL\"}"
+    }
+  ],
+  "cwd": "A:\\Claude\\andrew-skills",
+  "environment": "Windows PowerShell in Codex"
+}

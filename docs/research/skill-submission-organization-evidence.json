@@ -1,0 +1,97 @@
+{
+  "issue": "https://github.com/AndrewGodlewsky/andrew-skills/issues/32",
+  "scope": "Read-only owner-account CLI observations in Windows Codex. No ordinary-user simulation, submission, metadata test write, token retrieval or WSL test.",
+  "checks": [
+    {
+      "name": "version",
+      "exit_code": 0,
+      "executable": "gh",
+      "stdout": "gh version 2.90.0 (2026-04-16)\nhttps://github.com/cli/cli/releases/tag/v2.90.0",
+      "arguments": [
+        "--version"
+      ]
+    },
+    {
+      "name": "identity",
+      "exit_code": 0,
+      "executable": "gh",
+      "stdout": "{\"id\":59547542,\"login\":\"AndrewGodlewsky\"}",
+      "arguments": [
+        "api",
+        "--hostname",
+        "github.com",
+        "user",
+        "--jq",
+        "{login,id}"
+      ]
+    },
+    {
+      "name": "repository",
+      "exit_code": 0,
+      "executable": "gh",
+      "stdout": "{\"archived\":false,\"full_name\":\"AndrewGodlewsky/andrew-skills\",\"has_issues\":true,\"id\":1364861754,\"owner_type\":\"User\",\"permissions\":{\"admin\":true,\"maintain\":true,\"pull\":true,\"push\":true,\"triage\":true}}",
+      "arguments": [
+        "api",
+        "--hostname",
+        "github.com",
+        "repos/AndrewGodlewsky/andrew-skills",
+        "--jq",
+        "{id,full_name,owner_type:.owner.type,has_issues,archived,permissions}"
+      ]
+    },
+    {
+      "name": "labels",
+      "exit_code": 0,
+      "executable": "gh",
+      "stdout": "[{\"archived_at\":null,\"description\":\"Barrier affecting people with disabilities\",\"id\":12140957068,\"name\":\"accessibility\"},{\"archived_at\":null,\"description\":\"Something isn't working\",\"id\":12140957052,\"name\":\"bug\"},{\"archived_at\":null,\"description\":\"Improvements or additions to documentation\",\"id\":12140957092,\"name\":\"documentation\"},{\"archived_at\":null,\"description\":\"This issue or pull request already exists\",\"id\":12140957111,\"name\":\"duplicate\"},{\"archived_at\":null,\"description\":\"New feature or request\",\"id\":12140957134,\"name\":\"enhancement\"},{\"archived_at\":null,\"description\":\"Good for newcomers\",\"id\":12140957176,\"name\":\"good first issue\"},{\"archived_at\":null,\"description\":\"Extra attention is needed\",\"id\":12140957158,\"name\":\"help wanted\"},{\"archived_at\":null,\"description\":\"This doesn't seem right\",\"id\":12140957197,\"name\":\"invalid\"},{\"archived_at\":null,\"description\":\"Further information is requested\",\"id\":12140957219,\"name\":\"question\"},{\"archived_at\":null,\"description\":\"Decision requiring discussion with the owner\",\"id\":12198793278,\"name\":\"wayfinder:grilling\"},{\"archived_at\":null,\"description\":\"Wayfinder planning map and decision index\",\"id\":12198793232,\"name\":\"wayfinder:map\"},{\"archived_at\":null,\"description\":\"Concrete interaction or design for owner feedback\",\"id\":12198793301,\"name\":\"wayfinder:prototype\"},{\"archived_at\":null,\"description\":\"Independent investigation of external evidence\",\"id\":12198793262,\"name\":\"wayfinder:research\"},{\"archived_at\":null,\"description\":\"This will not be worked on\",\"id\":12140957247,\"name\":\"wontfix\"}]",
+      "arguments": [
+        "api",
+        "--hostname",
+        "github.com",
+        "repos/AndrewGodlewsky/andrew-skills/labels?per_page=100",
+        "--jq",
+        "[.[] | {id,name,description,archived_at}]"
+      ]
+    },
+    {
+      "name": "parent",
+      "exit_code": 0,
+      "executable": "gh",
+      "stdout": "{\"html_url\":\"https://github.com/AndrewGodlewsky/andrew-skills/issues/25\",\"id\":5521500244,\"number\":25,\"repository_url\":\"https://api.github.com/repos/AndrewGodlewsky/andrew-skills\"}",
+      "arguments": [
+        "api",
+        "--hostname",
+        "github.com",
+        "repos/AndrewGodlewsky/andrew-skills/issues/32/parent",
+        "--jq",
+        "{id,number,html_url,repository_url}"
+      ]
+    },
+    {
+      "name": "blockers",
+      "exit_code": 0,
+      "executable": "gh",
+      "stdout": "[{\"id\":5521500519,\"number\":27,\"repository_url\":\"https://api.github.com/repos/AndrewGodlewsky/andrew-skills\",\"state\":\"closed\"},{\"id\":5521500602,\"number\":28,\"repository_url\":\"https://api.github.com/repos/AndrewGodlewsky/andrew-skills\",\"state\":\"closed\"},{\"id\":5521650350,\"number\":32,\"repository_url\":\"https://api.github.com/repos/AndrewGodlewsky/andrew-skills\",\"state\":\"open\"}]",
+      "arguments": [
+        "api",
+        "--hostname",
+        "github.com",
+        "repos/AndrewGodlewsky/andrew-skills/issues/29/dependencies/blocked_by",
+        "--jq",
+        "[.[] | {id,number,state,repository_url}]"
+      ]
+    },
+    {
+      "name": "create_help",
+      "exit_code": 0,
+      "executable": "gh",
+      "stdout": "Create an issue on GitHub.\n\nAdding an issue to projects requires authorization with the `project` scope.\nTo authorize, run `gh auth refresh -s project`.\n\nThe `--assignee` flag supports the following special values:\n- `@me`: assign yourself\n- `@copilot`: assign Copilot (not supported on GitHub Enterprise Server)\n\n\nUSAGE\n  gh issue create [flags]\n\nALIASES\n  gh issue new\n\nFLAGS\n  -a, --assignee login   Assign people by their login. Use \"@me\" to self-assign.\n  -b, --body string      Supply a body. Will prompt for one otherwise.\n  -F, --body-file file   Read body text from file (use \"-\" to read from standard input)\n  -e, --editor           Skip prompts and open the text editor to write the title and body in. The first line is the title and the remaining text is the body.\n  -l, --label name       Add labels by name\n  -m, --milestone name   Add the issue to a milestone by name\n  -p, --project title    Add the issue to projects by title\n      --recover string   Recover input from a failed run of create\n  -T, --template name    Template name to use as starting body text\n  -t, --title string     Supply a title. Will prompt for one otherwise.\n  -w, --web              Open the browser to create an issue\n\nINHERITED FLAGS\n      --help                     Show help for command\n  -R, --repo [HOST/]OWNER/REPO   Select another repository using the [HOST/]OWNER/REPO format\n\nEXAMPLES\n  $ gh issue create --title \"I found a bug\" --body \"Nothing works\"\n  $ gh issue create --label \"bug,help wanted\"\n  $ gh issue create --label bug --label \"help wanted\"\n  $ gh issue create --assignee monalisa,hubot\n  $ gh issue create --assignee \"@me\"\n  $ gh issue create --assignee \"@copilot\"\n  $ gh issue create --project \"Roadmap\"\n  $ gh issue create --template \"Bug Report\"\n\nLEARN MORE\n  Use `gh <command> <subcommand> --help` for more information about a command.\n  Read the manual at https://cli.github.com/manual\n  Learn about exit codes using `gh help exit-codes`\n  Learn about accessibility experiences using `gh help accessibility`\n",
+      "arguments": [
+        "issue",
+        "create",
+        "--help"
+      ]
+    }
+  ],
+  "observed_at_utc": "2026-09-21T01:39:56.2123722Z"
+}

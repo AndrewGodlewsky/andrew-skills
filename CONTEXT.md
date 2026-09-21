@@ -55,3 +55,18 @@ A previously removed skill reintroduced under the same name, starting again at `
 **Skill submission**:
 A user's proposed skill idea, completed draft or variation, change request, or feedback about confusing skill behavior, offered for maintainer consideration. A submission is not yet an accepted part of the GT collection.
 
+**Submission caller**:
+A skill that supplies the title and body of an issue for the GT repository, including its content and structure. Its work may concern proposals, feedback, planning or other work for this repository. The shared submission skill does not take over that content creation.
+
+**Calling agent**:
+The agent carrying out the submitting workflow. It receives missing-input guidance and submission results from the shared capability and decides when the workflow needs human input.
+
+**Own-authored issue**:
+An issue submitted by the currently authenticated GitHub user. Assignment, repository ownership or permission to edit someone else's issue does not make it own-authored.
+
+**Submission skill**:
+The shared GT capability that creates caller-authored issues exclusively in AndrewGodlewsky/andrew-skills, supports authorized follow-up comments, and applies agreed title/body edits and labels only to own-authored issues. Native relationships are deferred. It uses existing workflow authorization, asks when authorization is missing, and does not impose a body template, submit unrelated work or act as a general repository issue manager.
+
+**Issue organization**:
+Repository metadata and relationships used to organize issues, such as labels, project membership, parent/child relationships and blocking dependencies. This is separate from the caller-authored issue title and body.
+

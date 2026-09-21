@@ -1,0 +1,16 @@
+{
+  "issue": "https://github.com/AndrewGodlewsky/andrew-skills/issues/26",
+  "scope": "CLI help output only; no automatic selection, composition or issue-write test",
+  "observed": {
+    "at": "2026-09-21T00:48:57.549Z",
+    "kind": "cli",
+    "exe": "C:/Users/godle/AppData/Local/Temp/andrew-skills-compatibility-20260914/runtime/copilot.exe",
+    "args": [
+      "skill",
+      "--help"
+    ],
+    "status": 0,
+    "stdout": "Usage: copilot skill [options] [command]\n\nManage skills available to Copilot.\n\nSkills are reusable instructions (SKILL.md files) that extend Copilot with\nspecialized capabilities. They are discovered from several sources:\n  Project   .github/skills/, .agents/skills/, or .claude/skills/\n  Personal  ~/.copilot/skills/ or ~/.agents/skills/\n  Plugin    Installed plugins that bundle skills\n  Custom    Directories added with `copilot skill add <directory>`\n\nUse `copilot skill add` to add a skill from a file, URL, or directory.\n\nOptions:\n  -h, --help                            display help for command\n\nCommands:\n  add [options] <source>                Add a skill from a file, URL, or\n                                        directory\n  list [options]                        List available skills\n  remove [options] <name-or-directory>  Remove a skill or custom skill directory\n",
+    "stderr": ""
+  }
+}
