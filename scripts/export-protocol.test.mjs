@@ -1,5 +1,5 @@
 import assert from 'node:assert/strict';
-import { mkdtempSync, rmSync } from 'node:fs';
+import { mkdtempSync, realpathSync, rmSync } from 'node:fs';
 import { tmpdir, release } from 'node:os';
 import { dirname, join, resolve } from 'node:path';
 import test from 'node:test';
@@ -17,7 +17,7 @@ test('list and plan bind a preserved published source in a private cache; altere
   const record = listed.catalog.records.find(record => record.skill === 'grill-me');
   const planned = makePlan({ target, cache: listed.cache, skill: record.skill, commit: record.sourceCommit });
   assert.equal(planned.source.sourceTree, record.sourceTree);
-  assert.equal(planned.destination, join(home, '.copilot/skills/grill-me-v1-0-0'));
+  assert.equal(planned.destination, join(realpathSync.native(home), '.copilot/skills/grill-me-v1-0-0'));
   assert.throws(() => executePlan({ target, plan: { ...planned, destination: join(home, 'elsewhere') }, portabilityReviewed: true }), /plan differs/);
   const offline = acquireCatalog({ target, offlineCache: listed.cache });
   assert.equal(offline.catalog.headCommit, listed.catalog.headCommit);

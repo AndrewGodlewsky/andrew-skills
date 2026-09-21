@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import { fork } from 'node:child_process';
-import { mkdtempSync, mkdirSync, readFileSync, readdirSync, renameSync, rmSync, existsSync, writeFileSync, symlinkSync } from 'node:fs';
+import { mkdtempSync, mkdirSync, readFileSync, readdirSync, realpathSync, renameSync, rmSync, existsSync, writeFileSync, symlinkSync } from 'node:fs';
 import { tmpdir, release } from 'node:os';
 import { dirname, join, resolve } from 'node:path';
 import { test as nodeTest } from 'node:test';
@@ -33,7 +33,7 @@ function fixture(t) {
 
 test('export creates a complete personal copy by publishing its root instructions last', t => {
   const input = fixture(t);
-  const destination = join(input.target.home, '.copilot/skills/example-v1-0-0');
+  const destination = join(realpathSync.native(input.target.home), '.copilot/skills/example-v1-0-0');
   const stages = [];
   const result = createCopy({ ...input, onProgress(stage) {
     stages.push(stage);

@@ -1,0 +1,146 @@
+{
+  "schemaVersion": 1,
+  "candidateCommit": "5466ab67f3818a3772222e2633963aa8e2784de7",
+  "observedAt": "2026-09-21T03:52:30.891Z",
+  "environment": "Windows, Codex-controlled structured child process; not VS Code Copilot",
+  "helper": "A:\\Claude\\andrew-skills\\skills\\create-issue\\scripts\\run.mjs",
+  "executionDirectory": "C:\\Users\\godle\\AppData\\Local\\Temp\\gt-issue-35-helper-5466ab6",
+  "actor": {
+    "id": 59547542,
+    "login": "AndrewGodlewsky",
+    "capabilityEvidence": "Repository owner only"
+  },
+  "repository": "AndrewGodlewsky/andrew-skills",
+  "issue": 37,
+  "issueUrl": "https://github.com/AndrewGodlewsky/andrew-skills/issues/37",
+  "commentUrl": "https://github.com/AndrewGodlewsky/andrew-skills/issues/37#issuecomment-5755135966",
+  "requests": {
+    "create": {
+      "version": 1,
+      "operation": "create",
+      "actorId": 59547542,
+      "scope": "gt",
+      "authorized": true,
+      "title": "Windows helper acceptance: create-issue v1.0.0 (issue #35)",
+      "body": "## Controlled acceptance sample\n\nThis is a benign live helper test for #35, not a new product request or a claim that Copilot behavior has passed. Andrew authorized progressing the Windows and WSL acceptance tasks.\n\nActual context: the published candidate is `5466ab67f3818a3772222e2633963aa8e2784de7` (GT 0.1.8, create-issue 1.0.0). Codex is launching the packaged Windows helper with structured arguments and UTF-8 stdin, from a temporary directory outside the repository. The selected actor was verified as AndrewGodlewsky. No VS Code model invocation is represented by this test.\n\n### Content preservation\n\n- Markdown **bold** and an ordinary link to [the Windows acceptance task](https://github.com/AndrewGodlewsky/andrew-skills/issues/35).\n- Unicode sample: café — 中文 — 🚀.\n- Caller-controlled layout, blank lines, and literal code below.\n\n```json\n{\"example\": \"keep this text unchanged\", \"count\": 3}\n```\n\nExpected observation: this exact caller-supplied title and body are created only in AndrewGodlewsky/andrew-skills, read back, and reported separately from labels. Follow-up checks will add one informational comment, replace only this test issue's title/body explicitly, and add an existing label.\n",
+      "labels": [
+        "question"
+      ]
+    },
+    "comment": {
+      "version": 1,
+      "operation": "comment",
+      "actorId": 59547542,
+      "scope": "gt",
+      "authorized": true,
+      "issue": 37,
+      "intent": "informational",
+      "body": "Controlled informational follow-up for #35. The actual helper created and verified this acceptance issue and its question label. This comment checks the own-issue comment path and exact UTF-8 content: café — 中文 — 🚀.\n\n```text\nNo model invocation is claimed.\n```\n"
+    },
+    "replace": {
+      "version": 1,
+      "actorId": 59547542,
+      "scope": "gt",
+      "authorized": true,
+      "issue": 37,
+      "operation": "replace",
+      "base": {
+        "title": "Windows helper acceptance: create-issue v1.0.0 (issue #35)",
+        "body": "## Controlled acceptance sample\n\nThis is a benign live helper test for #35, not a new product request or a claim that Copilot behavior has passed. Andrew authorized progressing the Windows and WSL acceptance tasks.\n\nActual context: the published candidate is `5466ab67f3818a3772222e2633963aa8e2784de7` (GT 0.1.8, create-issue 1.0.0). Codex is launching the packaged Windows helper with structured arguments and UTF-8 stdin, from a temporary directory outside the repository. The selected actor was verified as AndrewGodlewsky. No VS Code model invocation is represented by this test.\n\n### Content preservation\n\n- Markdown **bold** and an ordinary link to [the Windows acceptance task](https://github.com/AndrewGodlewsky/andrew-skills/issues/35).\n- Unicode sample: café — 中文 — 🚀.\n- Caller-controlled layout, blank lines, and literal code below.\n\n```json\n{\"example\": \"keep this text unchanged\", \"count\": 3}\n```\n\nExpected observation: this exact caller-supplied title and body are created only in AndrewGodlewsky/andrew-skills, read back, and reported separately from labels. Follow-up checks will add one informational comment, replace only this test issue's title/body explicitly, and add an existing label.\n"
+      },
+      "changes": {
+        "title": "Windows helper acceptance: create-issue v1.0.0 (issue #35) — verified helper round",
+        "body": "## Controlled acceptance sample\n\nThis is a benign live helper test for #35, not a new product request or a claim that Copilot behavior has passed. Andrew authorized progressing the Windows and WSL acceptance tasks.\n\nActual context: the published candidate is `5466ab67f3818a3772222e2633963aa8e2784de7` (GT 0.1.8, create-issue 1.0.0). Codex is launching the packaged Windows helper with structured arguments and UTF-8 stdin, from a temporary directory outside the repository. The selected actor was verified as AndrewGodlewsky. No VS Code model invocation is represented by this test.\n\n### Content preservation\n\n- Markdown **bold** and an ordinary link to [the Windows acceptance task](https://github.com/AndrewGodlewsky/andrew-skills/issues/35).\n- Unicode sample: café — 中文 — 🚀.\n- Caller-controlled layout, blank lines, and literal code below.\n\n```json\n{\"example\": \"keep this text unchanged\", \"count\": 3}\n```\n\nExpected observation: this exact caller-supplied title and body are created only in AndrewGodlewsky/andrew-skills, read back, and reported separately from labels. Follow-up checks will add one informational comment, replace only this test issue's title/body explicitly, and add an existing label.\n\n### Explicit own-issue edit\n\nThis paragraph is the caller-prepared replacement check. All prior sample text is retained. Helper-level Windows evidence only; Copilot client behavior remains pending.\n"
+      }
+    },
+    "labels": {
+      "version": 1,
+      "actorId": 59547542,
+      "scope": "gt",
+      "authorized": true,
+      "issue": 37,
+      "operation": "labels",
+      "labels": [
+        "documentation"
+      ]
+    },
+    "reconciliation": {
+      "version": 1,
+      "operation": "comment",
+      "actorId": 59547542,
+      "scope": "gt",
+      "authorized": true,
+      "issue": 37,
+      "intent": "informational",
+      "body": "Controlled informational follow-up for #35. The actual helper created and verified this acceptance issue and its question label. This comment checks the own-issue comment path and exact UTF-8 content: café — 中文 — 🚀.\n\n```text\nNo model invocation is claimed.\n```\n",
+      "previous": {
+        "operation": "comment",
+        "status": "verified",
+        "issue": 37,
+        "comment": 5755135966
+      }
+    }
+  },
+  "observedHelperResults": [
+    {
+      "operation": "read",
+      "status": "verified",
+      "exitCode": 0
+    },
+    {
+      "operation": "create",
+      "status": "verified",
+      "issue": 37,
+      "labels": "question verified separately",
+      "exitCode": 0
+    },
+    {
+      "operation": "comment",
+      "status": "verified",
+      "comment": 5755135966,
+      "exitCode": 0
+    },
+    {
+      "operation": "read",
+      "status": "verified",
+      "detail": "Fresh explicit replacement base matched original caller title/body",
+      "exitCode": 0
+    },
+    {
+      "operation": "replace",
+      "status": "verified",
+      "exitCode": 0
+    },
+    {
+      "operation": "labels",
+      "status": "verified",
+      "detail": "documentation added; question preserved",
+      "exitCode": 0
+    },
+    {
+      "operation": "reconcile",
+      "status": "present",
+      "aggregateStatus": "verified",
+      "detail": "Read-only; attribution remains unproven; no replay",
+      "exitCode": 0
+    }
+  ],
+  "independentReadback": {
+    "title": "Windows helper acceptance: create-issue v1.0.0 (issue #35) — verified helper round",
+    "body": "## Controlled acceptance sample\n\nThis is a benign live helper test for #35, not a new product request or a claim that Copilot behavior has passed. Andrew authorized progressing the Windows and WSL acceptance tasks.\n\nActual context: the published candidate is `5466ab67f3818a3772222e2633963aa8e2784de7` (GT 0.1.8, create-issue 1.0.0). Codex is launching the packaged Windows helper with structured arguments and UTF-8 stdin, from a temporary directory outside the repository. The selected actor was verified as AndrewGodlewsky. No VS Code model invocation is represented by this test.\n\n### Content preservation\n\n- Markdown **bold** and an ordinary link to [the Windows acceptance task](https://github.com/AndrewGodlewsky/andrew-skills/issues/35).\n- Unicode sample: café — 中文 — 🚀.\n- Caller-controlled layout, blank lines, and literal code below.\n\n```json\n{\"example\": \"keep this text unchanged\", \"count\": 3}\n```\n\nExpected observation: this exact caller-supplied title and body are created only in AndrewGodlewsky/andrew-skills, read back, and reported separately from labels. Follow-up checks will add one informational comment, replace only this test issue's title/body explicitly, and add an existing label.\n\n### Explicit own-issue edit\n\nThis paragraph is the caller-prepared replacement check. All prior sample text is retained. Helper-level Windows evidence only; Copilot client behavior remains pending.\n",
+    "labels": [
+      "documentation",
+      "question"
+    ],
+    "commentCount": 1,
+    "commentBody": "Controlled informational follow-up for #35. The actual helper created and verified this acceptance issue and its question label. This comment checks the own-issue comment path and exact UTF-8 content: café — 中文 — 🚀.\n\n```text\nNo model invocation is claimed.\n```\n",
+    "assertions": "All passed, including exact strings and one comment after reconciliation"
+  },
+  "limitations": [
+    "No Copilot model invocation or resource-loading observation",
+    "No WSL execution",
+    "No ordinary-submitter identity or live cross-author target",
+    "Fault/security/missing-tool cases are offline fixtures only"
+  ],
+  "cleanup": "Issue was open at independent readback, then closed as completed through separate authorized maintainer cleanup. Body and comment were preserved; closure is not a helper operation."
+}
