@@ -1,7 +1,7 @@
 # GT Help implementation checks
 
-Canonical change/evidence record: [implementation issue #69](https://github.com/AndrewGodlewsky/andrew-skills/issues/69).
-Deferred client acceptance: [owner pilot #17](https://github.com/AndrewGodlewsky/andrew-skills/issues/17).
+Canonical change/evidence record: [implementation result in #69](https://github.com/AndrewGodlewsky/andrew-skills/issues/69#issuecomment-5771541571).
+Deferred client acceptance: [candidate-specific owner pilot record](https://github.com/AndrewGodlewsky/andrew-skills/issues/17#issuecomment-5771513680).
 
 ## Candidate and scope
 
@@ -13,6 +13,8 @@ Help is `1.0.0`; root and marketplace plugin versions are `0.1.18`.
 The working Help source matches that candidate. SHA-256 of `skills/help/SKILL.md`:
 `c99307893972cd05a5fbe9b257b9072468e3e6acd499e20b47951c6b6438478e`.
 The assistant made no commits, pushes, PRs or client-setting changes.
+The owner's later `388cf73` commit included the evaluation records while testing
+finished. The final report/link updates remain uncommitted at handoff.
 
 Help is an authored, situation-based guide with both manual-only header flags
 true. It can explain the collection and selectively read same-installation
@@ -93,7 +95,7 @@ used the standing read-only Git sandbox exception.
 | `node scripts/validate.mjs --base 1a39c407579c0977f60079dd8b7b874ae4ea6935 --candidate 763ad823f174fc229824bbf2e158ebb0f8057f43` | Passed published transition: Help added, no existing skill changed, plugin 0.1.18; 24 prior release records. |
 | `node scripts/validate.mjs --base 763ad823f174fc229824bbf2e158ebb0f8057f43 --current-main 763ad823f174fc229824bbf2e158ebb0f8057f43` | Passed working comparison against independently verified main; no additional runtime changes; 25 release records. |
 | `node scripts/build-exporter.mjs --check` | Passed: bundle matches maintained sources. |
-| `node --test scripts/export-*.test.mjs` | In progress; result must be recorded before completion. |
+| `node --test scripts/export-*.test.mjs` | 15 passed, 0 failed, 0 skipped; includes checkout and standalone Restore deliveries, interruption and create-only filesystem cases. |
 | `node scripts/build-skill-map.mjs --check` | Passed concurrent map candidate: `4f1e007fb145bb4b`, 18 skills. |
 | `git diff --check` | Passed; a line-ending normalization warning concerned concurrent map documentation. |
 

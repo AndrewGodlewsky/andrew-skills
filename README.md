@@ -10,6 +10,11 @@ and production viewer are implemented, with deterministic
 [saved output](docs/skill-map/map.md), read-only freshness validation and
 [maintainer authoring integration](CONTRIBUTING.md#maintain-the-dependency-map).
 
+[![Skill dependency overview showing actual and conditional links, with Grill Me highlighted](docs/skill-map/overview.svg)](docs/skill-map/map.md)
+
+*Visual snapshot, September 22, 2026. Click the image for the full dependency map;
+use the [interactive viewer](docs/skill-map.md) for current working files.*
+
 ## Install
 
 For the usual setup, install the hub **once per user environment**, choosing
