@@ -27,7 +27,8 @@ jobs:
           node-version: ${{ matrix.node }}
       - run: node scripts/build-create-skills.mjs --check
       - run: node scripts/build-skill-tweak.mjs --check
-      - run: node --test --test-timeout=30000 scripts/create-skills*.test.mjs scripts/skill-tweak*.test.mjs scripts/intent-record.test.mjs scripts/skill-architecture.test.mjs
+      - run: node scripts/build-skill-steal.mjs --check
+      - run: node --test --test-timeout=30000 scripts/create-skills*.test.mjs scripts/skill-tweak*.test.mjs scripts/skill-steal*.test.mjs scripts/intent-record.test.mjs scripts/skill-architecture.test.mjs
 
   issue-submission:
     name: Issue submission / ${{ matrix.os }} / Node ${{ matrix.node }}

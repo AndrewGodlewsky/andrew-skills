@@ -118,6 +118,7 @@ Start a fresh Copilot Chat and enter:
 | [Create issue](skills/create-issue/SKILL.md) | Submit caller-prepared GT proposals and feedback to this repository | Model-only dependency; no manual command |
 | [Create skills](skills/create-skills/SKILL.md) | Specify a new GT skill, attempt its package/checks, and submit it for review | `/gt:create-skills` |
 | [Skill tweak](skills/skill-tweak/SKILL.md) | Capture a GT skill incident and submit feedback after approval of the complete draft | `/gt:skill-tweak` |
+| [Skill steal](skills/skill-steal/SKILL.md) | Adapt a local skill while preserving behavior and submit it for GT review | `/gt:skill-steal` |
 
 `grill-me` asks one question at a time, recommends an answer, and waits for shared
 understanding before implementing the plan. Manual and model invocation are enabled.
@@ -184,6 +185,16 @@ through `create-issue`. You can request a draft without publishing; an unavailab
 dependency also leaves a useful draft. It does not fix or rerun the affected skill.
 Client discovery and complete submission acceptance remain tracked in
 [#45](https://github.com/AndrewGodlewsky/andrew-skills/issues/45).
+
+`skill-steal` accepts an existing local skill by name, directory or SKILL.md path.
+It preserves the original, captures its behavior and provenance, and drafts a GT
+adaptation. It uses the enabled GT `grill-me` when intent or compatibility needs
+clarification and `create-issue` for submission. Required checking/preparation
+tools are bundled locally and need Node 22+; using them does not invoke
+`create-skills`. Private or unshareable files are withheld with explicit gaps.
+A draft-only request stays local. Intake is separate from adoption or installation;
+actual client acceptance is tracked in
+[#49](https://github.com/AndrewGodlewsky/andrew-skills/issues/49).
 
 ## Update
 
@@ -378,11 +389,18 @@ skills/
     release.yaml             Independent skill version and release note
     references/evidence.md   Diagnostic provenance and evidence collection
     templates/issue.md       Complete outgoing issue draft layout
+  skill-steal/
+    SKILL.md                 Source-first import and review submission
+    release.yaml             Independent skill version and release note
+    references/              Source preservation, clarification, checks and delivery
+    scripts/                 Generated local checker and handoff planner
 exporter/                    Same fixed helper for checkout-based recovery
 scripts/issue-submission/    Maintained submission helper and development guide
 scripts/build-issue-submission.mjs  Deterministic bundle build / --check
 scripts/create-skills/       Maintained creator tools; no network client
 scripts/build-create-skills.mjs  Deterministic tools/rules bundle build / --check
+scripts/skill-steal/         Maintained check/prepare/next entry point
+scripts/build-skill-steal.mjs  Bundled shared tools/rules and adapted delivery guide
 scripts/validate.mjs         Local and CI validation
 .github/workflows/validate.yml
 README.md
@@ -479,7 +497,8 @@ node scripts/build-issue-submission.mjs --check
 node --test scripts/issue-submission*.test.mjs
 node scripts/build-create-skills.mjs --check
 node scripts/build-skill-tweak.mjs --check
-node --test scripts/create-skills*.test.mjs scripts/skill-tweak*.test.mjs scripts/intent-record.test.mjs
+node scripts/build-skill-steal.mjs --check
+node --test scripts/create-skills*.test.mjs scripts/skill-tweak*.test.mjs scripts/skill-steal*.test.mjs scripts/intent-record.test.mjs
 node scripts/validate.mjs --base origin/main --current-main origin/main
 node --test scripts/release-validation.test.mjs scripts/release-snapshots.test.mjs scripts/skill-architecture.test.mjs scripts/release-catalog.test.mjs scripts/release-catalog-reader.test.mjs
 ```
@@ -530,6 +549,15 @@ It delegates submission to the enabled GT `create-issue` dependency. The issue
 records independent review, checks and the refinement to check submission
 readiness before asking for publication approval.
 
+`skill-steal` contains original instructions proposed through GT Create Skills in
+[#49](https://github.com/AndrewGodlewsky/andrew-skills/issues/49). Its adoption
+bundles the maintained GT checker, package rules and submission planner rather
+than requiring runtime access to Create Skills resources. It delegates conditional
+clarification to GT Grill Me and delivery to GT Create Issue. No third-party skill
+or upstream writing-guide text is imported in this initial package. Future
+imports must retain their own attribution and reuse terms in their review record
+and adapted package.
+
 `create-skills` adapts Matt Pocock's former `write-a-skill` process from commit
 `985d8fce764dae479e7b77b632429abe38891ee8` of `mattpocock/skills` and the
 `writing-for-agents` guidance/skill mechanics in his installed plugin 1.2.3.
@@ -544,7 +572,7 @@ Maintain creator tools under `scripts/create-skills/`, shared package validation
 under `scripts/skill-package-validation.mjs`, and GT rules in CONTRIBUTING.md.
 Maintain shared intent guidance in `scripts/intent-capture.md`, input validation
 in `scripts/intent-record.mjs`, delivery in `scripts/review-handoff.mjs`, and tweak
-commands in `scripts/skill-tweak/`. Both builds copy shared resources into their
+commands in `scripts/skill-tweak/`. These builds copy shared resources into their
 self-contained packages. Run `node scripts/build-skill-tweak.mjs` for tweak and
 `node scripts/build-create-skills.mjs` for creator changes, and use
 `--check` for freshness verification. The generated package-rules excerpt uses
@@ -553,6 +581,15 @@ sections move. Do not edit generated skill scripts or package-rules.md directly.
 The Windows/Linux Node 22/24 CI matrix runs offline creator tests; it does not
 prove model behavior or client invocation. See the
 [creator acceptance record](docs/research/create-skills-acceptance.md).
+
+Maintain the Skill Steal entry point under `scripts/skill-steal/`; run
+`node scripts/build-skill-steal.mjs` after changing shared checker/planner sources,
+CONTRIBUTING.md, or the creator tools/submission guides. Its builder adapts the
+shared delivery guide to omit personal installation and link its conditional
+clarification record. Unexpected guide changes fail the build for review.
+Use `--check` for freshness, and do not edit its generated scripts, package rules,
+tools or submission guide directly. Changes to shared sources may affect several
+distributed packages; apply release rules to each package actually changed.
 
 `grill-me` was imported from Andrew's user-level skill on September 10, 2026.
 The original was an alias for `/grilling`. This version preserves the `grill-me`
