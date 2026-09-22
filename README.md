@@ -119,6 +119,10 @@ Start a fresh Copilot Chat and enter:
 | [Create skills](skills/create-skills/SKILL.md) | Specify a new GT skill, attempt its package/checks, and submit it for review | `/gt:create-skills` |
 | [Skill tweak](skills/skill-tweak/SKILL.md) | Capture a GT skill incident and submit feedback after approval of the complete draft | `/gt:skill-tweak` |
 | [Skill steal](skills/skill-steal/SKILL.md) | Adapt a local skill while preserving behavior and submit it for GT review | `/gt:skill-steal` |
+| [Caveman commit](skills/caveman-commit/SKILL.md) | Write terse Conventional Commits messages from supplied change context | `/gt:caveman-commit` or model selection |
+| [Caveman review](skills/caveman-review/SKILL.md) | Review changes with one concise, actionable line per finding | `/gt:caveman-review` or model selection |
+| [Caveman explore](skills/caveman-explore/SKILL.md) | Delegate read-only repository localization and return verified path/line citations | `/gt:caveman-explore` or model selection |
+| [Caveman compress](skills/caveman-compress/SKILL.md) | Compress a selected prose file with a readable backup using Python and Claude | `/gt:caveman-compress` or model selection |
 
 `grill-me` asks one question at a time, recommends an answer, and waits for shared
 understanding before implementing the plan. Manual and model invocation are enabled.
@@ -513,6 +517,12 @@ No package installation is needed for validation. Consumers do not need Node.js
 to run the `grill-me` skill. Installing and invoking the plugin in VS Code is the
 end-to-end acceptance check.
 
+The imported compression runtime also has offline regression checks. With
+Python 3.10+ installed, run `python -B scripts/caveman-compress-checks.py`.
+These use synthetic temporary files and mocked provider responses; they require
+no Claude credentials or API calls. CI runs them on Windows and Linux. Local
+results do not establish live provider behavior or semantic equivalence.
+
 Maintain submission runtime code under `scripts/issue-submission/`, then run
 `node scripts/build-issue-submission.mjs`; do not edit the generated skill copies.
 The issue-submission CI matrix runs its offline tests and bundle check on Windows
@@ -523,6 +533,22 @@ establish eligibility for the conservative personal exporter. Do not relax
 exporter guards to make this submission skill exportable.
 
 ## Skill provenance
+
+`caveman-commit`, `caveman-review`, `caveman-explore` and `caveman-compress`
+adapt Julius Brussee's
+[`JuliusBrussee/caveman` at 2fd153c6](https://github.com/JuliusBrussee/caveman/tree/2fd153c67988e980fb0b2455c90832159a6a5a25/skills).
+Each package includes the upstream 2026 MIT notice and its own adaptation notes.
+GT adds supported headers, initial release metadata and explicit input and failure
+handling. Manual and model invocation remain available to preserve phrase-based
+selection; aliases and client discovery still require live-client verification.
+Explore uses the host's available delegation tools and model while retaining a
+separate read-only context; it requires delegation support. Compress requires
+Python 3.10+ and an authenticated Claude CLI or Anthropic SDK setup and sends
+selected file content to that provider. Review and validation records are
+[#55](https://github.com/AndrewGodlewsky/andrew-skills/issues/55),
+[#56](https://github.com/AndrewGodlewsky/andrew-skills/issues/56),
+[#57](https://github.com/AndrewGodlewsky/andrew-skills/issues/57) and
+[#58](https://github.com/AndrewGodlewsky/andrew-skills/issues/58).
 
 `grill-with-docs`, `grilling` and `domain-modeling` adapt the corresponding skills
 and the two domain document formats from Matt Pocock's

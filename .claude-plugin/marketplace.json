@@ -7,7 +7,7 @@
     {
       "name": "gt",
       "description": "Shared team workflows for plan interviews and skill updates",
-      "version": "0.1.15",
+      "version": "0.1.16",
       "source": "./"
     }
   ]

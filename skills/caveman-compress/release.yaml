@@ -1,0 +1,2 @@
+version: "1.0.0"
+notes: "Compress selected prose files with backups, structural validation and repair-frontmatter protection."
