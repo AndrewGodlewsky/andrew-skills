@@ -14,7 +14,7 @@
 .edge.conditional{stroke:#a57a36;stroke-dasharray:6 4}
 .edge.highlighted{stroke:var(--green);stroke-width:2.4}
 .edge.stale{stroke:#ab7224}
-.graph marker path{fill:#587c65}
+marker path{fill:#587c65}
 .edge-detail{padding:12px 0;border-bottom:1px solid var(--line)}</style>
 <rect width="100%" height="100%" fill="#fff"/>
 <text x="24" y="35" font-size="24" font-weight="600" fill="#213a30">Skill dependency overview</text>
