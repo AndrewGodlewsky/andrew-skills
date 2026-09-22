@@ -1,121 +1,74 @@
-# Andrew Skills
+<a id="andrew-skills"></a>
 
-One shared skills plugin for GitHub Copilot in VS Code and Copilot CLI.
-Installing the `gt` plugin includes every skill in this repository.
+# GT — skills for your development workflow
 
-Maintainers: open the [skill dependency map](docs/skill-map.md) to inspect the
-overview graph, linked skill table and optional shared-resource view against
-current working files. The [data foundation and audit](docs/skill-map/README.md)
-and production viewer are implemented, with deterministic
-[saved output](docs/skill-map/map.md), read-only freshness validation and
-[maintainer authoring integration](CONTRIBUTING.md#maintain-the-dependency-map).
+Turn a rough idea into a clearer plan, get concise code review findings, and create reusable skills for your team.
 
-[![Skill dependency overview showing actual and conditional links, with Grill Me highlighted](docs/skill-map/overview.svg)](docs/skill-map/map.md)
-
-*Visual snapshot, September 22, 2026. Click the image for the full dependency map;
-use the [interactive viewer](docs/skill-map.md) for current working files.*
+A skill gives your AI assistant instructions for a particular task. GT brings a collection of these workflows to GitHub Copilot in VS Code and Copilot CLI. Install the `gt` plugin once to get the collection, then choose a skill when you need it.
 
 ## Install
 
-For the usual setup, install the hub **once per user environment**, choosing
-**one** of these methods:
+Choose the route for the client you use:
 
-| Setup | Installation method |
+| Your setup | Start here |
 | --- | --- |
-| VS Code without Copilot CLI | [Install through VS Code](#install-from-vs-code-without-the-cli). No install script is needed. |
-| Copilot CLI, including skills shared with VS Code | Use the PowerShell installer below or the CLI commands. |
+| VS Code only | [Install through VS Code](#install-from-vs-code-without-the-cli). Copilot CLI and the PowerShell installer are not required. |
+| Copilot CLI, with or without VS Code | [Install through Copilot CLI](#install-without-downloading-this-repository). VS Code can discover that copy in the same user environment. |
 
-`install.ps1` requires Copilot CLI and creates a CLI-managed installation.
-For CLI and VS Code use in the same environment, install through the CLI and let
-VS Code discover that installation; a second VS Code installation is unnecessary.
-For VS Code-only use, install through VS Code instead. Windows and WSL are
-separate environments and do not need to share installed files. These are
-alternative onboarding routes to avoid accidental duplication, not a restriction
-on experienced users who deliberately choose separate installations. If you keep
-separate copies, identify which installation you intend to update.
-
-### Install with the CLI using PowerShell
-
-After these repository changes are published to GitHub, download or clone the
-repository and run this from its root in PowerShell:
-
-```powershell
-.\install.ps1
-```
-
-The installer registers the marketplace, then installs the entire `gt`
-plugin. It stops if either step fails and does not change execution policies or
-install prerequisites. It installs the published GitHub version, not local edits.
-
-### Install without downloading this repository
-
-**PowerShell 7, Bash, or Zsh:** paste this single line:
-
-```sh
-copilot plugin marketplace add AndrewGodlewsky/andrew-skills && copilot plugin install gt@andrew-skills
-```
-
-**Windows PowerShell 5.1:** use this compatible single line:
-
-```powershell
-copilot plugin marketplace add AndrewGodlewsky/andrew-skills; if ($LASTEXITCODE -eq 0) { copilot plugin install gt@andrew-skills }
-```
-
-Both versions install the plugin only if marketplace registration succeeds.
-Windows PowerShell 5.1 does not support `&&`; an error about `&` or `&&` can mean
-you pasted the PowerShell 7 command into the older shell. To check your version:
-
-```powershell
-$PSVersionTable.PSVersion
-```
-
-Copy `gt@andrew-skills` exactly, without a backslash before `@`.
-If the marketplace is already registered, run just:
-
-```powershell
-copilot plugin install gt@andrew-skills
-```
-
-In `gt@andrew-skills`, `gt` names the plugin and `andrew-skills` names its
-catalog. Both live in this repository. All skills install
-together, with no separate skill installation.
-
-Direct repository installation is deprecated by Copilot CLI. Use the marketplace
-commands above. See [GitHub's notice](https://github.com/github/awesome-copilot/blob/main/website/src/content/docs/learning-hub/installing-and-using-plugins.md)
-and [marketplace installation guide](https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/plugins-finding-installing).
-
-Requires a current [GitHub Copilot CLI](https://docs.github.com/en/copilot/how-tos/set-up/install-copilot-cli),
-Git, and repository access. Follow any authentication or trust prompts. Having the
-VS Code Copilot extension does not by itself mean the CLI is installed.
-
-VS Code automatically discovers plugins installed by Copilot CLI under the same
-user account on the same machine. Use an up-to-date VS Code with Copilot access
-and agent plugins enabled. Reload the window if the plugin is not yet listed.
-[VS Code discovery documentation](https://code.visualstudio.com/docs/agent-customization/agent-plugins#plugins-installed-by-github-copilot-cli).
+Start with one installation per user environment. Windows and WSL are separate environments. You can deliberately keep separate copies; choose the intended copy when updating.
 
 ### Install from VS Code without the CLI
 
-Use a current VS Code with Copilot access and agent plugins enabled
-(`chat.plugins.enabled`). Repository access is required.
+Use a current VS Code with Copilot access, repository access and agent plugins enabled (`chat.plugins.enabled`).
 
-1. Open **Preferences: Open User Settings (JSON)** from the Command Palette.
-2. Add `https://github.com/AndrewGodlewsky/andrew-skills.git` to the
-   `chat.plugins.marketplaces` array, preserving existing entries.
-3. Run **Chat: Open Customizations**, select **Plugins**, then **Browse Marketplace**.
-4. Find `gt` in `andrew-skills`, select **Install**, and follow the trust prompt.
+1. Open **Preferences: Open User Settings (JSON)**. Add `https://github.com/AndrewGodlewsky/andrew-skills.git` to `chat.plugins.marketplaces`, keeping any existing entries.
+2. Open **Chat: Open Customizations**, choose **Plugins**, then **Browse Marketplace**.
+3. Find `gt` in `andrew-skills`, review the publisher and contents, and install it if you trust it.
 
-This installs the published plugin through VS Code. Do not run `install.ps1`
-for this route. Update this installation using the
-[VS Code update instructions](#vs-code-installed-plugin), rather than CLI commands.
-[VS Code marketplace installation](https://code.visualstudio.com/docs/agent-customization/agent-plugins#configure-plugin-marketplaces).
+See the [VS Code marketplace guide](https://code.visualstudio.com/docs/agent-customization/agent-plugins#configure-plugin-marketplaces) for setup details.
+
+### Install without downloading this repository
+
+Use a current Copilot CLI with Git and repository access. In your terminal, register the marketplace:
+
+```sh
+copilot plugin marketplace add AndrewGodlewsky/andrew-skills
+```
+
+After registration succeeds, install the plugin:
+
+```sh
+copilot plugin install gt@andrew-skills
+```
+
+If the marketplace is already registered, use the installation command directly. Review any trust or authentication prompts. These commands install the published collection. See the [Copilot CLI installation guide](https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/plugins-finding-installing).
+
+For the optional PowerShell installer and shell-specific shortcuts, see [more installation options](#more-installation-options).
 
 ## Use a skill
 
-Start a fresh Copilot Chat and enter:
+Start a fresh chat and select the named skill from the GT source in your client's skill picker. Try one of these requests:
 
-```text
-/gt:grill-me I want to build a shared skills hub for my team.
-```
+| What you want | Choose | First request | What to expect |
+| --- | --- | --- | --- |
+| Find a starting point | **GT Help** | “I have a feature idea. Which GT skill should I start with?” | A recommendation and an explanation. You choose whether to start the recommended skill. |
+| Sharpen an idea | **Grill Me** | “I want teammates to find and reuse our project setup steps. Help me work through the plan.” | An interview, one question at a time, with a recommended answer to consider. |
+| Review a change | **Caveman Review** | “Review the attached diff for bugs. Give concise findings with file and line references.” | Short, actionable findings when problems are found. Supply the diff or identify accessible code to review. |
+
+These are example requests and intended results. GT's live client verification is still in progress; they are not a promise of identical behavior in every client. Select the GT entry your client actually shows. Bare `/help` may open built-in help; GT Help's exact command spelling is still being verified in the [owner pilot](https://github.com/AndrewGodlewsky/andrew-skills/issues/17).
+
+Help gives advice and leaves actions to you. Other skills can write files or submit GT contributions; check the selected skill's requirements before starting. Extra tools are required for some workflows, rather than for the whole collection.
+
+## Explore further
+
+- [All skills and their requirements](#all-skills-and-requirements)
+- [Update your installation](#update)
+- [Contribute a skill](CONTRIBUTING.md)
+- [Maintainer dependency map](docs/skill-map.md)
+- [Validation and pending client checks](https://github.com/AndrewGodlewsky/andrew-skills/issues/17)
+- [Skill provenance and credits](#skill-provenance)
+
+## All skills and requirements
 
 | Skill | Purpose | Command |
 | --- | --- | --- |
@@ -349,6 +302,20 @@ not configure Copilot CLI's marketplace auto-update setting.
 After updating, test in a fresh chat so previously loaded instructions do not
 affect the result.
 
+## Maintainer resources
+
+Maintainers: open the [skill dependency map](docs/skill-map.md) to inspect the
+overview graph, linked skill table and optional shared-resource view against
+current working files. The [data foundation and audit](docs/skill-map/README.md)
+and production viewer are implemented, with deterministic
+[saved output](docs/skill-map/map.md), read-only freshness validation and
+[maintainer authoring integration](CONTRIBUTING.md#maintain-the-dependency-map).
+
+[![Skill dependency overview showing actual and conditional links, with Grill Me highlighted](docs/skill-map/overview.svg)](docs/skill-map/map.md)
+
+*Visual snapshot, September 22, 2026. Click the image for the full dependency map;
+use the [interactive viewer](docs/skill-map.md) for current working files.*
+
 ## Test locally before publishing
 
 Register the checkout root in VS Code's **User Settings (JSON)**:
@@ -385,6 +352,66 @@ remove its local registration if present. Replace a registration pointing to
 `plugins/team-core` with the checkout root above. If you already registered this
 marketplace, refresh it with `copilot plugin marketplace update andrew-skills`,
 then install `gt@andrew-skills`.
+
+## More installation options
+
+### Install with the CLI using PowerShell
+
+Download or clone the repository and run this from its root in PowerShell:
+
+```powershell
+.\install.ps1
+```
+
+The installer registers the marketplace, then installs the entire `gt`
+plugin. It stops if either step fails and does not change execution policies or
+install prerequisites. It installs the published GitHub version, not local edits.
+
+### CLI installation details
+
+**PowerShell 7, Bash, or Zsh:** paste this single line:
+
+```sh
+copilot plugin marketplace add AndrewGodlewsky/andrew-skills && copilot plugin install gt@andrew-skills
+```
+
+**Windows PowerShell 5.1:** use this compatible single line:
+
+```powershell
+copilot plugin marketplace add AndrewGodlewsky/andrew-skills; if ($LASTEXITCODE -eq 0) { copilot plugin install gt@andrew-skills }
+```
+
+Both versions install the plugin only if marketplace registration succeeds.
+Windows PowerShell 5.1 does not support `&&`; an error about `&` or `&&` can mean
+you pasted the PowerShell 7 command into the older shell. To check your version:
+
+```powershell
+$PSVersionTable.PSVersion
+```
+
+Copy `gt@andrew-skills` exactly, without a backslash before `@`.
+If the marketplace is already registered, run just:
+
+```powershell
+copilot plugin install gt@andrew-skills
+```
+
+In `gt@andrew-skills`, `gt` names the plugin and `andrew-skills` names its
+catalog. Both live in this repository. All skills install
+together, with no separate skill installation.
+
+Direct repository installation is deprecated by Copilot CLI. Use the marketplace
+commands above. See [GitHub's notice](https://github.com/github/awesome-copilot/blob/main/website/src/content/docs/learning-hub/installing-and-using-plugins.md)
+and [marketplace installation guide](https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/plugins-finding-installing).
+
+Requires a current [GitHub Copilot CLI](https://docs.github.com/en/copilot/how-tos/set-up/install-copilot-cli),
+Git, and repository access. Follow any authentication or trust prompts. Having the
+VS Code Copilot extension does not by itself mean the CLI is installed.
+
+VS Code automatically discovers plugins installed by Copilot CLI under the same
+user account on the same machine. Use an up-to-date VS Code with Copilot access
+and agent plugins enabled. Reload the window if the plugin is not yet listed.
+[VS Code discovery documentation](https://code.visualstudio.com/docs/agent-customization/agent-plugins#plugins-installed-by-github-copilot-cli).
 
 ## Repository layout
 
