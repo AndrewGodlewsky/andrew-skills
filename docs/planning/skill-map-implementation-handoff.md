@@ -1,18 +1,18 @@
 # Skill dependency map — implementation handoff
 
 **Resolved planning handoff for [#54](https://github.com/AndrewGodlewsky/andrew-skills/issues/54),
-September 22, 2026. Implementation pending.** Andrew selected validation failure,
+September 22, 2026. Execution status below.** Andrew selected validation failure,
 accepted the recommendation to include both views in the first implementation,
 and directed completion of the remaining section. The workflow and technical
-defaults below complete that handoff; they are not implemented tooling. Keep decisions and actual
+defaults below complete that handoff; the execution status distinguishes delivered tooling. Keep decisions and actual
 check results in the [#54 resolution](https://github.com/AndrewGodlewsky/andrew-skills/issues/54#issuecomment-5771080202)
 and the execution issue carrying each change.
 
 **Current execution:** #61's data foundation and dependency-focused audit are
-implemented in the working tree. See the [data/API guide](../skill-map/README.md)
-for read-only analysis commands, coverage and limits. The production viewer
-(#62), generated presentation/freshness enforcement and authoring integration
-(#63) remain pending. The planning evidence at the end describes the earlier
+implemented, along with #62's [production viewer](../skill-map.md), shared-resource
+view and deterministic HTTP exports. See the [data/API guide](../skill-map/README.md)
+for commands, coverage and limits. Persisted generated artifacts/freshness
+enforcement and authoring integration (#63) remain pending. The planning evidence at the end describes the earlier
 decision stage, not these subsequent implementation results.
 
 ## Settled requirements
@@ -35,8 +35,8 @@ decision stage, not these subsequent implementation results.
   the overview graph is primary. A complete skills table opens and highlights a
   selected skill in the graph; retain selection between views. Support keyboard
   use, evidence inspection and a Markdown/Mermaid/table fallback. The
-  [accepted prototype](../skill-map.md) demonstrates interaction, not production
-  architecture or complete dependency coverage.
+  accepted prototype demonstrated interaction, not production architecture or
+  complete dependency coverage; it has been replaced by the [viewer](../skill-map.md).
 - #54 owner requirement: automatic inventory and map maintenance belong in the
   normal authoring workflow, documented through AGENTS.md and CONTRIBUTING.md.
   An instruction alone does not guarantee freshness.

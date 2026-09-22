@@ -2,6 +2,9 @@ import assert from 'node:assert/strict';
 import test from 'node:test';
 import { once } from 'node:events';
 import { get } from 'node:http';
+import { mkdtempSync, mkdirSync, writeFileSync, rmSync } from 'node:fs';
+import { tmpdir } from 'node:os';
+import { dirname, join } from 'node:path';
 import { analyzeSkillMap } from './skill-map.mjs';
 import { createSkillMapServer, loadSnapshot } from './skill-map-server.mjs';
 import { graphProjection, layoutGraph, renderMarkdown, renderPage, viewState } from './skill-map-view.mjs';
@@ -75,14 +78,19 @@ test('query values are escaped, unknown selection resolves safely and filtering 
 
 test('HTTP refresh observes local edits, exposes escaped evidence and stays read-only', async t => {
   const state = fixture();
-  const server = createSkillMapServer({ snapshot: () => ({ map: analyzeSkillMap(state.files, state.records), files: state.files }) });
+  const root = mkdtempSync(join(tmpdir(), 'skill-map-view-'));
+  t.after(() => rmSync(root, { recursive: true, force: true }));
+  for (const [path, bytes] of state.files) { mkdirSync(dirname(join(root, path)), { recursive: true }); writeFileSync(join(root, path), bytes); }
+  mkdirSync(join(root, 'docs/skill-map'), { recursive: true });
+  writeFileSync(join(root, 'docs/skill-map/relationships.json'), JSON.stringify(state.records));
+  const server = createSkillMapServer({ snapshot: () => loadSnapshot(root) });
   server.listen(0, '127.0.0.1'); await once(server, 'listening');
   t.after(() => { server.closeAllConnections(); server.close(); });
   const base = `http://127.0.0.1:${server.address().port}`;
   const first = await fetch(`${base}/data.json`), original = await first.json();
   assert.equal(first.headers.get('cache-control'), 'no-store');
   assert.match(first.headers.get('content-security-policy'), /default-src 'none'/);
-  state.files.set('skills/alpha/SKILL.md', Buffer.from('Invoke beta.\nChanged context <script>alert(1)</script>'));
+  writeFileSync(join(root, 'skills/alpha/SKILL.md'), 'Invoke beta.\nChanged context <script>alert(1)</script>');
   const second = await (await fetch(`${base}/data.json`)).json();
   assert.notEqual(second.fingerprint, original.fingerprint);
   const source = await (await fetch(`${base}/source?path=skills/alpha/SKILL.md&snapshot=${original.fingerprint}`)).text();
@@ -96,9 +104,9 @@ test('HTTP refresh observes local edits, exposes escaped evidence and stays read
   assert.equal(foreignHostStatus, 403);
   assert.equal((await fetch(`${base}/viewer.mjs`)).status, 200);
   assert.equal((await fetch(`${base}/unknown`)).status, 404);
-  const before = JSON.stringify([...state.files]);
+  const before = JSON.stringify([...loadSnapshot(root).files]);
   for (const route of ['/', '/text?expanded=1', '/map.md']) assert.equal((await fetch(`${base}${route}`)).status, 200);
-  assert.equal(JSON.stringify([...state.files]), before);
+  assert.equal(JSON.stringify([...loadSnapshot(root).files]), before);
 });
 
 test('load errors remain explicit rather than serving an old successful snapshot', async t => {

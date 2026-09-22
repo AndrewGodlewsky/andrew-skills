@@ -3,13 +3,12 @@
 One shared skills plugin for GitHub Copilot in VS Code and Copilot CLI.
 Installing the `gt` plugin includes every skill in this repository.
 
-Maintainers: review the [skill dependency map prototype](docs/skill-map.md)
-for the accepted overview graph and linked dependency table from
-[#53](https://github.com/AndrewGodlewsky/andrew-skills/issues/53). The
-[implementation handoff](docs/planning/skill-map-implementation-handoff.md)
-defines both map views, freshness checks and automatic inventory maintenance;
-the [data foundation and audit](docs/skill-map/README.md) are implemented.
-The production viewer and authoring/CI integration remain pending.
+Maintainers: open the [skill dependency map](docs/skill-map.md) to inspect the
+overview graph, linked skill table and optional shared-resource view against
+current working files. The [data foundation and audit](docs/skill-map/README.md)
+and production viewer are implemented. Persisted artifact checks and
+authoring/CI integration remain tracked in
+[#63](https://github.com/AndrewGodlewsky/andrew-skills/issues/63).
 
 ## Install
 
@@ -115,6 +114,7 @@ Start a fresh Copilot Chat and enter:
 
 | Skill | Purpose | Command |
 | --- | --- | --- |
+| [Help](skills/help/SKILL.md) | Ask about GT and choose suitable skills or workflows; guidance only | Select GT Help in the client skill picker; exact command verification pending |
 | [Grill me](skills/grill-me/SKILL.md) | Sharpen a plan or design through an interview | `/gt:grill-me` |
 | [Grill with docs](skills/grill-with-docs/SKILL.md) | Interview about a plan while recording agreed terms and selected architectural decisions | `/gt:grill-with-docs` |
 | [Grilling](skills/grilling/SKILL.md) | Explore a design in rounds of questions whose prerequisites are settled | `/gt:grilling` or model selection |
@@ -132,6 +132,15 @@ Start a fresh Copilot Chat and enter:
 | [Caveman review](skills/caveman-review/SKILL.md) | Review changes with one concise, actionable line per finding | `/gt:caveman-review` or model selection |
 | [Caveman explore](skills/caveman-explore/SKILL.md) | Delegate read-only repository localization and return verified path/line citations | `/gt:caveman-explore` or model selection |
 | [Caveman compress](skills/caveman-compress/SKILL.md) | Compress a selected prose file with a readable backup using Python and Claude | `/gt:caveman-compress` or model selection |
+
+`help` is an Ask Matt-style guide to this collection. It answers questions,
+recommends a starting point or workflow, and reads relevant installed GT
+instructions when its guide lacks detail. It does not invoke other skills or
+perform the recommended actions. Only user invocation is enabled. Select the
+GT source in the client skill picker; bare `/help` can mean built-in client help.
+Exact entry points and live invocation checks remain tracked in the
+[owner pilot](https://github.com/AndrewGodlewsky/andrew-skills/issues/17).
+Implementation and check evidence: [GT Help](https://github.com/AndrewGodlewsky/andrew-skills/issues/69).
 
 `grill-me` asks one question at a time, recommends an answer, and waits for shared
 understanding before implementing the plan. Manual and model invocation are enabled.
@@ -553,6 +562,17 @@ establish eligibility for the conservative personal exporter. Do not relax
 exporter guards to make this submission skill exportable.
 
 ## Skill provenance
+
+`help` adapts the situation-and-flow organization of Matt Pocock's
+[`ask-matt`](https://github.com/mattpocock/skills/blob/c55ee46073ed923f86ce59a5eb3b6d895095d1b7/skills/engineering/ask-matt/SKILL.md).
+The owner's personal Ask Matt variant also informed the preferred experience;
+it is not claimed to match that upstream snapshot. GT-specific descriptions,
+marketplace guidance, manual-only headers, selective source-reading rules and
+action boundaries are authored for this collection. No upstream skill catalog,
+helper or personal installation path is required at runtime. The
+[2026 MIT notice](skills/help/assets/matt-pocock-license.txt) travels with the
+adaptation. Scope and evidence are recorded in
+[the implementation issue](https://github.com/AndrewGodlewsky/andrew-skills/issues/69).
 
 `caveman` adapts the [upstream style skill at 2fd153c6](https://github.com/JuliusBrussee/caveman/blob/2fd153c67988e980fb0b2455c90832159a6a5a25/skills/caveman/SKILL.md)
 with only light/full modes, light/lite equivalence, explicit unsupported-mode

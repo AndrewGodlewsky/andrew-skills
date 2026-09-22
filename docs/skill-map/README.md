@@ -1,9 +1,10 @@
-# Skill-map data foundation
+# Skill-map data and viewer
 
-Implemented for [#61](https://github.com/AndrewGodlewsky/andrew-skills/issues/61).
-The production viewer belongs to #62; artifact generation, CI and the normal
-AGENTS.md/CONTRIBUTING.md maintenance workflow belong to #63. The earlier
-[presentation prototype](../skill-map.md) still uses its own sample data.
+Data implemented for [#61](https://github.com/AndrewGodlewsky/andrew-skills/issues/61)
+and the [production viewer](../skill-map.md) for
+[#62](https://github.com/AndrewGodlewsky/andrew-skills/issues/62).
+Persisted artifact generation/checks, CI and the normal AGENTS.md/CONTRIBUTING.md
+maintenance workflow belong to #63. The throwaway presentation prototype is retired.
 
 From the repository root, these commands read working files without writing:
 
@@ -11,7 +12,8 @@ From the repository root, these commands read working files without writing:
 node scripts/skill-map.mjs
 node scripts/skill-map.mjs --impact skill:grill-me
 node scripts/skill-map.mjs --impact file:scripts/intent-record.mjs
-node --test scripts/skill-map.test.mjs
+node scripts/skill-map-server.mjs
+node --test scripts/skill-map.test.mjs scripts/skill-map-view.test.mjs
 ```
 
 The first command emits the complete JSON analysis, including diagnostics and
@@ -19,6 +21,27 @@ The first command emits the complete JSON analysis, including diagnostics and
 proven breakage. This diagnostic CLI does not enforce a failure exit code for
 incomplete review; the read-only readiness command/CI integration belongs to #63.
 Parse/load errors do fail. Do not treat exit zero as an assertion of readiness.
+
+The server binds to loopback at `http://127.0.0.1:43854/` (`--port N` overrides
+the port). It loads current files and records for each page/export request;
+it neither writes files nor executes inspected code. One response uses one
+consistent snapshot. `/data.json` and `/map.md` are deterministic exports;
+`/text` is a server-rendered fallback. Source links show escaped current text
+with line anchors and warn if the snapshot changed since the evidence link.
+Binary resources must be inspected in a suitable local tool. Malformed record
+envelopes produce an explicit load error; incomplete valid analyses still render.
+
+`skill-map-view.mjs` exports `renderPage`, `renderMarkdown`, `viewState`,
+`graphProjection` and `layoutGraph`. The simple graph includes all linked skills
+and a selectable list of isolated skills. The expanded graph shows immediate
+links around a selection; full caller paths remain in the side panel and the
+table lists every discovered resource. Strongly connected components keep cyclic
+layouts finite. Above 12 paths per caller, an explicit link reveals all enumerated
+paths; the impact API's traversal limit stays visibly marked as incomplete.
+
+The viewer needs no installed packages or external assets. Native links, forms
+and disclosures work without JavaScript; the small script adds whole-row clicks,
+automatic form submission and focus transfer. Stop the server with Ctrl+C.
 
 ## Data and API
 

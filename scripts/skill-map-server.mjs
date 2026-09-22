@@ -24,8 +24,8 @@ export function createSkillMapServer({ snapshot = () => loadSnapshot(), assets =
     if (request.method !== 'GET') { response.setHeader('Allow', 'GET'); send(405, 'text/plain', 'Read-only viewer: GET only.'); return; }
     const expected = `127.0.0.1:${response.socket.localPort}`;
     if (![expected, `localhost:${response.socket.localPort}`].includes(request.headers.host)) { send(403, 'text/plain', 'Use the loopback viewer URL.'); return; }
-    const url = new URL(request.url, `http://${expected}`);
     try {
+      const url = new URL(request.url, `http://${expected}`);
       if (url.pathname === '/viewer.css' || url.pathname === '/viewer.mjs') {
         send(200, url.pathname.endsWith('.css') ? 'text/css' : 'text/javascript', readFileSync(join(assets, url.pathname.slice(1)))); return;
       }
