@@ -70,3 +70,37 @@ The shared GT capability that creates caller-authored issues exclusively in Andr
 **Issue organization**:
 Repository metadata and relationships used to organize issues, such as labels, project membership, parent/child relationships and blocking dependencies. This is separate from the caller-authored issue title and body.
 
+## Skill map language
+
+Scope discussion: [issue #51](https://github.com/AndrewGodlewsky/andrew-skills/issues/51).
+
+**Simple skill map**:
+A view showing every skill and its actual dependencies on other skills, including skills with no dependencies. Recommendations and casual mentions are excluded.
+
+**Expanded skill map**:
+A broader view that includes skill dependencies and actual dependencies on shared resources, such as scripts and guidance.
+
+**Skill dependency**:
+A relationship in which one skill's workflow uses and relies on another skill, including use limited to a particular branch. Merely recommending or mentioning another skill does not establish a dependency.
+
+**Conditional skill dependency**:
+A skill dependency used only under a stated condition, such as submitting feedback. It remains part of the simple skill map, with its condition retained.
+
+**Skill map source**:
+The current repository working files, including local edits, from which the map is derived. The map identifies that source state explicitly; it does not imply the same state is published or installed.
+
+**Direct caller**:
+A skill whose workflow uses another skill directly. In the map, A -> B means A relies on B, so A is a direct caller of B.
+
+**Indirect caller**:
+A skill that relies on another skill through one or more intermediate skills. In A -> B -> C, A is an indirect caller of C.
+
+**Review impact**:
+The direct and indirect callers that may need review when a dependency changes, with their dependency paths and conditions retained. In the expanded map this also includes consumers of changed shared resources; inclusion indicates potential impact, not proven breakage.
+
+**Missing dependency target**:
+A referenced dependency that cannot be resolved in the map's source. References left behind after a rename remain visibly unresolved rather than being silently redirected to a guessed replacement.
+
+**Dependency cycle**:
+A chain of dependencies that returns to a skill already on the path, such as A -> B -> A. The map shows the cycle explicitly rather than hiding it.
+

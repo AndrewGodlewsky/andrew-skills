@@ -120,6 +120,7 @@ Start a fresh Copilot Chat and enter:
 | [Skill tweak](skills/skill-tweak/SKILL.md) | Capture a GT skill incident and submit feedback after approval of the complete draft | `/gt:skill-tweak` |
 | [Skill steal](skills/skill-steal/SKILL.md) | Adapt a local skill while preserving behavior and submit it for GT review | `/gt:skill-steal` |
 | [Caveman commit](skills/caveman-commit/SKILL.md) | Write terse Conventional Commits messages from supplied change context | `/gt:caveman-commit` or model selection |
+| [Caveman](skills/caveman/SKILL.md) | Use light or full chat style while preserving technical meaning | `/gt:caveman` or model selection |
 | [Caveman review](skills/caveman-review/SKILL.md) | Review changes with one concise, actionable line per finding | `/gt:caveman-review` or model selection |
 | [Caveman explore](skills/caveman-explore/SKILL.md) | Delegate read-only repository localization and return verified path/line citations | `/gt:caveman-explore` or model selection |
 | [Caveman compress](skills/caveman-compress/SKILL.md) | Compress a selected prose file with a readable backup using Python and Claude | `/gt:caveman-compress` or model selection |
@@ -199,6 +200,17 @@ tools are bundled locally and need Node 22+; using them does not invoke
 A draft-only request stays local. Intake is separate from adoption or installation;
 actual client acceptance is tracked in
 [#49](https://github.com/AndrewGodlewsky/andrew-skills/issues/49).
+
+`caveman` offers only `light` and `full` chat styles. Full is the default; upstream
+`lite` is an alias for light. Invoke `/gt:caveman light` or `/gt:caveman full`, then
+use `/gt:caveman off`, `stop caveman` or `normal mode` to stop. The chosen mode lasts
+for the current conversation. Unsupported intensities leave the mode unchanged
+and prompt for light or full. It preserves exact technical details, uses normal
+prose when clarity requires it, and leaves external artifacts in normal prose.
+Only an enabled GT installation and normal skill loading are required: no hooks,
+API keys, external runtimes or companion Caveman skills. See its
+[usage and provenance guide](skills/caveman/README.md). The new source package
+becomes available in installed GT copies after owner publication and native update.
 
 ## Update
 
@@ -533,6 +545,16 @@ establish eligibility for the conservative personal exporter. Do not relax
 exporter guards to make this submission skill exportable.
 
 ## Skill provenance
+
+`caveman` adapts the [upstream style skill at 2fd153c6](https://github.com/JuliusBrussee/caveman/blob/2fd153c67988e980fb0b2455c90832159a6a5a25/skills/caveman/SKILL.md)
+with only light/full modes, light/lite equivalence, explicit unsupported-mode
+handling, and host-required progress updates. It preserves meaningful uncertainty
+and removes unverified tokenizer claims. Its [MIT notice](skills/caveman/LICENSE)
+is bundled. Manual and model invocation are enabled for explicit Caveman-style
+requests. Session hooks, upstream engine/proxy products and other Caveman skills
+are not dependencies and are not included in this adaptation.
+The request, exception rationale and actual checks are tracked in
+[#60](https://github.com/AndrewGodlewsky/andrew-skills/issues/60).
 
 `caveman-commit`, `caveman-review`, `caveman-explore` and `caveman-compress`
 adapt Julius Brussee's
