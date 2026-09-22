@@ -46,6 +46,12 @@ coverage. Incomplete analyses remain inspectable.
 
 ## Text and saved output
 
+The [saved map](skill-map/map.md) and [JSON](skill-map/map.json) are available
+without starting the server. Regenerate with `node scripts/build-skill-map.mjs`;
+validate without writes using `node scripts/build-skill-map.mjs --check`.
+Both commands fail when semantic review or evidence is incomplete; generation
+still writes the incomplete preview. The check also fails for stale artifacts.
+
 The viewer's **Text fallback** includes the complete dependency list, conditions,
 quotes and table without requiring SVG or JavaScript. The footer offers
 deterministic **JSON** and **Markdown + Mermaid** snapshots of the same analysis.
@@ -56,9 +62,10 @@ Its tables and edge list remain useful when Mermaid is unavailable.
 Save downloaded `map.md` in `docs/skill-map/` for its repository-relative source
 links to resolve. Saved files describe the recorded fingerprint and cannot detect
 later disk edits. The live source viewer warns if an evidence link was created
-against an older snapshot. Managed persisted artifacts, failure checks, CI and
-AGENTS.md/CONTRIBUTING.md maintenance instructions are the next execution task,
-[#63](https://github.com/AndrewGodlewsky/andrew-skills/issues/63).
+against an older snapshot. Follow the canonical
+[maintainer procedure](../CONTRIBUTING.md#maintain-the-dependency-map) to review
+changes, regenerate output and run readiness checks. Inventory updates automatically;
+only an explicit semantic review can approve dependencies or exclusions.
 
 The [data/API guide](skill-map/README.md) documents the model, semantic review,
 copy transformations, scanner coverage and limits. The original presentation

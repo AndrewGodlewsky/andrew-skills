@@ -3,8 +3,10 @@
 Data implemented for [#61](https://github.com/AndrewGodlewsky/andrew-skills/issues/61)
 and the [production viewer](../skill-map.md) for
 [#62](https://github.com/AndrewGodlewsky/andrew-skills/issues/62).
-Persisted artifact generation/checks, CI and the normal AGENTS.md/CONTRIBUTING.md
-maintenance workflow belong to #63. The throwaway presentation prototype is retired.
+Persisted artifact generation/checks, read-only CI and the
+[maintainer workflow](../../CONTRIBUTING.md#maintain-the-dependency-map) complete
+[#63](https://github.com/AndrewGodlewsky/andrew-skills/issues/63).
+The throwaway presentation prototype is retired.
 
 From the repository root, these commands read working files without writing:
 
@@ -13,14 +15,23 @@ node scripts/skill-map.mjs
 node scripts/skill-map.mjs --impact skill:grill-me
 node scripts/skill-map.mjs --impact file:scripts/intent-record.mjs
 node scripts/skill-map-server.mjs
-node --test scripts/skill-map.test.mjs scripts/skill-map-view.test.mjs
+node scripts/build-skill-map.mjs --check
 ```
 
 The first command emits the complete JSON analysis, including diagnostics and
 `ready`. The impact commands emit potential callers and evidence paths, not
 proven breakage. This diagnostic CLI does not enforce a failure exit code for
-incomplete review; the read-only readiness command/CI integration belongs to #63.
+incomplete review; use `node scripts/build-skill-map.mjs --check` for readiness.
 Parse/load errors do fail. Do not treat exit zero as an assertion of readiness.
+
+Generate saved [JSON](map.json) and [Markdown](map.md) with
+`node scripts/build-skill-map.mjs`. It writes only these two artifacts, never
+records or attestations. Incomplete valid analyses still generate a labeled
+preview, but both generation and checking exit nonzero until all findings are
+resolved. Checking also fails if either saved artifact differs or is missing,
+without writing anything. Comparisons normalize CRLF in the two UTF-8 outputs;
+generation always emits LF. Identical inputs produce identical bytes.
+`node --test scripts/skill-map*.test.mjs` exercises data, viewer and author workflows.
 
 The server binds to loopback at `http://127.0.0.1:43854/` (`--port N` overrides
 the port). It loads current files and records for each page/export request;
@@ -92,8 +103,12 @@ regression coverage. Use the impact API rather than a naive transitive closure.
 
 ## Review and coverage
 
-Initial audit: 17 skill packages, eight inter-skill dependencies and 51 generated
-copies. All current candidates were classified with either explicit dependency
+Initial #61 audit: 17 skill packages, eight inter-skill dependencies and 51 generated
+copies. #63 includes the subsequently added Help package: its conditional reading
+of the other 17 skills' instructions is an actual dependency, explicitly distinct
+from invoking their workflows. Its license resource is also included. Recommendations
+alone and ordinary English/CLI uses of the word "help" do not create dependencies.
+All current candidates were classified with either explicit dependency
 evidence or a reasoned exclusion. The dataset also includes Python module use
 and the exporter's manifest-driven module loading that lexical import scanning
 does not reconstruct. The two installation-target guides currently have no

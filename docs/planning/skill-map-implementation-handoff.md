@@ -11,8 +11,9 @@ and the execution issue carrying each change.
 **Current execution:** #61's data foundation and dependency-focused audit are
 implemented, along with #62's [production viewer](../skill-map.md), shared-resource
 view and deterministic HTTP exports. See the [data/API guide](../skill-map/README.md)
-for commands, coverage and limits. Persisted generated artifacts/freshness
-enforcement and authoring integration (#63) remain pending. The planning evidence at the end describes the earlier
+for commands, coverage and limits. #63 adds saved artifacts, read-only freshness
+enforcement, author workflow tests, CI and the canonical maintainer procedure.
+The planning evidence at the end describes the earlier
 decision stage, not these subsequent implementation results.
 
 ## Settled requirements
@@ -160,8 +161,8 @@ the local viewer must re-evaluate current working-source status.
    canonical CONTRIBUTING.md workflow with real commands. Demonstrate adding a
    new skill end to end, including shared-source freshness and consumer impact.
 
-All three are assigned to Andrew. #62 is blocked by #61; completion of #63 is
-blocked by #61 and #62. They are outside the planning-only child list of #50.
+All three are assigned to Andrew. #61 and #62 are complete; #63 builds on their
+data and presentation implementations. They are outside the planning-only child list of #50.
 These are execution tasks following the planning decisions. Record technical
 refinements and any material scope changes in their issues. Do not reopen settled
 product choices merely to choose filenames or a hashing implementation.
@@ -186,11 +187,11 @@ Repository-only docs/tooling do not require skill version bumps. If actual
 distributed packages change, apply the existing release contract to those
 packages and the bundle. Do not add a runtime skill dependency for map tooling.
 
-## Actual evidence so far
+## Historical planning evidence
 
-Inspected current CI, guide extraction, release guidance and the source
+At the #54 planning stage, inspected CI, guide extraction, release guidance and the source
 inventory reader. The accepted prototype has local interaction checks recorded
-in #53; it is still incomplete sample data. No production generator, review
+in #53; that was incomplete sample data. No production generator, review
 tracker, map readiness check, CI integration or AGENTS.md maintenance rule has
-been implemented or verified. The acceptance rows above are future checks,
-not reported passes.
+been implemented or verified at that point. Actual implementation and checks
+are recorded in #61, #62 and #63; the acceptance table describes the contract.

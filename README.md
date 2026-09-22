@@ -6,9 +6,9 @@ Installing the `gt` plugin includes every skill in this repository.
 Maintainers: open the [skill dependency map](docs/skill-map.md) to inspect the
 overview graph, linked skill table and optional shared-resource view against
 current working files. The [data foundation and audit](docs/skill-map/README.md)
-and production viewer are implemented. Persisted artifact checks and
-authoring/CI integration remain tracked in
-[#63](https://github.com/AndrewGodlewsky/andrew-skills/issues/63).
+and production viewer are implemented, with deterministic
+[saved output](docs/skill-map/map.md), read-only freshness validation and
+[maintainer authoring integration](CONTRIBUTING.md#maintain-the-dependency-map).
 
 ## Install
 

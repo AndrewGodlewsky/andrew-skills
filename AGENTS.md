@@ -10,6 +10,17 @@ record. Keep runtime instructions self-contained; generated skills must not
 depend on repository-only authoring documents. Preserve the owner's separate
 authorization requirements for commits, pushes, PRs, merges and other Git writes.
 
+## Dependency-map maintenance
+
+When adding, changing, renaming or removing skills or shared sources, follow
+[CONTRIBUTING.md's maintainer map procedure](CONTRIBUTING.md#maintain-the-dependency-map).
+Inventory is automatic; semantic dependency review is not. Update actual
+relationships/evidence and reasoned exclusions, attest only reviewed sources,
+then run `node scripts/build-skill-map.mjs` and its read-only `--check`.
+Commit-ready work includes both generated artifacts and current reviews.
+Incomplete review or stale output must fail validation, while the preview stays
+available. This is repository maintenance, not an installed-skill runtime step.
+
 ## GT Help maintenance
 
 Andrew owns keeping GT Help's Ask Matt-style authored guide current. During

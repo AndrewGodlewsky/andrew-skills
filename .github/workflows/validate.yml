@@ -77,6 +77,8 @@ jobs:
         run: node --test scripts/release-validation.test.mjs scripts/release-snapshots.test.mjs scripts/skill-architecture.test.mjs scripts/release-catalog.test.mjs scripts/release-catalog-reader.test.mjs scripts/export-source.test.mjs
       - name: Check bundled exporter
         run: node scripts/build-exporter.mjs --check
+      - name: Check skill-map inventory, review and generated output
+        run: node scripts/build-skill-map.mjs --check
       - name: Select the published comparison base
         id: comparison
         env:
@@ -126,6 +128,23 @@ jobs:
             echo "Main advanced during validation. Refresh and revalidate the prospective change."
             exit 1
           fi
+
+  skill-map:
+    name: Skill map / ${{ matrix.os }} / Node ${{ matrix.node }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        node: ['22', '24']
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - run: node --test scripts/skill-map*.test.mjs
+      - run: node scripts/build-skill-map.mjs --check
 
   exporter-windows:
     name: Exporter Windows / Node ${{ matrix.node }}

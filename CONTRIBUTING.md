@@ -303,6 +303,61 @@ command or VS Code steps in the README. Do not edit an installed plugin cache
 to contribute changes. This repository ships one plugin; all skills belong in
 its root `skills/` folder.
 
+## Maintain the dependency map
+
+This is a repository maintainer procedure, outside the guidance extracted into
+installed skill packages. Do it in the same working change as additions, edits,
+renames, removals or shared-source changes. No contributor intake or installed
+skill gains a map-maintenance step. Keep review evidence in the issue carrying
+the change; leave Git publication to Andrew.
+
+1. Run `node scripts/skill-map.mjs` to inspect current inventory, candidate
+   occurrences, evidence, diagnostics and per-skill source digests. It discovers
+   even untracked skill folders; never add a separate node list. This discovery
+   command is diagnostic: exit zero does not establish readiness.
+2. Read affected instructions/resources and update
+   [relationships.json](docs/skill-map/relationships.json). Declare actual skill
+   inter-skill or resource use with a target, condition and unique source quote.
+   A skill can depend on another's instructions without invoking its workflow;
+   say exactly what is read or invoked in the condition. Classify every candidate:
+   keep explicit dependencies, or record
+   a reasoned exclusion against its current whole-source digest. Name matches,
+   examples, recommendations and negations alone do not create edges. Review
+   dynamic lookups and source/copy/builder relationships the scanner cannot infer.
+3. Inspect reverse impact with `node scripts/skill-map.mjs --impact skill:NAME`
+   or `node scripts/skill-map.mjs --impact file:PATH`. Use the expanded live view
+   to include a skill's owned resources and shared-source consumers. For source
+   changes, rebuild copies with their existing builders and review all consumers.
+   For rename/removal, repair actual caller instructions and records, remove
+   obsolete exclusions/reviews and inspect unresolved old names; no automatic
+   rename inference is provided. A standalone skill still needs explicit review.
+4. After semantic review, copy each affected skill node's current `sourceDigest`
+   into its `reviews` entry's `digest`, with reviewer identity and a useful note.
+   Rerun discovery after changing records; conditions and exclusions affect this
+   digest too. Changed context outside a matching quote invalidates review.
+   Never refresh hashes merely to clear a check; generation does not approve
+   reviews. The [data/API guide](docs/skill-map/README.md) explains the schema.
+5. Run the commands below. Generation writes only the two saved map artifacts;
+   it still exits nonzero if review is incomplete. Preview stays available.
+   The check compares expected content without writing files or attestations,
+   and fails for missing/stale output or any analysis finding. Valid conditional
+   edges and cycles alone do not fail. Repeat generation after the last source
+   or record edit, and include both artifacts with the working change.
+
+```sh
+node scripts/build-skill-map.mjs
+node scripts/skill-map-server.mjs
+node scripts/build-skill-map.mjs --check
+node --test scripts/skill-map*.test.mjs
+```
+
+The server runs until Ctrl+C; run the check in another terminal or stop it first.
+The [live map](http://127.0.0.1:43854/) reanalyzes working files on navigation.
+[Saved Markdown](docs/skill-map/map.md) and [JSON](docs/skill-map/map.json) are
+deterministic snapshots, not monitors of later edits. UTF-8 text normalizes CRLF;
+binary resources remain byte-sensitive. This tooling requires Node 22 or newer,
+without package installation. Run relevant package/build checks below as well.
+
 ## Run validation
 
 These commands require Node.js 22 or newer. Git is also required for release
@@ -311,6 +366,7 @@ comparisons and the snapshot tests; no package installation is needed.
 ```sh
 node --test scripts/release-validation.test.mjs scripts/release-snapshots.test.mjs scripts/skill-architecture.test.mjs scripts/release-catalog.test.mjs scripts/release-catalog-reader.test.mjs
 node scripts/validate.mjs
+node scripts/build-skill-map.mjs --check
 node scripts/validate.mjs --base origin/main --current-main origin/main
 node scripts/build-exporter.mjs --check
 node --test scripts/export-*.test.mjs
@@ -333,7 +389,10 @@ comparison needs complete local first-parent history and its source objects.
 Shallow history, unavailable objects and unsupported published source entries fail
 without returning a partial catalog. It does not fetch missing objects automatically.
 
-The **Validate skills and releases** CI job runs these tests and checks the
+The **Validate skills and releases** CI job also runs the read-only map check.
+A separate map test matrix covers Windows/Linux and Node 22/24. Neither job
+regenerates output, approves review records or publishes changes.
+The release job runs these tests and checks the
 prospective PR merge against its first parent and GitHub's current `main`. It
 fails if that base is stale or `main` advances during validation. Pushes to
 `main` validate the published snapshot against its first parent. A manual run

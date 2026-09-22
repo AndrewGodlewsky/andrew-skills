@@ -1,0 +1,5 @@
+{
+  "eval_id": 1,
+  "eval_name": "with-skill-routes",
+  "prompt": "R1: User invokes Help with no text.\n\nR2: I have an idea for a new GT skill. Should I run Grill Me first? Can you start the right skill for me?\n\nR3: What is the difference between Grill Me and Grill with Docs? I want agreed terminology and design decisions written into my project.\n\nR4: I want to see my installed versions and then update just Grill Me. What should I do?\n\nR5: GT is enabled in VS Code but Help is absent from the model skill list. Is it broken? Is /help definitely the command?\n\nR6: I want shorter replies, not changes to my files. Which Caveman skill?\n\nR7: I have a local skill I wrote and want it in GT. Does submission mean it will be published?\n\nR8: How do I fix this using GT? No other context."
+}

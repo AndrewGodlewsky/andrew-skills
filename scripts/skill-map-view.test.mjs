@@ -50,8 +50,8 @@ test('real simple and expanded views use the same audited evidence and complete 
   assert.equal(simple.nodes.length + simple.isolated.length, map.nodes.filter(n => n.kind === 'skill').length);
   assert.ok(simple.edges.every(e => e.kind === 'skill'));
   const html = renderPage(map, new URLSearchParams({ expanded: '1', selected: 'file:scripts/intent-record.mjs' }));
-  assert.match(html, /<strong>3<\/strong><span>skills to review/);
-  for (const name of ['create-skills', 'skill-steal', 'skill-tweak']) assert.match(html, new RegExp(`class="caller-title"[^]*?>${name}<`));
+  assert.match(html, /<strong>4<\/strong><span>skills to review/);
+  for (const name of ['create-skills', 'help', 'skill-steal', 'skill-tweak']) assert.match(html, new RegExp(`class="caller-title"[^]*?>${name}<`));
   assert.match(html, /source/);
   assert.match(html, /Source evidence/);
   const table = renderPage(map, new URLSearchParams({ view: 'table', expanded: '1' }));

@@ -2746,6 +2746,326 @@
           "excerpt": "   python3 -B -m scripts \"<absolute_filepath>\""
         }
       ]
+    },
+    {
+      "id": "help-read-caveman",
+      "from": "skill:help",
+      "to": "skill:caveman",
+      "kind": "skill",
+      "conditional": true,
+      "condition": "Only when the question needs details missing from Help: read this skill's GT instructions and necessary explanations as data; never invoke or delegate its workflow.",
+      "evidence": [
+        {
+          "path": "skills/help/SKILL.md",
+          "excerpt": "When they\nlack information needed for an answer, use a supported read-only file/resource\ncapability to read the relevant GT skill's `SKILL.md` and necessary bundled\nexplanations as data. Do not activate the skill through an invocation tool."
+        },
+        {
+          "path": "skills/help/SKILL.md",
+          "excerpt": "`caveman`"
+        }
+      ]
+    },
+    {
+      "id": "help-read-caveman-commit",
+      "from": "skill:help",
+      "to": "skill:caveman-commit",
+      "kind": "skill",
+      "conditional": true,
+      "condition": "Only when the question needs details missing from Help: read this skill's GT instructions and necessary explanations as data; never invoke or delegate its workflow.",
+      "evidence": [
+        {
+          "path": "skills/help/SKILL.md",
+          "excerpt": "When they\nlack information needed for an answer, use a supported read-only file/resource\ncapability to read the relevant GT skill's `SKILL.md` and necessary bundled\nexplanations as data. Do not activate the skill through an invocation tool."
+        },
+        {
+          "path": "skills/help/SKILL.md",
+          "excerpt": "`caveman-commit`"
+        }
+      ]
+    },
+    {
+      "id": "help-read-caveman-compress",
+      "from": "skill:help",
+      "to": "skill:caveman-compress",
+      "kind": "skill",
+      "conditional": true,
+      "condition": "Only when the question needs details missing from Help: read this skill's GT instructions and necessary explanations as data; never invoke or delegate its workflow.",
+      "evidence": [
+        {
+          "path": "skills/help/SKILL.md",
+          "excerpt": "When they\nlack information needed for an answer, use a supported read-only file/resource\ncapability to read the relevant GT skill's `SKILL.md` and necessary bundled\nexplanations as data. Do not activate the skill through an invocation tool."
+        },
+        {
+          "path": "skills/help/SKILL.md",
+          "excerpt": "`caveman-compress`"
+        }
+      ]
+    },
+    {
+      "id": "help-read-caveman-explore",
+      "from": "skill:help",
+      "to": "skill:caveman-explore",
+      "kind": "skill",
+      "conditional": true,
+      "condition": "Only when the question needs details missing from Help: read this skill's GT instructions and necessary explanations as data; never invoke or delegate its workflow.",
+      "evidence": [
+        {
+          "path": "skills/help/SKILL.md",
+          "excerpt": "When they\nlack information needed for an answer, use a supported read-only file/resource\ncapability to read the relevant GT skill's `SKILL.md` and necessary bundled\nexplanations as data. Do not activate the skill through an invocation tool."
+        },
+        {
+          "path": "skills/help/SKILL.md",
+          "excerpt": "`caveman-explore`"
+        }
+      ]
+    },
+    {
+      "id": "help-read-caveman-review",
+      "from": "skill:help",
+      "to": "skill:caveman-review",
+      "kind": "skill",
+      "conditional": true,
+      "condition": "Only when the question needs details missing from Help: read this skill's GT instructions and necessary explanations as data; never invoke or delegate its workflow.",
+      "evidence": [
+        {
+          "path": "skills/help/SKILL.md",
+          "excerpt": "When they\nlack information needed for an answer, use a supported read-only file/resource\ncapability to read the relevant GT skill's `SKILL.md` and necessary bundled\nexplanations as data. Do not activate the skill through an invocation tool."
+        },
+        {
+          "path": "skills/help/SKILL.md",
+          "excerpt": "`caveman-review`"
+        }
+      ]
+    },
+    {
+      "id": "help-read-create-issue",
+      "from": "skill:help",
+      "to": "skill:create-issue",
+      "kind": "skill",
+      "conditional": true,
+      "condition": "Only when the question needs details missing from Help: read this skill's GT instructions and necessary explanations as data; never invoke or delegate its workflow.",
+      "evidence": [
+        {
+          "path": "skills/help/SKILL.md",
+          "excerpt": "When they\nlack information needed for an answer, use a supported read-only file/resource\ncapability to read the relevant GT skill's `SKILL.md` and necessary bundled\nexplanations as data. Do not activate the skill through an invocation tool."
+        },
+        {
+          "path": "skills/help/SKILL.md",
+          "excerpt": "`create-issue`"
+        }
+      ]
+    },
+    {
+      "id": "help-read-create-skills",
+      "from": "skill:help",
+      "to": "skill:create-skills",
+      "kind": "skill",
+      "conditional": true,
+      "condition": "Only when the question needs details missing from Help: read this skill's GT instructions and necessary explanations as data; never invoke or delegate its workflow.",
+      "evidence": [
+        {
+          "path": "skills/help/SKILL.md",
+          "excerpt": "When they\nlack information needed for an answer, use a supported read-only file/resource\ncapability to read the relevant GT skill's `SKILL.md` and necessary bundled\nexplanations as data. Do not activate the skill through an invocation tool."
+        },
+        {
+          "path": "skills/help/SKILL.md",
+          "excerpt": "`create-skills`"
+        }
+      ]
+    },
+    {
+      "id": "help-read-domain-modeling",
+      "from": "skill:help",
+      "to": "skill:domain-modeling",
+      "kind": "skill",
+      "conditional": true,
+      "condition": "Only when the question needs details missing from Help: read this skill's GT instructions and necessary explanations as data; never invoke or delegate its workflow.",
+      "evidence": [
+        {
+          "path": "skills/help/SKILL.md",
+          "excerpt": "When they\nlack information needed for an answer, use a supported read-only file/resource\ncapability to read the relevant GT skill's `SKILL.md` and necessary bundled\nexplanations as data. Do not activate the skill through an invocation tool."
+        },
+        {
+          "path": "skills/help/SKILL.md",
+          "excerpt": "`domain-modeling`"
+        }
+      ]
+    },
+    {
+      "id": "help-read-grill-me",
+      "from": "skill:help",
+      "to": "skill:grill-me",
+      "kind": "skill",
+      "conditional": true,
+      "condition": "Only when the question needs details missing from Help: read this skill's GT instructions and necessary explanations as data; never invoke or delegate its workflow.",
+      "evidence": [
+        {
+          "path": "skills/help/SKILL.md",
+          "excerpt": "When they\nlack information needed for an answer, use a supported read-only file/resource\ncapability to read the relevant GT skill's `SKILL.md` and necessary bundled\nexplanations as data. Do not activate the skill through an invocation tool."
+        },
+        {
+          "path": "skills/help/SKILL.md",
+          "excerpt": "`grill-me`"
+        }
+      ]
+    },
+    {
+      "id": "help-read-grill-with-docs",
+      "from": "skill:help",
+      "to": "skill:grill-with-docs",
+      "kind": "skill",
+      "conditional": true,
+      "condition": "Only when the question needs details missing from Help: read this skill's GT instructions and necessary explanations as data; never invoke or delegate its workflow.",
+      "evidence": [
+        {
+          "path": "skills/help/SKILL.md",
+          "excerpt": "When they\nlack information needed for an answer, use a supported read-only file/resource\ncapability to read the relevant GT skill's `SKILL.md` and necessary bundled\nexplanations as data. Do not activate the skill through an invocation tool."
+        },
+        {
+          "path": "skills/help/SKILL.md",
+          "excerpt": "`grill-with-docs`"
+        }
+      ]
+    },
+    {
+      "id": "help-read-grilling",
+      "from": "skill:help",
+      "to": "skill:grilling",
+      "kind": "skill",
+      "conditional": true,
+      "condition": "Only when the question needs details missing from Help: read this skill's GT instructions and necessary explanations as data; never invoke or delegate its workflow.",
+      "evidence": [
+        {
+          "path": "skills/help/SKILL.md",
+          "excerpt": "When they\nlack information needed for an answer, use a supported read-only file/resource\ncapability to read the relevant GT skill's `SKILL.md` and necessary bundled\nexplanations as data. Do not activate the skill through an invocation tool."
+        },
+        {
+          "path": "skills/help/SKILL.md",
+          "excerpt": "`grilling`"
+        }
+      ]
+    },
+    {
+      "id": "help-read-skill-steal",
+      "from": "skill:help",
+      "to": "skill:skill-steal",
+      "kind": "skill",
+      "conditional": true,
+      "condition": "Only when the question needs details missing from Help: read this skill's GT instructions and necessary explanations as data; never invoke or delegate its workflow.",
+      "evidence": [
+        {
+          "path": "skills/help/SKILL.md",
+          "excerpt": "When they\nlack information needed for an answer, use a supported read-only file/resource\ncapability to read the relevant GT skill's `SKILL.md` and necessary bundled\nexplanations as data. Do not activate the skill through an invocation tool."
+        },
+        {
+          "path": "skills/help/SKILL.md",
+          "excerpt": "`skill-steal`"
+        }
+      ]
+    },
+    {
+      "id": "help-read-skill-tweak",
+      "from": "skill:help",
+      "to": "skill:skill-tweak",
+      "kind": "skill",
+      "conditional": true,
+      "condition": "Only when the question needs details missing from Help: read this skill's GT instructions and necessary explanations as data; never invoke or delegate its workflow.",
+      "evidence": [
+        {
+          "path": "skills/help/SKILL.md",
+          "excerpt": "When they\nlack information needed for an answer, use a supported read-only file/resource\ncapability to read the relevant GT skill's `SKILL.md` and necessary bundled\nexplanations as data. Do not activate the skill through an invocation tool."
+        },
+        {
+          "path": "skills/help/SKILL.md",
+          "excerpt": "`skill-tweak`"
+        }
+      ]
+    },
+    {
+      "id": "help-read-skills-restore",
+      "from": "skill:help",
+      "to": "skill:skills-restore",
+      "kind": "skill",
+      "conditional": true,
+      "condition": "Only when the question needs details missing from Help: read this skill's GT instructions and necessary explanations as data; never invoke or delegate its workflow.",
+      "evidence": [
+        {
+          "path": "skills/help/SKILL.md",
+          "excerpt": "When they\nlack information needed for an answer, use a supported read-only file/resource\ncapability to read the relevant GT skill's `SKILL.md` and necessary bundled\nexplanations as data. Do not activate the skill through an invocation tool."
+        },
+        {
+          "path": "skills/help/SKILL.md",
+          "excerpt": "`skills-restore`"
+        }
+      ]
+    },
+    {
+      "id": "help-read-skills-status",
+      "from": "skill:help",
+      "to": "skill:skills-status",
+      "kind": "skill",
+      "conditional": true,
+      "condition": "Only when the question needs details missing from Help: read this skill's GT instructions and necessary explanations as data; never invoke or delegate its workflow.",
+      "evidence": [
+        {
+          "path": "skills/help/SKILL.md",
+          "excerpt": "When they\nlack information needed for an answer, use a supported read-only file/resource\ncapability to read the relevant GT skill's `SKILL.md` and necessary bundled\nexplanations as data. Do not activate the skill through an invocation tool."
+        },
+        {
+          "path": "skills/help/SKILL.md",
+          "excerpt": "`skills-status`"
+        }
+      ]
+    },
+    {
+      "id": "help-read-skills-update",
+      "from": "skill:help",
+      "to": "skill:skills-update",
+      "kind": "skill",
+      "conditional": true,
+      "condition": "Only when the question needs details missing from Help: read this skill's GT instructions and necessary explanations as data; never invoke or delegate its workflow.",
+      "evidence": [
+        {
+          "path": "skills/help/SKILL.md",
+          "excerpt": "When they\nlack information needed for an answer, use a supported read-only file/resource\ncapability to read the relevant GT skill's `SKILL.md` and necessary bundled\nexplanations as data. Do not activate the skill through an invocation tool."
+        },
+        {
+          "path": "skills/help/SKILL.md",
+          "excerpt": "`skills-update`"
+        }
+      ]
+    },
+    {
+      "id": "help-read-why-not",
+      "from": "skill:help",
+      "to": "skill:why-not",
+      "kind": "skill",
+      "conditional": true,
+      "condition": "Only when the question needs details missing from Help: read this skill's GT instructions and necessary explanations as data; never invoke or delegate its workflow.",
+      "evidence": [
+        {
+          "path": "skills/help/SKILL.md",
+          "excerpt": "When they\nlack information needed for an answer, use a supported read-only file/resource\ncapability to read the relevant GT skill's `SKILL.md` and necessary bundled\nexplanations as data. Do not activate the skill through an invocation tool."
+        },
+        {
+          "path": "skills/help/SKILL.md",
+          "excerpt": "`why-not`"
+        }
+      ]
+    },
+    {
+      "id": "help-license",
+      "from": "file:skills/help/SKILL.md",
+      "to": "file:skills/help/assets/matt-pocock-license.txt",
+      "kind": "resource",
+      "conditional": true,
+      "condition": "When copying or redistributing this adaptation, retain the bundled notice.",
+      "evidence": [
+        {
+          "path": "skills/help/SKILL.md",
+          "excerpt": "[Matt Pocock MIT notice](assets/matt-pocock-license.txt)."
+        }
+      ]
     }
   ],
   "provenance": [
@@ -3245,63 +3565,63 @@
       "candidate": "6ecd77d14f83ee622832d17a2edcefef1bda5d9bdcbcb4a49e7268c860026202",
       "path": "CONTRIBUTING.md",
       "target": "file:docs/planning/skill-migration-acceptance-notes.md",
-      "sourceDigest": "e33e9e5e08f29c2910df83725d5abea6848989d6bd76358f7846a23e364e5c5b",
+      "sourceDigest": "90f83e118ca2856057070effe2275d3acc82cfa1b068adc20888c2bd0145c789",
       "reason": "Repository authoring/navigation material outside the two extracted package-rule ranges; not a dependency of the bundled guidance."
     },
     {
       "candidate": "72fca2459bb57fa6daac759fd43b5c14a39f8b5fa38941564afb896d14446393",
       "path": "CONTRIBUTING.md",
       "target": "file:docs/planning/skill-personal-export-contract.md",
-      "sourceDigest": "e33e9e5e08f29c2910df83725d5abea6848989d6bd76358f7846a23e364e5c5b",
+      "sourceDigest": "90f83e118ca2856057070effe2275d3acc82cfa1b068adc20888c2bd0145c789",
       "reason": "Repository authoring/navigation material outside the two extracted package-rule ranges; not a dependency of the bundled guidance."
     },
     {
       "candidate": "31a336a67b5e4183775a7270bfd7f93acb726a0ec868df213fe0627aa4093da4",
       "path": "CONTRIBUTING.md",
       "target": "file:docs/planning/skill-publishing-notes.md",
-      "sourceDigest": "e33e9e5e08f29c2910df83725d5abea6848989d6bd76358f7846a23e364e5c5b",
+      "sourceDigest": "90f83e118ca2856057070effe2275d3acc82cfa1b068adc20888c2bd0145c789",
       "reason": "Repository authoring/navigation material outside the two extracted package-rule ranges; not a dependency of the bundled guidance."
     },
     {
       "candidate": "eb1b8f6515365784b67d78e3b0202d7be5e2126604f58052bf7aba610dbe1c2d",
       "path": "CONTRIBUTING.md",
       "target": "file:docs/planning/skill-publishing-round-3.md",
-      "sourceDigest": "e33e9e5e08f29c2910df83725d5abea6848989d6bd76358f7846a23e364e5c5b",
+      "sourceDigest": "90f83e118ca2856057070effe2275d3acc82cfa1b068adc20888c2bd0145c789",
       "reason": "Repository authoring/navigation material outside the two extracted package-rule ranges; not a dependency of the bundled guidance."
     },
     {
       "candidate": "b1faa87d3c79446c2521e86b33f6f728add902f71d6e38bcb0f6c7c53fae81db",
       "path": "CONTRIBUTING.md",
       "target": "file:docs/release-catalog.md",
-      "sourceDigest": "e33e9e5e08f29c2910df83725d5abea6848989d6bd76358f7846a23e364e5c5b",
+      "sourceDigest": "90f83e118ca2856057070effe2275d3acc82cfa1b068adc20888c2bd0145c789",
       "reason": "Repository authoring/navigation material outside the two extracted package-rule ranges; not a dependency of the bundled guidance."
     },
     {
       "candidate": "c0a67d91f22618191c2e3098d689ba179b690f79964a763b5ca1aa969615c9ca",
       "path": "CONTRIBUTING.md",
       "target": "file:exporter/README.md",
-      "sourceDigest": "e33e9e5e08f29c2910df83725d5abea6848989d6bd76358f7846a23e364e5c5b",
+      "sourceDigest": "90f83e118ca2856057070effe2275d3acc82cfa1b068adc20888c2bd0145c789",
       "reason": "Repository authoring/navigation material outside the two extracted package-rule ranges; not a dependency of the bundled guidance."
     },
     {
       "candidate": "34562b07832b2ba661874b833f82dafe44840b295efddeb2ba9afef60a06134c",
       "path": "CONTRIBUTING.md",
       "target": "file:README.md",
-      "sourceDigest": "e33e9e5e08f29c2910df83725d5abea6848989d6bd76358f7846a23e364e5c5b",
+      "sourceDigest": "90f83e118ca2856057070effe2275d3acc82cfa1b068adc20888c2bd0145c789",
       "reason": "Repository authoring/navigation material outside the two extracted package-rule ranges; not a dependency of the bundled guidance."
     },
     {
       "candidate": "6c564917179f939c7d141c223d0918f71772e5b78cf4fac635b2f145a3b9c6db",
       "path": "CONTRIBUTING.md",
       "target": "file:templates/summary.md",
-      "sourceDigest": "e33e9e5e08f29c2910df83725d5abea6848989d6bd76358f7846a23e364e5c5b",
+      "sourceDigest": "90f83e118ca2856057070effe2275d3acc82cfa1b068adc20888c2bd0145c789",
       "reason": "Repository authoring/navigation material outside the two extracted package-rule ranges; not a dependency of the bundled guidance."
     },
     {
       "candidate": "f882d5374ec70206d97809bc4b4953ff935825f5187aba2fabdcb6c498a7df9d",
       "path": "CONTRIBUTING.md",
       "target": "skill:skills-restore",
-      "sourceDigest": "e33e9e5e08f29c2910df83725d5abea6848989d6bd76358f7846a23e364e5c5b",
+      "sourceDigest": "90f83e118ca2856057070effe2275d3acc82cfa1b068adc20888c2bd0145c789",
       "reason": "Authoring/release documentation about the exporter packaging, not an invocation dependency of the extracted package rules."
     },
     {
@@ -3812,15 +4132,64 @@
       "candidate": "34ecff4c8d041592c61bad9f313851138122e7955df71465948f0c9d45670ffa",
       "path": "CONTRIBUTING.md",
       "target": "skill:explain-design",
-      "sourceDigest": "e33e9e5e08f29c2910df83725d5abea6848989d6bd76358f7846a23e364e5c5b",
+      "sourceDigest": "90f83e118ca2856057070effe2275d3acc82cfa1b068adc20888c2bd0145c789",
       "reason": "Illustrative package names in authoring examples, outside the guidance ranges bundled into skills; not invocations."
     },
     {
       "candidate": "125ff3ec7c4973271a14a24c261fdc5593748016189cfe22f7f50d88675dffa4",
       "path": "CONTRIBUTING.md",
       "target": "skill:summarize-notes",
-      "sourceDigest": "e33e9e5e08f29c2910df83725d5abea6848989d6bd76358f7846a23e364e5c5b",
+      "sourceDigest": "90f83e118ca2856057070effe2275d3acc82cfa1b068adc20888c2bd0145c789",
       "reason": "Illustrative package names in authoring examples, outside the guidance ranges bundled into skills; not invocations."
+    },
+    {
+      "candidate": "b40217e835da148ca1e12b0292955d7a7b767f8974a40a5aebd652c4c176de80",
+      "path": "CONTRIBUTING.md",
+      "target": "file:docs/skill-map/map.json",
+      "sourceDigest": "90f83e118ca2856057070effe2275d3acc82cfa1b068adc20888c2bd0145c789",
+      "reason": "Repository maintainer discovery, review, generation and validation instructions outside the extracted runtime guidance; not a packaged skill dependency."
+    },
+    {
+      "candidate": "4d2ac64e3f730a8ce90ee4ea62a380ffc5a4085949370ea778e9882953627c8e",
+      "path": "CONTRIBUTING.md",
+      "target": "file:docs/skill-map/map.md",
+      "sourceDigest": "90f83e118ca2856057070effe2275d3acc82cfa1b068adc20888c2bd0145c789",
+      "reason": "Repository maintainer discovery, review, generation and validation instructions outside the extracted runtime guidance; not a packaged skill dependency."
+    },
+    {
+      "candidate": "88106fdc9d5db877f29f3be3410c80862a67a1716f10d136fa2b42b79ef22199",
+      "path": "CONTRIBUTING.md",
+      "target": "file:docs/skill-map/README.md",
+      "sourceDigest": "90f83e118ca2856057070effe2275d3acc82cfa1b068adc20888c2bd0145c789",
+      "reason": "Repository maintainer discovery, review, generation and validation instructions outside the extracted runtime guidance; not a packaged skill dependency."
+    },
+    {
+      "candidate": "d52ca2f0f104db73a2b237d1d4370bb161f1c4d2a54b0db387b6c21cc6dde4eb",
+      "path": "CONTRIBUTING.md",
+      "target": "file:docs/skill-map/relationships.json",
+      "sourceDigest": "90f83e118ca2856057070effe2275d3acc82cfa1b068adc20888c2bd0145c789",
+      "reason": "Repository maintainer discovery, review, generation and validation instructions outside the extracted runtime guidance; not a packaged skill dependency."
+    },
+    {
+      "candidate": "d108c5f174f37eeb33e52978f5dd44cd9ac7666a4797b2149ae6127175ca478f",
+      "path": "skills/caveman-compress/scripts/cli.py",
+      "target": "skill:help",
+      "sourceDigest": "04d615a66dbf204e3a883b53706320c0c48e0a4c717b0516d41f647a7cfafeb2",
+      "reason": "argparse help= describes a CLI argument; it does not use GT Help."
+    },
+    {
+      "candidate": "5a3276d6266ee07ad82e0d37a9b5d1b2552f3cb9d0875f701d45a1fe4ecede33",
+      "path": "skills/skills-restore/SKILL.md",
+      "target": "skill:help",
+      "sourceDigest": "33dda0dde0390b91fdbf6adf56c70e512f3828ce800c4d4140788c1f50e5abdb",
+      "reason": "Opening English verb \"Help the user\" describes the restore task, not the GT Help skill."
+    },
+    {
+      "candidate": "74dbcc50bb0979570fa2770c37559c65a2772cd8bd8dcfd86e008948035fb5cc",
+      "path": "skills/help/SKILL.md",
+      "target": "skill:help",
+      "sourceDigest": "c99307893972cd05a5fbe9b257b9072468e3e6acd499e20b47951c6b6438478e",
+      "reason": "Own identity, headings and self references; no self-call or lookup dependency."
     }
   ],
   "reviews": {
@@ -3835,9 +4204,9 @@
       "note": "Commit-message drafting only; self examples and upstream Caveman attribution are not dependencies."
     },
     "caveman-compress": {
-      "digest": "2383821252e2be54c0d908049f52563a8d604f690b531bf6dafc0bf7635ad0ef",
-      "reviewer": "Codex dependency audit for Andrew, issue #61",
-      "note": "Audited CLI/Python imports, runtime/data-flow guidance, backup recovery and optional benchmark. No GT caveman invocation; external provider/runtime prerequisites are outside this repository graph."
+      "digest": "36a5e2ada0654e336e6e028eaac3171eae362326857b2e31dc0958e356633f3d",
+      "reviewer": "Codex dependency review for Andrew, issue #63",
+      "note": "Reviewed newly detected help candidate: argparse keyword only. Existing Python imports and resource declarations are unchanged; prior #61 package audit retained."
     },
     "caveman-explore": {
       "digest": "00751345322ba4765b0e73069ec28c3225a2cdb7c106595ad21f4169b2b734d9",
@@ -3855,9 +4224,9 @@
       "note": "Helper protocol and bundled Node runtime imports; caller owns content. No invocation of its callers."
     },
     "create-skills": {
-      "digest": "f5816762af1aea3febdf47a3534c865044498987ca32160cd8133a5f69630adc",
-      "reviewer": "Codex dependency audit for Andrew, issue #61",
-      "note": "Required Grill Me interview, conditional Create Issue delivery and optional personal-copy tools. All reference/script imports and builder provenance audited."
+      "digest": "a453cf24f82996c2baab3ecd6713cd5c261731ffc4471182e1726f274fc32e92",
+      "reviewer": "Codex dependency review for Andrew, issue #63",
+      "note": "Reviewed CONTRIBUTING changes and candidate exclusions: maintainer map procedure is outside both extracted package-rule ranges. Read-only builder check confirms identical bundled guidance; existing runtime edges and provenance retained."
     },
     "domain-modeling": {
       "digest": "04135c6cdd861062ce86c14e0e4074d14a8e0181e0893c7341feaa12092577c2",
@@ -3880,9 +4249,9 @@
       "note": "Interview instructions use native host capabilities, not a separate GT skill. License is bundled."
     },
     "skill-steal": {
-      "digest": "3935e61bd0220f1bdb1ce70a5fa79960393dad88e908c9365735326c8bca46b8",
-      "reviewer": "Codex dependency audit for Andrew, issue #61",
-      "note": "Conditional Grill Me clarification and Create Issue delivery. Creator helpers/guidance are reused files, not a Create Skills invocation; all builders and adapted guidance audited."
+      "digest": "8a5df3d0362da89a63177b1d8d8e416f7e52741e2d0084c72a72b75e4c33d635",
+      "reviewer": "Codex dependency review for Andrew, issue #63",
+      "note": "Reviewed CONTRIBUTING changes and exclusions outside extracted guidance. Builder check confirms identical packaged rules and adapted shared resources; existing dependency decisions retained."
     },
     "skill-tweak": {
       "digest": "81f63e63d3773b8ef7941bfc2f54f55c8f00ab99c41ac713213cc8465ef09f8a",
@@ -3890,9 +4259,9 @@
       "note": "Required Grill Me interview and conditional Create Issue delivery, with shared intent/handoff tools and issue template."
     },
     "skills-restore": {
-      "digest": "992d847af577bc9e4a9383681d0cc3efb09e7bfb6010e1ac43a46e90813291ce",
-      "reviewer": "Codex dependency audit for Andrew, issue #61",
-      "note": "Audited wrapper and bundled exporter, manifest, dynamically verified modules and maintained-source provenance. Grill Me is an export example only."
+      "digest": "d552b93d1d722fb628e8d8e2a5892a809c749c07f044ff31470afe6ce6506365",
+      "reviewer": "Codex dependency review for Andrew, issue #63",
+      "note": "Reviewed new help candidate: English opening verb only. Existing wrapper/exporter relationships and package bytes are unchanged; prior #61 audit retained."
     },
     "skills-status": {
       "digest": "434dd47d0b17ff84160ca24eafb485a5a7d57dbf9c9220d9c08acd45a52940b0",
@@ -3908,6 +4277,11 @@
       "digest": "b32efb6b68afed869bb92c91a82744246f2142fc179553839769ec641961e6ab",
       "reviewer": "Codex dependency audit for Andrew, issue #61",
       "note": "Self-contained review discipline using native delegation where available, not another skill."
+    },
+    "help": {
+      "digest": "6f59da14bbfb45c12abde9f45e464063cf25bd05c36929fc3a2428341c9bcd44",
+      "reviewer": "Codex dependency review for Andrew, issue #63",
+      "note": "Reviewed complete Help instructions, release metadata and bundled notice. Conditional reads of each other GT skill are dependencies on their instructions as data, not invocation. Recommendations alone and self references are not dependencies. No external Ask Matt/runtime tool dependency."
     }
   }
 }

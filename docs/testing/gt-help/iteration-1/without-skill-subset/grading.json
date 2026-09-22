@@ -1,0 +1,28 @@
+{
+  "expectations": [
+    {
+      "text": "R2: Recommend Create Skills directly; no invocation.",
+      "passed": false,
+      "evidence": "Recommends Grill Me before obtaining GT knowledge; misses direct Create Skills route."
+    },
+    {
+      "text": "R4: Status before Update; whole-plugin update, no latest claim.",
+      "passed": false,
+      "evidence": "Suggests selecting only Grill Me before acknowledging that support is unverified."
+    },
+    {
+      "text": "R5: Missing model-list entry is inconclusive; no invented command or diagnosis.",
+      "passed": true,
+      "evidence": "Does not infer broken state or guarantee /help."
+    }
+  ],
+  "summary": {
+    "passed": 1,
+    "failed": 2,
+    "total": 3,
+    "pass_rate": 0.3333333333333333
+  },
+  "eval_feedback": {
+    "overall": "Single sampled, grouped simulated conversations evaluated by the author against semantic criteria. Tool intents were recorded, not dispatched. This is not live client acceptance, tool enforcement proof, or a statistical benchmark. Baseline is a small no-GT-knowledge comparison, not a comprehensive model score."
+  }
+}

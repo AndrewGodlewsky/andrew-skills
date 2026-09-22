@@ -1,0 +1,5 @@
+{
+  "eval_id": 3,
+  "eval_name": "without-skill-subset",
+  "prompt": "R2: I have an idea for a new GT skill. Should I run Grill Me first? Can you start the right skill for me?\n\nR4: I want to see my installed versions and then update just Grill Me. What should I do?\n\nR5: GT is enabled in VS Code but Help is absent from the model skill list. Is it broken? Is /help definitely the command?"
+}

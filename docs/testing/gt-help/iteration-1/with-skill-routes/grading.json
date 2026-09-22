@@ -1,0 +1,53 @@
+{
+  "expectations": [
+    {
+      "text": "R1: Invite goal without catalog dump.",
+      "passed": true,
+      "evidence": "R1 response and tool_intents in outputs/responses.json; no runtime tool operations requested."
+    },
+    {
+      "text": "R2: Recommend Create Skills directly; no invocation.",
+      "passed": true,
+      "evidence": "R2 response and tool_intents in outputs/responses.json; no runtime tool operations requested."
+    },
+    {
+      "text": "R3: Distinguish interview from interview plus documentation.",
+      "passed": true,
+      "evidence": "R3 response and tool_intents in outputs/responses.json; no runtime tool operations requested."
+    },
+    {
+      "text": "R4: Status before Update; whole-plugin update, no latest claim.",
+      "passed": true,
+      "evidence": "R4 response and tool_intents in outputs/responses.json; no runtime tool operations requested."
+    },
+    {
+      "text": "R5: Missing model-list entry is inconclusive; no invented command or diagnosis.",
+      "passed": true,
+      "evidence": "R5 response and tool_intents in outputs/responses.json; no runtime tool operations requested."
+    },
+    {
+      "text": "R6: Choose chat style and distinguish file rewrite.",
+      "passed": true,
+      "evidence": "R6 response and tool_intents in outputs/responses.json; no runtime tool operations requested."
+    },
+    {
+      "text": "R7: Local-source adaptation, submission distinct from adoption.",
+      "passed": true,
+      "evidence": "R7 response and tool_intents in outputs/responses.json; no runtime tool operations requested."
+    },
+    {
+      "text": "R8: Ask a focused clarification before guessing.",
+      "passed": true,
+      "evidence": "R8 response and tool_intents in outputs/responses.json; no runtime tool operations requested."
+    }
+  ],
+  "summary": {
+    "passed": 8,
+    "failed": 0,
+    "total": 8,
+    "pass_rate": 1
+  },
+  "eval_feedback": {
+    "overall": "Single sampled, grouped simulated conversations evaluated by the author against semantic criteria. Tool intents were recorded, not dispatched. This is not live client acceptance, tool enforcement proof, or a statistical benchmark. Baseline is a small no-GT-knowledge comparison, not a comprehensive model score."
+  }
+}

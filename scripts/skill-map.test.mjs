@@ -195,9 +195,13 @@ test('repository audit covers every current skill with evidence and all known sh
   const files=readSkillMapFiles(root), map=analyzeSkillMap(files,data);
   assert.deepEqual(map.diagnostics,[]);
   assert.deepEqual(map.nodes.filter(n=>n.kind==='skill').map(n=>n.label).sort(), inventorySkills(files));
-  assert.deepEqual(reverseImpact(map,'skill:grill-me').callers.map(c=>c.id),['skill:create-skills','skill:skill-steal','skill:skill-tweak']);
-  assert.deepEqual(reverseImpact(map,'file:scripts/intent-record.mjs',{expanded:true}).callers.map(c=>c.id),['skill:create-skills','skill:skill-steal','skill:skill-tweak']);
-  assert.deepEqual(reverseImpact(map,'file:scripts/intent-capture.md',{expanded:true}).callers.map(c=>c.id),['skill:create-skills','skill:skill-tweak']);
+  assert.deepEqual(reverseImpact(map,'skill:grill-me').callers.map(c=>c.id),['skill:create-skills','skill:help','skill:skill-steal','skill:skill-tweak']);
+  assert.deepEqual(reverseImpact(map,'file:scripts/intent-record.mjs',{expanded:true}).callers.map(c=>c.id),['skill:create-skills','skill:help','skill:skill-steal','skill:skill-tweak']);
+  assert.deepEqual(reverseImpact(map,'file:scripts/intent-capture.md',{expanded:true}).callers.map(c=>c.id),['skill:create-skills','skill:help','skill:skill-tweak']);
+  const helpEdges = map.edges.filter(e=>e.from==='skill:help'&&e.kind==='skill');
+  assert.equal(helpEdges.length, inventorySkills(files).length - 1);
+  assert.ok(helpEdges.every(e=>e.conditional && e.condition.includes('never invoke')));
+  assert.ok(!map.edges.some(e=>e.from==='skill:skills-restore'&&e.to==='skill:help'));
   assert.ok(!map.edges.some(e=>e.from==='skill:skills-update'&&e.to==='skill:skills-restore'));
   const modified = new Map(files);
   modified.set('scripts/intent-capture.md', Buffer.concat([files.get('scripts/intent-capture.md'),Buffer.from('\nClarification changed.\n')]));

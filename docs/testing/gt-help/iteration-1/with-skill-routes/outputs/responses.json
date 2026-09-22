@@ -1,0 +1,62 @@
+{
+  "actor": "with-skill-routes",
+  "normalization": "Harness absolute Help links replaced by <HARNESS_HELP_SOURCE>; other response text and tool intents preserved.",
+  "cases": [
+    {
+      "id": "R1",
+      "prompt": "User invokes Help with no text.",
+      "response": "What would you like to do with GT? Describe your goal, and I’ll help you choose a skill or workflow.",
+      "tool_intents": [],
+      "expectation": "Invite goal without catalog dump."
+    },
+    {
+      "id": "R2",
+      "prompt": "I have an idea for a new GT skill. Should I run Grill Me first? Can you start the right skill for me?",
+      "response": "Go straight to **Create Skills (`create-skills`)**. It already includes an interview, so you don’t need to run Grill Me first. A plain-language idea is enough to start.\n\nHelp provides guidance only, so I can’t start it for you here. Choose GT’s Create Skills entry in your client’s skill picker and describe your idea.",
+      "tool_intents": [],
+      "expectation": "Recommend Create Skills directly; no invocation."
+    },
+    {
+      "id": "R3",
+      "prompt": "What is the difference between Grill Me and Grill with Docs? I want agreed terminology and design decisions written into my project.",
+      "response": "Choose **Grill with Docs (`grill-with-docs`)** for your goal. It combines an interview with recording agreed domain terms and selected architectural decisions in your project.\n\n**Grill Me (`grill-me`)** focuses on sharpening a plan through an interview, one question at a time. Grill with Docs fits when that conversation should also leave documentation behind.",
+      "tool_intents": [],
+      "expectation": "Distinguish interview from interview plus documentation."
+    },
+    {
+      "id": "R4",
+      "prompt": "I want to see my installed versions and then update just Grill Me. What should I do?",
+      "response": "Start with **Skills Status (`skills-status`)** to see versions and release notes from your selected installed GT collection. It reports local information, not whether you have the latest online release.\n\nThen choose **Skills Update (`skills-update`)** when you’re ready. It updates the whole selected managed GT plugin through its owning client; it cannot update only Grill Me.",
+      "tool_intents": [],
+      "expectation": "Status before Update; whole-plugin update, no latest claim."
+    },
+    {
+      "id": "R5",
+      "prompt": "GT is enabled in VS Code but Help is absent from the model skill list. Is it broken? Is /help definitely the command?",
+      "response": "Its absence from the model-visible list doesn’t establish that it’s broken. Help is manually invocable and disables automatic model invocation, so it may still appear in your client’s skill picker.\n\nCheck the GT Help entry in VS Code’s plugin/skill picker. If it’s missing there too, an older copy or a discovery/profile issue are possible explanations, but the supplied evidence doesn’t identify the cause.\n\n`/help` is not a confirmed command for your client and may open built-in help. Use the actual GT Help entry shown by VS Code.",
+      "tool_intents": [],
+      "expectation": "Missing model-list entry is inconclusive; no invented command or diagnosis."
+    },
+    {
+      "id": "R6",
+      "prompt": "I want shorter replies, not changes to my files. Which Caveman skill?",
+      "response": "Choose **Caveman (`caveman`)**. It shortens chat responses, with light and full modes, while preserving technical meaning. Caveman Compress rewrites a selected prose file, so it doesn’t fit your request.",
+      "tool_intents": [],
+      "expectation": "Choose chat style and distinguish file rewrite."
+    },
+    {
+      "id": "R7",
+      "prompt": "I have a local skill I wrote and want it in GT. Does submission mean it will be published?",
+      "response": "Choose **Skill Steal (`skill-steal`)** because you already have a local skill file. It prepares a GT adaptation and review handoff while preserving your source and its behavior; compatibility and reuse terms matter.\n\nSubmission does **not** mean publication or adoption into GT. It hands the proposal to the maintainer for review.",
+      "tool_intents": [],
+      "expectation": "Local-source adaptation, submission distinct from adoption."
+    },
+    {
+      "id": "R8",
+      "prompt": "How do I fix this using GT? No other context.",
+      "response": "What are you trying to fix, and what happened instead of the result you expected?",
+      "tool_intents": [],
+      "expectation": "Ask a focused clarification before guessing."
+    }
+  ]
+}

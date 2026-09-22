@@ -1,0 +1,33 @@
+{
+  "actor": "without-skill-subset",
+  "normalization": "Harness absolute Help links replaced by <HARNESS_HELP_SOURCE>; other response text and tool intents preserved.",
+  "cases": [
+    {
+      "id": "R2",
+      "prompt": "I have an idea for a new GT skill. Should I run Grill Me first? Can you start the right skill for me?",
+      "response": "Grill Me sounds appropriate if you want to sharpen the idea before building the skill. I’d first check GT’s available skills and their instructions, then start the one that fits. What’s your idea?",
+      "tool_intents": [
+        "Discover available GT skills and read the instructions for the relevant planning and skill-creation workflows before choosing and invoking one."
+      ],
+      "expectation": "Recommend Create Skills directly; no invocation."
+    },
+    {
+      "id": "R4",
+      "prompt": "I want to see my installed versions and then update just Grill Me. What should I do?",
+      "response": "First check GT’s installed-skill status, then use its update workflow to select only Grill Me. I’d check the installed instructions before giving you exact commands, since I haven’t verified GT’s command names or whether it supports updating one skill independently.",
+      "tool_intents": [
+        "Discover GT’s status and update capabilities, inspect installed versions, and verify whether Grill Me can be updated individually."
+      ],
+      "expectation": "Status before Update; whole-plugin update, no latest claim."
+    },
+    {
+      "id": "R5",
+      "prompt": "GT is enabled in VS Code but Help is absent from the model skill list. Is it broken? Is /help definitely the command?",
+      "response": "Help’s absence alone doesn’t establish that GT is broken, and I can’t confirm that `/help` is its command. I’d check whether your installed GT version includes Help and whether VS Code has discovered it. The enabled state by itself doesn’t tell us which skills are available to the model.",
+      "tool_intents": [
+        "Inspect the installed GT version, its declared skills, and VS Code’s skill discovery information; verify Help’s availability and invocation syntax against the installed instructions."
+      ],
+      "expectation": "Missing model-list entry is inconclusive; no invented command or diagnosis."
+    }
+  ]
+}
