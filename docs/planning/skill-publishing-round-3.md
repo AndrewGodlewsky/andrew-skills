@@ -1,5 +1,7 @@
 # Automatic skill publishing — Round 3
 
+Historical decision record: [issue #79](https://github.com/AndrewGodlewsky/andrew-skills/issues/79) supersedes development release numbering, the two-field metadata schema and automatic baseline discovery. Current rules are in [CONTRIBUTING.md](../../CONTRIBUTING.md) and the [catalog contract](../release-catalog.md). Uncompleted client/WSL pilot acceptance remains open.
+
 Issue: [Define automatic skill versioning and immutable release history](https://github.com/AndrewGodlewsky/andrew-skills/issues/5).
 
 **Status: answered and reviewed.** Original answers are preserved below. The owner accepted history-derived publication, new versions for every skill correction, and a simple plugin patch bump. For returning names, the owner chose to restart at `1.0.0`, rejecting the recommendation to continue numbering. The [publishing contract](skill-publishing-notes.md) records that choice and distinguishes repeated version labels by their exact source snapshots. No repository settings or release automation are being changed now.

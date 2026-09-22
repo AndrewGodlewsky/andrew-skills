@@ -1,8 +1,8 @@
 import { createHash } from 'node:crypto';
 import { isDeepStrictEqual } from 'node:util';
-import { parseRelease, validateReleaseChange } from './release-validation.mjs';
+import { parseRelease, readBaseline, releaseEntry, validateReleaseChange } from './release-validation.mjs';
 
-export const CATALOG_FORMAT_VERSION = 1;
+export const CATALOG_FORMAT_VERSION = 2;
 const commitPattern = /^(?:[0-9a-f]{40}|[0-9a-f]{64})$/;
 
 function check(condition, message) {
@@ -54,7 +54,7 @@ function releases(files, skillTrees) {
 
 const exactBytes = files => new Map([...files].map(([path, { mode, data }]) => [path, { mode, data }]));
 
-export function buildReleaseCatalog({ repository, headCommit, snapshots, previousCatalog }) {
+export function buildReleaseCatalog({ repository, headCommit, snapshots, previousCatalog, migrationParent }) {
   check(typeof repository === 'string' && repository.trim(), 'repository identity is required');
   check(commitPattern.test(headCommit), 'head must be a full commit ID');
   const catalog = { formatVersion: CATALOG_FORMAT_VERSION, repository, headCommit, baselineCommit: null, records: [], active: [] };
@@ -78,17 +78,21 @@ export function buildReleaseCatalog({ repository, headCommit, snapshots, previou
     check(snapshot.firstParent === (previous?.commit ?? null), 'incomplete or reordered first-parent history');
     let current;
     if (!catalog.baselineCommit) {
-      try { current = releases(snapshot.files, snapshot.skillTrees); } catch { current = []; }
-      if (!current.length || current.some(release => release.version !== '1.0.0')) {
+      const boundary = readBaseline(snapshot.files);
+      if (!boundary) {
         verifyPrior(snapshot.commit);
         previous = snapshot;
         continue;
       }
-      validateReleaseChange(exactBytes(snapshot.files), exactBytes(snapshot.files));
+      check(previous && boundary.parentCommit === previous.commit, 'publication boundary must name its accepted first parent');
+      validateReleaseChange(exactBytes(previous.files), exactBytes(snapshot.files), {
+        baseCommit: previous.commit, currentMainCommit: previous.commit,
+      });
+      current = releases(snapshot.files, snapshot.skillTrees);
       catalog.baselineCommit = snapshot.commit;
     } else {
       current = releases(snapshot.files, snapshot.skillTrees);
-      validateReleaseChange(exactBytes(previous.files), exactBytes(snapshot.files));
+      validateReleaseChange(exactBytes(previous.files), exactBytes(snapshot.files), { publishedRecords: catalog.records });
     }
     const activeByName = new Map(catalog.active.map(record => [record.skill, record]));
     catalog.active = current.map(release => {
@@ -98,6 +102,8 @@ export function buildReleaseCatalog({ repository, headCommit, snapshots, previou
           `${release.skill}: unchanged source conflicts with its Git tree identity`);
         return existing;
       }
+      const earlier = catalog.records.filter(record => record.skill === release.skill).map(releaseEntry);
+      check(isDeepStrictEqual(release.history, earlier), `${release.skill}: metadata history conflicts with actual publications`);
       const record = { ...release, repository, sourceCommit: snapshot.commit };
       if (snapshot.skillTrees) {
         const sourceTree = snapshot.skillTrees.get(release.skill);
@@ -111,6 +117,8 @@ export function buildReleaseCatalog({ repository, headCommit, snapshots, previou
     previous = snapshot;
   }
   check(previous?.commit === headCommit, 'history does not reach the pinned head');
+  check(catalog.baselineCommit || (migrationParent && migrationParent === headCommit),
+    'requested head predates the explicit publication boundary; development releases are unavailable');
   check(priorVerified, 'previously cataloged head is missing or history was rewritten');
   return catalog;
 }
@@ -125,5 +133,12 @@ export function validateCatalogCandidate(catalog, baseFiles, candidateFiles, { b
       record.skill === release.skill && record.version === release.version && record.notes === release.notes &&
       record.contentIdentity === release.contentIdentity)), 'comparison base conflicts with catalog active records');
   }
-  return validateReleaseChange(baseFiles, candidateFiles, { baseCommit, currentMainCommit });
+  const result = validateReleaseChange(baseFiles, candidateFiles, { baseCommit, currentMainCommit, publishedRecords: catalog.records });
+  for (const release of releases(candidateFiles)) {
+    const existing = catalog.active.find(record => record.skill === release.skill);
+    const earlier = catalog.records.filter(record => record.skill === release.skill &&
+      !(existing && existing.contentIdentity === release.contentIdentity && record.sourceCommit === existing.sourceCommit)).map(releaseEntry);
+    check(isDeepStrictEqual(release.history, earlier), `${release.skill}: candidate history conflicts with actual publications`);
+  }
+  return result;
 }

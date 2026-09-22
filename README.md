@@ -428,41 +428,41 @@ install.ps1                  One-command setup from a downloaded checkout
 skills/
   grill-me/
     SKILL.md                 Self-contained interview skill
-    release.yaml             Independent skill version and release note
+    release.yaml             Current version, note and cumulative history
   why-not/
     SKILL.md                 High-level intent and simplicity reviewer
-    release.yaml             Independent skill version and release note
+    release.yaml             Current version, note and cumulative history
   skills-update/
     SKILL.md                 On-demand CLI plugin update skill
-    release.yaml             Independent skill version and release note
+    release.yaml             Current version, note and cumulative history
   skills-status/
     SKILL.md                 Read-only installed skill report
-    release.yaml             Independent skill version and release note
+    release.yaml             Current version, note and cumulative history
     references/              Bundled installation selection procedure
   skills-restore/
     SKILL.md                 Browse/select personal historical export
-    release.yaml             Independent skill version and release note
+    release.yaml             Current version, note and cumulative history
     references/operations.md Fixed helper calls and recovery procedure
     scripts/exporter/        Complete bundled exporter and direct guide
   create-issue/
     SKILL.md                 Model-only GT submission dependency
-    release.yaml             Independent skill version and release note
+    release.yaml             Current version, note and cumulative history
     references/              Helper protocol and label meanings
     scripts/                 Five generated runtime modules
   create-skills/
     SKILL.md                 Specification-first authoring workflow
-    release.yaml             Independent skill version and release note
+    release.yaml             Current version, note and cumulative history
     references/              Interview, writing, checks, delivery and installation
     scripts/                 Generated local checking/preparation/installation tools
     assets/                  Attribution/license notice
   skill-tweak/
     SKILL.md                 GT incident intake and approved feedback submission
-    release.yaml             Independent skill version and release note
+    release.yaml             Current version, note and cumulative history
     references/evidence.md   Diagnostic provenance and evidence collection
     templates/issue.md       Complete outgoing issue draft layout
   skill-steal/
     SKILL.md                 Source-first import and review submission
-    release.yaml             Independent skill version and release note
+    release.yaml             Current version, note and cumulative history
     references/              Source preservation, clarification, checks and delivery
     scripts/                 Generated local checker and handoff planner
 exporter/                    Same fixed helper for checkout-based recovery
@@ -497,13 +497,14 @@ checks in the existing issue or PR carrying the change.
 ### Per-skill releases
 
 Each skill has a **`release.yaml`** beside
-`SKILL.md`, containing its **`x.y.z` version** and a short user-facing release
-note. New skills start at **`1.0.0`**. Use patch increments for compatible fixes,
+`SKILL.md`, containing its current **`x.y.z` version**, release note, release
+period and cumulative earlier notes in publication order. New skills start at **`1.0.0`**. Use patch increments for compatible fixes,
 minor increments for compatible additions, and major increments for incompatible
 changes to documented usage. A skill's version is separate from the containing
 `gt` plugin version; unchanged skills keep their versions. Even typo or release-note
 corrections get a new version; note-only corrections use a patch. A removed skill reintroduced under the same name
-restarts at `1.0.0`; exact source snapshots distinguish repeated version labels.
+restarts at `1.0.0` in the next period, keeping earlier post-baseline notes in-file;
+exact source snapshots distinguish repeated version labels.
 
 **Names inside the GT plugin stay unchanged**: `grill-me` stays `grill-me`.
 Only optional historical personal exports use names such as `grill-me-v1-2-0`.
@@ -543,7 +544,8 @@ are plausible it asks which one to report. It requires file-read access, with
 no Node.js or Copilot CLI requirement. Client verification remains in the pilot.
 
 The validator checks release metadata and version transitions, including the
-first complete `1.0.0` baseline. The **Validate skills and releases** CI job checks
+explicit fresh `1.0.0` publication boundary from [issue #79](https://github.com/AndrewGodlewsky/andrew-skills/issues/79).
+Earlier development versions are excluded; Git history remains intact. The **Validate skills and releases** CI job checks
 prospective PR merges against current `main`. Andrew will configure required
 merge checks later. Each bundle change increments the overall plugin patch
 version once, regardless of how many skills changed. The
@@ -553,7 +555,7 @@ the same release check. The fixed helper is bundled both in root `exporter/`
 and inside `skills-restore`. Run `node scripts/build-exporter.mjs --check` to check
 bundle freshness and `node --test scripts/export-*.test.mjs` in the selected
 Windows or WSL environment for exporter tests. These tests use isolated
-temporary homes and existing Git objects; they create no Git history.
+temporary homes and disposable Git repositories; they never write this project's history.
 Authors and agents should follow the
 [contributor guidance](CONTRIBUTING.md) for the supported metadata format and
 workflow.

@@ -1,10 +1,11 @@
 import { createHash } from 'node:crypto';
 import { posix } from 'node:path';
+import { isDeepStrictEqual } from 'node:util';
 import { parseRelease } from './release-validation.mjs';
 import { skillContentIdentity } from './release-catalog.mjs';
 
-export const PROTOCOL_VERSION = 1;
-export const EXPORTER_VERSION = '1.1.0';
+export const PROTOCOL_VERSION = 2;
+export const EXPORTER_VERSION = '2.0.0';
 export const REPOSITORY = 'https://github.com/AndrewGodlewsky/andrew-skills';
 
 export function requireExport(condition, message) {
@@ -75,7 +76,7 @@ export function prepareSource(record, sourceFiles, { portabilityReviewed = false
   checkPortability(sourceFiles, record.skill);
   requireExport(skillContentIdentity(sourceFiles) === record.contentIdentity, 'source integrity does not match the catalog');
   const release = parseRelease(sourceFiles.get('release.yaml')?.data ?? Buffer.alloc(0));
-  requireExport(release.version === record.version && release.notes === record.notes, 'source metadata differs from the catalog');
+  requireExport(isDeepStrictEqual(release, { version: record.version, notes: record.notes, period: record.period, history: record.history }), 'source metadata differs from the catalog');
   const personalName = `${record.skill}-v${record.version.replaceAll('.', '-')}`;
   requireExport(personalName.length <= 64, 'personal name exceeds 64 characters; names are never truncated');
   const original = sourceFiles.get('SKILL.md')?.data;

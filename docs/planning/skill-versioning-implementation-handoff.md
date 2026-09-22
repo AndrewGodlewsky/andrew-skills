@@ -1,5 +1,7 @@
 # Skill versioning — implementation handoff
 
+Historical decision record: [issue #79](https://github.com/AndrewGodlewsky/andrew-skills/issues/79) supersedes development release numbering, the two-field metadata schema and automatic baseline discovery. Current rules are in [CONTRIBUTING.md](../../CONTRIBUTING.md) and the [catalog contract](../release-catalog.md). Uncompleted client/WSL pilot acceptance remains open.
+
 **Status: exporter and preceding implementation published; restore implementation is in the working tree.** The owner published the metadata baseline in `bf74bca`, catalog/update/status/authoring work in `701a95f`, and exporter work in `90b979f`. Restore #11 now supplies a self-contained chat skill and the same fixed direct helper; its current changes are uncommitted. Exporter #14 remains open for WSL filesystem acceptance, and restore/client acceptance remains open with the owner pilot #17. Building the wrapper against the published exporter does not waive those gates or authorize team adoption. The owner approved a complete feature set and small owner pilot before wider team adoption, with development allowed in stages. Source: [migration resolution](https://github.com/AndrewGodlewsky/andrew-skills/issues/9#issuecomment-5692675491).
 
 ## Execution issues

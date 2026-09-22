@@ -1,2 +1,4 @@
 version: "1.0.0"
-notes: "Submit caller-prepared GT issues and follow-ups through a fixed-repository helper with explicit outcome and recovery handling."
+notes: "Submit authorized GT review material through a bounded issue helper with reconciliation and delivery evidence."
+period: 1
+history: []

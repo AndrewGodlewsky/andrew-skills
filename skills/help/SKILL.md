@@ -117,16 +117,21 @@ Their existing review and submission requirements still apply.
 ### I want to understand or update my installation
 
 - **Skills Status (`skills-status`)** reports skill versions and release notes
-  from one selected installed GT collection. It is a read-only local report,
+  from one selected installed GT collection. It selects the top-level current
+  version/note; earlier entries in release.yaml are cumulative history. It is a read-only local report,
   not a comparison with the latest online release.
 - **Skills Update (`skills-update`)** updates the whole selected managed GT
-  plugin through its owning client and reports verified skill changes.
+  plugin through its owning client and reports verified skill changes. Matching
+  before/after cumulative history can explain skipped intermediate releases;
+  incomplete evidence is reported as such.
   Invoking it requests an update once the target is established. It is not an
   installation, repair or per-skill rollback workflow.
 - **Skills Restore (`skills-restore`)** browses published historical releases
   and lets the user select one to create an independent, version-suffixed personal
   copy. It leaves the main GT collection in place; it does not pin or roll back
-  that collection. The user owns the personal copy afterward.
+  that collection. The user owns the personal copy afterward. Only releases
+  since the explicit fresh baseline are available. A returning skill may repeat
+  a version label in another period, so selection uses exact publication context.
 
 To inspect and then update, use Status first and Update only when ready to make
 the change. To use an earlier skill alongside current GT, consider Restore.

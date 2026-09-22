@@ -1,2 +1,4 @@
 version: "1.0.0"
-notes: "Compress selected prose files with backups, structural validation and repair-frontmatter protection."
+notes: "Compress a selected prose file with validation and a readable backup using the configured Claude provider."
+period: 1
+history: []

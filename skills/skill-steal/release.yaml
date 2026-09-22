@@ -1,2 +1,4 @@
-version: "1.0.1"
-notes: "Clarify that failed draft checks do not waive submission runtime prerequisites in the shared tools guidance."
+version: "1.0.0"
+notes: "Inspect and adapt an existing local skill for GT, preserving its contract and submitting its specification, package and checks."
+period: 1
+history: []

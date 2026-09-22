@@ -1,2 +1,4 @@
-version: "2.1.0"
-notes: "Use a scoped GT Caveman lite pass before draft approval, preserving intent and skill content and retaining the original if the pass is unavailable or fails."
+version: "1.0.0"
+notes: "Capture GT skill incidents and desired improvements, then submit the complete contextual issue after draft approval."
+period: 1
+history: []

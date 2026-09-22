@@ -371,7 +371,7 @@
       "evidence": [
         {
           "path": "exporter/release-catalog.mjs",
-          "excerpt": "import { parseRelease, validateReleaseChange } from './release-validation.mjs';"
+          "excerpt": "import { parseRelease, readBaseline, releaseEntry, validateReleaseChange } from './release-validation.mjs';"
         }
       ]
     },
@@ -777,7 +777,7 @@
       "evidence": [
         {
           "path": "scripts/release-catalog.mjs",
-          "excerpt": "import { parseRelease, validateReleaseChange } from './release-validation.mjs';"
+          "excerpt": "import { parseRelease, readBaseline, releaseEntry, validateReleaseChange } from './release-validation.mjs';"
         }
       ]
     },
@@ -2401,7 +2401,7 @@
       "evidence": [
         {
           "path": "skills/skills-restore/scripts/exporter/release-catalog.mjs",
-          "excerpt": "import { parseRelease, validateReleaseChange } from './release-validation.mjs';"
+          "excerpt": "import { parseRelease, readBaseline, releaseEntry, validateReleaseChange } from './release-validation.mjs';"
         }
       ]
     },
@@ -3663,77 +3663,77 @@
       "candidate": "6ecd77d14f83ee622832d17a2edcefef1bda5d9bdcbcb4a49e7268c860026202",
       "path": "CONTRIBUTING.md",
       "target": "file:docs/planning/skill-migration-acceptance-notes.md",
-      "sourceDigest": "90f83e118ca2856057070effe2275d3acc82cfa1b068adc20888c2bd0145c789",
+      "sourceDigest": "b228da85d828eabf6529b3542a53ce83ee967b119fd4483b6f7a740175fff183",
       "reason": "Repository authoring/navigation material outside the two extracted package-rule ranges; not a dependency of the bundled guidance."
     },
     {
       "candidate": "72fca2459bb57fa6daac759fd43b5c14a39f8b5fa38941564afb896d14446393",
       "path": "CONTRIBUTING.md",
       "target": "file:docs/planning/skill-personal-export-contract.md",
-      "sourceDigest": "90f83e118ca2856057070effe2275d3acc82cfa1b068adc20888c2bd0145c789",
+      "sourceDigest": "b228da85d828eabf6529b3542a53ce83ee967b119fd4483b6f7a740175fff183",
       "reason": "Repository authoring/navigation material outside the two extracted package-rule ranges; not a dependency of the bundled guidance."
     },
     {
       "candidate": "31a336a67b5e4183775a7270bfd7f93acb726a0ec868df213fe0627aa4093da4",
       "path": "CONTRIBUTING.md",
       "target": "file:docs/planning/skill-publishing-notes.md",
-      "sourceDigest": "90f83e118ca2856057070effe2275d3acc82cfa1b068adc20888c2bd0145c789",
+      "sourceDigest": "b228da85d828eabf6529b3542a53ce83ee967b119fd4483b6f7a740175fff183",
       "reason": "Repository authoring/navigation material outside the two extracted package-rule ranges; not a dependency of the bundled guidance."
     },
     {
       "candidate": "eb1b8f6515365784b67d78e3b0202d7be5e2126604f58052bf7aba610dbe1c2d",
       "path": "CONTRIBUTING.md",
       "target": "file:docs/planning/skill-publishing-round-3.md",
-      "sourceDigest": "90f83e118ca2856057070effe2275d3acc82cfa1b068adc20888c2bd0145c789",
+      "sourceDigest": "b228da85d828eabf6529b3542a53ce83ee967b119fd4483b6f7a740175fff183",
       "reason": "Repository authoring/navigation material outside the two extracted package-rule ranges; not a dependency of the bundled guidance."
     },
     {
       "candidate": "b1faa87d3c79446c2521e86b33f6f728add902f71d6e38bcb0f6c7c53fae81db",
       "path": "CONTRIBUTING.md",
       "target": "file:docs/release-catalog.md",
-      "sourceDigest": "90f83e118ca2856057070effe2275d3acc82cfa1b068adc20888c2bd0145c789",
+      "sourceDigest": "b228da85d828eabf6529b3542a53ce83ee967b119fd4483b6f7a740175fff183",
       "reason": "Repository authoring/navigation material outside the two extracted package-rule ranges; not a dependency of the bundled guidance."
     },
     {
       "candidate": "c0a67d91f22618191c2e3098d689ba179b690f79964a763b5ca1aa969615c9ca",
       "path": "CONTRIBUTING.md",
       "target": "file:exporter/README.md",
-      "sourceDigest": "90f83e118ca2856057070effe2275d3acc82cfa1b068adc20888c2bd0145c789",
+      "sourceDigest": "b228da85d828eabf6529b3542a53ce83ee967b119fd4483b6f7a740175fff183",
       "reason": "Repository authoring/navigation material outside the two extracted package-rule ranges; not a dependency of the bundled guidance."
     },
     {
       "candidate": "34562b07832b2ba661874b833f82dafe44840b295efddeb2ba9afef60a06134c",
       "path": "CONTRIBUTING.md",
       "target": "file:README.md",
-      "sourceDigest": "90f83e118ca2856057070effe2275d3acc82cfa1b068adc20888c2bd0145c789",
+      "sourceDigest": "b228da85d828eabf6529b3542a53ce83ee967b119fd4483b6f7a740175fff183",
       "reason": "Repository authoring/navigation material outside the two extracted package-rule ranges; not a dependency of the bundled guidance."
     },
     {
       "candidate": "6c564917179f939c7d141c223d0918f71772e5b78cf4fac635b2f145a3b9c6db",
       "path": "CONTRIBUTING.md",
       "target": "file:templates/summary.md",
-      "sourceDigest": "90f83e118ca2856057070effe2275d3acc82cfa1b068adc20888c2bd0145c789",
+      "sourceDigest": "b228da85d828eabf6529b3542a53ce83ee967b119fd4483b6f7a740175fff183",
       "reason": "Repository authoring/navigation material outside the two extracted package-rule ranges; not a dependency of the bundled guidance."
     },
     {
       "candidate": "f882d5374ec70206d97809bc4b4953ff935825f5187aba2fabdcb6c498a7df9d",
       "path": "CONTRIBUTING.md",
       "target": "skill:skills-restore",
-      "sourceDigest": "90f83e118ca2856057070effe2275d3acc82cfa1b068adc20888c2bd0145c789",
+      "sourceDigest": "b228da85d828eabf6529b3542a53ce83ee967b119fd4483b6f7a740175fff183",
       "reason": "Authoring/release documentation about the exporter packaging, not an invocation dependency of the extracted package rules."
     },
     {
       "candidate": "468f64236603b4a37f94e52f8661797c8a7205776f336ed5b04bfe8713e0cbff",
       "path": "exporter/README.md",
       "target": "skill:grill-me",
-      "sourceDigest": "0e11d1df44d40cabf065f781e7401bd2fd0bb1440f24566bf091ceb2ac2f4e11",
+      "sourceDigest": "41657d0ed7cc466fd4c4e3cc65fc3b2d49a55ffaf3fea1402ed5d5785103f621",
       "reason": "Illustrative historical export input/version, not a requirement to invoke Grill Me."
     },
     {
       "candidate": "b7998e9d11ac0993e1aaa1bda852daa491447a95b32804a94c91cdf080db0342",
       "path": "exporter/README.md",
       "target": "skill:skills-restore",
-      "sourceDigest": "0e11d1df44d40cabf065f781e7401bd2fd0bb1440f24566bf091ceb2ac2f4e11",
+      "sourceDigest": "41657d0ed7cc466fd4c4e3cc65fc3b2d49a55ffaf3fea1402ed5d5785103f621",
       "reason": "Describes an alternative chat entry point for the same exporter; the direct helper does not invoke the skill."
     },
     {
@@ -4153,35 +4153,35 @@
       "candidate": "25e6617d4cbf1b755e0db5fb33c21e28e282f3cd746de859653a4f02a9bd1bfa",
       "path": "skills/skills-restore/scripts/exporter/README.md",
       "target": "skill:grill-me",
-      "sourceDigest": "0e11d1df44d40cabf065f781e7401bd2fd0bb1440f24566bf091ceb2ac2f4e11",
+      "sourceDigest": "41657d0ed7cc466fd4c4e3cc65fc3b2d49a55ffaf3fea1402ed5d5785103f621",
       "reason": "Illustrative historical export input/version, not a requirement to invoke Grill Me."
     },
     {
       "candidate": "e754d1143df4635f576467fb7e7f85f8ae81b9504a4f8224cfd9e5ae34b75afd",
       "path": "skills/skills-restore/scripts/exporter/README.md",
       "target": "skill:skills-restore",
-      "sourceDigest": "0e11d1df44d40cabf065f781e7401bd2fd0bb1440f24566bf091ceb2ac2f4e11",
+      "sourceDigest": "41657d0ed7cc466fd4c4e3cc65fc3b2d49a55ffaf3fea1402ed5d5785103f621",
       "reason": "Skill identity, invocation documentation or attribution to itself; no recursive invocation instruction."
     },
     {
       "candidate": "b57c77fba279eb60500601ff55357850de496ead85f1fa93d9119c16d453e9ea",
       "path": "skills/skills-restore/SKILL.md",
       "target": "skill:skills-restore",
-      "sourceDigest": "33dda0dde0390b91fdbf6adf56c70e512f3828ce800c4d4140788c1f50e5abdb",
+      "sourceDigest": "27da1326c70af5b4d72b1723cd59f92b74ab5723ccd17b13f825266f710717d8",
       "reason": "Skill identity, invocation documentation or attribution to itself; no recursive invocation instruction."
     },
     {
       "candidate": "ad82cbf9cdb8a1fda9f060bddce73bf8ebb8432d235a10ee2597ba5ccae1cda5",
       "path": "skills/skills-status/SKILL.md",
       "target": "file:skills/skills-status/release.yaml",
-      "sourceDigest": "22821ede4493533e559f3b0c19f62daeedb5b147e0295bc377240b60c41c9f09",
+      "sourceDigest": "6cfe2816c6fb57673a52c8c3ce7075adcde497cd021217f38a9bf08da37496aa",
       "reason": "Describes reading each selected installed skill release record as user-requested data, not depending on this package release note as a runtime resource."
     },
     {
       "candidate": "44fed6b1c3df0f57ad353263d63cc0b588cc29f7a09633dc647a6bf4f5f14d4c",
       "path": "skills/skills-status/SKILL.md",
       "target": "skill:skills-status",
-      "sourceDigest": "22821ede4493533e559f3b0c19f62daeedb5b147e0295bc377240b60c41c9f09",
+      "sourceDigest": "6cfe2816c6fb57673a52c8c3ce7075adcde497cd021217f38a9bf08da37496aa",
       "reason": "Skill identity, invocation documentation or attribution to itself; no recursive invocation instruction."
     },
     {
@@ -4209,42 +4209,42 @@
       "candidate": "34ecff4c8d041592c61bad9f313851138122e7955df71465948f0c9d45670ffa",
       "path": "CONTRIBUTING.md",
       "target": "skill:explain-design",
-      "sourceDigest": "90f83e118ca2856057070effe2275d3acc82cfa1b068adc20888c2bd0145c789",
+      "sourceDigest": "b228da85d828eabf6529b3542a53ce83ee967b119fd4483b6f7a740175fff183",
       "reason": "Illustrative package names in authoring examples, outside the guidance ranges bundled into skills; not invocations."
     },
     {
       "candidate": "125ff3ec7c4973271a14a24c261fdc5593748016189cfe22f7f50d88675dffa4",
       "path": "CONTRIBUTING.md",
       "target": "skill:summarize-notes",
-      "sourceDigest": "90f83e118ca2856057070effe2275d3acc82cfa1b068adc20888c2bd0145c789",
+      "sourceDigest": "b228da85d828eabf6529b3542a53ce83ee967b119fd4483b6f7a740175fff183",
       "reason": "Illustrative package names in authoring examples, outside the guidance ranges bundled into skills; not invocations."
     },
     {
       "candidate": "b40217e835da148ca1e12b0292955d7a7b767f8974a40a5aebd652c4c176de80",
       "path": "CONTRIBUTING.md",
       "target": "file:docs/skill-map/map.json",
-      "sourceDigest": "90f83e118ca2856057070effe2275d3acc82cfa1b068adc20888c2bd0145c789",
+      "sourceDigest": "b228da85d828eabf6529b3542a53ce83ee967b119fd4483b6f7a740175fff183",
       "reason": "Repository maintainer discovery, review, generation and validation instructions outside the extracted runtime guidance; not a packaged skill dependency."
     },
     {
       "candidate": "4d2ac64e3f730a8ce90ee4ea62a380ffc5a4085949370ea778e9882953627c8e",
       "path": "CONTRIBUTING.md",
       "target": "file:docs/skill-map/map.md",
-      "sourceDigest": "90f83e118ca2856057070effe2275d3acc82cfa1b068adc20888c2bd0145c789",
+      "sourceDigest": "b228da85d828eabf6529b3542a53ce83ee967b119fd4483b6f7a740175fff183",
       "reason": "Repository maintainer discovery, review, generation and validation instructions outside the extracted runtime guidance; not a packaged skill dependency."
     },
     {
       "candidate": "88106fdc9d5db877f29f3be3410c80862a67a1716f10d136fa2b42b79ef22199",
       "path": "CONTRIBUTING.md",
       "target": "file:docs/skill-map/README.md",
-      "sourceDigest": "90f83e118ca2856057070effe2275d3acc82cfa1b068adc20888c2bd0145c789",
+      "sourceDigest": "b228da85d828eabf6529b3542a53ce83ee967b119fd4483b6f7a740175fff183",
       "reason": "Repository maintainer discovery, review, generation and validation instructions outside the extracted runtime guidance; not a packaged skill dependency."
     },
     {
       "candidate": "d52ca2f0f104db73a2b237d1d4370bb161f1c4d2a54b0db387b6c21cc6dde4eb",
       "path": "CONTRIBUTING.md",
       "target": "file:docs/skill-map/relationships.json",
-      "sourceDigest": "90f83e118ca2856057070effe2275d3acc82cfa1b068adc20888c2bd0145c789",
+      "sourceDigest": "b228da85d828eabf6529b3542a53ce83ee967b119fd4483b6f7a740175fff183",
       "reason": "Repository maintainer discovery, review, generation and validation instructions outside the extracted runtime guidance; not a packaged skill dependency."
     },
     {
@@ -4258,142 +4258,107 @@
       "candidate": "5a3276d6266ee07ad82e0d37a9b5d1b2552f3cb9d0875f701d45a1fe4ecede33",
       "path": "skills/skills-restore/SKILL.md",
       "target": "skill:help",
-      "sourceDigest": "33dda0dde0390b91fdbf6adf56c70e512f3828ce800c4d4140788c1f50e5abdb",
+      "sourceDigest": "27da1326c70af5b4d72b1723cd59f92b74ab5723ccd17b13f825266f710717d8",
       "reason": "Opening English verb \"Help the user\" describes the restore task, not the GT Help skill."
     },
     {
       "candidate": "74dbcc50bb0979570fa2770c37559c65a2772cd8bd8dcfd86e008948035fb5cc",
       "path": "skills/help/SKILL.md",
       "target": "skill:help",
-      "sourceDigest": "d6fc7f8e603223d6091bb951e2255a67cd7281005cc1161c2aeae4350852c5e0",
+      "sourceDigest": "b128d99c288d1ad122c135a8ae01943c11d0435fb6361f32a4d217a4fe623ad8",
       "reason": "Own identity, headings and self references; no self-call or lookup dependency."
-    },
-    {
-      "candidate": "cf563426a50a9951948eb2b260e8d3c083856ad3444e556b6329995156b55a2b",
-      "path": "skills/create-skills/release.yaml",
-      "target": "skill:caveman",
-      "sourceDigest": "78f2e4f2b130971f18c52f620701c7471cc360236400acde1af4003930520509",
-      "reason": "Release-note description of the scoped issue-prose behavior, not an instruction to invoke a skill or a separate dependency."
-    },
-    {
-      "candidate": "3366e35868c18ddad1974ec5b80a686ebc0645308a78ed96e971bfbc399cb72a",
-      "path": "skills/help/release.yaml",
-      "target": "skill:caveman",
-      "sourceDigest": "8aee90f712779c77f0ac7a0764534c4e67009e4380b08928ae9884528a15b0b7",
-      "reason": "Release-note description of the scoped issue-prose behavior, not an instruction to invoke a skill or a separate dependency."
-    },
-    {
-      "candidate": "271f3fce1e82a7e80aba00369b46f18e11efa24d743218cf320303417b26ed0d",
-      "path": "skills/help/release.yaml",
-      "target": "skill:create-skills",
-      "sourceDigest": "8aee90f712779c77f0ac7a0764534c4e67009e4380b08928ae9884528a15b0b7",
-      "reason": "Release-note description of the scoped issue-prose behavior, not an instruction to invoke a skill or a separate dependency."
-    },
-    {
-      "candidate": "0db4c125713e6c9a866c7484dd8d08cc1c7eba266f8b863c61ae21733a408021",
-      "path": "skills/help/release.yaml",
-      "target": "skill:skill-tweak",
-      "sourceDigest": "8aee90f712779c77f0ac7a0764534c4e67009e4380b08928ae9884528a15b0b7",
-      "reason": "Release-note description of the scoped issue-prose behavior, not an instruction to invoke a skill or a separate dependency."
-    },
-    {
-      "candidate": "4b83262586be7cd62dcc943a1786faaa00f32e548bd7e2a6b97afc88181f71b2",
-      "path": "skills/skill-tweak/release.yaml",
-      "target": "skill:caveman",
-      "sourceDigest": "44887692a74c500f015068119c3dd0f421dd92ada6dd04fa30f89b75c8cf5606",
-      "reason": "Release-note description of the scoped issue-prose behavior, not an instruction to invoke a skill or a separate dependency."
     }
   ],
   "reviews": {
     "caveman": {
-      "digest": "d8f1ba6b0415814784df4e7bfe1f8ba2aa94b1636766c56683f3056aa2b48156",
-      "reviewer": "Codex dependency review for Andrew, issue #77",
-      "note": "Issue #77: reviewed full instructions, README, metadata and retained license. One-pass issue explanation is an explicit artifact exception with no chat-mode mutation. It still invokes no other skill; self identity and forbidden companion names remain exclusions. Existing README/license resource edges are retained."
+      "digest": "094fb856ac2fb9491acd567cac00b527b885569629e20e88e3543eede651f86d",
+      "reviewer": "Codex",
+      "note": "Issue #79: Reviewed capability note and the period-1/1.0.0 empty-history reset against existing instructions and dependency declarations. This package changes only release.yaml; its instructions, resources, external prerequisites and inter-skill relationships remain unchanged. Release notes are descriptive data, with no new invocation or resource dependency."
     },
     "caveman-commit": {
-      "digest": "1ac288890cdc540be060f74de379f7628a9334c2e169b0358b772d54393ec4a4",
-      "reviewer": "Codex dependency audit for Andrew, issue #61",
-      "note": "Commit-message drafting only; self examples and upstream Caveman attribution are not dependencies."
+      "digest": "021157da7fde1ba9c5fab1b695a1347f3aefbfa2181f1849a329f1403fb81fdd",
+      "reviewer": "Codex",
+      "note": "Issue #79: Reviewed capability note and the period-1/1.0.0 empty-history reset against existing instructions and dependency declarations. This package changes only release.yaml; its instructions, resources, external prerequisites and inter-skill relationships remain unchanged. Release notes are descriptive data, with no new invocation or resource dependency."
     },
     "caveman-compress": {
-      "digest": "36a5e2ada0654e336e6e028eaac3171eae362326857b2e31dc0958e356633f3d",
-      "reviewer": "Codex dependency review for Andrew, issue #63",
-      "note": "Reviewed newly detected help candidate: argparse keyword only. Existing Python imports and resource declarations are unchanged; prior #61 package audit retained."
+      "digest": "655c77aa47bc08e3938471197ad98a1afdf9badbe0f82f6605e76d2c9347b0e0",
+      "reviewer": "Codex",
+      "note": "Issue #79: Reviewed capability note and the period-1/1.0.0 empty-history reset against existing instructions and dependency declarations. This package changes only release.yaml; its instructions, resources, external prerequisites and inter-skill relationships remain unchanged. Release notes are descriptive data, with no new invocation or resource dependency."
     },
     "caveman-explore": {
-      "digest": "00751345322ba4765b0e73069ec28c3225a2cdb7c106595ad21f4169b2b734d9",
-      "reviewer": "Codex dependency audit for Andrew, issue #61",
-      "note": "Native host delegation, not another GT skill. Upstream attribution and self identity excluded."
+      "digest": "66ff4508d47141099b515b9c3dcc8f2e9c6bda9df7d1cc9deb3b614972958bb1",
+      "reviewer": "Codex",
+      "note": "Issue #79: Reviewed capability note and the period-1/1.0.0 empty-history reset against existing instructions and dependency declarations. This package changes only release.yaml; its instructions, resources, external prerequisites and inter-skill relationships remain unchanged. Release notes are descriptive data, with no new invocation or resource dependency."
     },
     "caveman-review": {
-      "digest": "8896ead6de82753453ebc367fd942da57130468fc5a4a94f81a7fcf3afdb23c0",
-      "reviewer": "Codex dependency audit for Andrew, issue #61",
-      "note": "Review-output instructions only; no GT dependencies. Self examples and upstream attribution excluded."
+      "digest": "89058b738259f973094426a7cfeb57864e55896f1521178d746540b148f35a56",
+      "reviewer": "Codex",
+      "note": "Issue #79: Reviewed capability note and the period-1/1.0.0 empty-history reset against existing instructions and dependency declarations. This package changes only release.yaml; its instructions, resources, external prerequisites and inter-skill relationships remain unchanged. Release notes are descriptive data, with no new invocation or resource dependency."
     },
     "create-issue": {
-      "digest": "0901d59d832576b4b772fadc36393d3d611a8abd896e903a43d0d51d303c1cc7",
-      "reviewer": "Codex dependency audit for Andrew, issue #61",
-      "note": "Helper protocol and bundled Node runtime imports; caller owns content. No invocation of its callers."
+      "digest": "290553a8a4f071ab11db751d72f7a2f62ad1d6b16dfb756a8fb908ddf4b27602",
+      "reviewer": "Codex",
+      "note": "Issue #79: Reviewed capability note and the period-1/1.0.0 empty-history reset against existing instructions and dependency declarations. This package changes only release.yaml; its instructions, resources, external prerequisites and inter-skill relationships remain unchanged. Release notes are descriptive data, with no new invocation or resource dependency."
     },
     "create-skills": {
-      "digest": "117793a762e2998b2b49a34ec494e87a41066fe8c63a7ae4c9a618c07a93ffdc",
-      "reviewer": "Codex dependency review for Andrew, issue #77",
-      "note": "Issue #77: reviewed the new pre-preview guide pointer, selected GT Caveman optional invocation, protected-content comparison and fallback. Added resource, skill and generated-copy evidence for the shared issue-prose guide. Required Grill Me and conditional Create Issue semantics remain unchanged. Reviewed builder and metadata mentions as identities/release descriptions rather than extra invocations."
+      "digest": "bcb81ae65bb98a660f4761d75a0c49e472856fe072c56b3c7484050eea970060",
+      "reviewer": "Codex",
+      "note": "Issue #79: Reviewed current creator instructions, extracted schema/lifecycle guidance, validator copies and maintained package checker. Imports and builder provenance remain the same; package checks now require cumulative history. Interview, Caveman prose and Create Issue dependencies are unchanged. No Help or map maintenance enters runtime guidance."
     },
     "domain-modeling": {
-      "digest": "04135c6cdd861062ce86c14e0e4074d14a8e0181e0893c7341feaa12092577c2",
-      "reviewer": "Codex dependency audit for Andrew, issue #61",
-      "note": "Glossary and authorized ADR formats are bundled resources; example context paths are examples, not missing dependencies."
+      "digest": "f2b59b4567a7f2a2fa31c0ed5e2ccb2702e24d9180df48c6931dec56e038113b",
+      "reviewer": "Codex",
+      "note": "Issue #79: Reviewed capability note and the period-1/1.0.0 empty-history reset against existing instructions and dependency declarations. This package changes only release.yaml; its instructions, resources, external prerequisites and inter-skill relationships remain unchanged. Release notes are descriptive data, with no new invocation or resource dependency."
     },
     "grill-me": {
-      "digest": "10aeda4119634fe960ed1de08ad91a732a558284e339b65255dd0782129f6439",
-      "reviewer": "Codex dependency audit for Andrew, issue #61",
-      "note": "Self-contained interview instructions; no bundled resources or other skill invocation."
+      "digest": "6a23cb3aa162572a47e993c834a0b23e6759024703a4bc4bb8737e7e73e5b9a7",
+      "reviewer": "Codex",
+      "note": "Issue #79: Reviewed capability note and the period-1/1.0.0 empty-history reset against existing instructions and dependency declarations. This package changes only release.yaml; its instructions, resources, external prerequisites and inter-skill relationships remain unchanged. Release notes are descriptive data, with no new invocation or resource dependency."
     },
     "grill-with-docs": {
-      "digest": "67a31129e21cbc650b573ca3a37f2022e89f35a33f09063eebdb2b5f13b63996",
-      "reviewer": "Codex dependency audit for Andrew, issue #61",
-      "note": "Requires both Grilling and Domain Modeling before starting; license preserved on redistribution."
+      "digest": "be14dd5335b41234580f4d6bf6c7a24821d8529e7a5e1509534bdba0e78c4de0",
+      "reviewer": "Codex",
+      "note": "Issue #79: Reviewed capability note and the period-1/1.0.0 empty-history reset against existing instructions and dependency declarations. This package changes only release.yaml; its instructions, resources, external prerequisites and inter-skill relationships remain unchanged. Release notes are descriptive data, with no new invocation or resource dependency."
     },
     "grilling": {
-      "digest": "cd849f21e37288dc714953583e18b55352daa5e52a221d0abe63b68d82f13169",
-      "reviewer": "Codex dependency audit for Andrew, issue #61",
-      "note": "Interview instructions use native host capabilities, not a separate GT skill. License is bundled."
+      "digest": "b0334c85d834d356f85552b6c688ed9e9cd86083fb6c1159f09cf30136c991e9",
+      "reviewer": "Codex",
+      "note": "Issue #79: Reviewed capability note and the period-1/1.0.0 empty-history reset against existing instructions and dependency declarations. This package changes only release.yaml; its instructions, resources, external prerequisites and inter-skill relationships remain unchanged. Release notes are descriptive data, with no new invocation or resource dependency."
     },
     "skill-steal": {
-      "digest": "d3fbe7aced0dcac6ee1998c5d276fafe5c15547f043533c2d543155f0cf27ef4",
-      "reviewer": "Codex dependency review for Andrew, issue #77",
-      "note": "Issue #77 reverse impact: reviewed the shared creator builder addition and Skill Steal builder use of its unchanged package-rules function. Skill Steal package bytes and successful builder --check are unchanged. It neither copies nor reads issue-prose.md and gains no Caveman dependency; existing provenance remains accurate."
+      "digest": "9948c8e512c5beb669eed84a2ad10afea99948eb9adb6cd77b597768751a5b19",
+      "reviewer": "Codex",
+      "note": "Issue #79: Reviewed importer instructions, regenerated schema/lifecycle guidance and validator copies with shared checker rules v2. Source inspection and dependency resolution remain unchanged; no maintainer-only dependency was introduced."
     },
     "skill-tweak": {
-      "digest": "be4e7d4be2612d296841bd02ed4932d7af614cb9f526f65159b9d2c0163b3b40",
-      "reviewer": "Codex dependency review for Andrew, issue #77",
-      "note": "Issue #77: reviewed the prose pass before prepare and exact draft approval, optional selected GT Caveman dependency, fallback and protected-span comparisons. Added shared guide resource/provenance evidence. Existing interview, approval, delivery and recovery dependencies remain unchanged."
+      "digest": "11601cc53d828320648f3cf2cf25e488a5000d603c746035827eb7384a99e2f5",
+      "reviewer": "Codex",
+      "note": "Issue #79: Reviewed incident evidence guide: current period/version and history notes are evidence, not proof of execution. Existing Grill Me, Caveman and Create Issue dependencies and generated intent/prose resources are unchanged."
     },
     "skills-restore": {
-      "digest": "d552b93d1d722fb628e8d8e2a5892a809c749c07f044ff31470afe6ce6506365",
-      "reviewer": "Codex dependency review for Andrew, issue #63",
-      "note": "Reviewed new help candidate: English opening verb only. Existing wrapper/exporter relationships and package bytes are unchanged; prior #61 audit retained."
+      "digest": "0d175190de9c3ca350608c0a69c9e3fc4a1b39a5205946035df2b9d1c35138a5",
+      "reviewer": "Codex",
+      "note": "Issue #79: Reviewed Restore instructions and operations, maintained exporter modules and both generated deliveries. Catalog still reads exact Git snapshots; the new boundary is repository source data, not a bundled instruction dependency. Import evidence now includes boundary/history validation; manifest-loaded modules and builder/source provenance are retained. Guide mentions remain examples and self entry-point documentation. Independent review corrected the operation guide to catalog format 2; runtime version agreement now has a regression check. Catalog candidate checks compare immutable source commits rather than object-reference aliases, preserving serialized catalog use without changing dependencies."
     },
     "skills-status": {
-      "digest": "434dd47d0b17ff84160ca24eafb485a5a7d57dbf9c9220d9c08acd45a52940b0",
-      "reviewer": "Codex dependency audit for Andrew, issue #61",
-      "note": "Read-only installed data inspection with bundled target-selection guidance; release.yaml names inspected data, not its own runtime dependency."
+      "digest": "d4c4b0f28f678803946c3aa7453e131650ea969548d93bf8d2946763cacadfcf",
+      "reviewer": "Codex",
+      "note": "Issue #79: Reviewed local inventory and current-value selection instructions against cumulative schema. Reading installed release.yaml remains data inspection, not invocation or a dependency on this package release metadata. Installation-selection resource is unchanged; no Git/runtime prerequisite added."
     },
     "skills-update": {
-      "digest": "04a3e7f575938198902b31f1b9f3716a2aa5be98e6efd0b2bbe3344f0f2e3542",
-      "reviewer": "Codex dependency audit for Andrew, issue #61",
-      "note": "Native update workflow and bundled selection/report guidance; Skills Restore is explicitly an optional separately requested recommendation."
+      "digest": "0e19bcef38c6c187a431c27202ee19badfd23cd7111f95b9e0d00e00c2f472c6",
+      "reviewer": "Codex",
+      "note": "Issue #79: Reviewed update-report resource and before/after prefix coverage rules for cumulative history and periods. Native manager workflow and installation-selection resource are unchanged. Intermediate notes require coherent matching evidence and never invoke another skill or the exporter."
     },
     "why-not": {
-      "digest": "b32efb6b68afed869bb92c91a82744246f2142fc179553839769ec641961e6ab",
-      "reviewer": "Codex dependency audit for Andrew, issue #61",
-      "note": "Self-contained review discipline using native delegation where available, not another skill."
+      "digest": "05a0087009335f2eb8e443aca713581580dfa26bf367e5b1d84f7e0eb6ecf14f",
+      "reviewer": "Codex",
+      "note": "Issue #79: Reviewed capability note and the period-1/1.0.0 empty-history reset against existing instructions and dependency declarations. This package changes only release.yaml; its instructions, resources, external prerequisites and inter-skill relationships remain unchanged. Release notes are descriptive data, with no new invocation or resource dependency."
     },
     "help": {
-      "digest": "cf1517a108a31bcc4b0bb5f4425466c209e13ad1cfe4c9d8dd4304e74111acc3",
-      "reviewer": "Codex dependency review for Andrew, issue #77",
-      "note": "Issue #77: reviewed guide updates describing both caller workflows and the Caveman one-pass capability. Help remains guidance-only; existing conditional instruction-read dependencies cover these sources. New recommendations/descriptions are not invocations; release-note mentions are excluded."
+      "digest": "be080f717873395cae6d9cd09678515b58b3ec7bc7823969781370f6df9251dd",
+      "reviewer": "Codex",
+      "note": "Issue #79: Reviewed full authored installation/update/restore guidance with fresh-baseline and period explanations. Optional read-only inspection of the same installed skills remains the declared dependency; recommendations introduce no invocation edges. Self references remain excluded. Independent review corrected the operation guide to catalog format 2; runtime version agreement now has a regression check. Catalog candidate checks compare immutable source commits rather than object-reference aliases, preserving serialized catalog use without changing dependencies."
     }
   }
 }

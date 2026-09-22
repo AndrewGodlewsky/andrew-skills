@@ -7,6 +7,7 @@ import { spawnSync } from 'node:child_process';
 import { createHash } from 'node:crypto';
 import { buildBundle, submissionGuidance } from './build-skill-steal.mjs';
 import { checkPackage, readPackage } from './create-skills/package.mjs';
+import { metadata, entry } from './fixtures/releases.mjs';
 
 function fixture(t) {
   const root = mkdtempSync(join(tmpdir(), 'gt-steal-'));
@@ -30,6 +31,20 @@ const request = {
   implementation: 'Separate GT draft, original unchanged; no behavior changes intended.',
   verification: 'Structural check recorded separately; model behavior not executed.',
 };
+
+test('standalone importer checks the cumulative schema and rejects invalid histories', t => {
+  const { root, json } = fixture(t), draft = join(root, 'sample');
+  mkdirSync(draft);
+  writeFileSync(join(draft, 'SKILL.md'), '---\nname: sample\ndescription: Explain.\nuser-invocable: true\ndisable-model-invocation: true\n---\nExplain text.\n');
+  for (const valid of [metadata(), metadata('1.0.1', 'More.', [entry()]), metadata('1.0.0', 'Returned.', [entry()], 2)]) {
+    writeFileSync(join(draft, 'release.yaml'), valid);
+    assert.equal(json(['check', draft]).status, 'passed');
+  }
+  for (const invalid of [metadata('1.0.1'), metadata('1.0.0', 'Duplicate.', [entry()]), metadata('1.0.0', 'Skipped period.', [entry()], 3)]) {
+    writeFileSync(join(draft, 'release.yaml'), invalid);
+    assert.equal(json(['check', draft], undefined, 1).status, 'failed');
+  }
+});
 
 test('Skill Steal metadata, transitive resource links and generated bundle are complete', () => {
   buildBundle({ check: true });
@@ -57,7 +72,7 @@ test('copied package checks and prepares an import with a template without modif
   writeFileSync(join(draft, 'SKILL.md'), readFileSync(join(source, 'SKILL.md'), 'utf8')
     .replace('name: original-notes', 'name: meeting-notes')
     .replace('description: Summarize notes.', 'description: Summarize notes.\nuser-invocable: true\ndisable-model-invocation: true'));
-  writeFileSync(join(draft, 'release.yaml'), 'version: "1.0.0"\nnotes: "Import notes format."\n');
+  writeFileSync(join(draft, 'release.yaml'), 'version: "1.0.0"\nnotes: "Import notes format."\nperiod: 1\nhistory: []\n');
   const checked = json(['check', draft]);
   assert.equal(checked.status, 'passed');
   const prepared = json(['prepare'], { ...request, packageDirectory: draft });
@@ -73,7 +88,7 @@ test('failed structural checks remain submittable with explicit evidence', t => 
   const { root, json } = fixture(t), draft = join(root, 'partial-notes');
   mkdirSync(draft);
   writeFileSync(join(draft, 'SKILL.md'), '---\nname: partial-notes\ndescription: Summarize notes.\nuser-invocable: true\ndisable-model-invocation: true\n---\nRead [format](missing.md).\n');
-  writeFileSync(join(draft, 'release.yaml'), 'version: "1.0.0"\nnotes: "Partial draft."\n');
+  writeFileSync(join(draft, 'release.yaml'), 'version: "1.0.0"\nnotes: "Partial draft."\nperiod: 1\nhistory: []\n');
   const checked = json(['check', draft], undefined, 1);
   assert.equal(checked.status, 'failed');
   const prepared = json(['prepare'], { ...request, packageDirectory: draft, verification: JSON.stringify(checked) });

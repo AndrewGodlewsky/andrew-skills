@@ -4,7 +4,7 @@ import { mkdtempSync, readFileSync, writeFileSync, lstatSync } from 'node:fs';
 import { dirname, join } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 
-const expectedManifestHash = '6ed10d4274729aca9e7ea2e909629a85bc94f57887f5a9e3d97c98b3f87fe4ea';
+const expectedManifestHash = 'a9ffa6a52d73d296a55418e82e3fe2e1d446af41ed6ebb3cf646b4ae26d21c26';
 const hash = bytes => createHash('sha256').update(bytes).digest('hex');
 try {
   if (![22, 24].includes(Number(process.versions.node.split('.')[0]))) throw new Error('Use latest patched Node 22 or 24 LTS; ask Andrew for setup.');

@@ -4,7 +4,7 @@ import { createHash } from 'node:crypto';
 import { validateSkill } from '../skill-package-validation.mjs';
 
 export const limits = Object.freeze({ files: 100, fileBytes: 2 * 1024 * 1024, totalBytes: 8 * 1024 * 1024, depth: 12 });
-export const rulesVersion = '1.0.0';
+export const rulesVersion = '2.0.0';
 export const sha256 = bytes => createHash('sha256').update(bytes).digest('hex');
 export const validName = name => typeof name === 'string' && name.length <= 64 && /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(name);
 export function safeSegment(name) {

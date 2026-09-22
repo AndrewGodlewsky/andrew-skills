@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "source": "current working files",
-  "fingerprint": "56e3d089894f38338a58ff07f8215ddd1e4bceb02bb38475f60dcce3f5f1c505",
+  "fingerprint": "1cc51f1d0b5ce945a6cd33c3e0e1cc02da416e486f2d5627da8cac361cd75e1b",
   "nodes": [
     {
       "id": "file:CONTRIBUTING.md",
@@ -1024,7 +1024,7 @@
       "label": "caveman",
       "present": true,
       "review": "reviewed",
-      "sourceDigest": "d8f1ba6b0415814784df4e7bfe1f8ba2aa94b1636766c56683f3056aa2b48156",
+      "sourceDigest": "094fb856ac2fb9491acd567cac00b527b885569629e20e88e3543eede651f86d",
       "sourcePaths": [
         "skills/caveman/LICENSE",
         "skills/caveman/README.md",
@@ -1039,7 +1039,7 @@
       "label": "caveman-commit",
       "present": true,
       "review": "reviewed",
-      "sourceDigest": "1ac288890cdc540be060f74de379f7628a9334c2e169b0358b772d54393ec4a4",
+      "sourceDigest": "021157da7fde1ba9c5fab1b695a1347f3aefbfa2181f1849a329f1403fb81fdd",
       "sourcePaths": [
         "skills/caveman-commit/LICENSE",
         "skills/caveman-commit/README.md",
@@ -1054,7 +1054,7 @@
       "label": "caveman-compress",
       "present": true,
       "review": "reviewed",
-      "sourceDigest": "36a5e2ada0654e336e6e028eaac3171eae362326857b2e31dc0958e356633f3d",
+      "sourceDigest": "655c77aa47bc08e3938471197ad98a1afdf9badbe0f82f6605e76d2c9347b0e0",
       "sourcePaths": [
         "skills/caveman-compress/LICENSE",
         "skills/caveman-compress/README.md",
@@ -1077,7 +1077,7 @@
       "label": "caveman-explore",
       "present": true,
       "review": "reviewed",
-      "sourceDigest": "00751345322ba4765b0e73069ec28c3225a2cdb7c106595ad21f4169b2b734d9",
+      "sourceDigest": "66ff4508d47141099b515b9c3dcc8f2e9c6bda9df7d1cc9deb3b614972958bb1",
       "sourcePaths": [
         "skills/caveman-explore/LICENSE",
         "skills/caveman-explore/README.md",
@@ -1092,7 +1092,7 @@
       "label": "caveman-review",
       "present": true,
       "review": "reviewed",
-      "sourceDigest": "8896ead6de82753453ebc367fd942da57130468fc5a4a94f81a7fcf3afdb23c0",
+      "sourceDigest": "89058b738259f973094426a7cfeb57864e55896f1521178d746540b148f35a56",
       "sourcePaths": [
         "skills/caveman-review/LICENSE",
         "skills/caveman-review/README.md",
@@ -1107,7 +1107,7 @@
       "label": "create-issue",
       "present": true,
       "review": "reviewed",
-      "sourceDigest": "0901d59d832576b4b772fadc36393d3d611a8abd896e903a43d0d51d303c1cc7",
+      "sourceDigest": "290553a8a4f071ab11db751d72f7a2f62ad1d6b16dfb756a8fb908ddf4b27602",
       "sourcePaths": [
         "scripts/build-issue-submission.mjs",
         "scripts/issue-submission/api.mjs",
@@ -1133,7 +1133,7 @@
       "label": "create-skills",
       "present": true,
       "review": "reviewed",
-      "sourceDigest": "117793a762e2998b2b49a34ec494e87a41066fe8c63a7ae4c9a618c07a93ffdc",
+      "sourceDigest": "bcb81ae65bb98a660f4761d75a0c49e472856fe072c56b3c7484050eea970060",
       "sourcePaths": [
         "CONTRIBUTING.md",
         "scripts/build-create-skills.mjs",
@@ -1175,7 +1175,7 @@
       "label": "domain-modeling",
       "present": true,
       "review": "reviewed",
-      "sourceDigest": "04135c6cdd861062ce86c14e0e4074d14a8e0181e0893c7341feaa12092577c2",
+      "sourceDigest": "f2b59b4567a7f2a2fa31c0ed5e2ccb2702e24d9180df48c6931dec56e038113b",
       "sourcePaths": [
         "skills/domain-modeling/ADR-FORMAT.md",
         "skills/domain-modeling/CONTEXT-FORMAT.md",
@@ -1191,7 +1191,7 @@
       "label": "grill-me",
       "present": true,
       "review": "reviewed",
-      "sourceDigest": "10aeda4119634fe960ed1de08ad91a732a558284e339b65255dd0782129f6439",
+      "sourceDigest": "6a23cb3aa162572a47e993c834a0b23e6759024703a4bc4bb8737e7e73e5b9a7",
       "sourcePaths": [
         "skills/grill-me/SKILL.md",
         "skills/grill-me/release.yaml"
@@ -1204,7 +1204,7 @@
       "label": "grill-with-docs",
       "present": true,
       "review": "reviewed",
-      "sourceDigest": "67a31129e21cbc650b573ca3a37f2022e89f35a33f09063eebdb2b5f13b63996",
+      "sourceDigest": "be14dd5335b41234580f4d6bf6c7a24821d8529e7a5e1509534bdba0e78c4de0",
       "sourcePaths": [
         "skills/grill-with-docs/SKILL.md",
         "skills/grill-with-docs/assets/matt-pocock-license.txt",
@@ -1218,7 +1218,7 @@
       "label": "grilling",
       "present": true,
       "review": "reviewed",
-      "sourceDigest": "cd849f21e37288dc714953583e18b55352daa5e52a221d0abe63b68d82f13169",
+      "sourceDigest": "b0334c85d834d356f85552b6c688ed9e9cd86083fb6c1159f09cf30136c991e9",
       "sourcePaths": [
         "skills/grilling/SKILL.md",
         "skills/grilling/assets/matt-pocock-license.txt",
@@ -1232,7 +1232,7 @@
       "label": "help",
       "present": true,
       "review": "reviewed",
-      "sourceDigest": "cf1517a108a31bcc4b0bb5f4425466c209e13ad1cfe4c9d8dd4304e74111acc3",
+      "sourceDigest": "be080f717873395cae6d9cd09678515b58b3ec7bc7823969781370f6df9251dd",
       "sourcePaths": [
         "skills/help/SKILL.md",
         "skills/help/assets/matt-pocock-license.txt",
@@ -1246,7 +1246,7 @@
       "label": "skill-steal",
       "present": true,
       "review": "reviewed",
-      "sourceDigest": "d3fbe7aced0dcac6ee1998c5d276fafe5c15547f043533c2d543155f0cf27ef4",
+      "sourceDigest": "9948c8e512c5beb669eed84a2ad10afea99948eb9adb6cd77b597768751a5b19",
       "sourcePaths": [
         "CONTRIBUTING.md",
         "scripts/build-create-skills.mjs",
@@ -1283,7 +1283,7 @@
       "label": "skill-tweak",
       "present": true,
       "review": "reviewed",
-      "sourceDigest": "be4e7d4be2612d296841bd02ed4932d7af614cb9f526f65159b9d2c0163b3b40",
+      "sourceDigest": "11601cc53d828320648f3cf2cf25e488a5000d603c746035827eb7384a99e2f5",
       "sourcePaths": [
         "scripts/build-skill-tweak.mjs",
         "scripts/intent-capture.md",
@@ -1312,7 +1312,7 @@
       "label": "skills-restore",
       "present": true,
       "review": "reviewed",
-      "sourceDigest": "d552b93d1d722fb628e8d8e2a5892a809c749c07f044ff31470afe6ce6506365",
+      "sourceDigest": "0d175190de9c3ca350608c0a69c9e3fc4a1b39a5205946035df2b9d1c35138a5",
       "sourcePaths": [
         "exporter/README.md",
         "scripts/build-exporter.mjs",
@@ -1348,7 +1348,7 @@
       "label": "skills-status",
       "present": true,
       "review": "reviewed",
-      "sourceDigest": "434dd47d0b17ff84160ca24eafb485a5a7d57dbf9c9220d9c08acd45a52940b0",
+      "sourceDigest": "d4c4b0f28f678803946c3aa7453e131650ea969548d93bf8d2946763cacadfcf",
       "sourcePaths": [
         "skills/skills-status/SKILL.md",
         "skills/skills-status/references/installation-target.md",
@@ -1362,7 +1362,7 @@
       "label": "skills-update",
       "present": true,
       "review": "reviewed",
-      "sourceDigest": "04a3e7f575938198902b31f1b9f3716a2aa5be98e6efd0b2bbe3344f0f2e3542",
+      "sourceDigest": "0e19bcef38c6c187a431c27202ee19badfd23cd7111f95b9e0d00e00c2f472c6",
       "sourcePaths": [
         "skills/skills-update/SKILL.md",
         "skills/skills-update/references/installation-target.md",
@@ -1377,7 +1377,7 @@
       "label": "why-not",
       "present": true,
       "review": "reviewed",
-      "sourceDigest": "b32efb6b68afed869bb92c91a82744246f2142fc179553839769ec641961e6ab",
+      "sourceDigest": "05a0087009335f2eb8e443aca713581580dfa26bf367e5b1d84f7e0eb6ecf14f",
       "sourcePaths": [
         "skills/why-not/SKILL.md",
         "skills/why-not/release.yaml"
@@ -1952,7 +1952,7 @@
           "path": "exporter/export-source.mjs",
           "excerpt": "import { skillContentIdentity } from './release-catalog.mjs';",
           "status": "current",
-          "line": 4
+          "line": 5
         }
       ],
       "status": "current"
@@ -1969,7 +1969,7 @@
           "path": "exporter/export-source.mjs",
           "excerpt": "import { parseRelease } from './release-validation.mjs';",
           "status": "current",
-          "line": 3
+          "line": 4
         }
       ],
       "status": "current"
@@ -2018,7 +2018,7 @@
       "evidence": [
         {
           "path": "exporter/release-catalog.mjs",
-          "excerpt": "import { parseRelease, validateReleaseChange } from './release-validation.mjs';",
+          "excerpt": "import { parseRelease, readBaseline, releaseEntry, validateReleaseChange } from './release-validation.mjs';",
           "status": "current",
           "line": 3
         }
@@ -2309,7 +2309,7 @@
           "path": "scripts/export-source.mjs",
           "excerpt": "import { skillContentIdentity } from './release-catalog.mjs';",
           "status": "current",
-          "line": 4
+          "line": 5
         }
       ],
       "status": "current"
@@ -2326,7 +2326,7 @@
           "path": "scripts/export-source.mjs",
           "excerpt": "import { parseRelease } from './release-validation.mjs';",
           "status": "current",
-          "line": 3
+          "line": 4
         }
       ],
       "status": "current"
@@ -2511,7 +2511,7 @@
       "evidence": [
         {
           "path": "scripts/release-catalog.mjs",
-          "excerpt": "import { parseRelease, validateReleaseChange } from './release-validation.mjs';",
+          "excerpt": "import { parseRelease, readBaseline, releaseEntry, validateReleaseChange } from './release-validation.mjs';",
           "status": "current",
           "line": 3
         }
@@ -4417,7 +4417,7 @@
           "path": "skills/skills-restore/scripts/exporter/export-source.mjs",
           "excerpt": "import { skillContentIdentity } from './release-catalog.mjs';",
           "status": "current",
-          "line": 4
+          "line": 5
         }
       ],
       "status": "current"
@@ -4434,7 +4434,7 @@
           "path": "skills/skills-restore/scripts/exporter/export-source.mjs",
           "excerpt": "import { parseRelease } from './release-validation.mjs';",
           "status": "current",
-          "line": 3
+          "line": 4
         }
       ],
       "status": "current"
@@ -4483,7 +4483,7 @@
       "evidence": [
         {
           "path": "skills/skills-restore/scripts/exporter/release-catalog.mjs",
-          "excerpt": "import { parseRelease, validateReleaseChange } from './release-validation.mjs';",
+          "excerpt": "import { parseRelease, readBaseline, releaseEntry, validateReleaseChange } from './release-validation.mjs';",
           "status": "current",
           "line": 3
         }
@@ -4933,7 +4933,7 @@
           "path": "skills/help/SKILL.md",
           "excerpt": "`caveman`",
           "status": "current",
-          "line": 145
+          "line": 150
         }
       ],
       "status": "current"
@@ -4956,7 +4956,7 @@
           "path": "skills/help/SKILL.md",
           "excerpt": "`caveman-commit`",
           "status": "current",
-          "line": 143
+          "line": 148
         }
       ],
       "status": "current"
@@ -4979,7 +4979,7 @@
           "path": "skills/help/SKILL.md",
           "excerpt": "`caveman-compress`",
           "status": "current",
-          "line": 149
+          "line": 154
         }
       ],
       "status": "current"
@@ -5002,7 +5002,7 @@
           "path": "skills/help/SKILL.md",
           "excerpt": "`caveman-explore`",
           "status": "current",
-          "line": 138
+          "line": 143
         }
       ],
       "status": "current"
@@ -5025,7 +5025,7 @@
           "path": "skills/help/SKILL.md",
           "excerpt": "`caveman-review`",
           "status": "current",
-          "line": 141
+          "line": 146
         }
       ],
       "status": "current"
@@ -5094,7 +5094,7 @@
           "path": "skills/help/SKILL.md",
           "excerpt": "`domain-modeling`",
           "status": "current",
-          "line": 164
+          "line": 169
         }
       ],
       "status": "current"
@@ -5163,7 +5163,7 @@
           "path": "skills/help/SKILL.md",
           "excerpt": "`grilling`",
           "status": "current",
-          "line": 161
+          "line": 166
         }
       ],
       "status": "current"
@@ -5232,7 +5232,7 @@
           "path": "skills/help/SKILL.md",
           "excerpt": "`skills-restore`",
           "status": "current",
-          "line": 126
+          "line": 129
         }
       ],
       "status": "current"
@@ -5278,7 +5278,7 @@
           "path": "skills/help/SKILL.md",
           "excerpt": "`skills-update`",
           "status": "current",
-          "line": 122
+          "line": 123
         }
       ],
       "status": "current"
@@ -5318,7 +5318,7 @@
           "path": "skills/help/SKILL.md",
           "excerpt": "[Matt Pocock MIT notice](assets/matt-pocock-license.txt).",
           "status": "current",
-          "line": 206
+          "line": 211
         }
       ],
       "status": "current"
@@ -8495,11 +8495,11 @@
       "path": "CONTRIBUTING.md",
       "target": "file:docs/planning/skill-migration-acceptance-notes.md",
       "kind": "resource",
-      "sourceDigest": "90f83e118ca2856057070effe2275d3acc82cfa1b068adc20888c2bd0145c789",
+      "sourceDigest": "b228da85d828eabf6529b3542a53ce83ee967b119fd4483b6f7a740175fff183",
       "occurrences": [
         {
-          "line": 201,
-          "offset": 9016,
+          "line": 205,
+          "offset": 9060,
           "excerpt": "](docs/planning/skill-migration-acceptance-notes.md)"
         }
       ],
@@ -8511,11 +8511,11 @@
       "path": "CONTRIBUTING.md",
       "target": "file:docs/planning/skill-personal-export-contract.md",
       "kind": "resource",
-      "sourceDigest": "90f83e118ca2856057070effe2275d3acc82cfa1b068adc20888c2bd0145c789",
+      "sourceDigest": "b228da85d828eabf6529b3542a53ce83ee967b119fd4483b6f7a740175fff183",
       "occurrences": [
         {
-          "line": 222,
-          "offset": 10181,
+          "line": 226,
+          "offset": 10223,
           "excerpt": "](docs/planning/skill-personal-export-contract.md)"
         }
       ],
@@ -8527,11 +8527,11 @@
       "path": "CONTRIBUTING.md",
       "target": "file:docs/planning/skill-publishing-notes.md",
       "kind": "resource",
-      "sourceDigest": "90f83e118ca2856057070effe2275d3acc82cfa1b068adc20888c2bd0145c789",
+      "sourceDigest": "b228da85d828eabf6529b3542a53ce83ee967b119fd4483b6f7a740175fff183",
       "occurrences": [
         {
-          "line": 284,
-          "offset": 14117,
+          "line": 336,
+          "offset": 16780,
           "excerpt": "](docs/planning/skill-publishing-notes.md)"
         }
       ],
@@ -8543,11 +8543,11 @@
       "path": "CONTRIBUTING.md",
       "target": "file:docs/planning/skill-publishing-round-3.md",
       "kind": "resource",
-      "sourceDigest": "90f83e118ca2856057070effe2275d3acc82cfa1b068adc20888c2bd0145c789",
+      "sourceDigest": "b228da85d828eabf6529b3542a53ce83ee967b119fd4483b6f7a740175fff183",
       "occurrences": [
         {
-          "line": 285,
-          "offset": 14181,
+          "line": 337,
+          "offset": 16844,
           "excerpt": "](docs/planning/skill-publishing-round-3.md)"
         }
       ],
@@ -8559,11 +8559,16 @@
       "path": "CONTRIBUTING.md",
       "target": "file:docs/release-catalog.md",
       "kind": "resource",
-      "sourceDigest": "90f83e118ca2856057070effe2275d3acc82cfa1b068adc20888c2bd0145c789",
+      "sourceDigest": "b228da85d828eabf6529b3542a53ce83ee967b119fd4483b6f7a740175fff183",
       "occurrences": [
         {
-          "line": 268,
-          "offset": 12928,
+          "line": 306,
+          "offset": 14797,
+          "excerpt": "](docs/release-catalog.md)"
+        },
+        {
+          "line": 320,
+          "offset": 15591,
           "excerpt": "](docs/release-catalog.md)"
         }
       ],
@@ -8575,11 +8580,11 @@
       "path": "CONTRIBUTING.md",
       "target": "file:docs/skill-map/map.json",
       "kind": "resource",
-      "sourceDigest": "90f83e118ca2856057070effe2275d3acc82cfa1b068adc20888c2bd0145c789",
+      "sourceDigest": "b228da85d828eabf6529b3542a53ce83ee967b119fd4483b6f7a740175fff183",
       "occurrences": [
         {
-          "line": 356,
-          "offset": 18428,
+          "line": 408,
+          "offset": 21091,
           "excerpt": "](docs/skill-map/map.json)"
         }
       ],
@@ -8591,11 +8596,11 @@
       "path": "CONTRIBUTING.md",
       "target": "file:docs/skill-map/map.md",
       "kind": "resource",
-      "sourceDigest": "90f83e118ca2856057070effe2275d3acc82cfa1b068adc20888c2bd0145c789",
+      "sourceDigest": "b228da85d828eabf6529b3542a53ce83ee967b119fd4483b6f7a740175fff183",
       "occurrences": [
         {
-          "line": 356,
-          "offset": 18394,
+          "line": 408,
+          "offset": 21057,
           "excerpt": "](docs/skill-map/map.md)"
         }
       ],
@@ -8607,11 +8612,11 @@
       "path": "CONTRIBUTING.md",
       "target": "file:docs/skill-map/README.md",
       "kind": "resource",
-      "sourceDigest": "90f83e118ca2856057070effe2275d3acc82cfa1b068adc20888c2bd0145c789",
+      "sourceDigest": "b228da85d828eabf6529b3542a53ce83ee967b119fd4483b6f7a740175fff183",
       "occurrences": [
         {
-          "line": 339,
-          "offset": 17544,
+          "line": 391,
+          "offset": 20207,
           "excerpt": "](docs/skill-map/README.md)"
         }
       ],
@@ -8623,11 +8628,11 @@
       "path": "CONTRIBUTING.md",
       "target": "file:docs/skill-map/relationships.json",
       "kind": "resource",
-      "sourceDigest": "90f83e118ca2856057070effe2275d3acc82cfa1b068adc20888c2bd0145c789",
+      "sourceDigest": "b228da85d828eabf6529b3542a53ce83ee967b119fd4483b6f7a740175fff183",
       "occurrences": [
         {
-          "line": 319,
-          "offset": 15974,
+          "line": 371,
+          "offset": 18637,
           "excerpt": "](docs/skill-map/relationships.json)"
         }
       ],
@@ -8639,11 +8644,11 @@
       "path": "CONTRIBUTING.md",
       "target": "file:exporter/README.md",
       "kind": "resource",
-      "sourceDigest": "90f83e118ca2856057070effe2275d3acc82cfa1b068adc20888c2bd0145c789",
+      "sourceDigest": "b228da85d828eabf6529b3542a53ce83ee967b119fd4483b6f7a740175fff183",
       "occurrences": [
         {
-          "line": 272,
-          "offset": 13280,
+          "line": 324,
+          "offset": 15943,
           "excerpt": "](exporter/README.md)"
         }
       ],
@@ -8655,11 +8660,11 @@
       "path": "CONTRIBUTING.md",
       "target": "file:README.md",
       "kind": "resource",
-      "sourceDigest": "90f83e118ca2856057070effe2275d3acc82cfa1b068adc20888c2bd0145c789",
+      "sourceDigest": "b228da85d828eabf6529b3542a53ce83ee967b119fd4483b6f7a740175fff183",
       "occurrences": [
         {
-          "line": 195,
-          "offset": 8611,
+          "line": 199,
+          "offset": 8655,
           "excerpt": "](README.md#test-locally-before-publishing)"
         }
       ],
@@ -8671,16 +8676,16 @@
       "path": "CONTRIBUTING.md",
       "target": "file:templates/summary.md",
       "kind": "resource",
-      "sourceDigest": "90f83e118ca2856057070effe2275d3acc82cfa1b068adc20888c2bd0145c789",
+      "sourceDigest": "b228da85d828eabf6529b3542a53ce83ee967b119fd4483b6f7a740175fff183",
       "occurrences": [
         {
-          "line": 143,
-          "offset": 6243,
+          "line": 145,
+          "offset": 6265,
           "excerpt": "](templates/summary.md)"
         },
         {
-          "line": 157,
-          "offset": 6721,
+          "line": 161,
+          "offset": 6765,
           "excerpt": "`templates/summary.md`"
         }
       ],
@@ -8692,7 +8697,7 @@
       "path": "CONTRIBUTING.md",
       "target": "skill:explain-design",
       "kind": "skill",
-      "sourceDigest": "90f83e118ca2856057070effe2275d3acc82cfa1b068adc20888c2bd0145c789",
+      "sourceDigest": "b228da85d828eabf6529b3542a53ce83ee967b119fd4483b6f7a740175fff183",
       "occurrences": [
         {
           "line": 84,
@@ -8708,21 +8713,21 @@
       "path": "CONTRIBUTING.md",
       "target": "skill:skills-restore",
       "kind": "skill",
-      "sourceDigest": "90f83e118ca2856057070effe2275d3acc82cfa1b068adc20888c2bd0145c789",
+      "sourceDigest": "b228da85d828eabf6529b3542a53ce83ee967b119fd4483b6f7a740175fff183",
       "occurrences": [
         {
-          "line": 273,
-          "offset": 13360,
+          "line": 325,
+          "offset": 16023,
           "excerpt": "skills-restore"
         },
         {
-          "line": 278,
-          "offset": 13690,
+          "line": 330,
+          "offset": 16353,
           "excerpt": "skills-restore"
         },
         {
-          "line": 278,
-          "offset": 13683,
+          "line": 330,
+          "offset": 16346,
           "excerpt": "skills/skills-restore"
         }
       ],
@@ -8734,11 +8739,11 @@
       "path": "CONTRIBUTING.md",
       "target": "skill:summarize-notes",
       "kind": "skill",
-      "sourceDigest": "90f83e118ca2856057070effe2275d3acc82cfa1b068adc20888c2bd0145c789",
+      "sourceDigest": "b228da85d828eabf6529b3542a53ce83ee967b119fd4483b6f7a740175fff183",
       "occurrences": [
         {
-          "line": 121,
-          "offset": 5602,
+          "line": 123,
+          "offset": 5624,
           "excerpt": "skills/summarize-notes"
         }
       ],
@@ -8804,7 +8809,7 @@
       "path": "exporter/export-filesystem.mjs",
       "target": "file:exporter/export-source.mjs",
       "kind": "resource",
-      "sourceDigest": "5bbcf2ae280f901a697204515ab722523e1798a63abab58391e567135f8b33c2",
+      "sourceDigest": "00fb198a6f8c4c37cd44f0257fe3d71dea63052526ee2961b85dfdcfcde13e6a",
       "occurrences": [
         {
           "line": 7,
@@ -8894,11 +8899,11 @@
       "path": "exporter/export-source.mjs",
       "target": "file:exporter/release-catalog.mjs",
       "kind": "resource",
-      "sourceDigest": "b400ef631fdb076595b8f58110e5b15d4fc3458737c20be769c83daa314d8d3c",
+      "sourceDigest": "167f58e056bef26c42a2f567a51ad3fb6fd9e004d909061d000cc32b983f85be",
       "occurrences": [
         {
-          "line": 4,
-          "offset": 166,
+          "line": 5,
+          "offset": 213,
           "excerpt": "from './release-catalog.mjs'"
         }
       ],
@@ -8912,11 +8917,11 @@
       "path": "exporter/export-source.mjs",
       "target": "file:exporter/release-validation.mjs",
       "kind": "resource",
-      "sourceDigest": "b400ef631fdb076595b8f58110e5b15d4fc3458737c20be769c83daa314d8d3c",
+      "sourceDigest": "167f58e056bef26c42a2f567a51ad3fb6fd9e004d909061d000cc32b983f85be",
       "occurrences": [
         {
-          "line": 3,
-          "offset": 101,
+          "line": 4,
+          "offset": 148,
           "excerpt": "from './release-validation.mjs'"
         }
       ],
@@ -8930,16 +8935,11 @@
       "path": "exporter/README.md",
       "target": "skill:grill-me",
       "kind": "skill",
-      "sourceDigest": "0e11d1df44d40cabf065f781e7401bd2fd0bb1440f24566bf091ceb2ac2f4e11",
+      "sourceDigest": "41657d0ed7cc466fd4c4e3cc65fc3b2d49a55ffaf3fea1402ed5d5785103f621",
       "occurrences": [
         {
-          "line": 45,
-          "offset": 2942,
-          "excerpt": "grill-me"
-        },
-        {
-          "line": 72,
-          "offset": 4836,
+          "line": 55,
+          "offset": 3614,
           "excerpt": "grill-me"
         }
       ],
@@ -8951,7 +8951,7 @@
       "path": "exporter/README.md",
       "target": "skill:skills-restore",
       "kind": "skill",
-      "sourceDigest": "0e11d1df44d40cabf065f781e7401bd2fd0bb1440f24566bf091ceb2ac2f4e11",
+      "sourceDigest": "41657d0ed7cc466fd4c4e3cc65fc3b2d49a55ffaf3fea1402ed5d5785103f621",
       "occurrences": [
         {
           "line": 5,
@@ -8977,7 +8977,7 @@
       "path": "exporter/release-catalog-reader.mjs",
       "target": "file:exporter/release-catalog.mjs",
       "kind": "resource",
-      "sourceDigest": "d62ae2f3ecc8fa8aa8d60d7b46c2b593ecb1893e76ae73ea93c90648a1455320",
+      "sourceDigest": "4a197f2fc33335a61c88130b4962a3bd639a37a068c40a2b7dfd0e7be6efba7c",
       "occurrences": [
         {
           "line": 4,
@@ -8995,7 +8995,7 @@
       "path": "exporter/release-catalog-reader.mjs",
       "target": "file:exporter/release-snapshots.mjs",
       "kind": "resource",
-      "sourceDigest": "d62ae2f3ecc8fa8aa8d60d7b46c2b593ecb1893e76ae73ea93c90648a1455320",
+      "sourceDigest": "4a197f2fc33335a61c88130b4962a3bd639a37a068c40a2b7dfd0e7be6efba7c",
       "occurrences": [
         {
           "line": 5,
@@ -9013,11 +9013,11 @@
       "path": "exporter/release-catalog.mjs",
       "target": "file:exporter/release-validation.mjs",
       "kind": "resource",
-      "sourceDigest": "7f1ecf3f08d1eafa793ab86e30f3724a78650eca48357d75bec0bc88900e331c",
+      "sourceDigest": "67b94c1ff0b0ea552f455513287cbee488e2b26b2ade453d5c66868ddb3cc3be",
       "occurrences": [
         {
           "line": 3,
-          "offset": 136,
+          "offset": 164,
           "excerpt": "from './release-validation.mjs'"
         }
       ],
@@ -9270,7 +9270,7 @@
       "path": "scripts/create-skills/package.mjs",
       "target": "file:scripts/skill-package-validation.mjs",
       "kind": "resource",
-      "sourceDigest": "938bb8b11b7b0ef1f4f35053a018cfc4736d56fea787210f7c028f18aef91cb2",
+      "sourceDigest": "cb9248510c1ba52f3e58866086f5e295e37178a095d49193318736fdd275a7f6",
       "occurrences": [
         {
           "line": 4,
@@ -9455,7 +9455,7 @@
       "path": "scripts/export-filesystem.mjs",
       "target": "file:scripts/export-source.mjs",
       "kind": "resource",
-      "sourceDigest": "5bbcf2ae280f901a697204515ab722523e1798a63abab58391e567135f8b33c2",
+      "sourceDigest": "00fb198a6f8c4c37cd44f0257fe3d71dea63052526ee2961b85dfdcfcde13e6a",
       "occurrences": [
         {
           "line": 7,
@@ -9545,11 +9545,11 @@
       "path": "scripts/export-source.mjs",
       "target": "file:scripts/release-catalog.mjs",
       "kind": "resource",
-      "sourceDigest": "b400ef631fdb076595b8f58110e5b15d4fc3458737c20be769c83daa314d8d3c",
+      "sourceDigest": "167f58e056bef26c42a2f567a51ad3fb6fd9e004d909061d000cc32b983f85be",
       "occurrences": [
         {
-          "line": 4,
-          "offset": 166,
+          "line": 5,
+          "offset": 213,
           "excerpt": "from './release-catalog.mjs'"
         }
       ],
@@ -9563,11 +9563,11 @@
       "path": "scripts/export-source.mjs",
       "target": "file:scripts/release-validation.mjs",
       "kind": "resource",
-      "sourceDigest": "b400ef631fdb076595b8f58110e5b15d4fc3458737c20be769c83daa314d8d3c",
+      "sourceDigest": "167f58e056bef26c42a2f567a51ad3fb6fd9e004d909061d000cc32b983f85be",
       "occurrences": [
         {
-          "line": 3,
-          "offset": 101,
+          "line": 4,
+          "offset": 148,
           "excerpt": "from './release-validation.mjs'"
         }
       ],
@@ -9872,7 +9872,7 @@
       "path": "scripts/release-catalog-reader.mjs",
       "target": "file:scripts/release-catalog.mjs",
       "kind": "resource",
-      "sourceDigest": "d62ae2f3ecc8fa8aa8d60d7b46c2b593ecb1893e76ae73ea93c90648a1455320",
+      "sourceDigest": "4a197f2fc33335a61c88130b4962a3bd639a37a068c40a2b7dfd0e7be6efba7c",
       "occurrences": [
         {
           "line": 4,
@@ -9890,7 +9890,7 @@
       "path": "scripts/release-catalog-reader.mjs",
       "target": "file:scripts/release-snapshots.mjs",
       "kind": "resource",
-      "sourceDigest": "d62ae2f3ecc8fa8aa8d60d7b46c2b593ecb1893e76ae73ea93c90648a1455320",
+      "sourceDigest": "4a197f2fc33335a61c88130b4962a3bd639a37a068c40a2b7dfd0e7be6efba7c",
       "occurrences": [
         {
           "line": 5,
@@ -9908,11 +9908,11 @@
       "path": "scripts/release-catalog.mjs",
       "target": "file:scripts/release-validation.mjs",
       "kind": "resource",
-      "sourceDigest": "7f1ecf3f08d1eafa793ab86e30f3724a78650eca48357d75bec0bc88900e331c",
+      "sourceDigest": "67b94c1ff0b0ea552f455513287cbee488e2b26b2ade453d5c66868ddb3cc3be",
       "occurrences": [
         {
           "line": 3,
-          "offset": 136,
+          "offset": 164,
           "excerpt": "from './release-validation.mjs'"
         }
       ],
@@ -11950,22 +11950,6 @@
       ]
     },
     {
-      "id": "cf563426a50a9951948eb2b260e8d3c083856ad3444e556b6329995156b55a2b",
-      "path": "skills/create-skills/release.yaml",
-      "target": "skill:caveman",
-      "kind": "skill",
-      "sourceDigest": "78f2e4f2b130971f18c52f620701c7471cc360236400acde1af4003930520509",
-      "occurrences": [
-        {
-          "line": 2,
-          "offset": 41,
-          "excerpt": "Caveman"
-        }
-      ],
-      "status": "excluded",
-      "reason": "Release-note description of the scoped issue-prose behavior, not an instruction to invoke a skill or a separate dependency."
-    },
-    {
       "id": "a18fc7f2b7ffdb36e7101bd5bb29ad7878afb9934701e2715ce024e602205816",
       "path": "skills/create-skills/scripts/install.mjs",
       "target": "file:skills/create-skills/scripts/package.mjs",
@@ -12006,7 +11990,7 @@
       "path": "skills/create-skills/scripts/package.mjs",
       "target": "file:skills/create-skills/scripts/skill-package-validation.mjs",
       "kind": "resource",
-      "sourceDigest": "ba2bdd9fbecfd89d86e1f7e8bce141727c06238b242e643d2595ca429e752f8b",
+      "sourceDigest": "44aafd15eb645a41d1cc4509704e76e78af7776c23f5f5e6b677b0f3f78d4c7c",
       "occurrences": [
         {
           "line": 4,
@@ -12694,63 +12678,15 @@
       "reason": "Skill identity, invocation documentation or attribution to itself; no recursive invocation instruction."
     },
     {
-      "id": "3366e35868c18ddad1974ec5b80a686ebc0645308a78ed96e971bfbc399cb72a",
-      "path": "skills/help/release.yaml",
-      "target": "skill:caveman",
-      "kind": "skill",
-      "sourceDigest": "8aee90f712779c77f0ac7a0764534c4e67009e4380b08928ae9884528a15b0b7",
-      "occurrences": [
-        {
-          "line": 2,
-          "offset": 44,
-          "excerpt": "Caveman"
-        }
-      ],
-      "status": "excluded",
-      "reason": "Release-note description of the scoped issue-prose behavior, not an instruction to invoke a skill or a separate dependency."
-    },
-    {
-      "id": "271f3fce1e82a7e80aba00369b46f18e11efa24d743218cf320303417b26ed0d",
-      "path": "skills/help/release.yaml",
-      "target": "skill:create-skills",
-      "kind": "skill",
-      "sourceDigest": "8aee90f712779c77f0ac7a0764534c4e67009e4380b08928ae9884528a15b0b7",
-      "occurrences": [
-        {
-          "line": 2,
-          "offset": 72,
-          "excerpt": "Create Skills"
-        }
-      ],
-      "status": "excluded",
-      "reason": "Release-note description of the scoped issue-prose behavior, not an instruction to invoke a skill or a separate dependency."
-    },
-    {
-      "id": "0db4c125713e6c9a866c7484dd8d08cc1c7eba266f8b863c61ae21733a408021",
-      "path": "skills/help/release.yaml",
-      "target": "skill:skill-tweak",
-      "kind": "skill",
-      "sourceDigest": "8aee90f712779c77f0ac7a0764534c4e67009e4380b08928ae9884528a15b0b7",
-      "occurrences": [
-        {
-          "line": 2,
-          "offset": 90,
-          "excerpt": "Skill Tweak"
-        }
-      ],
-      "status": "excluded",
-      "reason": "Release-note description of the scoped issue-prose behavior, not an instruction to invoke a skill or a separate dependency."
-    },
-    {
       "id": "f4881b39ce3064ea5e266ec6d0e031cb64fa4cc9b845c3b798b7c1b53067b9d7",
       "path": "skills/help/SKILL.md",
       "target": "file:skills/help/assets/matt-pocock-license.txt",
       "kind": "resource",
-      "sourceDigest": "d6fc7f8e603223d6091bb951e2255a67cd7281005cc1161c2aeae4350852c5e0",
+      "sourceDigest": "b128d99c288d1ad122c135a8ae01943c11d0435fb6361f32a4d217a4fe623ad8",
       "occurrences": [
         {
-          "line": 206,
-          "offset": 11835,
+          "line": 211,
+          "offset": 12245,
           "excerpt": "](assets/matt-pocock-license.txt)"
         }
       ],
@@ -12764,7 +12700,7 @@
       "path": "skills/help/SKILL.md",
       "target": "skill:caveman",
       "kind": "skill",
-      "sourceDigest": "d6fc7f8e603223d6091bb951e2255a67cd7281005cc1161c2aeae4350852c5e0",
+      "sourceDigest": "b128d99c288d1ad122c135a8ae01943c11d0435fb6361f32a4d217a4fe623ad8",
       "occurrences": [
         {
           "line": 111,
@@ -12772,33 +12708,33 @@
           "excerpt": "Caveman"
         },
         {
-          "line": 138,
-          "offset": 7692,
-          "excerpt": "Caveman"
-        },
-        {
-          "line": 141,
-          "offset": 7918,
-          "excerpt": "Caveman"
-        },
-        {
           "line": 143,
-          "offset": 8076,
+          "offset": 8102,
           "excerpt": "Caveman"
         },
         {
-          "line": 145,
-          "offset": 8235,
+          "line": 146,
+          "offset": 8328,
           "excerpt": "Caveman"
         },
         {
-          "line": 145,
-          "offset": 8245,
+          "line": 148,
+          "offset": 8486,
+          "excerpt": "Caveman"
+        },
+        {
+          "line": 150,
+          "offset": 8645,
+          "excerpt": "Caveman"
+        },
+        {
+          "line": 150,
+          "offset": 8655,
           "excerpt": "caveman"
         },
         {
-          "line": 149,
-          "offset": 8523,
+          "line": 154,
+          "offset": 8933,
           "excerpt": "Caveman"
         }
       ],
@@ -12812,16 +12748,16 @@
       "path": "skills/help/SKILL.md",
       "target": "skill:caveman-commit",
       "kind": "skill",
-      "sourceDigest": "d6fc7f8e603223d6091bb951e2255a67cd7281005cc1161c2aeae4350852c5e0",
+      "sourceDigest": "b128d99c288d1ad122c135a8ae01943c11d0435fb6361f32a4d217a4fe623ad8",
       "occurrences": [
         {
-          "line": 143,
-          "offset": 8076,
+          "line": 148,
+          "offset": 8486,
           "excerpt": "Caveman Commit"
         },
         {
-          "line": 143,
-          "offset": 8093,
+          "line": 148,
+          "offset": 8503,
           "excerpt": "caveman-commit"
         }
       ],
@@ -12835,16 +12771,16 @@
       "path": "skills/help/SKILL.md",
       "target": "skill:caveman-compress",
       "kind": "skill",
-      "sourceDigest": "d6fc7f8e603223d6091bb951e2255a67cd7281005cc1161c2aeae4350852c5e0",
+      "sourceDigest": "b128d99c288d1ad122c135a8ae01943c11d0435fb6361f32a4d217a4fe623ad8",
       "occurrences": [
         {
-          "line": 149,
-          "offset": 8523,
+          "line": 154,
+          "offset": 8933,
           "excerpt": "Caveman Compress"
         },
         {
-          "line": 149,
-          "offset": 8542,
+          "line": 154,
+          "offset": 8952,
           "excerpt": "caveman-compress"
         }
       ],
@@ -12858,16 +12794,16 @@
       "path": "skills/help/SKILL.md",
       "target": "skill:caveman-explore",
       "kind": "skill",
-      "sourceDigest": "d6fc7f8e603223d6091bb951e2255a67cd7281005cc1161c2aeae4350852c5e0",
+      "sourceDigest": "b128d99c288d1ad122c135a8ae01943c11d0435fb6361f32a4d217a4fe623ad8",
       "occurrences": [
         {
-          "line": 138,
-          "offset": 7692,
+          "line": 143,
+          "offset": 8102,
           "excerpt": "Caveman Explore"
         },
         {
-          "line": 138,
-          "offset": 7710,
+          "line": 143,
+          "offset": 8120,
           "excerpt": "caveman-explore"
         }
       ],
@@ -12881,16 +12817,16 @@
       "path": "skills/help/SKILL.md",
       "target": "skill:caveman-review",
       "kind": "skill",
-      "sourceDigest": "d6fc7f8e603223d6091bb951e2255a67cd7281005cc1161c2aeae4350852c5e0",
+      "sourceDigest": "b128d99c288d1ad122c135a8ae01943c11d0435fb6361f32a4d217a4fe623ad8",
       "occurrences": [
         {
-          "line": 141,
-          "offset": 7918,
+          "line": 146,
+          "offset": 8328,
           "excerpt": "Caveman Review"
         },
         {
-          "line": 141,
-          "offset": 7935,
+          "line": 146,
+          "offset": 8345,
           "excerpt": "caveman-review"
         }
       ],
@@ -12904,7 +12840,7 @@
       "path": "skills/help/SKILL.md",
       "target": "skill:create-issue",
       "kind": "skill",
-      "sourceDigest": "d6fc7f8e603223d6091bb951e2255a67cd7281005cc1161c2aeae4350852c5e0",
+      "sourceDigest": "b128d99c288d1ad122c135a8ae01943c11d0435fb6361f32a4d217a4fe623ad8",
       "occurrences": [
         {
           "line": 107,
@@ -12927,7 +12863,7 @@
       "path": "skills/help/SKILL.md",
       "target": "skill:create-skills",
       "kind": "skill",
-      "sourceDigest": "d6fc7f8e603223d6091bb951e2255a67cd7281005cc1161c2aeae4350852c5e0",
+      "sourceDigest": "b128d99c288d1ad122c135a8ae01943c11d0435fb6361f32a4d217a4fe623ad8",
       "occurrences": [
         {
           "line": 84,
@@ -12950,8 +12886,8 @@
           "excerpt": "Create Skills"
         },
         {
-          "line": 201,
-          "offset": 11593,
+          "line": 206,
+          "offset": 12003,
           "excerpt": "Create Skills"
         }
       ],
@@ -12965,7 +12901,7 @@
       "path": "skills/help/SKILL.md",
       "target": "skill:domain-modeling",
       "kind": "skill",
-      "sourceDigest": "d6fc7f8e603223d6091bb951e2255a67cd7281005cc1161c2aeae4350852c5e0",
+      "sourceDigest": "b128d99c288d1ad122c135a8ae01943c11d0435fb6361f32a4d217a4fe623ad8",
       "occurrences": [
         {
           "line": 77,
@@ -12973,13 +12909,13 @@
           "excerpt": "Domain Modeling"
         },
         {
-          "line": 164,
-          "offset": 9367,
+          "line": 169,
+          "offset": 9777,
           "excerpt": "Domain Modeling"
         },
         {
-          "line": 164,
-          "offset": 9385,
+          "line": 169,
+          "offset": 9795,
           "excerpt": "domain-modeling"
         }
       ],
@@ -12993,7 +12929,7 @@
       "path": "skills/help/SKILL.md",
       "target": "skill:grill-me",
       "kind": "skill",
-      "sourceDigest": "d6fc7f8e603223d6091bb951e2255a67cd7281005cc1161c2aeae4350852c5e0",
+      "sourceDigest": "b128d99c288d1ad122c135a8ae01943c11d0435fb6361f32a4d217a4fe623ad8",
       "occurrences": [
         {
           "line": 71,
@@ -13016,7 +12952,7 @@
       "path": "skills/help/SKILL.md",
       "target": "skill:grill-with-docs",
       "kind": "skill",
-      "sourceDigest": "d6fc7f8e603223d6091bb951e2255a67cd7281005cc1161c2aeae4350852c5e0",
+      "sourceDigest": "b128d99c288d1ad122c135a8ae01943c11d0435fb6361f32a4d217a4fe623ad8",
       "occurrences": [
         {
           "line": 74,
@@ -13039,7 +12975,7 @@
       "path": "skills/help/SKILL.md",
       "target": "skill:grilling",
       "kind": "skill",
-      "sourceDigest": "d6fc7f8e603223d6091bb951e2255a67cd7281005cc1161c2aeae4350852c5e0",
+      "sourceDigest": "b128d99c288d1ad122c135a8ae01943c11d0435fb6361f32a4d217a4fe623ad8",
       "occurrences": [
         {
           "line": 77,
@@ -13047,13 +12983,13 @@
           "excerpt": "Grilling"
         },
         {
-          "line": 161,
-          "offset": 9140,
+          "line": 166,
+          "offset": 9550,
           "excerpt": "Grilling"
         },
         {
-          "line": 161,
-          "offset": 9151,
+          "line": 166,
+          "offset": 9561,
           "excerpt": "grilling"
         }
       ],
@@ -13067,7 +13003,7 @@
       "path": "skills/help/SKILL.md",
       "target": "skill:help",
       "kind": "skill",
-      "sourceDigest": "d6fc7f8e603223d6091bb951e2255a67cd7281005cc1161c2aeae4350852c5e0",
+      "sourceDigest": "b128d99c288d1ad122c135a8ae01943c11d0435fb6361f32a4d217a4fe623ad8",
       "occurrences": [
         {
           "line": 2,
@@ -13105,8 +13041,8 @@
           "excerpt": "Help"
         },
         {
-          "line": 136,
-          "offset": 7652,
+          "line": 141,
+          "offset": 8062,
           "excerpt": "help"
         }
       ],
@@ -13118,7 +13054,7 @@
       "path": "skills/help/SKILL.md",
       "target": "skill:skill-steal",
       "kind": "skill",
-      "sourceDigest": "d6fc7f8e603223d6091bb951e2255a67cd7281005cc1161c2aeae4350852c5e0",
+      "sourceDigest": "b128d99c288d1ad122c135a8ae01943c11d0435fb6361f32a4d217a4fe623ad8",
       "occurrences": [
         {
           "line": 98,
@@ -13141,7 +13077,7 @@
       "path": "skills/help/SKILL.md",
       "target": "skill:skill-tweak",
       "kind": "skill",
-      "sourceDigest": "d6fc7f8e603223d6091bb951e2255a67cd7281005cc1161c2aeae4350852c5e0",
+      "sourceDigest": "b128d99c288d1ad122c135a8ae01943c11d0435fb6361f32a4d217a4fe623ad8",
       "occurrences": [
         {
           "line": 94,
@@ -13169,16 +13105,16 @@
       "path": "skills/help/SKILL.md",
       "target": "skill:skills-restore",
       "kind": "skill",
-      "sourceDigest": "d6fc7f8e603223d6091bb951e2255a67cd7281005cc1161c2aeae4350852c5e0",
+      "sourceDigest": "b128d99c288d1ad122c135a8ae01943c11d0435fb6361f32a4d217a4fe623ad8",
       "occurrences": [
         {
-          "line": 126,
-          "offset": 7053,
+          "line": 129,
+          "offset": 7287,
           "excerpt": "Skills Restore"
         },
         {
-          "line": 126,
-          "offset": 7070,
+          "line": 129,
+          "offset": 7304,
           "excerpt": "skills-restore"
         }
       ],
@@ -13192,7 +13128,7 @@
       "path": "skills/help/SKILL.md",
       "target": "skill:skills-status",
       "kind": "skill",
-      "sourceDigest": "d6fc7f8e603223d6091bb951e2255a67cd7281005cc1161c2aeae4350852c5e0",
+      "sourceDigest": "b128d99c288d1ad122c135a8ae01943c11d0435fb6361f32a4d217a4fe623ad8",
       "occurrences": [
         {
           "line": 119,
@@ -13205,8 +13141,8 @@
           "excerpt": "skills-status"
         },
         {
-          "line": 196,
-          "offset": 11267,
+          "line": 201,
+          "offset": 11677,
           "excerpt": "Skills Status"
         }
       ],
@@ -13220,21 +13156,21 @@
       "path": "skills/help/SKILL.md",
       "target": "skill:skills-update",
       "kind": "skill",
-      "sourceDigest": "d6fc7f8e603223d6091bb951e2255a67cd7281005cc1161c2aeae4350852c5e0",
+      "sourceDigest": "b128d99c288d1ad122c135a8ae01943c11d0435fb6361f32a4d217a4fe623ad8",
       "occurrences": [
         {
-          "line": 122,
-          "offset": 6773,
+          "line": 123,
+          "offset": 6878,
           "excerpt": "Skills Update"
         },
         {
-          "line": 122,
-          "offset": 6789,
+          "line": 123,
+          "offset": 6894,
           "excerpt": "skills-update"
         },
         {
-          "line": 188,
-          "offset": 10695,
+          "line": 193,
+          "offset": 11105,
           "excerpt": "Skills Update"
         }
       ],
@@ -13248,7 +13184,7 @@
       "path": "skills/help/SKILL.md",
       "target": "skill:why-not",
       "kind": "skill",
-      "sourceDigest": "d6fc7f8e603223d6091bb951e2255a67cd7281005cc1161c2aeae4350852c5e0",
+      "sourceDigest": "b128d99c288d1ad122c135a8ae01943c11d0435fb6361f32a4d217a4fe623ad8",
       "occurrences": [
         {
           "line": 78,
@@ -13469,7 +13405,7 @@
       "path": "skills/skill-steal/scripts/package.mjs",
       "target": "file:skills/skill-steal/scripts/skill-package-validation.mjs",
       "kind": "resource",
-      "sourceDigest": "ba2bdd9fbecfd89d86e1f7e8bce141727c06238b242e643d2595ca429e752f8b",
+      "sourceDigest": "44aafd15eb645a41d1cc4509704e76e78af7776c23f5f5e6b677b0f3f78d4c7c",
       "occurrences": [
         {
           "line": 4,
@@ -13770,7 +13706,7 @@
       "path": "skills/skill-tweak/references/evidence.md",
       "target": "file:skills/skill-tweak/references/intent-capture.md",
       "kind": "resource",
-      "sourceDigest": "cbf79f07a20a0d5bea6042ccc0c52fd79d8167c576358d4045e5aaba4b7d33f1",
+      "sourceDigest": "949768f25d4beaa658de70b3c61ba8dbb616ecd12a95a5c867ebfa4273a1c170",
       "occurrences": [
         {
           "line": 12,
@@ -13983,22 +13919,6 @@
       "edges": [
         "skill-tweak:create-issue"
       ]
-    },
-    {
-      "id": "4b83262586be7cd62dcc943a1786faaa00f32e548bd7e2a6b97afc88181f71b2",
-      "path": "skills/skill-tweak/release.yaml",
-      "target": "skill:caveman",
-      "kind": "skill",
-      "sourceDigest": "44887692a74c500f015068119c3dd0f421dd92ada6dd04fa30f89b75c8cf5606",
-      "occurrences": [
-        {
-          "line": 2,
-          "offset": 41,
-          "excerpt": "Caveman"
-        }
-      ],
-      "status": "excluded",
-      "reason": "Release-note description of the scoped issue-prose behavior, not an instruction to invoke a skill or a separate dependency."
     },
     {
       "id": "6fbdda20c89254d1828293ca7e4c7412281d81a9c11c141280487520b1b292aa",
@@ -14319,7 +14239,7 @@
       "path": "skills/skills-restore/references/operations.md",
       "target": "file:skills/skills-restore/scripts/exporter/README.md",
       "kind": "resource",
-      "sourceDigest": "b89076a09b92fdaa3c8cef85fade96a41e5224957eaa11d4179da8db9e122e84",
+      "sourceDigest": "8a6d6d11ca499701d5f3e06697f1f07ba55fe5344a2363ab515c2c733f6d214b",
       "occurrences": [
         {
           "line": 5,
@@ -14337,7 +14257,7 @@
       "path": "skills/skills-restore/references/operations.md",
       "target": "file:skills/skills-restore/scripts/exporter/run.mjs",
       "kind": "resource",
-      "sourceDigest": "b89076a09b92fdaa3c8cef85fade96a41e5224957eaa11d4179da8db9e122e84",
+      "sourceDigest": "8a6d6d11ca499701d5f3e06697f1f07ba55fe5344a2363ab515c2c733f6d214b",
       "occurrences": [
         {
           "line": 4,
@@ -14409,7 +14329,7 @@
       "path": "skills/skills-restore/scripts/exporter/export-filesystem.mjs",
       "target": "file:skills/skills-restore/scripts/exporter/export-source.mjs",
       "kind": "resource",
-      "sourceDigest": "5bbcf2ae280f901a697204515ab722523e1798a63abab58391e567135f8b33c2",
+      "sourceDigest": "00fb198a6f8c4c37cd44f0257fe3d71dea63052526ee2961b85dfdcfcde13e6a",
       "occurrences": [
         {
           "line": 7,
@@ -14499,11 +14419,11 @@
       "path": "skills/skills-restore/scripts/exporter/export-source.mjs",
       "target": "file:skills/skills-restore/scripts/exporter/release-catalog.mjs",
       "kind": "resource",
-      "sourceDigest": "b400ef631fdb076595b8f58110e5b15d4fc3458737c20be769c83daa314d8d3c",
+      "sourceDigest": "167f58e056bef26c42a2f567a51ad3fb6fd9e004d909061d000cc32b983f85be",
       "occurrences": [
         {
-          "line": 4,
-          "offset": 166,
+          "line": 5,
+          "offset": 213,
           "excerpt": "from './release-catalog.mjs'"
         }
       ],
@@ -14517,11 +14437,11 @@
       "path": "skills/skills-restore/scripts/exporter/export-source.mjs",
       "target": "file:skills/skills-restore/scripts/exporter/release-validation.mjs",
       "kind": "resource",
-      "sourceDigest": "b400ef631fdb076595b8f58110e5b15d4fc3458737c20be769c83daa314d8d3c",
+      "sourceDigest": "167f58e056bef26c42a2f567a51ad3fb6fd9e004d909061d000cc32b983f85be",
       "occurrences": [
         {
-          "line": 3,
-          "offset": 101,
+          "line": 4,
+          "offset": 148,
           "excerpt": "from './release-validation.mjs'"
         }
       ],
@@ -14535,16 +14455,11 @@
       "path": "skills/skills-restore/scripts/exporter/README.md",
       "target": "skill:grill-me",
       "kind": "skill",
-      "sourceDigest": "0e11d1df44d40cabf065f781e7401bd2fd0bb1440f24566bf091ceb2ac2f4e11",
+      "sourceDigest": "41657d0ed7cc466fd4c4e3cc65fc3b2d49a55ffaf3fea1402ed5d5785103f621",
       "occurrences": [
         {
-          "line": 45,
-          "offset": 2942,
-          "excerpt": "grill-me"
-        },
-        {
-          "line": 72,
-          "offset": 4836,
+          "line": 55,
+          "offset": 3614,
           "excerpt": "grill-me"
         }
       ],
@@ -14556,7 +14471,7 @@
       "path": "skills/skills-restore/scripts/exporter/README.md",
       "target": "skill:skills-restore",
       "kind": "skill",
-      "sourceDigest": "0e11d1df44d40cabf065f781e7401bd2fd0bb1440f24566bf091ceb2ac2f4e11",
+      "sourceDigest": "41657d0ed7cc466fd4c4e3cc65fc3b2d49a55ffaf3fea1402ed5d5785103f621",
       "occurrences": [
         {
           "line": 5,
@@ -14582,7 +14497,7 @@
       "path": "skills/skills-restore/scripts/exporter/release-catalog-reader.mjs",
       "target": "file:skills/skills-restore/scripts/exporter/release-catalog.mjs",
       "kind": "resource",
-      "sourceDigest": "d62ae2f3ecc8fa8aa8d60d7b46c2b593ecb1893e76ae73ea93c90648a1455320",
+      "sourceDigest": "4a197f2fc33335a61c88130b4962a3bd639a37a068c40a2b7dfd0e7be6efba7c",
       "occurrences": [
         {
           "line": 4,
@@ -14600,7 +14515,7 @@
       "path": "skills/skills-restore/scripts/exporter/release-catalog-reader.mjs",
       "target": "file:skills/skills-restore/scripts/exporter/release-snapshots.mjs",
       "kind": "resource",
-      "sourceDigest": "d62ae2f3ecc8fa8aa8d60d7b46c2b593ecb1893e76ae73ea93c90648a1455320",
+      "sourceDigest": "4a197f2fc33335a61c88130b4962a3bd639a37a068c40a2b7dfd0e7be6efba7c",
       "occurrences": [
         {
           "line": 5,
@@ -14618,11 +14533,11 @@
       "path": "skills/skills-restore/scripts/exporter/release-catalog.mjs",
       "target": "file:skills/skills-restore/scripts/exporter/release-validation.mjs",
       "kind": "resource",
-      "sourceDigest": "7f1ecf3f08d1eafa793ab86e30f3724a78650eca48357d75bec0bc88900e331c",
+      "sourceDigest": "67b94c1ff0b0ea552f455513287cbee488e2b26b2ade453d5c66868ddb3cc3be",
       "occurrences": [
         {
           "line": 3,
-          "offset": 136,
+          "offset": 164,
           "excerpt": "from './release-validation.mjs'"
         }
       ],
@@ -14636,7 +14551,7 @@
       "path": "skills/skills-restore/SKILL.md",
       "target": "file:skills/skills-restore/references/operations.md",
       "kind": "resource",
-      "sourceDigest": "33dda0dde0390b91fdbf6adf56c70e512f3828ce800c4d4140788c1f50e5abdb",
+      "sourceDigest": "27da1326c70af5b4d72b1723cd59f92b74ab5723ccd17b13f825266f710717d8",
       "occurrences": [
         {
           "line": 16,
@@ -14654,7 +14569,7 @@
       "path": "skills/skills-restore/SKILL.md",
       "target": "file:skills/skills-restore/scripts/exporter/README.md",
       "kind": "resource",
-      "sourceDigest": "33dda0dde0390b91fdbf6adf56c70e512f3828ce800c4d4140788c1f50e5abdb",
+      "sourceDigest": "27da1326c70af5b4d72b1723cd59f92b74ab5723ccd17b13f825266f710717d8",
       "occurrences": [
         {
           "line": 21,
@@ -14672,7 +14587,7 @@
       "path": "skills/skills-restore/SKILL.md",
       "target": "file:skills/skills-restore/scripts/exporter/run.mjs",
       "kind": "resource",
-      "sourceDigest": "33dda0dde0390b91fdbf6adf56c70e512f3828ce800c4d4140788c1f50e5abdb",
+      "sourceDigest": "27da1326c70af5b4d72b1723cd59f92b74ab5723ccd17b13f825266f710717d8",
       "occurrences": [
         {
           "line": 17,
@@ -14690,7 +14605,7 @@
       "path": "skills/skills-restore/SKILL.md",
       "target": "skill:help",
       "kind": "skill",
-      "sourceDigest": "33dda0dde0390b91fdbf6adf56c70e512f3828ce800c4d4140788c1f50e5abdb",
+      "sourceDigest": "27da1326c70af5b4d72b1723cd59f92b74ab5723ccd17b13f825266f710717d8",
       "occurrences": [
         {
           "line": 8,
@@ -14706,7 +14621,7 @@
       "path": "skills/skills-restore/SKILL.md",
       "target": "skill:skills-restore",
       "kind": "skill",
-      "sourceDigest": "33dda0dde0390b91fdbf6adf56c70e512f3828ce800c4d4140788c1f50e5abdb",
+      "sourceDigest": "27da1326c70af5b4d72b1723cd59f92b74ab5723ccd17b13f825266f710717d8",
       "occurrences": [
         {
           "line": 2,
@@ -14722,7 +14637,7 @@
       "path": "skills/skills-status/SKILL.md",
       "target": "file:skills/skills-status/references/installation-target.md",
       "kind": "resource",
-      "sourceDigest": "22821ede4493533e559f3b0c19f62daeedb5b147e0295bc377240b60c41c9f09",
+      "sourceDigest": "6cfe2816c6fb57673a52c8c3ce7075adcde497cd021217f38a9bf08da37496aa",
       "occurrences": [
         {
           "line": 15,
@@ -14740,7 +14655,7 @@
       "path": "skills/skills-status/SKILL.md",
       "target": "file:skills/skills-status/release.yaml",
       "kind": "resource",
-      "sourceDigest": "22821ede4493533e559f3b0c19f62daeedb5b147e0295bc377240b60c41c9f09",
+      "sourceDigest": "6cfe2816c6fb57673a52c8c3ce7075adcde497cd021217f38a9bf08da37496aa",
       "occurrences": [
         {
           "line": 36,
@@ -14756,7 +14671,7 @@
       "path": "skills/skills-status/SKILL.md",
       "target": "skill:skills-status",
       "kind": "skill",
-      "sourceDigest": "22821ede4493533e559f3b0c19f62daeedb5b147e0295bc377240b60c41c9f09",
+      "sourceDigest": "6cfe2816c6fb57673a52c8c3ce7075adcde497cd021217f38a9bf08da37496aa",
       "occurrences": [
         {
           "line": 2,

@@ -1,2 +1,4 @@
-version: "1.1.0"
-notes: "Allow model invocation for calling workflows while retaining manual invocation and the existing interview instructions."
+version: "1.0.0"
+notes: "Sharpen a plan or design through a focused interview with one question and a recommendation at a time."
+period: 1
+history: []

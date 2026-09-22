@@ -7,11 +7,11 @@ function source() {
   const text = "---\r\nname: 'example'\r\ndescription: Explain a design.\r\ndisable-model-invocation: true\r\n---\r\nRead [sample](assets/sample.bin).\r\n";
   const files = new Map([
     ['SKILL.md', { mode: '100644', data: Buffer.from(text) }],
-    ['release.yaml', { mode: '100644', data: Buffer.from('version: "1.0.0"\nnotes: "Initial release."\n') }],
+    ['release.yaml', { mode: '100644', data: Buffer.from('version: "1.0.0"\nnotes: "Initial release."\nperiod: 1\nhistory: []\n') }],
     ['assets/sample.bin', { mode: '100644', data: Buffer.from([0, 255, 13, 10]) }],
   ]);
   const record = { repository: 'https://github.com/AndrewGodlewsky/andrew-skills', skill: 'example', version: '1.0.0',
-    notes: 'Initial release.', sourceCommit: '1'.repeat(40), sourceTree: '2'.repeat(40), skillPath: 'skills/example',
+    notes: 'Initial release.', period: 1, history: [], sourceCommit: '1'.repeat(40), sourceTree: '2'.repeat(40), skillPath: 'skills/example',
     contentIdentity: skillContentIdentity(files) };
   return { files, record, text };
 }

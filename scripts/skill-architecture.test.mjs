@@ -20,7 +20,7 @@ function collection(fields = header, body = 'Explain the supplied design.', reso
       plugins: [{ name: 'gt', source: './', version: '0.1.4', description: 'Fixture collection' }],
     }),
     'skills/explain-design/SKILL.md': `---\n${Object.entries(fields).map(([key, value]) => `${key}: ${value}`).join('\n')}\n---\n${body}\n`,
-    'skills/explain-design/release.yaml': 'version: "1.0.0"\nnotes: "Explain a supplied design."\n',
+    'skills/explain-design/release.yaml': 'version: "1.0.0"\nnotes: "Explain a supplied design."\nperiod: 1\nhistory: []\n',
     ...resources,
   };
   return new Map(Object.entries(files).map(([path, data]) => [path, { mode: '100644', data: Buffer.from(data) }]));

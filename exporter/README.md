@@ -15,6 +15,16 @@ runtime registry to certify patch freshness. Ask Andrew about missing tools or
 security blocks. It installs nothing and never changes execution policy.
 Instruction-only native GT skills do not need these tools.
 
+This delivery uses catalog format 2, protocol 2, exporter 2.0.0 and receipt
+schema 2. Development catalogs, plans and caches are rejected; old receipts
+remain unverified. List and plan again through the normal workflow when needed.
+Only publications since the explicit fresh baseline are supported. Requests
+pinned before that boundary fail rather than exporting a discarded development
+release. Cumulative metadata history stores notes, not older source files.
+Repeated labels in different periods require the exact source commit; both map
+to the ordinary version-suffixed personal name, so the no-overwrite rule still
+prevents a second copy at an occupied destination.
+
 ## Commands
 
 Run `node <absolute-path-to-this-bundle>/run.mjs` with one operation below.
@@ -68,12 +78,10 @@ conservative printable ASCII subset, at most 100 characters per component and
 `.gt-export.json`, case collisions, submodules, LFS pointers and recognized
 outside/plugin/self dependencies stop the operation.
 
-Historical compatibility exception: older published headers may omit invocation
-flags that the current authoring guide now requires (for example `grill-me`
-1.0.0). Export preserves those omissions rather than inserting new behavior.
-Present flags must be booleans and an explicitly inaccessible combination is
-rejected. Current authored skills still require all four fields. Client handling
-of historical omissions remains part of the owner pilot.
+Export preserves the selected header bytes apart from the controlled name
+adaptation. Present invocation flags must be booleans and an explicitly
+inaccessible combination is rejected. Current authored packages require all
+four header fields. Preserving bytes does not establish client compatibility.
 
 ## Publication and recovery
 
@@ -114,8 +122,8 @@ Security blocks stop further work and leave evidence; ask Andrew before
 proceeding. There is no automatic recursive cleanup of personal content, rollback,
 replacement, backup, repository import or response to later edits/deletion.
 
-The travelling schema-1 receipt records exporter version, operation/time, exact
-source identity and separate original/adapted manifests, excluding itself.
+The travelling schema-2 receipt records exporter version, operation/time, exact
+source identity, release period/history and separate original/adapted manifests, excluding itself.
 `matches-receipt` proves internal consistency only. The receipt is editable,
 is not a signature and does not authenticate provenance; inspection labels it
 `unverified-receipt`. Protocol and exporter versions are independent of the

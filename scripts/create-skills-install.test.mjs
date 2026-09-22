@@ -13,7 +13,7 @@ function setup(t) {
   const home = join(base, 'user'), root = join(base, 'meeting-actions');
   fs.mkdirSync(home); fs.mkdirSync(root); fs.mkdirSync(join(root, 'references'));
   fs.writeFileSync(join(root, 'SKILL.md'), '---\nname: meeting-actions\ndescription: Extract explicit commitments.\nuser-invocable: true\ndisable-model-invocation: true\n---\nRead [format](references/format.md) and extract supplied actions.\n');
-  fs.writeFileSync(join(root, 'release.yaml'), 'version: "1.0.0"\nnotes: "Extract explicit actions."\n');
+  fs.writeFileSync(join(root, 'release.yaml'), 'version: "1.0.0"\nnotes: "Extract explicit actions."\nperiod: 1\nhistory: []\n');
   fs.writeFileSync(join(root, 'references/format.md'), 'Action | Owner | Due\n');
   const request = { packageDirectory: root, expectedIdentity: checkDirectory(root).identity, approved: true };
   return { home, root, request, destination: join(home, '.copilot/skills/meeting-actions') };

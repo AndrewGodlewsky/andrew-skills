@@ -1,5 +1,7 @@
 # Personal historical export — implementation contract
 
+Historical decision record: [issue #79](https://github.com/AndrewGodlewsky/andrew-skills/issues/79) supersedes development release numbering, the two-field metadata schema and automatic baseline discovery. Current rules are in [CONTRIBUTING.md](../../CONTRIBUTING.md) and the [catalog contract](../release-catalog.md). Uncompleted client/WSL pilot acceptance remains open.
+
 **Status: resolved; planning handoff, not implemented.** Canonical [Define historical skill export and personal copy handoff — resolution](https://github.com/AndrewGodlewsky/andrew-skills/issues/6#issuecomment-5689786832). Original answers: [Round 1](skill-archive-round-1.md), [Round 2](skill-archive-round-2.md), [Round 3](skill-archive-round-3.md).
 
 **Implementation update (September 20, 2026):** The contract below preserves the

@@ -1,5 +1,7 @@
 # Skill publishing — accepted contract
 
+Historical decision record: [issue #79](https://github.com/AndrewGodlewsky/andrew-skills/issues/79) supersedes development release numbering, the two-field metadata schema and automatic baseline discovery. Current rules are in [CONTRIBUTING.md](../../CONTRIBUTING.md) and the [catalog contract](../release-catalog.md). Uncompleted client/WSL pilot acceptance remains open.
+
 > **Execution update:** metadata validation and the [catalog reader](../release-catalog.md)
 > now implement this contract. [CONTRIBUTING.md](../../CONTRIBUTING.md) describes
 > current authoring and checks. The original planning snapshots below remain

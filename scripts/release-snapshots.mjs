@@ -2,7 +2,7 @@ import { execFileSync } from 'node:child_process';
 import { existsSync, lstatSync, readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 
-const runtimePaths = ['plugin.json', '.claude-plugin/marketplace.json', 'skills', 'exporter'];
+const runtimePaths = ['plugin.json', '.claude-plugin/marketplace.json', 'release-baseline.json', 'skills', 'exporter'];
 
 function git(root, args, input) {
   const env = { ...process.env };
@@ -114,6 +114,7 @@ export function readWorkingFiles(root, indexModes = new Map()) {
   }
   visit('plugin.json');
   visit('.claude-plugin/marketplace.json');
+  if (readdirSync(root).includes('release-baseline.json')) visit('release-baseline.json');
   if (readdirSync(root).includes('skills')) visit('skills');
   if (readdirSync(root).includes('exporter')) visit('exporter');
   return files;

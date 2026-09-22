@@ -4,6 +4,7 @@ import { mkdtempSync, mkdirSync, readFileSync, readdirSync, realpathSync, rename
 import { tmpdir, release } from 'node:os';
 import { dirname, join, resolve } from 'node:path';
 import { test as nodeTest } from 'node:test';
+import { metadata, entry } from './fixtures/releases.mjs';
 import { createCopy, inspectCopy } from './export-filesystem.mjs';
 import { skillContentIdentity } from './release-catalog.mjs';
 
@@ -20,13 +21,13 @@ function fixture(t) {
   });
   const files = new Map([
     ['SKILL.md', { mode: '100644', data: Buffer.from('---\nname: example\ndescription: Explain a design.\n---\nExplain the design.\n') }],
-    ['release.yaml', { mode: '100644', data: Buffer.from('version: "1.0.0"\nnotes: "Initial release."\n') }],
+    ['release.yaml', { mode: '100644', data: Buffer.from('version: "1.0.0"\nnotes: "Initial release."\nperiod: 1\nhistory: []\n') }],
     ['assets/sample.bin', { mode: '100644', data: Buffer.from([0, 255, 13, 10]) }],
     ['.link-probe', { mode: '100644', data: Buffer.from('Ordinary tracked resource.') }],
     ['scripts/example.mjs', { mode: '100755', data: Buffer.from('throw new Error("Historical scripts must not execute during export");\n') }],
   ]);
   const record = { repository: 'https://github.com/AndrewGodlewsky/andrew-skills', skill: 'example', version: '1.0.0',
-    notes: 'Initial release.', sourceCommit: '1'.repeat(40), sourceTree: '2'.repeat(40), skillPath: 'skills/example',
+    notes: 'Initial release.', period: 1, history: [], sourceCommit: '1'.repeat(40), sourceTree: '2'.repeat(40), skillPath: 'skills/example',
     contentIdentity: skillContentIdentity(files) };
   return { record, files, target: { environment: process.platform === 'win32' ? 'windows' : 'wsl', home }, portabilityReviewed: true };
 }
@@ -84,8 +85,8 @@ test('real process interruption preserves locks and exposes partial or completed
     });
     if (phase === 'locked') {
       const files = new Map(input.files);
-      files.set('release.yaml', { mode: '100644', data: Buffer.from('version: "1.1.0"\nnotes: "Next version."\n') });
-      const record = { ...input.record, version: '1.1.0', notes: 'Next version.', contentIdentity: skillContentIdentity(files) };
+      files.set('release.yaml', { mode: '100644', data: Buffer.from(metadata('1.1.0', 'Next version.', [entry()])) });
+      const record = { ...input.record, version: '1.1.0', notes: 'Next version.', history: [entry()], contentIdentity: skillContentIdentity(files) };
       assert.throws(() => createCopy({ ...input, files, record }), /Export busy/);
     }
     child.kill();

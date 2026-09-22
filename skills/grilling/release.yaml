@@ -1,2 +1,4 @@
 version: "1.0.0"
-notes: "Interview in dependency-aware question rounds with recommendations and confirmation before implementation."
+notes: "Stress-test a plan, decision or idea through questions ordered by their unresolved dependencies."
+period: 1
+history: []

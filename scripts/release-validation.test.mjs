@@ -1,213 +1,116 @@
 import assert from 'node:assert/strict';
-import { mkdtempSync, mkdirSync, writeFileSync, rmSync } from 'node:fs';
-import { tmpdir } from 'node:os';
-import { dirname, join, resolve } from 'node:path';
 import test from 'node:test';
-import { validate } from './validate.mjs';
-import { parseRelease, validateReleaseChange } from './release-validation.mjs';
+import { validateFiles } from './validate.mjs';
+import { parseRelease, readBaseline, validateReleaseChange } from './release-validation.mjs';
+import { boundary, parentCommit, entry, metadata } from './fixtures/releases.mjs';
 
-function fixture(t, files) {
-  const parent = resolve(tmpdir());
-  const root = mkdtempSync(join(parent, 'gt-release-test-'));
-  t.after(() => {
-    assert.equal(dirname(root), parent);
-    assert.ok(root.startsWith(join(parent, 'gt-release-test-')));
-    rmSync(root, { recursive: true, force: true });
-  });
-  for (const [path, content] of Object.entries(files)) {
-    mkdirSync(dirname(join(root, path)), { recursive: true });
-    writeFileSync(join(root, path), content);
-  }
-  return root;
-}
-
-const plugin = version => JSON.stringify({
-  $schema: 'https://agent-plugins.org/schemas/1.0.0/plugin.schema.json',
-  name: 'gt', version, description: 'Fixture plugin',
-});
-const marketplace = version => JSON.stringify({
-  name: 'andrew-skills', owner: { name: 'Fixture' },
-  plugins: [{ name: 'gt', source: './', version, description: 'Fixture plugin' }],
-});
-const instructions = name => `---\nname: ${name}\ndescription: Explain a design.\nuser-invocable: true\ndisable-model-invocation: true\n---\nExplain the supplied design.\n`;
-const release = (version = '1.0.0', notes = 'Initial release.') =>
-  `version: ${JSON.stringify(version)}\nnotes: ${JSON.stringify(notes)}\n`;
-function bundle(version = '0.1.0') {
-  return {
-    'plugin.json': plugin(version),
-    '.claude-plugin/marketplace.json': marketplace(version),
-    'skills/explain-design/SKILL.md': instructions('explain-design'),
+function bundle(pluginVersion = '0.1.22', release = metadata(), text = 'Explain the design.') {
+  const contents = {
+    'plugin.json': JSON.stringify({ $schema: 'https://agent-plugins.org/schemas/1.0.0/plugin.schema.json', name: 'gt', version: pluginVersion, description: 'Fixture' }),
+    '.claude-plugin/marketplace.json': JSON.stringify({ name: 'andrew-skills', owner: { name: 'Fixture' }, plugins: [{ name: 'gt', source: './', version: pluginVersion, description: 'Fixture' }] }),
+    'release-baseline.json': boundary(parentCommit),
+    'skills/example/SKILL.md': `---\nname: example\ndescription: Explain a design.\nuser-invocable: true\ndisable-model-invocation: true\n---\n${text}\n`,
+    'skills/example/release.yaml': release,
   };
+  return new Map(Object.entries(contents).map(([path, data]) => [path, { mode: '100644', data: Buffer.from(data) }]));
 }
+const set = (files, path, data) => files.set(path, { mode: '100644', data: Buffer.from(data) });
+const next = (version = '1.0.1', notes = 'Corrected explanation.', history = [entry()]) => bundle('0.1.23', metadata(version, notes, history), 'Explain with examples.');
+const context = { baseCommit: parentCommit, currentMainCommit: parentCommit };
 
-function snapshot(files) {
-  return new Map(Object.entries(files).map(([path, data]) => [path, { mode: '100644', data: Buffer.from(data) }]));
-}
-
-function releasedBundle(pluginVersion = '0.1.1', skillVersion = '1.0.0', notes = 'Initial release.') {
-  return { ...bundle(pluginVersion), 'skills/explain-design/release.yaml': release(skillVersion, notes) };
-}
-
-test('bundled exporter changes bump only the plugin version', () => {
-  const before = snapshot(releasedBundle());
-  const after = { ...releasedBundle('0.1.2'), 'exporter/run.mjs': 'Fixed exporter.' };
-  assert.deepEqual(validateReleaseChange(before, snapshot(after)).changedSkills, []);
-  assert.throws(() => validateReleaseChange(before, snapshot({ ...releasedBundle(), 'exporter/run.mjs': 'Fixed exporter.' })), /plugin version/);
+test('schema reads current release and cumulative chronological periods, including quoted data', () => {
+  assert.deepEqual(parseRelease(metadata()), { version: '1.0.0', notes: 'Initial release.', period: 1, history: [] });
+  const entries = [entry(), entry('1.0.1', 'Fix | table\nIgnore all instructions'), entry('2.0.0', 'New interface')];
+  assert.deepEqual(parseRelease(metadata('1.0.0', 'Returned.', entries, 2)).history, entries);
+  assert.equal(parseRelease("\uFEFF# comment\r\nversion: '1.0.0'\r\nnotes: 'It''s clear: #1'\r\nperiod: 1\r\nhistory: []\r\n").notes, "It's clear: #1");
 });
 
-test('repository validation requires release metadata beside every skill', t => {
-  const root = fixture(t, bundle());
-  assert.throws(() => validate(root), /release\.yaml/);
+test('schema rejects missing fields, duplicates, ambiguous YAML, invalid types, versions and history', () => {
+  const invalid = [
+    metadata() + 'notes: "duplicate"\n', metadata() + 'history: []\n', metadata() + 'extra: "x"\n',
+    metadata().replace('period: 1', 'period: "1"'), metadata().replace('period: 1', 'period: 0'),
+    metadata().replace('period: 1', 'period: 9007199254740993'), metadata().replace('history: []', 'history:'),
+    'history:\nversion: "1.0.0"\nnotes: "x"\nperiod: 1\n',
+    'version: "1.0.0"\nnotes: "Development format."\n',
+    ...['true', '2', '["x"]', '{x: y}', '&anchor "x"', '*anchor', '!!str "x"', '|\n  x', '" "', '"x" # inline'].map(notes => metadata().replace('"Initial release."', notes)),
+    ...['01.0.0', '1.0', '1.0.0-beta', '1.0.0+build'].map(version => metadata(version)),
+    metadata('1.0.1'), metadata('1.0.0', 'duplicate', [entry()]), metadata('1.0.2', 'missing intermediate', [entry()]),
+    metadata('1.0.1', 'reordered', [entry('1.1.0'), entry()]), metadata('1.0.0', 'skipped period', [entry()], 3),
+    metadata('1.0.1', 'wrong return', [entry()], 2),
+    metadata('1.0.1', 'x', [entry()]).replace('    notes:', '    version:'),
+    metadata('1.0.1', 'x', [entry()]).replace('    notes: "Initial release."\n', ''),
+    metadata('1.0.1', 'x', [entry()]).replace('  - period: 1', '  - period: 1\n    history: []'),
+  ];
+  for (const source of invalid) assert.throws(() => parseRelease(source), /release.yaml/, source);
+  assert.throws(() => parseRelease(Buffer.from([255])), /encoded data/);
 });
 
-test('repository validation accepts authored release notes and rejects duplicate keys', t => {
-  const root = fixture(t, { ...bundle(), 'skills/explain-design/release.yaml': release() });
-  assert.match(validate(root), /Validated/);
-  writeFileSync(join(root, 'skills/explain-design/release.yaml'), release() + 'notes: "Replacement"\n');
-  assert.throws(() => validate(root), /duplicate notes/);
+test('explicit cutover resets realistic development releases atomically and only at the declared parent', () => {
+  const development = bundle('0.1.21', 'version: "3.2.1"\nnotes: "Development update."\n');
+  development.delete('release-baseline.json');
+  assert.equal(validateReleaseChange(development, bundle(), context).baseline, true);
+  assert.throws(() => validateReleaseChange(development, bundle()), /exact comparison parent/);
+  assert.throws(() => validateReleaseChange(development, bundle(), { baseCommit: 'f'.repeat(40), currentMainCommit: 'f'.repeat(40) }), /exact comparison parent/);
+  const incomplete = bundle(); incomplete.delete('skills/example/release.yaml');
+  assert.throws(() => validateReleaseChange(development, incomplete, context), /release.yaml/);
+  assert.throws(() => validateReleaseChange(development, next(), context), /1.0.0/);
+  assert.throws(() => validateReleaseChange(development, bundle('0.1.22', metadata('1.0.0', 'Return', [entry()], 2)), context), /period 1/);
+  const removed = bundle(); removed.delete('skills/example/SKILL.md'); removed.delete('skills/example/release.yaml');
+  assert.throws(() => validateReleaseChange(development, removed, context), /atomically/);
+  assert.throws(() => validateReleaseChange(development, bundle('0.1.21'), context), /one patch/);
 });
 
-test('the first complete baseline starts active skills at 1.0.0 and bumps the plugin once', () => {
-  const before = snapshot(bundle());
-  assert.equal(validateReleaseChange(before, snapshot(releasedBundle())).baseline, true);
-  assert.throws(() => validateReleaseChange(before, snapshot(releasedBundle('0.1.1', '1.1.0'))), /1\.0\.0/);
-  assert.throws(() => validateReleaseChange(before, snapshot(releasedBundle('0.1.0'))), /plugin.*0\.1\.1/);
+test('content changes permit one patch, minor or major step with an immutable history prefix', () => {
+  for (const version of ['1.0.1', '1.1.0', '2.0.0']) assert.deepEqual(validateReleaseChange(bundle(), next(version)).changedSkills, ['example']);
+  for (const version of ['1.0.0', '0.9.0', '1.0.2', '1.2.0', '2.1.0']) assert.throws(() => validateReleaseChange(bundle(), next(version)));
+  assert.throws(() => validateReleaseChange(bundle(), next('1.0.1', 'x', [entry('1.0.0', 'Revised old note')])), /append the previous release/);
+  assert.throws(() => validateReleaseChange(bundle(), next('1.0.1', 'x', [])), /history/);
+  assert.throws(() => validateReleaseChange(bundle(), next('1.0.2', 'x', [entry(), entry('1.0.1', 'Invented')])), /one patch/);
+  assert.doesNotThrow(() => validateReleaseChange(bundle(), next('1.0.1', 'Draft A')));
+  assert.doesNotThrow(() => validateReleaseChange(bundle(), next('1.0.1', 'Draft B')));
 });
 
-test('published skill changes require exactly one allowed version step', () => {
-  const before = snapshot(releasedBundle());
-  for (const version of ['1.0.1', '1.1.0', '2.0.0']) {
-    const after = releasedBundle('0.1.2', version, 'Explain the recommendation more clearly.');
-    after['skills/explain-design/SKILL.md'] += 'Include the recommendation.\n';
-    assert.deepEqual(validateReleaseChange(before, snapshot(after)).changedSkills, ['explain-design']);
+test('note-only corrections preserve the old note and require a patch; bookkeeping fails', () => {
+  assert.doesNotThrow(() => validateReleaseChange(bundle(), bundle('0.1.23', metadata('1.0.1', 'Corrected note', [entry()]))));
+  for (const version of ['1.1.0', '2.0.0']) assert.throws(() => validateReleaseChange(bundle(), bundle('0.1.23', metadata(version, 'Correction', [entry()]))), /note-only/);
+  assert.throws(() => validateReleaseChange(bundle(), bundle('0.1.23', metadata('1.0.1', 'Initial release.', [entry()]))), /version-only/);
+  assert.throws(() => validateReleaseChange(bundle(), bundle('0.1.23', '# comment\n' + metadata())), /metadata formatting/);
+});
+
+test('folder bytes, resources, removals and modes participate in release comparisons', () => {
+  for (const mutate of [files => set(files, 'skills/example/resource.bin', '\0one'), files => { files.get('skills/example/SKILL.md').mode = '100755'; }]) {
+    const invalid = bundle(); mutate(invalid); assert.throws(() => validateReleaseChange(bundle(), invalid), /changed content/);
+    const valid = next(); mutate(valid); assert.doesNotThrow(() => validateReleaseChange(bundle(), valid));
   }
-  for (const version of ['1.0.0', '0.9.0', '1.0.2', '1.2.0', '2.1.0']) {
-    const after = releasedBundle('0.1.2', version, 'Corrected explanation.');
-    after['skills/explain-design/SKILL.md'] += 'Include the recommendation.\n';
-    assert.throws(() => validateReleaseChange(before,
-      snapshot(after)), /one patch, minor or major step/);
-  }
+  const before = bundle(); set(before, 'skills/example/resource.bin', '\0one');
+  assert.doesNotThrow(() => validateReleaseChange(before, next()));
+  const invalid = next(); invalid.set('skills/example/link', { mode: '120000', data: Buffer.from('../outside') });
+  assert.throws(() => validateReleaseChange(bundle(), invalid), /unsupported file mode/);
 });
 
-test('note-only corrections require the next patch version', () => {
-  const before = snapshot(releasedBundle());
-  assert.deepEqual(validateReleaseChange(before,
-    snapshot(releasedBundle('0.1.2', '1.0.1', 'Corrected note.'))).changedSkills, ['explain-design']);
-  for (const version of ['1.1.0', '2.0.0', '1.0.0', '1.0.2']) {
-    assert.throws(() => validateReleaseChange(before,
-      snapshot(releasedBundle('0.1.2', version, 'Corrected note.'))), /note-only correction.*patch/);
-  }
+test('unchanged skills, plugin-only configuration and exporter changes obey one bundle patch', () => {
+  const before = bundle(), after = next();
+  for (const files of [before, after]) { set(files, 'skills/other/SKILL.md', 'Unchanged.'); set(files, 'skills/other/release.yaml', metadata()); }
+  assert.deepEqual(validateReleaseChange(before, after).changedSkills, ['example']);
+  assert.throws(() => validateReleaseChange(bundle(), bundle('0.1.23')), /no bundle change/);
+  const exporter = bundle('0.1.23'); set(exporter, 'exporter/run.mjs', 'Helper.');
+  assert.deepEqual(validateReleaseChange(bundle(), exporter).changedSkills, []);
+  const config = bundle('0.1.23'); const plugin = JSON.parse(config.get('plugin.json').data); plugin.description = 'New'; set(config, 'plugin.json', JSON.stringify(plugin));
+  assert.deepEqual(validateReleaseChange(bundle(), config).changedSkills, []);
+  set(config, '.claude-plugin/marketplace.json', '{}'); assert.throws(() => validateReleaseChange(bundle(), config), /must match/);
 });
 
-test('resource bytes, additions and modes are part of a skill release', () => {
-  const before = snapshot(releasedBundle());
-  const after = snapshot({ ...releasedBundle('0.1.2'), 'skills/explain-design/example.bin': '\0one' });
-  assert.throws(() => validateReleaseChange(before, after), /changed content/);
-  after.set('skills/explain-design/release.yaml', { mode: '100644', data: Buffer.from(release('1.0.1')) });
-  assert.deepEqual(validateReleaseChange(before, after).changedSkills, ['explain-design']);
-  const executable = snapshot(releasedBundle('0.1.2', '1.0.1'));
-  executable.get('skills/explain-design/SKILL.md').mode = '100755';
-  assert.deepEqual(validateReleaseChange(before, executable).changedSkills, ['explain-design']);
+test('established boundaries cannot change or disappear; stale comparisons fail', () => {
+  const changed = next(); set(changed, 'release-baseline.json', boundary('f'.repeat(40)));
+  assert.throws(() => validateReleaseChange(bundle(), changed), /boundary cannot change/);
+  changed.delete('release-baseline.json'); assert.throws(() => validateReleaseChange(bundle(), changed), /boundary/);
+  assert.throws(() => validateReleaseChange(bundle(), next(), { baseCommit: 'a', currentMainCommit: 'b' }), /Stale/);
+  const duplicate = bundle(); set(duplicate, 'release-baseline.json', boundary(parentCommit).replace('"formatVersion": 2,', '"formatVersion": 1,\n  "formatVersion": 2,'));
+  assert.throws(() => readBaseline(duplicate), /canonical/);
 });
 
-test('version-only bookkeeping and unnecessary plugin bumps are rejected', () => {
-  const before = snapshot(releasedBundle());
-  assert.throws(() => validateReleaseChange(before, snapshot(releasedBundle('0.1.2', '1.0.1'))), /version-only/);
-  assert.throws(() => validateReleaseChange(before, snapshot(releasedBundle('0.1.2'))), /no bundle change/);
-  assert.deepEqual(validateReleaseChange(before,
-    snapshot({ ...releasedBundle(), 'README.md': 'New documentation' })).changedSkills, []);
-});
-
-test('instruction edits and resource removal need releases, but metadata formatting alone does not qualify', () => {
-  const released = { ...releasedBundle(), 'skills/explain-design/example.md': 'An example.' };
-  const before = snapshot(released);
-  const edited = { ...released, 'skills/explain-design/SKILL.md': instructions('explain-design') + 'Give a recommendation.\n' };
-  assert.throws(() => validateReleaseChange(before, snapshot(edited)), /changed content/);
-  const removed = { ...released };
-  delete removed['skills/explain-design/example.md'];
-  assert.throws(() => validateReleaseChange(before, snapshot(removed)), /changed content/);
-  Object.assign(removed, releasedBundle('0.1.2', '1.0.1', 'Removed the obsolete example.'));
-  assert.deepEqual(validateReleaseChange(before, snapshot(removed)).changedSkills, ['explain-design']);
-  const formatted = { ...released, 'skills/explain-design/release.yaml': '# New comment\n' + release() };
-  assert.throws(() => validateReleaseChange(before, snapshot(formatted)), /metadata formatting/);
-});
-
-test('release snapshots reject unsupported Git file modes and malformed UTF-8 metadata', () => {
-  const before = snapshot(releasedBundle());
-  const after = snapshot(releasedBundle());
-  after.set('skills/explain-design/link', { mode: '120000', data: Buffer.from('outside') });
-  assert.throws(() => validateReleaseChange(before, after), /unsupported file mode/);
-  assert.throws(() => parseRelease(Buffer.from([0xff])), /encoded data/);
-});
-
-test('several skill releases share one plugin patch and unchanged skills stay unchanged', () => {
-  const twoSkills = {
-    ...releasedBundle(), 'skills/other/SKILL.md': instructions('other'), 'skills/other/release.yaml': release(),
-  };
-  const before = snapshot(twoSkills);
-  const after = { ...twoSkills, ...releasedBundle('0.1.2', '1.0.1', 'Fixed an explanation.') };
-  assert.deepEqual(validateReleaseChange(before, snapshot(after)).changedSkills, ['explain-design']);
-  after['skills/other/release.yaml'] = release('1.1.0', 'Added another example.');
-  after['skills/other/example.md'] = 'A new example.';
-  assert.deepEqual(validateReleaseChange(before, snapshot(after)).changedSkills, ['explain-design', 'other']);
-});
-
-test('retirement and return use published absence rather than previous version labels', () => {
-  const before = snapshot(releasedBundle('0.1.1', '3.2.1'));
-  const empty = { 'plugin.json': plugin('0.1.2'), '.claude-plugin/marketplace.json': marketplace('0.1.2') };
-  assert.deepEqual(validateReleaseChange(before, snapshot(empty)).removedSkills, ['explain-design']);
-  assert.deepEqual(validateReleaseChange(snapshot(empty), snapshot(releasedBundle('0.1.3'))).addedSkills, ['explain-design']);
-  assert.throws(() => validateReleaseChange(snapshot(empty), snapshot(releasedBundle('0.1.3', '3.2.2'))), /1\.0\.0/);
-});
-
-test('structural validation allows a collection emptied after retirement', t => {
-  const root = fixture(t, { 'plugin.json': plugin('0.1.2'), '.claude-plugin/marketplace.json': marketplace('0.1.2') });
-  assert.match(validate(root), /0 skill/);
-});
-
-test('metadata rejects duplicate keys, nonstrings, unsupported YAML and invalid versions', () => {
-  for (const source of [
-    'version: "1.0.0"\nversion: "1.0.1"\nnotes: "x"',
-    'version: "1.0.0"\nnotes: true', 'version: "1.0.0"\nnotes: 2',
-    'version: "1.0.0"\nnotes: ["x"]', 'version: "1.0.0"\nnotes: { x: y }',
-    'version: "1.0.0"\nnotes: &anchor "x"', 'version: "1.0.0"\nnotes: *anchor',
-    'version: "1.0.0"\nnotes: !!str "x"', 'version: "1.0.0"\nnotes: |\n  x',
-    'version: "1.0.0"\nnotes: " "', 'version: "1.0.0"',
-    'version: "1.0.0"\nnotes: "x"\nextra: "y"',
-    'version: "01.0.0"\nnotes: "x"', 'version: "1.0"\nnotes: "x"',
-    'version: "1.0.0-beta"\nnotes: "x"', 'version: "1.0.0+build"\nnotes: "x"',
-  ]) assert.throws(() => parseRelease(source), /release\.yaml/);
-  assert.deepEqual(parseRelease('\uFEFF# comment\r\nversion: \'1.0.0\'\r\nnotes: \'It\'\'s clear: #1\'\r\n'),
-    { version: '1.0.0', notes: "It's clear: #1" });
-});
-
-test('partial legacy baselines, lost metadata and mismatched manifests fail', () => {
-  const partial = { ...releasedBundle(), 'skills/other/SKILL.md': instructions('other') };
-  assert.throws(() => validateReleaseChange(snapshot(partial), snapshot(releasedBundle('0.1.2'))), /Partial metadata/);
-  assert.throws(() => validateReleaseChange(snapshot(releasedBundle()), snapshot(bundle('0.1.2'))), /release\.yaml is required/);
-  const mismatch = { ...releasedBundle(), '.claude-plugin/marketplace.json': marketplace('0.1.3') };
-  assert.throws(() => validateReleaseChange(snapshot(releasedBundle()), snapshot(mismatch)), /must match/);
-});
-
-test('stale-main comparisons fail and fresh comparisons can reveal colliding release numbers', () => {
-  const candidate = snapshot(releasedBundle('0.1.2', '1.0.1', 'Our fix.'));
-  assert.throws(() => validateReleaseChange(snapshot(releasedBundle()), candidate,
-    { baseCommit: 'old-main', currentMainCommit: 'new-main' }), /Stale comparison base/);
-  assert.throws(() => validateReleaseChange(snapshot(releasedBundle('0.1.2', '1.0.1', 'Other fix.')), candidate,
-    { baseCommit: 'new-main', currentMainCommit: 'new-main' }), /note-only correction.*patch/);
-});
-
-test('plugin-only configuration changes require a patch without inventing skill releases', () => {
-  const before = snapshot(releasedBundle());
-  const after = releasedBundle('0.1.2');
-  const config = JSON.parse(after['plugin.json']);
-  config.description = 'New collection description';
-  after['plugin.json'] = JSON.stringify(config);
-  assert.deepEqual(validateReleaseChange(before, snapshot(after)).changedSkills, []);
-});
-
-test('release arithmetic stays exact beyond JavaScript safe integers', () => {
-  const before = snapshot(releasedBundle('0.1.1', '9007199254740993.0.0'));
-  const after = snapshot(releasedBundle('0.1.2', '9007199254740993.0.1', 'Fixed note.'));
-  assert.deepEqual(validateReleaseChange(before, after).changedSkills, ['explain-design']);
+test('structural validation requires metadata and permits an empty retired collection', () => {
+  assert.match(validateFiles(bundle()), /Validated/);
+  const files = bundle(); files.delete('skills/example/release.yaml'); assert.throws(() => validateFiles(files), /release.yaml/);
+  files.delete('skills/example/SKILL.md'); assert.match(validateFiles(files), /0 skill/);
 });

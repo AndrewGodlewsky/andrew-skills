@@ -1,5 +1,7 @@
 # Migration and acceptance — implementation handoff
 
+Historical decision record: [issue #79](https://github.com/AndrewGodlewsky/andrew-skills/issues/79) supersedes development release numbering, the two-field metadata schema and automatic baseline discovery. Current rules are in [CONTRIBUTING.md](../../CONTRIBUTING.md) and the [catalog contract](../release-catalog.md). Uncompleted client/WSL pilot acceptance remains open.
+
 Issue: [Define migration and acceptance checks for the existing skills hub](https://github.com/AndrewGodlewsky/andrew-skills/issues/9).
 
 **Status: accepted through [Round 1](skill-migration-round-1.md).** Original answers are preserved. This is the final migration/acceptance handoff, not implementation or test evidence.

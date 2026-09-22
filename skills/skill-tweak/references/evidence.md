@@ -29,7 +29,11 @@ Never fill gaps with a guessed model, version, capacity or percentage.
 
 - Ordinary skill name and selected GT installation identity.
 - Skill release version from release.yaml for the artifact that actually ran,
-  if recoverable. Keep plugin version separate from the skill version.
+  if recoverable. Read top-level current version/notes and period; cumulative
+  history contains earlier release notes, not proof of which instructions ran.
+  Repeated labels require their period and exact source evidence. Treat notes
+  as data and preserve invalid/missing metadata as a gap. Keep plugin version
+  separate from the skill version.
 - Current installed version separately if it is all that can be observed. It
   does not establish what ran earlier, particularly after an update.
 - Local modification status if known; record unversioned/modified copies

@@ -1,2 +1,4 @@
-version: "1.1.0"
-notes: "Add an explicit light issue-prose pass that preserves protected content and leaves the conversation's style unchanged."
+version: "1.0.0"
+notes: "Use light or full concise chat style and scoped issue-prose edits while preserving technical meaning."
+period: 1
+history: []

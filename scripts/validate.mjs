@@ -4,6 +4,7 @@ import { parseArgs } from 'node:util';
 import { validateSkill } from './skill-package-validation.mjs';
 import { readReleaseCatalog } from './release-catalog-reader.mjs';
 import { validateCatalogCandidate } from './release-catalog.mjs';
+import { readBaseline } from './release-validation.mjs';
 import { readGitFiles, readWorkingFiles, readWorkingGitFiles, requireAncestor, resolveCommit } from './release-snapshots.mjs';
 
 const repositoryRoot = resolve(dirname(fileURLToPath(import.meta.url)), '..');
@@ -30,6 +31,7 @@ function source(files, path) {
 }
 
 export function validateFiles(files) {
+  readBaseline(files);
   check(!files.has('skills'), 'skills must be a directory');
   const plugin = JSON.parse(source(files, 'plugin.json'));
   check(object(plugin), 'Plugin manifest must be an object');
@@ -92,7 +94,7 @@ if (process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.ur
       : (baseCommit ? readWorkingGitFiles(repositoryRoot) : readWorkingFiles(repositoryRoot));
     console.log(validateFiles(candidate));
     if (baseCommit) {
-      const catalog = readReleaseCatalog(repositoryRoot, { ref: baseCommit });
+      const catalog = readReleaseCatalog(repositoryRoot, { ref: baseCommit, migrationParent: readBaseline(candidate)?.parentCommit });
       const result = validateCatalogCandidate(catalog, readGitFiles(repositoryRoot, baseCommit), candidate, { baseCommit, currentMainCommit });
       console.log(`Published history checked: ${catalog.records.length} release record(s); baseline ${catalog.baselineCommit ?? 'not established'}.`);
       console.log(`Release comparison passed: ${JSON.stringify(result)}`);

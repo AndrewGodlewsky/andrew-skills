@@ -146,9 +146,9 @@ export function createCopy({ record, files, target, portabilityReviewed, onProgr
     mkdirSync(stage, { mode: 0o700 });
     const stageIdentity = identity(stage);
     writeExclusive(join(run, 'operation.json'), JSON.stringify({ protocolVersion: PROTOCOL_VERSION, operationId, destination, source: record }));
-    const receipt = { schemaVersion: 1, exporterVersion: EXPORTER_VERSION, operationId, createdAt: new Date().toISOString(),
+    const receipt = { schemaVersion: 2, exporterVersion: EXPORTER_VERSION, operationId, createdAt: new Date().toISOString(),
       source: { repository: record.repository, skill: record.skill, version: record.version, commit: record.sourceCommit,
-        path: record.skillPath, tree: record.sourceTree, contentIdentity: record.contentIdentity, notes: record.notes, files: prepared.sourceFiles },
+        path: record.skillPath, tree: record.sourceTree, contentIdentity: record.contentIdentity, period: record.period, history: record.history, notes: record.notes, files: prepared.sourceFiles },
       installed: { name: prepared.personalName, transform: 'frontmatter-name-v1', files: prepared.installedFiles } };
     const staged = new Map(prepared.files);
     staged.set('.gt-export.json', { mode: '100644', data: Buffer.from(JSON.stringify(receipt, null, 2) + '\n') });
@@ -242,7 +242,7 @@ export function inspectCopy({ target, personalName }) {
   checkedPath(receiptPath);
   let receipt;
   try { receipt = JSON.parse(readFileSync(receiptPath, 'utf8')); } catch (error) { if (isSecurityError(error)) throw error; return result; }
-  if (receipt?.schemaVersion !== 1 || receipt.installed?.name !== personalName || receipt.installed?.transform !== 'frontmatter-name-v1' ||
+  if (receipt?.schemaVersion !== 2 || receipt.exporterVersion !== EXPORTER_VERSION || receipt.installed?.name !== personalName || receipt.installed?.transform !== 'frontmatter-name-v1' ||
     receipt.source?.repository !== REPOSITORY || !Array.isArray(receipt.installed.files) ||
     typeof receipt.source.skill !== 'string' || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(receipt.source.skill) ||
     !/^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$/.test(receipt.source.version) ||

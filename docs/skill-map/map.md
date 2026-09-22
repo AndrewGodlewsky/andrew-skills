@@ -1,6 +1,6 @@
 # GT skill dependency map
 
-Snapshot: `56e3d089894f38338a58ff07f8215ddd1e4bceb02bb38475f60dcce3f5f1c505`. Source: current working files when generated.
+Snapshot: `1cc51f1d0b5ce945a6cd33c3e0e1cc02da416e486f2d5627da8cac361cd75e1b`. Source: current working files when generated.
 Saved output cannot detect later edits. Recorded review is current for this snapshot.
 
 A → B means A relies on B; dashed arrows are conditional. Potential impact means review scope, not proven breakage.
@@ -457,13 +457,13 @@ resource; current. When loading this module
 
 resource; current. When loading this module
 
-- [exporter/export-source.mjs:4](../../exporter/export-source.mjs#L4) (current): import { skillContentIdentity } from './release-catalog.mjs';
+- [exporter/export-source.mjs:5](../../exporter/export-source.mjs#L5) (current): import { skillContentIdentity } from './release-catalog.mjs';
 
 ### exporter/export-source.mjs → exporter/release-validation.mjs
 
 resource; current. When loading this module
 
-- [exporter/export-source.mjs:3](../../exporter/export-source.mjs#L3) (current): import { parseRelease } from './release-validation.mjs';
+- [exporter/export-source.mjs:4](../../exporter/export-source.mjs#L4) (current): import { parseRelease } from './release-validation.mjs';
 
 ### exporter/release-catalog-reader.mjs → exporter/release-catalog.mjs
 
@@ -481,7 +481,7 @@ resource; current. When loading this module
 
 resource; current. When loading this module
 
-- [exporter/release-catalog.mjs:3](../../exporter/release-catalog.mjs#L3) (current): import { parseRelease, validateReleaseChange } from './release-validation.mjs';
+- [exporter/release-catalog.mjs:3](../../exporter/release-catalog.mjs#L3) (current): import { parseRelease, readBaseline, releaseEntry, validateReleaseChange } from './release-validation.mjs';
 
 ### scripts/create-skills/install.mjs → scripts/create-skills/package.mjs
 
@@ -583,13 +583,13 @@ resource; current. When loading this module
 
 resource; current. When loading this module
 
-- [scripts/export-source.mjs:4](../../scripts/export-source.mjs#L4) (current): import { skillContentIdentity } from './release-catalog.mjs';
+- [scripts/export-source.mjs:5](../../scripts/export-source.mjs#L5) (current): import { skillContentIdentity } from './release-catalog.mjs';
 
 ### scripts/export-source.mjs → scripts/release-validation.mjs
 
 resource; current. When loading this module
 
-- [scripts/export-source.mjs:3](../../scripts/export-source.mjs#L3) (current): import { parseRelease } from './release-validation.mjs';
+- [scripts/export-source.mjs:4](../../scripts/export-source.mjs#L4) (current): import { parseRelease } from './release-validation.mjs';
 
 ### scripts/intent-record.mjs → scripts/review-handoff.mjs
 
@@ -655,7 +655,7 @@ resource; current. When loading this module
 
 resource; current. When loading this module
 
-- [scripts/release-catalog.mjs:3](../../scripts/release-catalog.mjs#L3) (current): import { parseRelease, validateReleaseChange } from './release-validation.mjs';
+- [scripts/release-catalog.mjs:3](../../scripts/release-catalog.mjs#L3) (current): import { parseRelease, readBaseline, releaseEntry, validateReleaseChange } from './release-validation.mjs';
 
 ### scripts/skill-package-validation.mjs → scripts/release-validation.mjs
 
@@ -1327,13 +1327,13 @@ resource; current. When loading this module
 
 resource; current. When loading this module
 
-- [skills/skills-restore/scripts/exporter/export-source.mjs:4](../../skills/skills-restore/scripts/exporter/export-source.mjs#L4) (current): import { skillContentIdentity } from './release-catalog.mjs';
+- [skills/skills-restore/scripts/exporter/export-source.mjs:5](../../skills/skills-restore/scripts/exporter/export-source.mjs#L5) (current): import { skillContentIdentity } from './release-catalog.mjs';
 
 ### skills/skills-restore/scripts/exporter/export-source.mjs → skills/skills-restore/scripts/exporter/release-validation.mjs
 
 resource; current. When loading this module
 
-- [skills/skills-restore/scripts/exporter/export-source.mjs:3](../../skills/skills-restore/scripts/exporter/export-source.mjs#L3) (current): import { parseRelease } from './release-validation.mjs';
+- [skills/skills-restore/scripts/exporter/export-source.mjs:4](../../skills/skills-restore/scripts/exporter/export-source.mjs#L4) (current): import { parseRelease } from './release-validation.mjs';
 
 ### skills/skills-restore/scripts/exporter/release-catalog-reader.mjs → skills/skills-restore/scripts/exporter/release-catalog.mjs
 
@@ -1351,7 +1351,7 @@ resource; current. When loading this module
 
 resource; current. When loading this module
 
-- [skills/skills-restore/scripts/exporter/release-catalog.mjs:3](../../skills/skills-restore/scripts/exporter/release-catalog.mjs#L3) (current): import { parseRelease, validateReleaseChange } from './release-validation.mjs';
+- [skills/skills-restore/scripts/exporter/release-catalog.mjs:3](../../skills/skills-restore/scripts/exporter/release-catalog.mjs#L3) (current): import { parseRelease, readBaseline, releaseEntry, validateReleaseChange } from './release-validation.mjs';
 
 ### skills/skills-restore/SKILL.md → skills/skills-restore/references/operations.md
 
@@ -1508,35 +1508,35 @@ resource; current. Python initializes the scripts package for the documented -m 
 skill; current. Only when the question needs details missing from Help: read this skill's GT instructions and necessary explanations as data; never invoke or delegate its workflow. (conditional)
 
 - [skills/help/SKILL.md:32](../../skills/help/SKILL.md#L32) (current): When they<br>lack information needed for an answer, use a supported read-only file/resource<br>capability to read the relevant GT skill's &#96;SKILL.md&#96; and necessary bundled<br>explanations as data. Do not activate the skill through an invocation tool.
-- [skills/help/SKILL.md:145](../../skills/help/SKILL.md#L145) (current): &#96;caveman&#96;
+- [skills/help/SKILL.md:150](../../skills/help/SKILL.md#L150) (current): &#96;caveman&#96;
 
 ### help → caveman-commit
 
 skill; current. Only when the question needs details missing from Help: read this skill's GT instructions and necessary explanations as data; never invoke or delegate its workflow. (conditional)
 
 - [skills/help/SKILL.md:32](../../skills/help/SKILL.md#L32) (current): When they<br>lack information needed for an answer, use a supported read-only file/resource<br>capability to read the relevant GT skill's &#96;SKILL.md&#96; and necessary bundled<br>explanations as data. Do not activate the skill through an invocation tool.
-- [skills/help/SKILL.md:143](../../skills/help/SKILL.md#L143) (current): &#96;caveman-commit&#96;
+- [skills/help/SKILL.md:148](../../skills/help/SKILL.md#L148) (current): &#96;caveman-commit&#96;
 
 ### help → caveman-compress
 
 skill; current. Only when the question needs details missing from Help: read this skill's GT instructions and necessary explanations as data; never invoke or delegate its workflow. (conditional)
 
 - [skills/help/SKILL.md:32](../../skills/help/SKILL.md#L32) (current): When they<br>lack information needed for an answer, use a supported read-only file/resource<br>capability to read the relevant GT skill's &#96;SKILL.md&#96; and necessary bundled<br>explanations as data. Do not activate the skill through an invocation tool.
-- [skills/help/SKILL.md:149](../../skills/help/SKILL.md#L149) (current): &#96;caveman-compress&#96;
+- [skills/help/SKILL.md:154](../../skills/help/SKILL.md#L154) (current): &#96;caveman-compress&#96;
 
 ### help → caveman-explore
 
 skill; current. Only when the question needs details missing from Help: read this skill's GT instructions and necessary explanations as data; never invoke or delegate its workflow. (conditional)
 
 - [skills/help/SKILL.md:32](../../skills/help/SKILL.md#L32) (current): When they<br>lack information needed for an answer, use a supported read-only file/resource<br>capability to read the relevant GT skill's &#96;SKILL.md&#96; and necessary bundled<br>explanations as data. Do not activate the skill through an invocation tool.
-- [skills/help/SKILL.md:138](../../skills/help/SKILL.md#L138) (current): &#96;caveman-explore&#96;
+- [skills/help/SKILL.md:143](../../skills/help/SKILL.md#L143) (current): &#96;caveman-explore&#96;
 
 ### help → caveman-review
 
 skill; current. Only when the question needs details missing from Help: read this skill's GT instructions and necessary explanations as data; never invoke or delegate its workflow. (conditional)
 
 - [skills/help/SKILL.md:32](../../skills/help/SKILL.md#L32) (current): When they<br>lack information needed for an answer, use a supported read-only file/resource<br>capability to read the relevant GT skill's &#96;SKILL.md&#96; and necessary bundled<br>explanations as data. Do not activate the skill through an invocation tool.
-- [skills/help/SKILL.md:141](../../skills/help/SKILL.md#L141) (current): &#96;caveman-review&#96;
+- [skills/help/SKILL.md:146](../../skills/help/SKILL.md#L146) (current): &#96;caveman-review&#96;
 
 ### help → create-issue
 
@@ -1557,7 +1557,7 @@ skill; current. Only when the question needs details missing from Help: read thi
 skill; current. Only when the question needs details missing from Help: read this skill's GT instructions and necessary explanations as data; never invoke or delegate its workflow. (conditional)
 
 - [skills/help/SKILL.md:32](../../skills/help/SKILL.md#L32) (current): When they<br>lack information needed for an answer, use a supported read-only file/resource<br>capability to read the relevant GT skill's &#96;SKILL.md&#96; and necessary bundled<br>explanations as data. Do not activate the skill through an invocation tool.
-- [skills/help/SKILL.md:164](../../skills/help/SKILL.md#L164) (current): &#96;domain-modeling&#96;
+- [skills/help/SKILL.md:169](../../skills/help/SKILL.md#L169) (current): &#96;domain-modeling&#96;
 
 ### help → grill-me
 
@@ -1578,7 +1578,7 @@ skill; current. Only when the question needs details missing from Help: read thi
 skill; current. Only when the question needs details missing from Help: read this skill's GT instructions and necessary explanations as data; never invoke or delegate its workflow. (conditional)
 
 - [skills/help/SKILL.md:32](../../skills/help/SKILL.md#L32) (current): When they<br>lack information needed for an answer, use a supported read-only file/resource<br>capability to read the relevant GT skill's &#96;SKILL.md&#96; and necessary bundled<br>explanations as data. Do not activate the skill through an invocation tool.
-- [skills/help/SKILL.md:161](../../skills/help/SKILL.md#L161) (current): &#96;grilling&#96;
+- [skills/help/SKILL.md:166](../../skills/help/SKILL.md#L166) (current): &#96;grilling&#96;
 
 ### help → skill-steal
 
@@ -1599,7 +1599,7 @@ skill; current. Only when the question needs details missing from Help: read thi
 skill; current. Only when the question needs details missing from Help: read this skill's GT instructions and necessary explanations as data; never invoke or delegate its workflow. (conditional)
 
 - [skills/help/SKILL.md:32](../../skills/help/SKILL.md#L32) (current): When they<br>lack information needed for an answer, use a supported read-only file/resource<br>capability to read the relevant GT skill's &#96;SKILL.md&#96; and necessary bundled<br>explanations as data. Do not activate the skill through an invocation tool.
-- [skills/help/SKILL.md:126](../../skills/help/SKILL.md#L126) (current): &#96;skills-restore&#96;
+- [skills/help/SKILL.md:129](../../skills/help/SKILL.md#L129) (current): &#96;skills-restore&#96;
 
 ### help → skills-status
 
@@ -1613,7 +1613,7 @@ skill; current. Only when the question needs details missing from Help: read thi
 skill; current. Only when the question needs details missing from Help: read this skill's GT instructions and necessary explanations as data; never invoke or delegate its workflow. (conditional)
 
 - [skills/help/SKILL.md:32](../../skills/help/SKILL.md#L32) (current): When they<br>lack information needed for an answer, use a supported read-only file/resource<br>capability to read the relevant GT skill's &#96;SKILL.md&#96; and necessary bundled<br>explanations as data. Do not activate the skill through an invocation tool.
-- [skills/help/SKILL.md:122](../../skills/help/SKILL.md#L122) (current): &#96;skills-update&#96;
+- [skills/help/SKILL.md:123](../../skills/help/SKILL.md#L123) (current): &#96;skills-update&#96;
 
 ### help → why-not
 
@@ -1626,7 +1626,7 @@ skill; current. Only when the question needs details missing from Help: read thi
 
 resource; current. When copying or redistributing this adaptation, retain the bundled notice. (conditional)
 
-- [skills/help/SKILL.md:206](../../skills/help/SKILL.md#L206) (current): &#91;Matt Pocock MIT notice&#93;(assets/matt-pocock-license.txt).
+- [skills/help/SKILL.md:211](../../skills/help/SKILL.md#L211) (current): &#91;Matt Pocock MIT notice&#93;(assets/matt-pocock-license.txt).
 
 ### create-skills → caveman
 
@@ -2546,7 +2546,6 @@ No mechanical findings. Semantic review and runtime compatibility remain distinc
 - skills/create-skills/references/intent-capture.md → skill:create-skills: excluded. Names the consumers of this shared guide, not a dependency invoked by the consumer.
 - skills/create-skills/references/intent-capture.md → skill:grilling: excluded. Explicitly forbidden substitute for the required GT grill-me dependency; no grilling invocation.
 - skills/create-skills/references/intent-capture.md → skill:skill-tweak: excluded. Names the consumers of this shared guide, not a dependency invoked by the consumer.
-- skills/create-skills/release.yaml → skill:caveman: excluded. Release-note description of the scoped issue-prose behavior, not an instruction to invoke a skill or a separate dependency.
 - skills/create-skills/SKILL.md → skill:create-skills: excluded. Skill identity, invocation documentation or attribution to itself; no recursive invocation instruction.
 - skills/domain-modeling/CONTEXT-FORMAT.md → file:skills/domain-modeling/src/billing/CONTEXT.md: excluded. Illustrative context-map links inside the format example, not files required by this skill.
 - skills/domain-modeling/CONTEXT-FORMAT.md → file:skills/domain-modeling/src/fulfillment/CONTEXT.md: excluded. Illustrative context-map links inside the format example, not files required by this skill.
@@ -2555,16 +2554,12 @@ No mechanical findings. Semantic review and runtime compatibility remain distinc
 - skills/grill-me/SKILL.md → skill:grill-me: excluded. Skill identity, invocation documentation or attribution to itself; no recursive invocation instruction.
 - skills/grill-with-docs/SKILL.md → skill:grill-with-docs: excluded. Skill identity, invocation documentation or attribution to itself; no recursive invocation instruction.
 - skills/grilling/SKILL.md → skill:grilling: excluded. Skill identity, invocation documentation or attribution to itself; no recursive invocation instruction.
-- skills/help/release.yaml → skill:caveman: excluded. Release-note description of the scoped issue-prose behavior, not an instruction to invoke a skill or a separate dependency.
-- skills/help/release.yaml → skill:create-skills: excluded. Release-note description of the scoped issue-prose behavior, not an instruction to invoke a skill or a separate dependency.
-- skills/help/release.yaml → skill:skill-tweak: excluded. Release-note description of the scoped issue-prose behavior, not an instruction to invoke a skill or a separate dependency.
 - skills/help/SKILL.md → skill:help: excluded. Own identity, headings and self references; no self-call or lookup dependency.
 - skills/skill-steal/references/clarification.md → skill:create-skills: excluded. Explicitly states the bundled tools do not require invoking or locating Create Skills; source reuse is recorded separately.
 - skills/skill-steal/SKILL.md → skill:skill-steal: excluded. Skill identity, invocation documentation or attribution to itself; no recursive invocation instruction.
 - skills/skill-tweak/references/intent-capture.md → skill:create-skills: excluded. Names the consumers of this shared guide, not a dependency invoked by the consumer.
 - skills/skill-tweak/references/intent-capture.md → skill:grilling: excluded. Explicitly forbidden substitute for the required GT grill-me dependency; no grilling invocation.
 - skills/skill-tweak/references/intent-capture.md → skill:skill-tweak: excluded. Names the consumers of this shared guide, not a dependency invoked by the consumer.
-- skills/skill-tweak/release.yaml → skill:caveman: excluded. Release-note description of the scoped issue-prose behavior, not an instruction to invoke a skill or a separate dependency.
 - skills/skill-tweak/SKILL.md → skill:skill-tweak: excluded. Skill identity, invocation documentation or attribution to itself; no recursive invocation instruction.
 - skills/skill-tweak/templates/issue.md → skill:skill-tweak: excluded. Skill identity, invocation documentation or attribution to itself; no recursive invocation instruction.
 - skills/skills-restore/scripts/exporter/README.md → skill:grill-me: excluded. Illustrative historical export input/version, not a requirement to invoke Grill Me.

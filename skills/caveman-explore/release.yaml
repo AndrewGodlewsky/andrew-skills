@@ -1,2 +1,4 @@
 version: "1.0.0"
-notes: "Delegate read-only repository exploration through available host tools and return verified path-and-line citations."
+notes: "Delegate bounded read-only repository exploration and return verified file and line citations."
+period: 1
+history: []

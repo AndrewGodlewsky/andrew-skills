@@ -1,2 +1,4 @@
 version: "1.0.0"
-notes: "Show installed GT skill versions and release notes for the selected local installation."
+notes: "Report the current installed skill versions and notes from one verified local GT collection."
+period: 1
+history: []

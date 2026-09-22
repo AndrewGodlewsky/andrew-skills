@@ -11,6 +11,23 @@ permissions:
   contents: read
 
 jobs:
+  release-regressions:
+    name: Release history / ${{ matrix.os }} / Node ${{ matrix.node }}
+    runs-on: ${{ matrix.os }}
+    strategy:
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+        node: ['22', '24']
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+          persist-credentials: false
+      - uses: actions/setup-node@v4
+        with:
+          node-version: ${{ matrix.node }}
+      - run: node --test scripts/release-validation.test.mjs scripts/release-snapshots.test.mjs scripts/release-catalog.test.mjs scripts/release-catalog-reader.test.mjs scripts/export-source.test.mjs scripts/skill-architecture.test.mjs
+
   caveman-compress:
     name: Caveman compress / ${{ matrix.os }} / Python 3.10
     runs-on: ${{ matrix.os }}

@@ -32,10 +32,13 @@ node <helper> inspect --environment <environment> --home <home> --name <personal
 ```
 
 Successful calls return JSON on stdout. Failures return JSON on stderr and a
-nonzero exit status. This wrapper supports protocol 1 and exporter 1.1.0; stop
+nonzero exit status. This wrapper supports protocol 2 and exporter 2.0.0; stop
 clearly for an unknown protocol/version or malformed/missing required fields.
-Do not reinterpret unknown output as success. `list` supplies protocolVersion,
-catalog, cache and freshness; catalog formatVersion must be 1. Plans supply
+Do not reinterpret unknown output as success. Development format-1 catalogs,
+plans and caches are incompatible; request a new list/plan only through the
+normal workflow. Old receipts remain unverified and never authorize replacement.
+`list` supplies protocolVersion, catalog, cache and freshness; catalog
+formatVersion must be 2. Plans supply
 protocolVersion/exporterVersion, headCommit, catalogHash, target, cache, source,
 personalName, destination, sourceFiles and installedFiles. Retain all plan fields.
 The export result supplies publication, destination, source, intendedCommand,

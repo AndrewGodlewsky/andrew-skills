@@ -3,6 +3,7 @@ import { mkdtempSync, realpathSync, rmSync } from 'node:fs';
 import { tmpdir, release } from 'node:os';
 import { dirname, join, resolve } from 'node:path';
 import test from 'node:test';
+import { releaseRepository } from './fixtures/releases.mjs';
 import { acquireCatalog, makePlan, executePlan } from './export-protocol.mjs';
 
 const supported = process.platform === 'win32' || /microsoft/i.test(release());
@@ -11,7 +12,8 @@ test('list and plan bind a preserved published source in a private cache; altere
   const home = mkdtempSync(join(parent, 'gt-protocol-test-'));
   t.after(() => { assert.equal(dirname(home), parent); assert.ok(home.startsWith(join(parent, 'gt-protocol-test-'))); rmSync(home, { recursive: true, force: true }); });
   const target = { environment: process.platform === 'win32' ? 'windows' : 'wsl', home };
-  const listed = acquireCatalog({ target, checkout: resolve('.') });
+  const fixture = releaseRepository(t);
+  const listed = acquireCatalog({ target, checkout: fixture.root });
   assert.ok(listed.catalog.records.length >= 2);
   assert.equal(listed.freshness, 'local-checkout-head; remote freshness unverified');
   const record = listed.catalog.records.find(record => record.skill === 'grill-me');

@@ -6,13 +6,14 @@ import { join } from 'node:path';
 import { spawnSync } from 'node:child_process';
 import { checkDirectory, readPackage, limits } from './create-skills/package.mjs';
 import { buildBundle, guidance } from './build-create-skills.mjs';
+import { metadata, entry } from './fixtures/releases.mjs';
 
 export function fixture(t) {
   const home = mkdtempSync(join(tmpdir(), 'gt-creator-'));
   t.after(() => rmSync(home, { recursive: true, force: true }));
   const root = join(home, 'sample'); mkdirSync(root);
   writeFileSync(join(root, 'SKILL.md'), '---\nname: sample\ndescription: Explain supplied text.\nuser-invocable: true\ndisable-model-invocation: true\n---\nExplain the supplied text.\n');
-  writeFileSync(join(root, 'release.yaml'), 'version: "1.0.0"\nnotes: "Explain supplied text."\n');
+  writeFileSync(join(root, 'release.yaml'), 'version: "1.0.0"\nnotes: "Explain supplied text."\nperiod: 1\nhistory: []\n');
   return { home, root };
 }
 test('a standalone package reports content identity and does not execute scripts', t => {
@@ -25,11 +26,21 @@ test('a standalone package reports content identity and does not execute scripts
   writeFileSync(join(root, 'never-run.mjs'), 'process.exit(3);');
   assert.notEqual(checkDirectory(root).identity, before);
 });
+
+test('creator checker accepts cumulative history and rejects missing, duplicate and malformed entries', t => {
+  const { root } = fixture(t);
+  writeFileSync(join(root, 'release.yaml'), metadata('1.0.1', 'Explain more.', [entry()]));
+  assert.equal(checkDirectory(root).status, 'passed');
+  for (const invalid of [metadata('1.0.1'), metadata('1.0.0', 'Repeated', [entry()]), metadata() + 'history: []\n', metadata('1.0.1', 'x', [entry()]).replace('    notes:', '    other:')]) {
+    writeFileSync(join(root, 'release.yaml'), invalid);
+    assert.equal(checkDirectory(root).status, 'failed');
+  }
+});
 test('missing release and invalid invocation report failed rather than passed', t => {
   const { root } = fixture(t);
   rmSync(join(root, 'release.yaml'));
   assert.match(checkDirectory(root).diagnostics[0], /release.yaml/);
-  writeFileSync(join(root, 'release.yaml'), 'version: "1.0.0"\nnotes: "Initial."\n');
+  writeFileSync(join(root, 'release.yaml'), 'version: "1.0.0"\nnotes: "Initial."\nperiod: 1\nhistory: []\n');
   writeFileSync(join(root, 'SKILL.md'), readFileSync(join(root, 'SKILL.md'), 'utf8').replace('user-invocable: true', 'user-invocable: false'));
   assert.match(checkDirectory(root).diagnostics[0], /invocation route/);
 });

@@ -1,2 +1,4 @@
 version: "1.0.0"
-notes: "Write terse Conventional Commits messages with required explanatory bodies and explicit missing-context handling."
+notes: "Draft concise Conventional Commits messages that preserve intent and required detail."
+period: 1
+history: []

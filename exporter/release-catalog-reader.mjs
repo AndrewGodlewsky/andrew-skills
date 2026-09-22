@@ -16,7 +16,7 @@ export function repositoryIdentity(origin) {
   return url.toString().replace(/\/$/, '').replace(/\.git$/, '');
 }
 
-export function readReleaseCatalog(root, { ref = 'origin/main', repository, previousCatalog } = {}) {
+export function readReleaseCatalog(root, { ref = 'origin/main', repository, previousCatalog, migrationParent } = {}) {
   const headCommit = resolveCommit(root, ref);
   const origin = repositoryIdentity(repository ?? readRepositoryOrigin(root));
   const lineage = readFirstParentCommits(root, headCommit);
@@ -24,7 +24,7 @@ export function readReleaseCatalog(root, { ref = 'origin/main', repository, prev
     for (const entry of lineage) yield { ...entry,
       files: readGitFiles(root, entry.commit, { allowUnsupportedModes: true }), skillTrees: readGitSkillTrees(root, entry.commit) };
   }
-  return buildReleaseCatalog({ repository: origin, headCommit, snapshots: snapshots(), previousCatalog });
+  return buildReleaseCatalog({ repository: origin, headCommit, snapshots: snapshots(), previousCatalog, migrationParent });
 }
 
 if (import.meta.url.startsWith('file:') && process.argv[1] && resolve(process.argv[1]) === fileURLToPath(import.meta.url)) {
