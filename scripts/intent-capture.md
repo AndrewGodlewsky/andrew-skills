@@ -2,14 +2,16 @@
 
 ## Invoke the selected GT interview skill
 
-Create Skills and Skill Tweak must resolve and invoke **GT grill-me** through the
-client's skill mechanism before completing intake. Use the client-supplied selected
-GT installation identity, the same installation used for GT dependencies. Verify
-that grill-me is exposed and enabled for model invocation, then read and follow its
-SKILL.md using the client's supported skill-loading mechanism; no particular tool
-name is required. A reference to its name, a file read alone, or reproducing its questions
-does not establish that the client invoked the skill. Record the actual mechanism
-and outcome available from the client; keep unverified invocation unverified.
+Create Skills and Skill Tweak must select the exposed, enabled **GT grill-me**
+from the client-supplied selected GT installation, load its actual SKILL.md and
+follow those instructions to conduct the interview. Use the same installation
+identity as for other GT dependencies and verify that model invocation is enabled.
+In an instruction-based host, selecting, loading and following the skill is its
+invocation. Require a separate invocation API, tool call or runtime receipt only
+when the host provides and requires it; its absence alone does not make the skill
+unavailable. Reading the file without conducting the interview does not complete
+intake. Record the selected source, observed interview and user confirmation;
+describe only available client evidence, without inventing activation telemetry.
 
 Pass the user's initial request, known facts and sources, prior answers, relevant
 examples, open topics and the interview record so far. The purpose is to understand
@@ -19,12 +21,16 @@ confirmation of shared understanding. The callers must not substitute their own
 interview, impose a question quota, or introduce a separate interview mode. Treat
 recommendations as recommendations rather than user decisions or maintainer approval.
 
-An absent, disabled, shadowed or ambiguous GT grill-me, or a client unable to invoke
-it, is an unavailable dependency. Identify that limitation and preserve the draft;
-do not silently use a personal grill-me/grilling alias, an alternate installed copy,
-copied instructions or a caller-led interview. Do not install, enable, change caches
-or bypass host controls during intake. This also applies to draft-only requests:
-existing material can be retained as a draft without claiming a completed interview.
+An absent, disabled, shadowed or ambiguous GT grill-me, or a host restriction that
+prevents loading or following it, is an unavailable dependency. Identify the
+observed limitation and preserve the draft. If the skill is usable but the interview
+has not happened, report that intake is incomplete and conduct the interview as
+the next intake step; do not describe the skill as unavailable. For an unavailable
+dependency, do not silently use a personal grill-me/grilling alias, an alternate installed copy,
+instructions copied from elsewhere or a caller-led interview. Do not install,
+enable, change caches or bypass host controls during intake. This also applies to
+draft-only requests: existing material can be retained as a draft without claiming
+a completed interview.
 
 After the user confirms the captured idea, return its recap, relevant exchanges,
 corrections and remaining undecided topics to the caller. Record the confirmation

@@ -25,10 +25,10 @@ promise a fix, create a PR or schedule the maintainer's review.
    unrelated tasks or directories. Retrieve enough surrounding context to
    explain the incident. Preserve gaps and redactions rather than inventing
    inaccessible history.
-3. **Interview through GT Grill Me.** Resolve and invoke the selected enabled
-   **GT grill-me** skill using the intent guide's handoff rules. Pass the original
-   task, incident evidence, expectations, impact, desired improvement, prior
-   answers and unresolved points. Let Grill Me conduct its existing interview
+3. **Interview through GT Grill Me.** Select the enabled **GT grill-me** skill,
+   load its instructions and follow them using the intent guide's handoff rules.
+   Pass the original task, incident evidence, expectations, impact, desired
+   improvement, prior answers and unresolved points. Let Grill Me conduct its existing interview
    about both the problem and the proposed improvement. Resume only after the
    user confirms that their idea has been captured, including any undecided
    behavior for maintainer follow-up. A user need not know the solution. Missing

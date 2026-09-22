@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "source": "current working files",
-  "fingerprint": "4f1e007fb145bb4b8baf769918612ce3e38bc4298f13c6c171fb28f45e2e7ee3",
+  "fingerprint": "c272288f2a122fb470d585e91666dcd8048d8735bb1073b37dfe5837471aaba1",
   "nodes": [
     {
       "id": "file:CONTRIBUTING.md",
@@ -1112,7 +1112,7 @@
       "label": "create-skills",
       "present": true,
       "review": "reviewed",
-      "sourceDigest": "a453cf24f82996c2baab3ecd6713cd5c261731ffc4471182e1726f274fc32e92",
+      "sourceDigest": "684802217ce569da238115fab3fbfaeb9c3b329632b3c75a43b9eb9ca0ffac45",
       "sourcePaths": [
         "CONTRIBUTING.md",
         "scripts/build-create-skills.mjs",
@@ -1223,7 +1223,7 @@
       "label": "skill-steal",
       "present": true,
       "review": "reviewed",
-      "sourceDigest": "8a5df3d0362da89a63177b1d8d8e416f7e52741e2d0084c72a72b75e4c33d635",
+      "sourceDigest": "653ca1d5c765fbb650c3a63d4635477cc42bb8ba17ff0549064bd88476c56c12",
       "sourcePaths": [
         "CONTRIBUTING.md",
         "scripts/build-create-skills.mjs",
@@ -1260,7 +1260,7 @@
       "label": "skill-tweak",
       "present": true,
       "review": "reviewed",
-      "sourceDigest": "81f63e63d3773b8ef7941bfc2f54f55c8f00ab99c41ac713213cc8465ef09f8a",
+      "sourceDigest": "bdaf48c951a758bbfebbb0ea90a1ab3f9fb00084ff23f9383484e753ae21c36f",
       "sourcePaths": [
         "scripts/build-skill-tweak.mjs",
         "scripts/intent-capture.md",
@@ -1529,23 +1529,23 @@
       "to": "skill:grill-me",
       "kind": "skill",
       "conditional": false,
-      "condition": "During the required intent interview",
+      "condition": "During required intake: select the enabled GT Grill Me from the intended installation, load and follow its instructions, and record the interview and user confirmation; use a separate invocation operation only when the host requires it.",
       "evidence": [
         {
           "path": "skills/create-skills/SKILL.md",
-          "excerpt": "Resolve and invoke the selected enabled **GT grill-me** skill for the interview,",
+          "excerpt": "Select the enabled **GT grill-me** skill, load its instructions and follow them",
           "status": "current",
           "line": 16
         },
         {
           "path": "scripts/intent-capture.md",
-          "excerpt": "Create Skills and Skill Tweak must resolve and invoke **GT grill-me** through the",
+          "excerpt": "Create Skills and Skill Tweak must select the exposed, enabled **GT grill-me**",
           "status": "current",
           "line": 5
         },
         {
           "path": "skills/create-skills/references/intent-capture.md",
-          "excerpt": "Create Skills and Skill Tweak must resolve and invoke **GT grill-me** through the",
+          "excerpt": "Create Skills and Skill Tweak must select the exposed, enabled **GT grill-me**",
           "status": "current",
           "line": 5
         },
@@ -1595,6 +1595,12 @@
           "excerpt": "// Stateless next-action calculation. Only the enabled create-issue skill executes",
           "status": "current",
           "line": 69
+        },
+        {
+          "path": "skills/create-skills/references/tools.md",
+          "excerpt": "submission still requires the create-issue dependency's own runtime prerequisites.",
+          "status": "current",
+          "line": 7
         }
       ],
       "status": "current"
@@ -1605,23 +1611,23 @@
       "to": "skill:grill-me",
       "kind": "skill",
       "conditional": false,
-      "condition": "During the required incident/intent interview",
+      "condition": "During required intake: select the enabled GT Grill Me from the intended installation, load and follow its instructions, and record the interview and user confirmation; use a separate invocation operation only when the host requires it.",
       "evidence": [
         {
           "path": "skills/skill-tweak/SKILL.md",
-          "excerpt": "   **GT grill-me** skill using the intent guide's handoff rules. Pass the original",
+          "excerpt": "3. **Interview through GT Grill Me.** Select the enabled **GT grill-me** skill,",
           "status": "current",
-          "line": 29
+          "line": 28
         },
         {
           "path": "scripts/intent-capture.md",
-          "excerpt": "Create Skills and Skill Tweak must resolve and invoke **GT grill-me** through the",
+          "excerpt": "Create Skills and Skill Tweak must select the exposed, enabled **GT grill-me**",
           "status": "current",
           "line": 5
         },
         {
           "path": "skills/skill-tweak/references/intent-capture.md",
-          "excerpt": "Create Skills and Skill Tweak must resolve and invoke **GT grill-me** through the",
+          "excerpt": "Create Skills and Skill Tweak must select the exposed, enabled **GT grill-me**",
           "status": "current",
           "line": 5
         }
@@ -1729,6 +1735,12 @@
           "excerpt": "// Stateless next-action calculation. Only the enabled create-issue skill executes",
           "status": "current",
           "line": 69
+        },
+        {
+          "path": "skills/skill-steal/references/tools.md",
+          "excerpt": "submission still requires the create-issue dependency's own runtime prerequisites.",
+          "status": "current",
+          "line": 9
         }
       ],
       "status": "current"
@@ -9356,7 +9368,7 @@
       "path": "scripts/intent-capture.md",
       "target": "skill:create-skills",
       "kind": "skill",
-      "sourceDigest": "407607524a8d4eec771c4e39aeb20147ca306e050fd6158d9b1dc7b12e9dcb75",
+      "sourceDigest": "256d19090e820fea2b889d31bf16ac57eebecdfa2cc695d52f7c3e976208114e",
       "occurrences": [
         {
           "line": 5,
@@ -9372,56 +9384,51 @@
       "path": "scripts/intent-capture.md",
       "target": "skill:grill-me",
       "kind": "skill",
-      "sourceDigest": "407607524a8d4eec771c4e39aeb20147ca306e050fd6158d9b1dc7b12e9dcb75",
+      "sourceDigest": "256d19090e820fea2b889d31bf16ac57eebecdfa2cc695d52f7c3e976208114e",
       "occurrences": [
         {
           "line": 5,
-          "offset": 137,
+          "offset": 146,
           "excerpt": "grill-me"
         },
         {
-          "line": 8,
-          "offset": 330,
-          "excerpt": "grill-me"
-        },
-        {
-          "line": 16,
-          "offset": 972,
+          "line": 18,
+          "offset": 1111,
           "excerpt": "Grill Me"
-        },
-        {
-          "line": 22,
-          "offset": 1365,
-          "excerpt": "grill-me"
         },
         {
           "line": 24,
-          "offset": 1518,
+          "offset": 1504,
           "excerpt": "grill-me"
         },
         {
-          "line": 37,
-          "offset": 2484,
+          "line": 29,
+          "offset": 1909,
+          "excerpt": "grill-me"
+        },
+        {
+          "line": 43,
+          "offset": 2890,
           "excerpt": "Grill Me"
         },
         {
-          "line": 60,
-          "offset": 3896,
+          "line": 66,
+          "offset": 4302,
           "excerpt": "Grill Me"
         },
         {
-          "line": 69,
-          "offset": 4545,
+          "line": 75,
+          "offset": 4951,
           "excerpt": "Grill Me"
         },
         {
-          "line": 90,
-          "offset": 5751,
+          "line": 96,
+          "offset": 6157,
           "excerpt": "Grill Me"
         },
         {
-          "line": 99,
-          "offset": 6455,
+          "line": 105,
+          "offset": 6861,
           "excerpt": "Grill Me"
         }
       ],
@@ -9436,11 +9443,11 @@
       "path": "scripts/intent-capture.md",
       "target": "skill:grilling",
       "kind": "skill",
-      "sourceDigest": "407607524a8d4eec771c4e39aeb20147ca306e050fd6158d9b1dc7b12e9dcb75",
+      "sourceDigest": "256d19090e820fea2b889d31bf16ac57eebecdfa2cc695d52f7c3e976208114e",
       "occurrences": [
         {
-          "line": 24,
-          "offset": 1527,
+          "line": 29,
+          "offset": 1918,
           "excerpt": "grilling"
         }
       ],
@@ -9452,7 +9459,7 @@
       "path": "scripts/intent-capture.md",
       "target": "skill:skill-tweak",
       "kind": "skill",
-      "sourceDigest": "407607524a8d4eec771c4e39aeb20147ca306e050fd6158d9b1dc7b12e9dcb75",
+      "sourceDigest": "256d19090e820fea2b889d31bf16ac57eebecdfa2cc695d52f7c3e976208114e",
       "occurrences": [
         {
           "line": 5,
@@ -11435,7 +11442,7 @@
       "path": "skills/create-skills/references/intent-capture.md",
       "target": "skill:create-skills",
       "kind": "skill",
-      "sourceDigest": "407607524a8d4eec771c4e39aeb20147ca306e050fd6158d9b1dc7b12e9dcb75",
+      "sourceDigest": "256d19090e820fea2b889d31bf16ac57eebecdfa2cc695d52f7c3e976208114e",
       "occurrences": [
         {
           "line": 5,
@@ -11451,56 +11458,51 @@
       "path": "skills/create-skills/references/intent-capture.md",
       "target": "skill:grill-me",
       "kind": "skill",
-      "sourceDigest": "407607524a8d4eec771c4e39aeb20147ca306e050fd6158d9b1dc7b12e9dcb75",
+      "sourceDigest": "256d19090e820fea2b889d31bf16ac57eebecdfa2cc695d52f7c3e976208114e",
       "occurrences": [
         {
           "line": 5,
-          "offset": 137,
+          "offset": 146,
           "excerpt": "grill-me"
         },
         {
-          "line": 8,
-          "offset": 330,
-          "excerpt": "grill-me"
-        },
-        {
-          "line": 16,
-          "offset": 972,
+          "line": 18,
+          "offset": 1111,
           "excerpt": "Grill Me"
-        },
-        {
-          "line": 22,
-          "offset": 1365,
-          "excerpt": "grill-me"
         },
         {
           "line": 24,
-          "offset": 1518,
+          "offset": 1504,
           "excerpt": "grill-me"
         },
         {
-          "line": 37,
-          "offset": 2484,
+          "line": 29,
+          "offset": 1909,
+          "excerpt": "grill-me"
+        },
+        {
+          "line": 43,
+          "offset": 2890,
           "excerpt": "Grill Me"
         },
         {
-          "line": 60,
-          "offset": 3896,
+          "line": 66,
+          "offset": 4302,
           "excerpt": "Grill Me"
         },
         {
-          "line": 69,
-          "offset": 4545,
+          "line": 75,
+          "offset": 4951,
           "excerpt": "Grill Me"
         },
         {
-          "line": 90,
-          "offset": 5751,
+          "line": 96,
+          "offset": 6157,
           "excerpt": "Grill Me"
         },
         {
-          "line": 99,
-          "offset": 6455,
+          "line": 105,
+          "offset": 6861,
           "excerpt": "Grill Me"
         }
       ],
@@ -11514,11 +11516,11 @@
       "path": "skills/create-skills/references/intent-capture.md",
       "target": "skill:grilling",
       "kind": "skill",
-      "sourceDigest": "407607524a8d4eec771c4e39aeb20147ca306e050fd6158d9b1dc7b12e9dcb75",
+      "sourceDigest": "256d19090e820fea2b889d31bf16ac57eebecdfa2cc695d52f7c3e976208114e",
       "occurrences": [
         {
-          "line": 24,
-          "offset": 1527,
+          "line": 29,
+          "offset": 1918,
           "excerpt": "grilling"
         }
       ],
@@ -11530,7 +11532,7 @@
       "path": "skills/create-skills/references/intent-capture.md",
       "target": "skill:skill-tweak",
       "kind": "skill",
-      "sourceDigest": "407607524a8d4eec771c4e39aeb20147ca306e050fd6158d9b1dc7b12e9dcb75",
+      "sourceDigest": "256d19090e820fea2b889d31bf16ac57eebecdfa2cc695d52f7c3e976208114e",
       "occurrences": [
         {
           "line": 5,
@@ -11582,7 +11584,7 @@
       "path": "skills/create-skills/references/specification.md",
       "target": "file:skills/create-skills/references/intent-capture.md",
       "kind": "resource",
-      "sourceDigest": "01f5f600c0c9f7510ec7cfabc0de8447c8b5b9536d91a6a93989f129bb4278e1",
+      "sourceDigest": "1d4d9ee9335d7d999c74f2939230261a15205e06283be1b4339eca1f0d620989",
       "occurrences": [
         {
           "line": 5,
@@ -11600,7 +11602,7 @@
       "path": "skills/create-skills/references/specification.md",
       "target": "skill:grill-me",
       "kind": "skill",
-      "sourceDigest": "01f5f600c0c9f7510ec7cfabc0de8447c8b5b9536d91a6a93989f129bb4278e1",
+      "sourceDigest": "1d4d9ee9335d7d999c74f2939230261a15205e06283be1b4339eca1f0d620989",
       "occurrences": [
         {
           "line": 5,
@@ -11682,7 +11684,7 @@
       "path": "skills/create-skills/references/tools.md",
       "target": "file:skills/create-skills/scripts/run.mjs",
       "kind": "resource",
-      "sourceDigest": "204fbba9dfd83a2e5e60a3276fe5874a96922abe72b2de1441e45a1c5cb60b12",
+      "sourceDigest": "00c9edc8ce0db130dc9fdd9b83939cd493846abd31c1366b62b3a061578691a7",
       "occurrences": [
         {
           "line": 3,
@@ -11696,15 +11698,33 @@
       ]
     },
     {
+      "id": "6c2c4014143e684c5d0f497f53e6e2804619db9c4f6e0e8036b0c1948a6cc056",
+      "path": "skills/create-skills/references/tools.md",
+      "target": "skill:create-issue",
+      "kind": "skill",
+      "sourceDigest": "00c9edc8ce0db130dc9fdd9b83939cd493846abd31c1366b62b3a061578691a7",
+      "occurrences": [
+        {
+          "line": 7,
+          "offset": 375,
+          "excerpt": "create-issue"
+        }
+      ],
+      "status": "dependency",
+      "edges": [
+        "create-skills:create-issue"
+      ]
+    },
+    {
       "id": "6be37080bf144a63ea5fac98cfb5f897a07f68358eff67b3ebc94b36740829b4",
       "path": "skills/create-skills/release.yaml",
       "target": "skill:grill-me",
       "kind": "skill",
-      "sourceDigest": "6a33041657a39ddc7a4911710a2e631e34d63086e5a9466b143ab9557ffd852e",
+      "sourceDigest": "f0c570ecf5916febd78693fb468d34058d7fc1f1712400e65ec3f6d9b6134ad8",
       "occurrences": [
         {
           "line": 2,
-          "offset": 49,
+          "offset": 51,
           "excerpt": "Grill Me"
         }
       ],
@@ -11929,11 +11949,11 @@
       "path": "skills/create-skills/SKILL.md",
       "target": "file:skills/create-skills/assets/matt-pocock-license.txt",
       "kind": "resource",
-      "sourceDigest": "5955ba17227a8e109b25f00ddea4cf76f7a49d7917abd3d35221d2c464d85ac0",
+      "sourceDigest": "f3962618c3fdaeb7af183e71a2e0ed9b7ea4f9519c7327d6c7836b57df791679",
       "occurrences": [
         {
           "line": 65,
-          "offset": 4378,
+          "offset": 4421,
           "excerpt": "](assets/matt-pocock-license.txt)"
         }
       ],
@@ -11947,7 +11967,7 @@
       "path": "skills/create-skills/SKILL.md",
       "target": "file:skills/create-skills/references/intent-capture.md",
       "kind": "resource",
-      "sourceDigest": "5955ba17227a8e109b25f00ddea4cf76f7a49d7917abd3d35221d2c464d85ac0",
+      "sourceDigest": "f3962618c3fdaeb7af183e71a2e0ed9b7ea4f9519c7327d6c7836b57df791679",
       "occurrences": [
         {
           "line": 14,
@@ -11965,11 +11985,11 @@
       "path": "skills/create-skills/SKILL.md",
       "target": "file:skills/create-skills/references/package-rules.md",
       "kind": "resource",
-      "sourceDigest": "5955ba17227a8e109b25f00ddea4cf76f7a49d7917abd3d35221d2c464d85ac0",
+      "sourceDigest": "f3962618c3fdaeb7af183e71a2e0ed9b7ea4f9519c7327d6c7836b57df791679",
       "occurrences": [
         {
           "line": 25,
-          "offset": 1511,
+          "offset": 1524,
           "excerpt": "](references/package-rules.md)"
         }
       ],
@@ -11983,11 +12003,11 @@
       "path": "skills/create-skills/SKILL.md",
       "target": "file:skills/create-skills/references/personal-installation.md",
       "kind": "resource",
-      "sourceDigest": "5955ba17227a8e109b25f00ddea4cf76f7a49d7917abd3d35221d2c464d85ac0",
+      "sourceDigest": "f3962618c3fdaeb7af183e71a2e0ed9b7ea4f9519c7327d6c7836b57df791679",
       "occurrences": [
         {
           "line": 52,
-          "offset": 3601,
+          "offset": 3644,
           "excerpt": "](references/personal-installation.md)"
         }
       ],
@@ -12001,7 +12021,7 @@
       "path": "skills/create-skills/SKILL.md",
       "target": "file:skills/create-skills/references/specification.md",
       "kind": "resource",
-      "sourceDigest": "5955ba17227a8e109b25f00ddea4cf76f7a49d7917abd3d35221d2c464d85ac0",
+      "sourceDigest": "f3962618c3fdaeb7af183e71a2e0ed9b7ea4f9519c7327d6c7836b57df791679",
       "occurrences": [
         {
           "line": 15,
@@ -12019,11 +12039,11 @@
       "path": "skills/create-skills/SKILL.md",
       "target": "file:skills/create-skills/references/submission.md",
       "kind": "resource",
-      "sourceDigest": "5955ba17227a8e109b25f00ddea4cf76f7a49d7917abd3d35221d2c464d85ac0",
+      "sourceDigest": "f3962618c3fdaeb7af183e71a2e0ed9b7ea4f9519c7327d6c7836b57df791679",
       "occurrences": [
         {
           "line": 40,
-          "offset": 2667,
+          "offset": 2710,
           "excerpt": "](references/submission.md)"
         }
       ],
@@ -12037,11 +12057,11 @@
       "path": "skills/create-skills/SKILL.md",
       "target": "file:skills/create-skills/references/tools.md",
       "kind": "resource",
-      "sourceDigest": "5955ba17227a8e109b25f00ddea4cf76f7a49d7917abd3d35221d2c464d85ac0",
+      "sourceDigest": "f3962618c3fdaeb7af183e71a2e0ed9b7ea4f9519c7327d6c7836b57df791679",
       "occurrences": [
         {
           "line": 32,
-          "offset": 2042,
+          "offset": 2055,
           "excerpt": "](references/tools.md)"
         }
       ],
@@ -12055,11 +12075,11 @@
       "path": "skills/create-skills/SKILL.md",
       "target": "file:skills/create-skills/references/writing.md",
       "kind": "resource",
-      "sourceDigest": "5955ba17227a8e109b25f00ddea4cf76f7a49d7917abd3d35221d2c464d85ac0",
+      "sourceDigest": "f3962618c3fdaeb7af183e71a2e0ed9b7ea4f9519c7327d6c7836b57df791679",
       "occurrences": [
         {
           "line": 24,
-          "offset": 1429,
+          "offset": 1442,
           "excerpt": "](references/writing.md)"
         }
       ],
@@ -12073,11 +12093,11 @@
       "path": "skills/create-skills/SKILL.md",
       "target": "skill:create-issue",
       "kind": "skill",
-      "sourceDigest": "5955ba17227a8e109b25f00ddea4cf76f7a49d7917abd3d35221d2c464d85ac0",
+      "sourceDigest": "f3962618c3fdaeb7af183e71a2e0ed9b7ea4f9519c7327d6c7836b57df791679",
       "occurrences": [
         {
           "line": 41,
-          "offset": 2733,
+          "offset": 2776,
           "excerpt": "create-issue"
         }
       ],
@@ -12091,7 +12111,7 @@
       "path": "skills/create-skills/SKILL.md",
       "target": "skill:create-skills",
       "kind": "skill",
-      "sourceDigest": "5955ba17227a8e109b25f00ddea4cf76f7a49d7917abd3d35221d2c464d85ac0",
+      "sourceDigest": "f3962618c3fdaeb7af183e71a2e0ed9b7ea4f9519c7327d6c7836b57df791679",
       "occurrences": [
         {
           "line": 2,
@@ -12107,16 +12127,16 @@
       "path": "skills/create-skills/SKILL.md",
       "target": "skill:grill-me",
       "kind": "skill",
-      "sourceDigest": "5955ba17227a8e109b25f00ddea4cf76f7a49d7917abd3d35221d2c464d85ac0",
+      "sourceDigest": "f3962618c3fdaeb7af183e71a2e0ed9b7ea4f9519c7327d6c7836b57df791679",
       "occurrences": [
         {
           "line": 16,
-          "offset": 812,
+          "offset": 791,
           "excerpt": "grill-me"
         },
         {
           "line": 18,
-          "offset": 986,
+          "offset": 999,
           "excerpt": "Grill Me"
         }
       ],
@@ -13062,7 +13082,7 @@
       "path": "skills/skill-steal/references/tools.md",
       "target": "file:skills/skill-steal/scripts/run.mjs",
       "kind": "resource",
-      "sourceDigest": "ec49e624b55bc50858675194d184019c563da5064cb6ea40b1936246df32bb78",
+      "sourceDigest": "ed7a1d7b037ddef2b8b68cb1cf68efa8eb93dbbeb3c0025c05fafe8c4dbad231",
       "occurrences": [
         {
           "line": 5,
@@ -13073,6 +13093,24 @@
       "status": "dependency",
       "edges": [
         "resource:c527cc0c052d7693"
+      ]
+    },
+    {
+      "id": "5e5d70d7fa6e472c4370627687a489cc1d4c2fe72972057d86e398e5e532fe61",
+      "path": "skills/skill-steal/references/tools.md",
+      "target": "skill:create-issue",
+      "kind": "skill",
+      "sourceDigest": "ed7a1d7b037ddef2b8b68cb1cf68efa8eb93dbbeb3c0025c05fafe8c4dbad231",
+      "occurrences": [
+        {
+          "line": 9,
+          "offset": 469,
+          "excerpt": "create-issue"
+        }
+      ],
+      "status": "dependency",
+      "edges": [
+        "skill-steal:create-issue"
       ]
     },
     {
@@ -13417,7 +13455,7 @@
       "path": "skills/skill-tweak/references/intent-capture.md",
       "target": "skill:create-skills",
       "kind": "skill",
-      "sourceDigest": "407607524a8d4eec771c4e39aeb20147ca306e050fd6158d9b1dc7b12e9dcb75",
+      "sourceDigest": "256d19090e820fea2b889d31bf16ac57eebecdfa2cc695d52f7c3e976208114e",
       "occurrences": [
         {
           "line": 5,
@@ -13433,56 +13471,51 @@
       "path": "skills/skill-tweak/references/intent-capture.md",
       "target": "skill:grill-me",
       "kind": "skill",
-      "sourceDigest": "407607524a8d4eec771c4e39aeb20147ca306e050fd6158d9b1dc7b12e9dcb75",
+      "sourceDigest": "256d19090e820fea2b889d31bf16ac57eebecdfa2cc695d52f7c3e976208114e",
       "occurrences": [
         {
           "line": 5,
-          "offset": 137,
+          "offset": 146,
           "excerpt": "grill-me"
         },
         {
-          "line": 8,
-          "offset": 330,
-          "excerpt": "grill-me"
-        },
-        {
-          "line": 16,
-          "offset": 972,
+          "line": 18,
+          "offset": 1111,
           "excerpt": "Grill Me"
-        },
-        {
-          "line": 22,
-          "offset": 1365,
-          "excerpt": "grill-me"
         },
         {
           "line": 24,
-          "offset": 1518,
+          "offset": 1504,
           "excerpt": "grill-me"
         },
         {
-          "line": 37,
-          "offset": 2484,
+          "line": 29,
+          "offset": 1909,
+          "excerpt": "grill-me"
+        },
+        {
+          "line": 43,
+          "offset": 2890,
           "excerpt": "Grill Me"
         },
         {
-          "line": 60,
-          "offset": 3896,
+          "line": 66,
+          "offset": 4302,
           "excerpt": "Grill Me"
         },
         {
-          "line": 69,
-          "offset": 4545,
+          "line": 75,
+          "offset": 4951,
           "excerpt": "Grill Me"
         },
         {
-          "line": 90,
-          "offset": 5751,
+          "line": 96,
+          "offset": 6157,
           "excerpt": "Grill Me"
         },
         {
-          "line": 99,
-          "offset": 6455,
+          "line": 105,
+          "offset": 6861,
           "excerpt": "Grill Me"
         }
       ],
@@ -13496,11 +13529,11 @@
       "path": "skills/skill-tweak/references/intent-capture.md",
       "target": "skill:grilling",
       "kind": "skill",
-      "sourceDigest": "407607524a8d4eec771c4e39aeb20147ca306e050fd6158d9b1dc7b12e9dcb75",
+      "sourceDigest": "256d19090e820fea2b889d31bf16ac57eebecdfa2cc695d52f7c3e976208114e",
       "occurrences": [
         {
-          "line": 24,
-          "offset": 1527,
+          "line": 29,
+          "offset": 1918,
           "excerpt": "grilling"
         }
       ],
@@ -13512,7 +13545,7 @@
       "path": "skills/skill-tweak/references/intent-capture.md",
       "target": "skill:skill-tweak",
       "kind": "skill",
-      "sourceDigest": "407607524a8d4eec771c4e39aeb20147ca306e050fd6158d9b1dc7b12e9dcb75",
+      "sourceDigest": "256d19090e820fea2b889d31bf16ac57eebecdfa2cc695d52f7c3e976208114e",
       "occurrences": [
         {
           "line": 5,
@@ -13600,11 +13633,11 @@
       "path": "skills/skill-tweak/release.yaml",
       "target": "skill:grill-me",
       "kind": "skill",
-      "sourceDigest": "9b927762530c3f1a135dd142986bc18a348db9cb828989d4170e5842684f35be",
+      "sourceDigest": "2377af5c92769d93cfdbfa1cddfbfcdeb44271f98d5bb2c47b7c39cb2f9becfa",
       "occurrences": [
         {
           "line": 2,
-          "offset": 49,
+          "offset": 50,
           "excerpt": "Grill Me"
         }
       ],
@@ -13721,7 +13754,7 @@
       "path": "skills/skill-tweak/SKILL.md",
       "target": "file:skills/skill-tweak/references/evidence.md",
       "kind": "resource",
-      "sourceDigest": "01afe8ab404b48f3a1bf6926e0d4a3f27dccce5e0eb2398b7ec3b0d958cff6b5",
+      "sourceDigest": "f5ec6e46e6ffbeddbff328cfdadb499c0c8283662c564a996794e2be172eb0a8",
       "occurrences": [
         {
           "line": 20,
@@ -13739,7 +13772,7 @@
       "path": "skills/skill-tweak/SKILL.md",
       "target": "file:skills/skill-tweak/references/intent-capture.md",
       "kind": "resource",
-      "sourceDigest": "01afe8ab404b48f3a1bf6926e0d4a3f27dccce5e0eb2398b7ec3b0d958cff6b5",
+      "sourceDigest": "f5ec6e46e6ffbeddbff328cfdadb499c0c8283662c564a996794e2be172eb0a8",
       "occurrences": [
         {
           "line": 21,
@@ -13757,11 +13790,11 @@
       "path": "skills/skill-tweak/SKILL.md",
       "target": "file:skills/skill-tweak/references/submission.md",
       "kind": "resource",
-      "sourceDigest": "01afe8ab404b48f3a1bf6926e0d4a3f27dccce5e0eb2398b7ec3b0d958cff6b5",
+      "sourceDigest": "f5ec6e46e6ffbeddbff328cfdadb499c0c8283662c564a996794e2be172eb0a8",
       "occurrences": [
         {
           "line": 60,
-          "offset": 4156,
+          "offset": 4174,
           "excerpt": "](references/submission.md)"
         }
       ],
@@ -13775,11 +13808,11 @@
       "path": "skills/skill-tweak/SKILL.md",
       "target": "file:skills/skill-tweak/templates/issue.md",
       "kind": "resource",
-      "sourceDigest": "01afe8ab404b48f3a1bf6926e0d4a3f27dccce5e0eb2398b7ec3b0d958cff6b5",
+      "sourceDigest": "f5ec6e46e6ffbeddbff328cfdadb499c0c8283662c564a996794e2be172eb0a8",
       "occurrences": [
         {
           "line": 38,
-          "offset": 2381,
+          "offset": 2399,
           "excerpt": "](templates/issue.md)"
         }
       ],
@@ -13793,16 +13826,16 @@
       "path": "skills/skill-tweak/SKILL.md",
       "target": "skill:create-issue",
       "kind": "skill",
-      "sourceDigest": "01afe8ab404b48f3a1bf6926e0d4a3f27dccce5e0eb2398b7ec3b0d958cff6b5",
+      "sourceDigest": "f5ec6e46e6ffbeddbff328cfdadb499c0c8283662c564a996794e2be172eb0a8",
       "occurrences": [
         {
           "line": 48,
-          "offset": 3180,
+          "offset": 3198,
           "excerpt": "create-issue"
         },
         {
           "line": 72,
-          "offset": 5062,
+          "offset": 5080,
           "excerpt": "create-issue"
         }
       ],
@@ -13816,7 +13849,7 @@
       "path": "skills/skill-tweak/SKILL.md",
       "target": "skill:grill-me",
       "kind": "skill",
-      "sourceDigest": "01afe8ab404b48f3a1bf6926e0d4a3f27dccce5e0eb2398b7ec3b0d958cff6b5",
+      "sourceDigest": "f5ec6e46e6ffbeddbff328cfdadb499c0c8283662c564a996794e2be172eb0a8",
       "occurrences": [
         {
           "line": 28,
@@ -13824,13 +13857,13 @@
           "excerpt": "Grill Me"
         },
         {
-          "line": 29,
-          "offset": 1706,
+          "line": 28,
+          "offset": 1682,
           "excerpt": "grill-me"
         },
         {
           "line": 31,
-          "offset": 1896,
+          "offset": 1914,
           "excerpt": "Grill Me"
         }
       ],
@@ -13844,7 +13877,7 @@
       "path": "skills/skill-tweak/SKILL.md",
       "target": "skill:skill-tweak",
       "kind": "skill",
-      "sourceDigest": "01afe8ab404b48f3a1bf6926e0d4a3f27dccce5e0eb2398b7ec3b0d958cff6b5",
+      "sourceDigest": "f5ec6e46e6ffbeddbff328cfdadb499c0c8283662c564a996794e2be172eb0a8",
       "occurrences": [
         {
           "line": 2,

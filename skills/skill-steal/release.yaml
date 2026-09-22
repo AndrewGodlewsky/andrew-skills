@@ -1,2 +1,2 @@
-version: "1.0.0"
-notes: "Adapt local skills for GT review while preserving source behavior, attribution and original files."
+version: "1.0.1"
+notes: "Clarify that failed draft checks do not waive submission runtime prerequisites in the shared tools guidance."

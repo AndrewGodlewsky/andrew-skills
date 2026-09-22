@@ -7,19 +7,19 @@
       "to": "skill:grill-me",
       "kind": "skill",
       "conditional": false,
-      "condition": "During the required intent interview",
+      "condition": "During required intake: select the enabled GT Grill Me from the intended installation, load and follow its instructions, and record the interview and user confirmation; use a separate invocation operation only when the host requires it.",
       "evidence": [
         {
           "path": "skills/create-skills/SKILL.md",
-          "excerpt": "Resolve and invoke the selected enabled **GT grill-me** skill for the interview,"
+          "excerpt": "Select the enabled **GT grill-me** skill, load its instructions and follow them"
         },
         {
           "path": "scripts/intent-capture.md",
-          "excerpt": "Create Skills and Skill Tweak must resolve and invoke **GT grill-me** through the"
+          "excerpt": "Create Skills and Skill Tweak must select the exposed, enabled **GT grill-me**"
         },
         {
           "path": "skills/create-skills/references/intent-capture.md",
-          "excerpt": "Create Skills and Skill Tweak must resolve and invoke **GT grill-me** through the"
+          "excerpt": "Create Skills and Skill Tweak must select the exposed, enabled **GT grill-me**"
         },
         {
           "path": "skills/create-skills/references/specification.md",
@@ -54,6 +54,10 @@
         {
           "path": "skills/create-skills/scripts/review-handoff.mjs",
           "excerpt": "// Stateless next-action calculation. Only the enabled create-issue skill executes"
+        },
+        {
+          "path": "skills/create-skills/references/tools.md",
+          "excerpt": "submission still requires the create-issue dependency's own runtime prerequisites."
         }
       ]
     },
@@ -63,19 +67,19 @@
       "to": "skill:grill-me",
       "kind": "skill",
       "conditional": false,
-      "condition": "During the required incident/intent interview",
+      "condition": "During required intake: select the enabled GT Grill Me from the intended installation, load and follow its instructions, and record the interview and user confirmation; use a separate invocation operation only when the host requires it.",
       "evidence": [
         {
           "path": "skills/skill-tweak/SKILL.md",
-          "excerpt": "   **GT grill-me** skill using the intent guide's handoff rules. Pass the original"
+          "excerpt": "3. **Interview through GT Grill Me.** Select the enabled **GT grill-me** skill,"
         },
         {
           "path": "scripts/intent-capture.md",
-          "excerpt": "Create Skills and Skill Tweak must resolve and invoke **GT grill-me** through the"
+          "excerpt": "Create Skills and Skill Tweak must select the exposed, enabled **GT grill-me**"
         },
         {
           "path": "skills/skill-tweak/references/intent-capture.md",
-          "excerpt": "Create Skills and Skill Tweak must resolve and invoke **GT grill-me** through the"
+          "excerpt": "Create Skills and Skill Tweak must select the exposed, enabled **GT grill-me**"
         }
       ]
     },
@@ -154,6 +158,10 @@
         {
           "path": "skills/skill-steal/scripts/review-handoff.mjs",
           "excerpt": "// Stateless next-action calculation. Only the enabled create-issue skill executes"
+        },
+        {
+          "path": "skills/skill-steal/references/tools.md",
+          "excerpt": "submission still requires the create-issue dependency's own runtime prerequisites."
         }
       ]
     },
@@ -3698,21 +3706,21 @@
       "candidate": "cfb5d76be7f55a449e39d550dd03e27a5aaa5d2ad61e68b43d007c7c60f70315",
       "path": "scripts/intent-capture.md",
       "target": "skill:create-skills",
-      "sourceDigest": "407607524a8d4eec771c4e39aeb20147ca306e050fd6158d9b1dc7b12e9dcb75",
+      "sourceDigest": "256d19090e820fea2b889d31bf16ac57eebecdfa2cc695d52f7c3e976208114e",
       "reason": "Names the consumers of this shared guide, not a dependency invoked by the consumer."
     },
     {
       "candidate": "09a8c6ceb33fe50bc32deb951b7acac23a62924b9a8fc2c49264bd66040951b8",
       "path": "scripts/intent-capture.md",
       "target": "skill:grilling",
-      "sourceDigest": "407607524a8d4eec771c4e39aeb20147ca306e050fd6158d9b1dc7b12e9dcb75",
+      "sourceDigest": "256d19090e820fea2b889d31bf16ac57eebecdfa2cc695d52f7c3e976208114e",
       "reason": "Explicitly forbidden substitute for the required GT grill-me dependency; no grilling invocation."
     },
     {
       "candidate": "d4dd5df43a47c2c5af400013a34cd097fcdd7994c8c32622522acfb7d7f46c9e",
       "path": "scripts/intent-capture.md",
       "target": "skill:skill-tweak",
-      "sourceDigest": "407607524a8d4eec771c4e39aeb20147ca306e050fd6158d9b1dc7b12e9dcb75",
+      "sourceDigest": "256d19090e820fea2b889d31bf16ac57eebecdfa2cc695d52f7c3e976208114e",
       "reason": "Names the consumers of this shared guide, not a dependency invoked by the consumer."
     },
     {
@@ -3936,35 +3944,35 @@
       "candidate": "ec0be34cebbd525c88c4e2b7a9214f19829ca7653899b5fb63c012b5e437dd23",
       "path": "skills/create-skills/references/intent-capture.md",
       "target": "skill:create-skills",
-      "sourceDigest": "407607524a8d4eec771c4e39aeb20147ca306e050fd6158d9b1dc7b12e9dcb75",
+      "sourceDigest": "256d19090e820fea2b889d31bf16ac57eebecdfa2cc695d52f7c3e976208114e",
       "reason": "Names the consumers of this shared guide, not a dependency invoked by the consumer."
     },
     {
       "candidate": "dca70ec33e19461b672bd2536fc672c5447fa8ba729572c4284f8ea794829c9f",
       "path": "skills/create-skills/references/intent-capture.md",
       "target": "skill:grilling",
-      "sourceDigest": "407607524a8d4eec771c4e39aeb20147ca306e050fd6158d9b1dc7b12e9dcb75",
+      "sourceDigest": "256d19090e820fea2b889d31bf16ac57eebecdfa2cc695d52f7c3e976208114e",
       "reason": "Explicitly forbidden substitute for the required GT grill-me dependency; no grilling invocation."
     },
     {
       "candidate": "f854f34be3aeb4a2c9c84fb4ecadae41332c646c545ef00ff28632f89c0083e5",
       "path": "skills/create-skills/references/intent-capture.md",
       "target": "skill:skill-tweak",
-      "sourceDigest": "407607524a8d4eec771c4e39aeb20147ca306e050fd6158d9b1dc7b12e9dcb75",
+      "sourceDigest": "256d19090e820fea2b889d31bf16ac57eebecdfa2cc695d52f7c3e976208114e",
       "reason": "Names the consumers of this shared guide, not a dependency invoked by the consumer."
     },
     {
       "candidate": "6be37080bf144a63ea5fac98cfb5f897a07f68358eff67b3ebc94b36740829b4",
       "path": "skills/create-skills/release.yaml",
       "target": "skill:grill-me",
-      "sourceDigest": "6a33041657a39ddc7a4911710a2e631e34d63086e5a9466b143ab9557ffd852e",
+      "sourceDigest": "f0c570ecf5916febd78693fb468d34058d7fc1f1712400e65ec3f6d9b6134ad8",
       "reason": "Release-note description of an already recorded behavior, not an executable workflow or a separate dependency declaration."
     },
     {
       "candidate": "b3a0fe12025a0662d1ea668084917a51c3a665fcd6a2698c9a5544540bb4957b",
       "path": "skills/create-skills/SKILL.md",
       "target": "skill:create-skills",
-      "sourceDigest": "5955ba17227a8e109b25f00ddea4cf76f7a49d7917abd3d35221d2c464d85ac0",
+      "sourceDigest": "f3962618c3fdaeb7af183e71a2e0ed9b7ea4f9519c7327d6c7836b57df791679",
       "reason": "Skill identity, invocation documentation or attribution to itself; no recursive invocation instruction."
     },
     {
@@ -4034,35 +4042,35 @@
       "candidate": "af1fa3c9380bd8dc060f2bbfadd14906bd62ba7a0356fc450c690425174d0f06",
       "path": "skills/skill-tweak/references/intent-capture.md",
       "target": "skill:create-skills",
-      "sourceDigest": "407607524a8d4eec771c4e39aeb20147ca306e050fd6158d9b1dc7b12e9dcb75",
+      "sourceDigest": "256d19090e820fea2b889d31bf16ac57eebecdfa2cc695d52f7c3e976208114e",
       "reason": "Names the consumers of this shared guide, not a dependency invoked by the consumer."
     },
     {
       "candidate": "1b1523476e19fd90ff4fad260a517ee1430da179a858f198ac23609f7806bf07",
       "path": "skills/skill-tweak/references/intent-capture.md",
       "target": "skill:grilling",
-      "sourceDigest": "407607524a8d4eec771c4e39aeb20147ca306e050fd6158d9b1dc7b12e9dcb75",
+      "sourceDigest": "256d19090e820fea2b889d31bf16ac57eebecdfa2cc695d52f7c3e976208114e",
       "reason": "Explicitly forbidden substitute for the required GT grill-me dependency; no grilling invocation."
     },
     {
       "candidate": "6ced0822d1853f350ad57efe35401c5cd54495865aed3e73a842d70fc7de39ae",
       "path": "skills/skill-tweak/references/intent-capture.md",
       "target": "skill:skill-tweak",
-      "sourceDigest": "407607524a8d4eec771c4e39aeb20147ca306e050fd6158d9b1dc7b12e9dcb75",
+      "sourceDigest": "256d19090e820fea2b889d31bf16ac57eebecdfa2cc695d52f7c3e976208114e",
       "reason": "Names the consumers of this shared guide, not a dependency invoked by the consumer."
     },
     {
       "candidate": "f822422d17e749cbf661c4e1322b37a9f0f848bccc2439596897bd81a9605005",
       "path": "skills/skill-tweak/release.yaml",
       "target": "skill:grill-me",
-      "sourceDigest": "9b927762530c3f1a135dd142986bc18a348db9cb828989d4170e5842684f35be",
+      "sourceDigest": "2377af5c92769d93cfdbfa1cddfbfcdeb44271f98d5bb2c47b7c39cb2f9becfa",
       "reason": "Release-note description of an already recorded behavior, not an executable workflow or a separate dependency declaration."
     },
     {
       "candidate": "c932870fba18a6418787e4eb8e5bc41ce3997f20f826c56c5748f107f53aecc2",
       "path": "skills/skill-tweak/SKILL.md",
       "target": "skill:skill-tweak",
-      "sourceDigest": "01afe8ab404b48f3a1bf6926e0d4a3f27dccce5e0eb2398b7ec3b0d958cff6b5",
+      "sourceDigest": "f5ec6e46e6ffbeddbff328cfdadb499c0c8283662c564a996794e2be172eb0a8",
       "reason": "Skill identity, invocation documentation or attribution to itself; no recursive invocation instruction."
     },
     {
@@ -4224,9 +4232,9 @@
       "note": "Helper protocol and bundled Node runtime imports; caller owns content. No invocation of its callers."
     },
     "create-skills": {
-      "digest": "a453cf24f82996c2baab3ecd6713cd5c261731ffc4471182e1726f274fc32e92",
-      "reviewer": "Codex dependency review for Andrew, issue #63",
-      "note": "Reviewed CONTRIBUTING changes and candidate exclusions: maintainer map procedure is outside both extracted package-rule ranges. Read-only builder check confirms identical bundled guidance; existing runtime edges and provenance retained."
+      "digest": "684802217ce569da238115fab3fbfaeb9c3b329632b3c75a43b9eb9ca0ffac45",
+      "reviewer": "Codex dependency review for Andrew, issue #76",
+      "note": "Reviewed issue #76 changes: required selected Grill Me interview uses supported instruction loading, with explicit confirmation and deferred-decision boundaries. Added tools-guide evidence for the existing Create Issue prerequisite. Shared-source/copy/builder relationships remain intact; consumer names, forbidden Grilling alias, self identity and release-note mentions retain their reviewed exclusions."
     },
     "domain-modeling": {
       "digest": "04135c6cdd861062ce86c14e0e4074d14a8e0181e0893c7341feaa12092577c2",
@@ -4249,14 +4257,14 @@
       "note": "Interview instructions use native host capabilities, not a separate GT skill. License is bundled."
     },
     "skill-steal": {
-      "digest": "8a5df3d0362da89a63177b1d8d8e416f7e52741e2d0084c72a72b75e4c33d635",
-      "reviewer": "Codex dependency review for Andrew, issue #63",
-      "note": "Reviewed CONTRIBUTING changes and exclusions outside extracted guidance. Builder check confirms identical packaged rules and adapted shared resources; existing dependency decisions retained."
+      "digest": "653ca1d5c765fbb650c3a63d4635477cc42bb8ba17ff0549064bd88476c56c12",
+      "reviewer": "Codex dependency review for Andrew, issue #76",
+      "note": "Reviewed issue #76 inherited tools clarification and its builder transform: failed draft checks do not waive Create Issue runtime prerequisites. Added evidence to the existing conditional Create Issue edge. No new interview dependency or change to the separate clarification branch; source/copy/resource relationships remain intact."
     },
     "skill-tweak": {
-      "digest": "81f63e63d3773b8ef7941bfc2f54f55c8f00ab99c41ac713213cc8465ef09f8a",
-      "reviewer": "Codex dependency audit for Andrew, issue #61",
-      "note": "Required Grill Me interview and conditional Create Issue delivery, with shared intent/handoff tools and issue template."
+      "digest": "bdaf48c951a758bbfebbb0ea90a1ab3f9fb00084ff23f9383484e753ae21c36f",
+      "reviewer": "Codex dependency review for Andrew, issue #76",
+      "note": "Reviewed issue #76 entry and shared intent guide: required Grill Me selection/loading/interview/confirmation remains an actual dependency; no standalone invocation receipt is required unless mandated by the host. Conditional Create Issue submission is unchanged. Consumer names, forbidden aliases, self identity and release summary are not new dependencies."
     },
     "skills-restore": {
       "digest": "d552b93d1d722fb628e8d8e2a5892a809c749c07f044ff31470afe6ce6506365",

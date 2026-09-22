@@ -4,7 +4,9 @@ Generated from shared creator guidance; edit the maintained source or builder, t
 
 Resolve [the entry point](../scripts/run.mjs) from this installed package, including
 spaces. Its adjacent modules are required. Node 22+ is needed for these local
-tools; missing Node means a check is not run, not a blocked issue submission.
+tools. Missing Node leaves these commands unrun; preserve the draft and report
+that limitation. A failed draft check alone does not prevent submission, but
+submission still requires the create-issue dependency's own runtime prerequisites.
 Do not install runtimes implicitly or switch environments after a security stop.
 
 Use a structured process API: executable `node`, an argument array, `shell: false`,

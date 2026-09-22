@@ -1,6 +1,6 @@
 # GT skill dependency map
 
-Snapshot: `4f1e007fb145bb4b8baf769918612ce3e38bc4298f13c6c171fb28f45e2e7ee3`. Source: current working files when generated.
+Snapshot: `c272288f2a122fb470d585e91666dcd8048d8735bb1073b37dfe5837471aaba1`. Source: current working files when generated.
 Saved output cannot detect later edits. Recorded review is current for this snapshot.
 
 A → B means A relies on B; dashed arrows are conditional. Potential impact means review scope, not proven breakage.
@@ -334,11 +334,11 @@ Discovered skill entry instructions.
 
 ### create-skills → grill-me
 
-skill; current. During the required intent interview
+skill; current. During required intake: select the enabled GT Grill Me from the intended installation, load and follow its instructions, and record the interview and user confirmation; use a separate invocation operation only when the host requires it.
 
-- [skills/create-skills/SKILL.md:16](../../skills/create-skills/SKILL.md#L16) (current): Resolve and invoke the selected enabled &#42;&#42;GT grill-me&#42;&#42; skill for the interview,
-- [scripts/intent-capture.md:5](../../scripts/intent-capture.md#L5) (current): Create Skills and Skill Tweak must resolve and invoke &#42;&#42;GT grill-me&#42;&#42; through the
-- [skills/create-skills/references/intent-capture.md:5](../../skills/create-skills/references/intent-capture.md#L5) (current): Create Skills and Skill Tweak must resolve and invoke &#42;&#42;GT grill-me&#42;&#42; through the
+- [skills/create-skills/SKILL.md:16](../../skills/create-skills/SKILL.md#L16) (current): Select the enabled &#42;&#42;GT grill-me&#42;&#42; skill, load its instructions and follow them
+- [scripts/intent-capture.md:5](../../scripts/intent-capture.md#L5) (current): Create Skills and Skill Tweak must select the exposed, enabled &#42;&#42;GT grill-me&#42;&#42;
+- [skills/create-skills/references/intent-capture.md:5](../../skills/create-skills/references/intent-capture.md#L5) (current): Create Skills and Skill Tweak must select the exposed, enabled &#42;&#42;GT grill-me&#42;&#42;
 - [skills/create-skills/references/specification.md:5](../../skills/create-skills/references/specification.md#L5) (current): selected GT grill-me dependency using the &#91;intent guide&#93;(intent-capture.md).
 
 ### create-skills → create-issue
@@ -350,14 +350,15 @@ skill; current. When submitting the handoff (conditional)
 - [skills/create-skills/references/personal-installation.md:33](../../skills/create-skills/references/personal-installation.md#L33) (current): create-issue before copying, under actual authority. A later partial submission
 - [skills/create-skills/references/submission.md:3](../../skills/create-skills/references/submission.md#L3) (current): Resolve and invoke the intended enabled GT create-issue dependency. It supplies
 - [skills/create-skills/scripts/review-handoff.mjs:69](../../skills/create-skills/scripts/review-handoff.mjs#L69) (current): // Stateless next-action calculation. Only the enabled create-issue skill executes
+- [skills/create-skills/references/tools.md:7](../../skills/create-skills/references/tools.md#L7) (current): submission still requires the create-issue dependency's own runtime prerequisites.
 
 ### skill-tweak → grill-me
 
-skill; current. During the required incident/intent interview
+skill; current. During required intake: select the enabled GT Grill Me from the intended installation, load and follow its instructions, and record the interview and user confirmation; use a separate invocation operation only when the host requires it.
 
-- [skills/skill-tweak/SKILL.md:29](../../skills/skill-tweak/SKILL.md#L29) (current):    &#42;&#42;GT grill-me&#42;&#42; skill using the intent guide's handoff rules. Pass the original
-- [scripts/intent-capture.md:5](../../scripts/intent-capture.md#L5) (current): Create Skills and Skill Tweak must resolve and invoke &#42;&#42;GT grill-me&#42;&#42; through the
-- [skills/skill-tweak/references/intent-capture.md:5](../../skills/skill-tweak/references/intent-capture.md#L5) (current): Create Skills and Skill Tweak must resolve and invoke &#42;&#42;GT grill-me&#42;&#42; through the
+- [skills/skill-tweak/SKILL.md:28](../../skills/skill-tweak/SKILL.md#L28) (current): 3. &#42;&#42;Interview through GT Grill Me.&#42;&#42; Select the enabled &#42;&#42;GT grill-me&#42;&#42; skill,
+- [scripts/intent-capture.md:5](../../scripts/intent-capture.md#L5) (current): Create Skills and Skill Tweak must select the exposed, enabled &#42;&#42;GT grill-me&#42;&#42;
+- [skills/skill-tweak/references/intent-capture.md:5](../../skills/skill-tweak/references/intent-capture.md#L5) (current): Create Skills and Skill Tweak must select the exposed, enabled &#42;&#42;GT grill-me&#42;&#42;
 
 ### skill-tweak → create-issue
 
@@ -385,6 +386,7 @@ skill; current. When submitting the review handoff (conditional)
 - [skills/skill-steal/references/clarification.md:4](../../skills/skill-steal/references/clarification.md#L4) (current): for necessary clarification and &#42;&#42;create-issue&#42;&#42; when submission is intended,
 - [skills/skill-steal/references/submission.md:5](../../skills/skill-steal/references/submission.md#L5) (current): Resolve and invoke the intended enabled GT create-issue dependency. It supplies
 - [skills/skill-steal/scripts/review-handoff.mjs:69](../../skills/skill-steal/scripts/review-handoff.mjs#L69) (current): // Stateless next-action calculation. Only the enabled create-issue skill executes
+- [skills/skill-steal/references/tools.md:9](../../skills/skill-steal/references/tools.md#L9) (current): submission still requires the create-issue dependency's own runtime prerequisites.
 
 ### grill-with-docs → grilling
 

@@ -1,2 +1,2 @@
-version: "2.0.0"
-notes: "Require the selected GT Grill Me interview and user-confirmed understanding before resuming feedback intake, preserving intent and dependency failures."
+version: "2.0.1"
+notes: "Accept instruction-based Grill Me invocation without a separate host receipt, while retaining the interview, confirmation and dependency safeguards."

@@ -28,9 +28,11 @@ Make defaults and interpretations visible. Choose routine implementation details
 consistent with the supplied intent and record them. Cover each applicable topic
 with a decision, non-goal, supported fact or explicit unresolved question. The
 specification must explain settled intent independently of generated code and
-identify what the maintainer still needs to clarify. Unresolved intent does not
-block intake. If implementation uncovers ambiguity, update the record and scope
-of the attempt rather than silently choosing consequential behavior.
+identify what the maintainer still needs to clarify. After the user confirms the
+captured idea, explicitly deferred decisions may remain in completed intake.
+An unanswered confirmation leaves intake incomplete. If implementation uncovers
+ambiguity, update the record and scope of the attempt rather than silently choosing
+consequential behavior.
 
 A missing runtime or failing generated script is an implementation finding, not
 necessarily a missing requirement. For example, a fully specified output with

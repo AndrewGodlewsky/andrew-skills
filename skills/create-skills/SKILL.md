@@ -13,10 +13,10 @@ request. An unrelated skill must not be submitted merely because GT is installed
 
 1. Read the [intent capture guide](references/intent-capture.md) at the start,
    then the [interview and specification guide](references/specification.md).
-   Resolve and invoke the selected enabled **GT grill-me** skill for the interview,
-   following the intent guide's handoff rules. Pass the initial idea, known facts,
-   previous answers and open specification topics. Let Grill Me conduct its
-   existing interview; resume only after the user confirms the captured idea.
+   Select the enabled **GT grill-me** skill, load its instructions and follow them
+   for the interview using the intent guide's handoff rules. Pass the initial idea,
+   known facts, previous answers and open specification topics. Let Grill Me
+   conduct its existing interview; resume only after the user confirms the captured idea.
    Preserve explicit undecided requirements for maintainer follow-up. A missing
    dependency, pause or unconfirmed understanding leaves a preserved draft.
 2. Write the detailed specification first. Review its consequential choices,
@@ -32,8 +32,8 @@ request. An unrelated skill must not be submitted merely because GT is installed
 3. Read [local tools and checks](references/tools.md). Attempt applicable
    structural and appropriate behavior checks. Report each actual result as
    passed, failed or not run with its reason and input identity. Try reasonable
-   fixes, but **failed builds/checks and unavailable tools do not block issue
-   submission**. Include produced files and missing pieces, or explicitly say
+   fixes. **Failed draft builds/checks may accompany submission when the submission
+   dependency's prerequisites are met.** Include produced files and missing pieces, or explicitly say
    that no package could be built. A specification with explicit unresolved intent
    remains submittable; distinguish intake readiness from implementation readiness.
    Repository adoption will require independent maintainer validation.

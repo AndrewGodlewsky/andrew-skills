@@ -1,2 +1,2 @@
-version: "3.0.0"
-notes: "Require the selected GT Grill Me interview and user-confirmed understanding before resuming skill creation, preserving intent and dependency failures."
+version: "3.0.1"
+notes: "Clarify instruction-based Grill Me invocation, confirmed intake with deferred decisions, and the runtime prerequisites for submission."
