@@ -2,6 +2,8 @@
 
 Published decision record: [resolution on #75](https://github.com/AndrewGodlewsky/andrew-skills/issues/75#issuecomment-5784265334).
 
+**September 22 follow-up:** Andrew subsequently asked to get work underway after the recommendation to draft now and check the six scenarios. [#78](https://github.com/AndrewGodlewsky/andrew-skills/issues/78) records that sequencing resolution. The historical interview record below retains Q8 as unanswered at Finish; the documentation prototype can now proceed, with live client acceptance still in #17.
+
 Decision session for [#75](https://github.com/AndrewGodlewsky/andrew-skills/issues/75), finished September 22, 2026, using Grill with UI and Domain Modeling. Andrew chose documentation reachable outside GT, focused first on a user who installed GT but cannot find or invoke a skill. The guide will address both VS Code and Copilot CLI, distinguish Windows from each WSL environment, collect evidence one check at a time, and end with a short copyable summary and one useful next check or handoff. Agent-assisted installation is deferred. The final question about drafting before or after the live pilot was unanswered when Andrew pressed Finish; neither timing option is accepted. No diagnostic implementation or client verification was performed in this session.
 
 ## Terms
