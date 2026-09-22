@@ -1,0 +1,3813 @@
+{
+  "schemaVersion": 1,
+  "edges": [
+    {
+      "id": "create-skills:grill-me",
+      "from": "skill:create-skills",
+      "to": "skill:grill-me",
+      "kind": "skill",
+      "conditional": false,
+      "condition": "During the required intent interview",
+      "evidence": [
+        {
+          "path": "skills/create-skills/SKILL.md",
+          "excerpt": "Resolve and invoke the selected enabled **GT grill-me** skill for the interview,"
+        },
+        {
+          "path": "scripts/intent-capture.md",
+          "excerpt": "Create Skills and Skill Tweak must resolve and invoke **GT grill-me** through the"
+        },
+        {
+          "path": "skills/create-skills/references/intent-capture.md",
+          "excerpt": "Create Skills and Skill Tweak must resolve and invoke **GT grill-me** through the"
+        },
+        {
+          "path": "skills/create-skills/references/specification.md",
+          "excerpt": "selected GT grill-me dependency using the [intent guide](intent-capture.md)."
+        }
+      ]
+    },
+    {
+      "id": "create-skills:create-issue",
+      "from": "skill:create-skills",
+      "to": "skill:create-issue",
+      "kind": "skill",
+      "conditional": true,
+      "condition": "When submitting the handoff",
+      "evidence": [
+        {
+          "path": "skills/create-skills/SKILL.md",
+          "excerpt": "   enabled GT **create-issue** model-invocable dependency using the client-supplied"
+        },
+        {
+          "path": "scripts/review-handoff.mjs",
+          "excerpt": "// Stateless next-action calculation. Only the enabled create-issue skill executes"
+        },
+        {
+          "path": "skills/create-skills/references/personal-installation.md",
+          "excerpt": "create-issue before copying, under actual authority. A later partial submission"
+        },
+        {
+          "path": "skills/create-skills/references/submission.md",
+          "excerpt": "Resolve and invoke the intended enabled GT create-issue dependency. It supplies"
+        },
+        {
+          "path": "skills/create-skills/scripts/review-handoff.mjs",
+          "excerpt": "// Stateless next-action calculation. Only the enabled create-issue skill executes"
+        }
+      ]
+    },
+    {
+      "id": "skill-tweak:grill-me",
+      "from": "skill:skill-tweak",
+      "to": "skill:grill-me",
+      "kind": "skill",
+      "conditional": false,
+      "condition": "During the required incident/intent interview",
+      "evidence": [
+        {
+          "path": "skills/skill-tweak/SKILL.md",
+          "excerpt": "   **GT grill-me** skill using the intent guide's handoff rules. Pass the original"
+        },
+        {
+          "path": "scripts/intent-capture.md",
+          "excerpt": "Create Skills and Skill Tweak must resolve and invoke **GT grill-me** through the"
+        },
+        {
+          "path": "skills/skill-tweak/references/intent-capture.md",
+          "excerpt": "Create Skills and Skill Tweak must resolve and invoke **GT grill-me** through the"
+        }
+      ]
+    },
+    {
+      "id": "skill-tweak:create-issue",
+      "from": "skill:skill-tweak",
+      "to": "skill:create-issue",
+      "kind": "skill",
+      "conditional": true,
+      "condition": "When publication is intended; draft-only work does not require it",
+      "evidence": [
+        {
+          "path": "skills/skill-tweak/SKILL.md",
+          "excerpt": "   resolve the enabled GT create-issue dependency before final preview from the client-supplied"
+        },
+        {
+          "path": "scripts/review-handoff.mjs",
+          "excerpt": "// Stateless next-action calculation. Only the enabled create-issue skill executes"
+        },
+        {
+          "path": "skills/skill-tweak/references/submission.md",
+          "excerpt": "## Delivery through create-issue"
+        },
+        {
+          "path": "skills/skill-tweak/scripts/review-handoff.mjs",
+          "excerpt": "// Stateless next-action calculation. Only the enabled create-issue skill executes"
+        }
+      ]
+    },
+    {
+      "id": "skill-steal:grill-me",
+      "from": "skill:skill-steal",
+      "to": "skill:grill-me",
+      "kind": "skill",
+      "conditional": true,
+      "condition": "When intent is unclear or compatibility work could change behavior",
+      "evidence": [
+        {
+          "path": "skills/skill-steal/SKILL.md",
+          "excerpt": "   selected enabled GT **grill-me**. Pass findings, conflicts, previous answers and"
+        },
+        {
+          "path": "skills/skill-steal/references/clarification.md",
+          "excerpt": "Use the client-supplied selected GT installation identity. Resolve **grill-me**"
+        },
+        {
+          "path": "skills/skill-steal/references/source.md",
+          "excerpt": "contract. Identify these effects, preserve supported semantics, and use Grill Me"
+        }
+      ]
+    },
+    {
+      "id": "skill-steal:create-issue",
+      "from": "skill:skill-steal",
+      "to": "skill:create-issue",
+      "kind": "skill",
+      "conditional": true,
+      "condition": "When submitting the review handoff",
+      "evidence": [
+        {
+          "path": "skills/skill-steal/SKILL.md",
+          "excerpt": "   and deliver one handoff through the selected enabled GT **create-issue**."
+        },
+        {
+          "path": "scripts/review-handoff.mjs",
+          "excerpt": "// Stateless next-action calculation. Only the enabled create-issue skill executes"
+        },
+        {
+          "path": "skills/skill-steal/references/clarification.md",
+          "excerpt": "for necessary clarification and **create-issue** when submission is intended,"
+        },
+        {
+          "path": "skills/skill-steal/references/submission.md",
+          "excerpt": "Resolve and invoke the intended enabled GT create-issue dependency. It supplies"
+        },
+        {
+          "path": "skills/skill-steal/scripts/review-handoff.mjs",
+          "excerpt": "// Stateless next-action calculation. Only the enabled create-issue skill executes"
+        }
+      ]
+    },
+    {
+      "id": "grill-with-docs:grilling",
+      "from": "skill:grill-with-docs",
+      "to": "skill:grilling",
+      "kind": "skill",
+      "conditional": false,
+      "condition": "Before starting the composed interview/document workflow",
+      "evidence": [
+        {
+          "path": "skills/grill-with-docs/SKILL.md",
+          "excerpt": "Before starting, resolve and invoke both enabled dependencies, `grilling` and\n`domain-modeling`, from the same selected GT installation using the client's"
+        }
+      ]
+    },
+    {
+      "id": "grill-with-docs:domain-modeling",
+      "from": "skill:grill-with-docs",
+      "to": "skill:domain-modeling",
+      "kind": "skill",
+      "conditional": false,
+      "condition": "Before starting the composed interview/document workflow",
+      "evidence": [
+        {
+          "path": "skills/grill-with-docs/SKILL.md",
+          "excerpt": "Before starting, resolve and invoke both enabled dependencies, `grilling` and\n`domain-modeling`, from the same selected GT installation using the client's"
+        }
+      ]
+    },
+    {
+      "id": "resource:cd14661520d41c36",
+      "from": "file:exporter/export-cli.mjs",
+      "to": "file:exporter/export-filesystem.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "When loading this module",
+      "evidence": [
+        {
+          "path": "exporter/export-cli.mjs",
+          "excerpt": "import { checkedPath, inspectCopy, targetPaths } from './export-filesystem.mjs';"
+        }
+      ]
+    },
+    {
+      "id": "resource:7a019020535dbb7f",
+      "from": "file:exporter/export-cli.mjs",
+      "to": "file:exporter/export-protocol.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "When loading this module",
+      "evidence": [
+        {
+          "path": "exporter/export-cli.mjs",
+          "excerpt": "import { acquireCatalog, checkRuntime, executePlan, makePlan, reviewPlan } from './export-protocol.mjs';"
+        }
+      ]
+    },
+    {
+      "id": "resource:f29a2b73c098402a",
+      "from": "file:exporter/export-cli.mjs",
+      "to": "file:exporter/export-source.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "When loading this module",
+      "evidence": [
+        {
+          "path": "exporter/export-cli.mjs",
+          "excerpt": "import { PROTOCOL_VERSION, requireExport } from './export-source.mjs';"
+        }
+      ]
+    },
+    {
+      "id": "resource:7e6606a03a67acb3",
+      "from": "file:exporter/export-filesystem.mjs",
+      "to": "file:exporter/export-source.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "When loading this module",
+      "evidence": [
+        {
+          "path": "exporter/export-filesystem.mjs",
+          "excerpt": "import { EXPORTER_VERSION, PROTOCOL_VERSION, REPOSITORY, prepareSource, requireExport, sha256, validateSourcePath } from './export-source.mjs';"
+        }
+      ]
+    },
+    {
+      "id": "resource:212c352d9d6530f1",
+      "from": "file:exporter/export-protocol.mjs",
+      "to": "file:exporter/export-filesystem.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "When loading this module",
+      "evidence": [
+        {
+          "path": "exporter/export-protocol.mjs",
+          "excerpt": "import { checkedPath, createCopy, ensureDirectory, isSecurityError, targetPaths } from './export-filesystem.mjs';"
+        }
+      ]
+    },
+    {
+      "id": "resource:b7a1768fe6a69f0b",
+      "from": "file:exporter/export-protocol.mjs",
+      "to": "file:exporter/export-source.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "When loading this module",
+      "evidence": [
+        {
+          "path": "exporter/export-protocol.mjs",
+          "excerpt": "import { EXPORTER_VERSION, PROTOCOL_VERSION, REPOSITORY, fileManifest, prepareSource, requireExport, sha256 } from './export-source.mjs';"
+        }
+      ]
+    },
+    {
+      "id": "resource:063e69770d98a6ff",
+      "from": "file:exporter/export-protocol.mjs",
+      "to": "file:exporter/release-catalog-reader.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "When loading this module",
+      "evidence": [
+        {
+          "path": "exporter/export-protocol.mjs",
+          "excerpt": "import { readReleaseCatalog, repositoryIdentity } from './release-catalog-reader.mjs';"
+        }
+      ]
+    },
+    {
+      "id": "resource:2dac2e8a7ee0f135",
+      "from": "file:exporter/export-protocol.mjs",
+      "to": "file:exporter/release-snapshots.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "When loading this module",
+      "evidence": [
+        {
+          "path": "exporter/export-protocol.mjs",
+          "excerpt": "import { readFirstParentCommits, readGitFiles, readGitSkillTrees, readRepositoryOrigin, resolveCommit } from './release-snapshots.mjs';"
+        }
+      ]
+    },
+    {
+      "id": "resource:13f148acd1dae10b",
+      "from": "file:exporter/export-source.mjs",
+      "to": "file:exporter/release-catalog.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "When loading this module",
+      "evidence": [
+        {
+          "path": "exporter/export-source.mjs",
+          "excerpt": "import { skillContentIdentity } from './release-catalog.mjs';"
+        }
+      ]
+    },
+    {
+      "id": "resource:c7b6cf628a8f257b",
+      "from": "file:exporter/export-source.mjs",
+      "to": "file:exporter/release-validation.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "When loading this module",
+      "evidence": [
+        {
+          "path": "exporter/export-source.mjs",
+          "excerpt": "import { parseRelease } from './release-validation.mjs';"
+        }
+      ]
+    },
+    {
+      "id": "resource:4582c641d5cc77f4",
+      "from": "file:exporter/release-catalog-reader.mjs",
+      "to": "file:exporter/release-catalog.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "When loading this module",
+      "evidence": [
+        {
+          "path": "exporter/release-catalog-reader.mjs",
+          "excerpt": "import { buildReleaseCatalog } from './release-catalog.mjs';"
+        }
+      ]
+    },
+    {
+      "id": "resource:1e77f0ceac50f255",
+      "from": "file:exporter/release-catalog-reader.mjs",
+      "to": "file:exporter/release-snapshots.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "When loading this module",
+      "evidence": [
+        {
+          "path": "exporter/release-catalog-reader.mjs",
+          "excerpt": "import { readFirstParentCommits, readGitFiles, readGitSkillTrees, readRepositoryOrigin, resolveCommit } from './release-snapshots.mjs';"
+        }
+      ]
+    },
+    {
+      "id": "resource:1c53ce8b3f4ad34d",
+      "from": "file:exporter/release-catalog.mjs",
+      "to": "file:exporter/release-validation.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "When loading this module",
+      "evidence": [
+        {
+          "path": "exporter/release-catalog.mjs",
+          "excerpt": "import { parseRelease, validateReleaseChange } from './release-validation.mjs';"
+        }
+      ]
+    },
+    {
+      "id": "resource:f6de94d82feb0581",
+      "from": "file:scripts/create-skills/install.mjs",
+      "to": "file:scripts/create-skills/package.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "When loading this module",
+      "evidence": [
+        {
+          "path": "scripts/create-skills/install.mjs",
+          "excerpt": "import { checkPackage, readPackage, regularDirectory } from './package.mjs';"
+        }
+      ]
+    },
+    {
+      "id": "resource:79492026f91bad18",
+      "from": "file:scripts/create-skills/package.mjs",
+      "to": "file:scripts/skill-package-validation.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "When loading this module",
+      "evidence": [
+        {
+          "path": "scripts/create-skills/package.mjs",
+          "excerpt": "import { validateSkill } from '../skill-package-validation.mjs';"
+        }
+      ]
+    },
+    {
+      "id": "resource:941e008ab193b46c",
+      "from": "file:scripts/create-skills/run.mjs",
+      "to": "file:scripts/create-skills/install.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "When loading this module",
+      "evidence": [
+        {
+          "path": "scripts/create-skills/run.mjs",
+          "excerpt": "import { installPackage } from './install.mjs';"
+        }
+      ]
+    },
+    {
+      "id": "resource:c617aa8854d7a4f5",
+      "from": "file:scripts/create-skills/run.mjs",
+      "to": "file:scripts/create-skills/package.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "When loading this module",
+      "evidence": [
+        {
+          "path": "scripts/create-skills/run.mjs",
+          "excerpt": "import { checkDirectory } from './package.mjs';"
+        }
+      ]
+    },
+    {
+      "id": "resource:50c8597b5d9e6eb5",
+      "from": "file:scripts/create-skills/run.mjs",
+      "to": "file:scripts/create-skills/submission.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "When loading this module",
+      "evidence": [
+        {
+          "path": "scripts/create-skills/run.mjs",
+          "excerpt": "import { prepareSubmission, nextSubmission, submissionLimits } from './submission.mjs';"
+        }
+      ]
+    },
+    {
+      "id": "resource:f05316dea378df28",
+      "from": "file:scripts/create-skills/submission.mjs",
+      "to": "file:scripts/create-skills/package.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "When loading this module",
+      "evidence": [
+        {
+          "path": "scripts/create-skills/submission.mjs",
+          "excerpt": "import { sha256, readPackage } from './package.mjs';"
+        }
+      ]
+    },
+    {
+      "id": "resource:e70588fba95bdedc",
+      "from": "file:scripts/create-skills/submission.mjs",
+      "to": "file:scripts/intent-record.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "When loading this module",
+      "evidence": [
+        {
+          "path": "scripts/create-skills/submission.mjs",
+          "excerpt": "import { intentSections } from '../intent-record.mjs';"
+        }
+      ]
+    },
+    {
+      "id": "resource:a2ea266b723293db",
+      "from": "file:scripts/create-skills/submission.mjs",
+      "to": "file:scripts/review-handoff.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "When loading this module",
+      "evidence": [
+        {
+          "path": "scripts/create-skills/submission.mjs",
+          "excerpt": "import { requireText, bytes, lf, split, fenced, prepareHandoff } from '../review-handoff.mjs';"
+        }
+      ]
+    },
+    {
+      "id": "resource:3ce3e28a986a2114",
+      "from": "file:scripts/export-cli.mjs",
+      "to": "file:scripts/export-filesystem.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "When loading this module",
+      "evidence": [
+        {
+          "path": "scripts/export-cli.mjs",
+          "excerpt": "import { checkedPath, inspectCopy, targetPaths } from './export-filesystem.mjs';"
+        }
+      ]
+    },
+    {
+      "id": "resource:a575311cd55e946c",
+      "from": "file:scripts/export-cli.mjs",
+      "to": "file:scripts/export-protocol.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "When loading this module",
+      "evidence": [
+        {
+          "path": "scripts/export-cli.mjs",
+          "excerpt": "import { acquireCatalog, checkRuntime, executePlan, makePlan, reviewPlan } from './export-protocol.mjs';"
+        }
+      ]
+    },
+    {
+      "id": "resource:7119668071746e3f",
+      "from": "file:scripts/export-cli.mjs",
+      "to": "file:scripts/export-source.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "When loading this module",
+      "evidence": [
+        {
+          "path": "scripts/export-cli.mjs",
+          "excerpt": "import { PROTOCOL_VERSION, requireExport } from './export-source.mjs';"
+        }
+      ]
+    },
+    {
+      "id": "resource:eeaf40e27342dbe1",
+      "from": "file:scripts/export-filesystem.mjs",
+      "to": "file:scripts/export-source.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "When loading this module",
+      "evidence": [
+        {
+          "path": "scripts/export-filesystem.mjs",
+          "excerpt": "import { EXPORTER_VERSION, PROTOCOL_VERSION, REPOSITORY, prepareSource, requireExport, sha256, validateSourcePath } from './export-source.mjs';"
+        }
+      ]
+    },
+    {
+      "id": "resource:ad511d531596e62e",
+      "from": "file:scripts/export-protocol.mjs",
+      "to": "file:scripts/export-filesystem.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "When loading this module",
+      "evidence": [
+        {
+          "path": "scripts/export-protocol.mjs",
+          "excerpt": "import { checkedPath, createCopy, ensureDirectory, isSecurityError, targetPaths } from './export-filesystem.mjs';"
+        }
+      ]
+    },
+    {
+      "id": "resource:cba3723746dbadd2",
+      "from": "file:scripts/export-protocol.mjs",
+      "to": "file:scripts/export-source.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "When loading this module",
+      "evidence": [
+        {
+          "path": "scripts/export-protocol.mjs",
+          "excerpt": "import { EXPORTER_VERSION, PROTOCOL_VERSION, REPOSITORY, fileManifest, prepareSource, requireExport, sha256 } from './export-source.mjs';"
+        }
+      ]
+    },
+    {
+      "id": "resource:37d3268a9b67d3dc",
+      "from": "file:scripts/export-protocol.mjs",
+      "to": "file:scripts/release-catalog-reader.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "When loading this module",
+      "evidence": [
+        {
+          "path": "scripts/export-protocol.mjs",
+          "excerpt": "import { readReleaseCatalog, repositoryIdentity } from './release-catalog-reader.mjs';"
+        }
+      ]
+    },
+    {
+      "id": "resource:fc98ee732f622e2d",
+      "from": "file:scripts/export-protocol.mjs",
+      "to": "file:scripts/release-snapshots.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "When loading this module",
+      "evidence": [
+        {
+          "path": "scripts/export-protocol.mjs",
+          "excerpt": "import { readFirstParentCommits, readGitFiles, readGitSkillTrees, readRepositoryOrigin, resolveCommit } from './release-snapshots.mjs';"
+        }
+      ]
+    },
+    {
+      "id": "resource:190bc61d182746ba",
+      "from": "file:scripts/export-source.mjs",
+      "to": "file:scripts/release-catalog.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "When loading this module",
+      "evidence": [
+        {
+          "path": "scripts/export-source.mjs",
+          "excerpt": "import { skillContentIdentity } from './release-catalog.mjs';"
+        }
+      ]
+    },
+    {
+      "id": "resource:0530f837651ab5ca",
+      "from": "file:scripts/export-source.mjs",
+      "to": "file:scripts/release-validation.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "When loading this module",
+      "evidence": [
+        {
+          "path": "scripts/export-source.mjs",
+          "excerpt": "import { parseRelease } from './release-validation.mjs';"
+        }
+      ]
+    },
+    {
+      "id": "resource:9225e9df319b340a",
+      "from": "file:scripts/intent-record.mjs",
+      "to": "file:scripts/review-handoff.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "When loading this module",
+      "evidence": [
+        {
+          "path": "scripts/intent-record.mjs",
+          "excerpt": "import { requireText } from './review-handoff.mjs';"
+        }
+      ]
+    },
+    {
+      "id": "resource:3af02ceed43befd3",
+      "from": "file:scripts/issue-submission/api.mjs",
+      "to": "file:scripts/issue-submission/contract.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "When loading this module",
+      "evidence": [
+        {
+          "path": "scripts/issue-submission/api.mjs",
+          "excerpt": "import { API, LIMITS, REPOSITORY, REPOSITORY_ID, WEBSITE, SubmissionError, positiveId } from './contract.mjs';"
+        }
+      ]
+    },
+    {
+      "id": "resource:d022114ab4ae05ca",
+      "from": "file:scripts/issue-submission/run.mjs",
+      "to": "file:scripts/issue-submission/contract.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "When loading this module",
+      "evidence": [
+        {
+          "path": "scripts/issue-submission/run.mjs",
+          "excerpt": "import { LIMITS, REPOSITORY, SubmissionError, decodeInput } from './contract.mjs';"
+        }
+      ]
+    },
+    {
+      "id": "resource:ce50ac093031b7ce",
+      "from": "file:scripts/issue-submission/run.mjs",
+      "to": "file:scripts/issue-submission/runtime.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "When loading this module",
+      "evidence": [
+        {
+          "path": "scripts/issue-submission/run.mjs",
+          "excerpt": "import { createRuntime } from './runtime.mjs';"
+        }
+      ]
+    },
+    {
+      "id": "resource:c587dbbf6c7bbcb2",
+      "from": "file:scripts/issue-submission/run.mjs",
+      "to": "file:scripts/issue-submission/service.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "When loading this module",
+      "evidence": [
+        {
+          "path": "scripts/issue-submission/run.mjs",
+          "excerpt": "import { submit } from './service.mjs';"
+        }
+      ]
+    },
+    {
+      "id": "resource:936c9c4b65b3b55a",
+      "from": "file:scripts/issue-submission/runtime.mjs",
+      "to": "file:scripts/issue-submission/contract.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "When loading this module",
+      "evidence": [
+        {
+          "path": "scripts/issue-submission/runtime.mjs",
+          "excerpt": "import { API, LIMITS, SubmissionError } from './contract.mjs';"
+        }
+      ]
+    },
+    {
+      "id": "resource:771d43a985d411d2",
+      "from": "file:scripts/issue-submission/service.mjs",
+      "to": "file:scripts/issue-submission/api.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "When loading this module",
+      "evidence": [
+        {
+          "path": "scripts/issue-submission/service.mjs",
+          "excerpt": "import { Session, issueRecord, commentRecord, sameText } from './api.mjs';"
+        }
+      ]
+    },
+    {
+      "id": "resource:0a0c679e52264389",
+      "from": "file:scripts/issue-submission/service.mjs",
+      "to": "file:scripts/issue-submission/contract.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "When loading this module",
+      "evidence": [
+        {
+          "path": "scripts/issue-submission/service.mjs",
+          "excerpt": "import { API, LIMITS, REPOSITORY, WEBSITE, validateRequest, SubmissionError } from './contract.mjs';"
+        }
+      ]
+    },
+    {
+      "id": "resource:06cac4be6fd16b41",
+      "from": "file:scripts/release-catalog-reader.mjs",
+      "to": "file:scripts/release-catalog.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "When loading this module",
+      "evidence": [
+        {
+          "path": "scripts/release-catalog-reader.mjs",
+          "excerpt": "import { buildReleaseCatalog } from './release-catalog.mjs';"
+        }
+      ]
+    },
+    {
+      "id": "resource:fdc67bab864c784b",
+      "from": "file:scripts/release-catalog-reader.mjs",
+      "to": "file:scripts/release-snapshots.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "When loading this module",
+      "evidence": [
+        {
+          "path": "scripts/release-catalog-reader.mjs",
+          "excerpt": "import { readFirstParentCommits, readGitFiles, readGitSkillTrees, readRepositoryOrigin, resolveCommit } from './release-snapshots.mjs';"
+        }
+      ]
+    },
+    {
+      "id": "resource:6745c45a3e50fdda",
+      "from": "file:scripts/release-catalog.mjs",
+      "to": "file:scripts/release-validation.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "When loading this module",
+      "evidence": [
+        {
+          "path": "scripts/release-catalog.mjs",
+          "excerpt": "import { parseRelease, validateReleaseChange } from './release-validation.mjs';"
+        }
+      ]
+    },
+    {
+      "id": "resource:b18b88c0477affd6",
+      "from": "file:scripts/skill-package-validation.mjs",
+      "to": "file:scripts/release-validation.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "When loading this module",
+      "evidence": [
+        {
+          "path": "scripts/skill-package-validation.mjs",
+          "excerpt": "import { parseRelease } from './release-validation.mjs';"
+        }
+      ]
+    },
+    {
+      "id": "resource:dacb4e7520c36e0e",
+      "from": "file:scripts/skill-steal/run.mjs",
+      "to": "file:scripts/create-skills/package.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "When loading this module",
+      "evidence": [
+        {
+          "path": "scripts/skill-steal/run.mjs",
+          "excerpt": "import { checkDirectory } from '../create-skills/package.mjs';"
+        }
+      ]
+    },
+    {
+      "id": "resource:78c288274cd73e56",
+      "from": "file:scripts/skill-steal/run.mjs",
+      "to": "file:scripts/create-skills/submission.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "When loading this module",
+      "evidence": [
+        {
+          "path": "scripts/skill-steal/run.mjs",
+          "excerpt": "import { prepareSubmission, nextSubmission, submissionLimits } from '../create-skills/submission.mjs';"
+        }
+      ]
+    },
+    {
+      "id": "resource:d88fd19ec8946a5c",
+      "from": "file:scripts/skill-tweak/run.mjs",
+      "to": "file:scripts/skill-tweak/submission.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "When loading this module",
+      "evidence": [
+        {
+          "path": "scripts/skill-tweak/run.mjs",
+          "excerpt": "import { prepareSubmission, nextSubmission, submissionLimits } from './submission.mjs';"
+        }
+      ]
+    },
+    {
+      "id": "resource:fe6ef5c9e6e869e2",
+      "from": "file:scripts/skill-tweak/submission.mjs",
+      "to": "file:scripts/intent-record.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "When loading this module",
+      "evidence": [
+        {
+          "path": "scripts/skill-tweak/submission.mjs",
+          "excerpt": "import { intentSections } from '../intent-record.mjs';"
+        }
+      ]
+    },
+    {
+      "id": "resource:6e896ea277fbcd45",
+      "from": "file:scripts/skill-tweak/submission.mjs",
+      "to": "file:scripts/review-handoff.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "When loading this module",
+      "evidence": [
+        {
+          "path": "scripts/skill-tweak/submission.mjs",
+          "excerpt": "import { requireText, prepareHandoff } from '../review-handoff.mjs';"
+        }
+      ]
+    },
+    {
+      "id": "resource:598db0a01a6552f0",
+      "from": "file:skills/caveman-commit/README.md",
+      "to": "file:skills/caveman-commit/LICENSE",
+      "kind": "resource",
+      "conditional": true,
+      "condition": "When copying or redistributing this package/guidance; preserve the notice",
+      "evidence": [
+        {
+          "path": "skills/caveman-commit/README.md",
+          "excerpt": "The skill is covered by the [MIT license](LICENSE); upstream [licensing scope](https://github.com/JuliusBrussee/caveman/blob/2fd153c67988e980fb0b2455c90832159a6a5a25/LICENSING.md) classifies skills/ as MIT. This independent GT adaptation does not imply upstream sponsorship."
+        }
+      ]
+    },
+    {
+      "id": "resource:4ccd444d4f10cd3e",
+      "from": "file:skills/caveman-commit/README.md",
+      "to": "file:skills/caveman-commit/SKILL.md",
+      "kind": "resource",
+      "conditional": true,
+      "condition": "When following the source guidance or its documented branch",
+      "evidence": [
+        {
+          "path": "skills/caveman-commit/README.md",
+          "excerpt": "- [`SKILL.md`](./SKILL.md) — full LLM-facing instructions"
+        }
+      ]
+    },
+    {
+      "id": "resource:3aba405927b66025",
+      "from": "file:skills/caveman-compress/README.md",
+      "to": "file:skills/caveman-compress/LICENSE",
+      "kind": "resource",
+      "conditional": true,
+      "condition": "When copying or redistributing this package/guidance; preserve the notice",
+      "evidence": [
+        {
+          "path": "skills/caveman-compress/README.md",
+          "excerpt": "copyright (c) 2026 Julius Brussee, under the exact bundled [MIT license](LICENSE)."
+        }
+      ]
+    },
+    {
+      "id": "resource:70dc6340e7bc66a2",
+      "from": "file:skills/caveman-compress/README.md",
+      "to": "file:skills/caveman-compress/scripts/__main__.py",
+      "kind": "resource",
+      "conditional": true,
+      "condition": "When following the source guidance or its documented branch",
+      "evidence": [
+        {
+          "path": "skills/caveman-compress/README.md",
+          "excerpt": "[entry point](scripts/__main__.py) invokes the [CLI](scripts/cli.py). A missing"
+        }
+      ]
+    },
+    {
+      "id": "resource:7947181a326be59e",
+      "from": "file:skills/caveman-compress/README.md",
+      "to": "file:skills/caveman-compress/scripts/benchmark.py",
+      "kind": "resource",
+      "conditional": true,
+      "condition": "When optionally measuring two files with the benchmark helper",
+      "evidence": [
+        {
+          "path": "skills/caveman-compress/README.md",
+          "excerpt": "The optional [benchmark helper](scripts/benchmark.py) compares two explicit files:"
+        }
+      ]
+    },
+    {
+      "id": "resource:9048741eddeca8c2",
+      "from": "file:skills/caveman-compress/README.md",
+      "to": "file:skills/caveman-compress/scripts/cli.py",
+      "kind": "resource",
+      "conditional": true,
+      "condition": "When following the source guidance or its documented branch",
+      "evidence": [
+        {
+          "path": "skills/caveman-compress/README.md",
+          "excerpt": "[entry point](scripts/__main__.py) invokes the [CLI](scripts/cli.py). A missing"
+        }
+      ]
+    },
+    {
+      "id": "resource:e264431ed4690271",
+      "from": "file:skills/caveman-compress/README.md",
+      "to": "file:skills/caveman-compress/scripts/compress.py",
+      "kind": "resource",
+      "conditional": true,
+      "condition": "When following the source guidance or its documented branch",
+      "evidence": [
+        {
+          "path": "skills/caveman-compress/README.md",
+          "excerpt": "The [orchestrator](scripts/compress.py) masks code and separates frontmatter for"
+        }
+      ]
+    },
+    {
+      "id": "resource:d72a9a8fc7196e66",
+      "from": "file:skills/caveman-compress/README.md",
+      "to": "file:skills/caveman-compress/scripts/validate.py",
+      "kind": "resource",
+      "conditional": true,
+      "condition": "When following the source guidance or its documented branch",
+      "evidence": [
+        {
+          "path": "skills/caveman-compress/README.md",
+          "excerpt": "The [validator](scripts/validate.py) checks heading text/order, extracted code"
+        }
+      ]
+    },
+    {
+      "id": "resource:aeafc214a908b927",
+      "from": "file:skills/caveman-compress/README.md",
+      "to": "file:skills/caveman-compress/SECURITY.md",
+      "kind": "resource",
+      "conditional": true,
+      "condition": "When following the source guidance or its documented branch",
+      "evidence": [
+        {
+          "path": "skills/caveman-compress/README.md",
+          "excerpt": "preservation rules, and [SECURITY.md](SECURITY.md) for provider and file effects."
+        }
+      ]
+    },
+    {
+      "id": "resource:065a1c95c901b319",
+      "from": "file:skills/caveman-compress/README.md",
+      "to": "file:skills/caveman-compress/SKILL.md",
+      "kind": "resource",
+      "conditional": true,
+      "condition": "When following the source guidance or its documented branch",
+      "evidence": [
+        {
+          "path": "skills/caveman-compress/README.md",
+          "excerpt": "replaced on success. Read [SKILL.md](SKILL.md) for the workflow and intended"
+        }
+      ]
+    },
+    {
+      "id": "resource:9f0dfd386077c82e",
+      "from": "file:skills/caveman-compress/scripts/__main__.py",
+      "to": "file:skills/caveman-compress/scripts/cli.py",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "When loading this module",
+      "evidence": [
+        {
+          "path": "skills/caveman-compress/scripts/__main__.py",
+          "excerpt": "from .cli import main"
+        }
+      ]
+    },
+    {
+      "id": "resource:e456ec952f7a2fb4",
+      "from": "file:skills/caveman-compress/scripts/cli.py",
+      "to": "file:skills/caveman-compress/scripts/compress.py",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "When loading this module",
+      "evidence": [
+        {
+          "path": "skills/caveman-compress/scripts/cli.py",
+          "excerpt": "from .compress import backup_dir_for, compress_file"
+        }
+      ]
+    },
+    {
+      "id": "resource:e40129c5356f6121",
+      "from": "file:skills/caveman-compress/scripts/cli.py",
+      "to": "file:skills/caveman-compress/scripts/detect.py",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "When loading this module",
+      "evidence": [
+        {
+          "path": "skills/caveman-compress/scripts/cli.py",
+          "excerpt": "from .detect import detect_file_type, should_compress"
+        }
+      ]
+    },
+    {
+      "id": "resource:42a4870f8b4f5674",
+      "from": "file:skills/caveman-compress/scripts/compress.py",
+      "to": "file:skills/caveman-compress/scripts/detect.py",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "When loading this module",
+      "evidence": [
+        {
+          "path": "skills/caveman-compress/scripts/compress.py",
+          "excerpt": "from .detect import should_compress"
+        }
+      ]
+    },
+    {
+      "id": "resource:17000cdd91dce3dd",
+      "from": "file:skills/caveman-compress/scripts/compress.py",
+      "to": "file:skills/caveman-compress/scripts/validate.py",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "When loading this module",
+      "evidence": [
+        {
+          "path": "skills/caveman-compress/scripts/compress.py",
+          "excerpt": "from .validate import validate"
+        }
+      ]
+    },
+    {
+      "id": "resource:dbd24cb7d43320e1",
+      "from": "file:skills/caveman-compress/SECURITY.md",
+      "to": "file:skills/caveman-compress/README.md",
+      "kind": "resource",
+      "conditional": true,
+      "condition": "When following the source guidance or its documented branch",
+      "evidence": [
+        {
+          "path": "skills/caveman-compress/SECURITY.md",
+          "excerpt": "backup and validating a staged candidate. Read [backup recovery](README.md#backup-recovery)"
+        }
+      ]
+    },
+    {
+      "id": "resource:ad0fcaac460fa22a",
+      "from": "file:skills/caveman-compress/SECURITY.md",
+      "to": "file:skills/caveman-compress/SKILL.md",
+      "kind": "resource",
+      "conditional": true,
+      "condition": "When following the source guidance or its documented branch",
+      "evidence": [
+        {
+          "path": "skills/caveman-compress/SECURITY.md",
+          "excerpt": "in [SKILL.md](SKILL.md). No historical third-party security rating is claimed as a"
+        }
+      ]
+    },
+    {
+      "id": "resource:b825f60a5455e5da",
+      "from": "file:skills/caveman-compress/SKILL.md",
+      "to": "file:skills/caveman-compress/README.md",
+      "kind": "resource",
+      "conditional": true,
+      "condition": "For requested backup restoration or deliberate recompression",
+      "evidence": [
+        {
+          "path": "skills/caveman-compress/SKILL.md",
+          "excerpt": "follow [backup recovery](README.md#backup-recovery); never overwrite or discard a"
+        }
+      ]
+    },
+    {
+      "id": "resource:c9ac81b04a091689",
+      "from": "file:skills/caveman-compress/SKILL.md",
+      "to": "file:skills/caveman-compress/scripts/__main__.py",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "During the documented workflow; follow the quoted instruction",
+      "evidence": [
+        {
+          "path": "skills/caveman-compress/SKILL.md",
+          "excerpt": "3. From this skill directory, run the [bundled entry point](scripts/__main__.py):"
+        }
+      ]
+    },
+    {
+      "id": "resource:2a75b7c6f0363194",
+      "from": "file:skills/caveman-compress/SKILL.md",
+      "to": "file:skills/caveman-compress/SECURITY.md",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "During the documented workflow; follow the quoted instruction",
+      "evidence": [
+        {
+          "path": "skills/caveman-compress/SKILL.md",
+          "excerpt": "   [runtime/data-flow notes](SECURITY.md) before running. The contents may be sent"
+        }
+      ]
+    },
+    {
+      "id": "resource:0cb7728df2b1fd82",
+      "from": "file:skills/caveman-explore/README.md",
+      "to": "file:skills/caveman-explore/LICENSE",
+      "kind": "resource",
+      "conditional": true,
+      "condition": "When copying or redistributing this package/guidance; preserve the notice",
+      "evidence": [
+        {
+          "path": "skills/caveman-explore/README.md",
+          "excerpt": "copyright (c) 2026 Julius Brussee, under the bundled [MIT license](LICENSE)."
+        }
+      ]
+    },
+    {
+      "id": "resource:70b5f45d9a26ec8a",
+      "from": "file:skills/caveman-review/README.md",
+      "to": "file:skills/caveman-review/LICENSE",
+      "kind": "resource",
+      "conditional": true,
+      "condition": "When copying or redistributing this package/guidance; preserve the notice",
+      "evidence": [
+        {
+          "path": "skills/caveman-review/README.md",
+          "excerpt": "Imported from [JuliusBrussee/caveman](https://github.com/JuliusBrussee/caveman/blob/2fd153c67988e980fb0b2455c90832159a6a5a25/skills/caveman-review), copyright (c) 2026 Julius Brussee, under the bundled [MIT license](LICENSE). [Upstream licensing scope](https://github.com/JuliusBrussee/caveman/blob/2fd153c67988e980fb0b2455c90832159a6a5a25/LICENSING.md) classifies skills/ as MIT. The intake recorded an exact source match to that pinned revision; GT adaptations are listed below. This independent adaptation does not imply upstream sponsorship."
+        }
+      ]
+    },
+    {
+      "id": "resource:3707344344020d1e",
+      "from": "file:skills/caveman-review/README.md",
+      "to": "file:skills/caveman-review/SKILL.md",
+      "kind": "resource",
+      "conditional": true,
+      "condition": "When following the source guidance or its documented branch",
+      "evidence": [
+        {
+          "path": "skills/caveman-review/README.md",
+          "excerpt": "- [`SKILL.md`](./SKILL.md) — full LLM-facing instructions"
+        }
+      ]
+    },
+    {
+      "id": "resource:aa5f9a927ca62954",
+      "from": "file:skills/caveman/README.md",
+      "to": "file:skills/caveman/LICENSE",
+      "kind": "resource",
+      "conditional": true,
+      "condition": "When copying or redistributing this package/guidance; preserve the notice",
+      "evidence": [
+        {
+          "path": "skills/caveman/README.md",
+          "excerpt": "copyright (c) 2026 Julius Brussee, under the bundled [MIT license](LICENSE)."
+        }
+      ]
+    },
+    {
+      "id": "resource:2a83fc61581da49a",
+      "from": "file:skills/caveman/README.md",
+      "to": "file:skills/caveman/SKILL.md",
+      "kind": "resource",
+      "conditional": true,
+      "condition": "When following the source guidance or its documented branch",
+      "evidence": [
+        {
+          "path": "skills/caveman/README.md",
+          "excerpt": "The host must discover and enable the GT plugin and load [SKILL.md](SKILL.md)"
+        }
+      ]
+    },
+    {
+      "id": "resource:9441af68d0eea926",
+      "from": "file:skills/caveman/SKILL.md",
+      "to": "file:skills/caveman/LICENSE",
+      "kind": "resource",
+      "conditional": true,
+      "condition": "When copying or redistributing this package/guidance; preserve the notice",
+      "evidence": [
+        {
+          "path": "skills/caveman/SKILL.md",
+          "excerpt": "when redistributing this package. Preserve the bundled [MIT notice](LICENSE)."
+        }
+      ]
+    },
+    {
+      "id": "resource:64a378f36bd55477",
+      "from": "file:skills/caveman/SKILL.md",
+      "to": "file:skills/caveman/README.md",
+      "kind": "resource",
+      "conditional": true,
+      "condition": "For installation questions or redistribution",
+      "evidence": [
+        {
+          "path": "skills/caveman/SKILL.md",
+          "excerpt": "[usage and provenance guide](README.md); read it for installation questions or"
+        }
+      ]
+    },
+    {
+      "id": "resource:fe32d2d1bd620945",
+      "from": "file:skills/create-issue/references/helper.md",
+      "to": "file:skills/create-issue/scripts/run.mjs",
+      "kind": "resource",
+      "conditional": true,
+      "condition": "When following the source guidance or its documented branch",
+      "evidence": [
+        {
+          "path": "skills/create-issue/references/helper.md",
+          "excerpt": "Read before executing [the entry point](../scripts/run.mjs). Resolve its absolute"
+        }
+      ]
+    },
+    {
+      "id": "resource:2da2181055f00eac",
+      "from": "file:skills/create-issue/scripts/api.mjs",
+      "to": "file:skills/create-issue/scripts/contract.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "When loading this module",
+      "evidence": [
+        {
+          "path": "skills/create-issue/scripts/api.mjs",
+          "excerpt": "import { API, LIMITS, REPOSITORY, REPOSITORY_ID, WEBSITE, SubmissionError, positiveId } from './contract.mjs';"
+        }
+      ]
+    },
+    {
+      "id": "resource:a70e8fc40d40ce18",
+      "from": "file:skills/create-issue/scripts/run.mjs",
+      "to": "file:skills/create-issue/scripts/contract.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "When loading this module",
+      "evidence": [
+        {
+          "path": "skills/create-issue/scripts/run.mjs",
+          "excerpt": "import { LIMITS, REPOSITORY, SubmissionError, decodeInput } from './contract.mjs';"
+        }
+      ]
+    },
+    {
+      "id": "resource:4eb3e230ef66a130",
+      "from": "file:skills/create-issue/scripts/run.mjs",
+      "to": "file:skills/create-issue/scripts/runtime.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "When loading this module",
+      "evidence": [
+        {
+          "path": "skills/create-issue/scripts/run.mjs",
+          "excerpt": "import { createRuntime } from './runtime.mjs';"
+        }
+      ]
+    },
+    {
+      "id": "resource:66160daeee014966",
+      "from": "file:skills/create-issue/scripts/run.mjs",
+      "to": "file:skills/create-issue/scripts/service.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "When loading this module",
+      "evidence": [
+        {
+          "path": "skills/create-issue/scripts/run.mjs",
+          "excerpt": "import { submit } from './service.mjs';"
+        }
+      ]
+    },
+    {
+      "id": "resource:ea1ac341d5e26a53",
+      "from": "file:skills/create-issue/scripts/runtime.mjs",
+      "to": "file:skills/create-issue/scripts/contract.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "When loading this module",
+      "evidence": [
+        {
+          "path": "skills/create-issue/scripts/runtime.mjs",
+          "excerpt": "import { API, LIMITS, SubmissionError } from './contract.mjs';"
+        }
+      ]
+    },
+    {
+      "id": "resource:2b1fd982d602ff2c",
+      "from": "file:skills/create-issue/scripts/service.mjs",
+      "to": "file:skills/create-issue/scripts/api.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "When loading this module",
+      "evidence": [
+        {
+          "path": "skills/create-issue/scripts/service.mjs",
+          "excerpt": "import { Session, issueRecord, commentRecord, sameText } from './api.mjs';"
+        }
+      ]
+    },
+    {
+      "id": "resource:25a2c566154f29f6",
+      "from": "file:skills/create-issue/scripts/service.mjs",
+      "to": "file:skills/create-issue/scripts/contract.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "When loading this module",
+      "evidence": [
+        {
+          "path": "skills/create-issue/scripts/service.mjs",
+          "excerpt": "import { API, LIMITS, REPOSITORY, WEBSITE, validateRequest, SubmissionError } from './contract.mjs';"
+        }
+      ]
+    },
+    {
+      "id": "resource:ff5c207d09ceb742",
+      "from": "file:skills/create-issue/SKILL.md",
+      "to": "file:skills/create-issue/references/helper.md",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "During the documented workflow; follow the quoted instruction",
+      "evidence": [
+        {
+          "path": "skills/create-issue/SKILL.md",
+          "excerpt": "2. Read the [helper protocol](references/helper.md) before any helper call. Use"
+        }
+      ]
+    },
+    {
+      "id": "resource:d449594c771afa47",
+      "from": "file:skills/create-issue/SKILL.md",
+      "to": "file:skills/create-issue/references/labels.md",
+      "kind": "resource",
+      "conditional": true,
+      "condition": "When labels are relevant to submission",
+      "evidence": [
+        {
+          "path": "skills/create-issue/SKILL.md",
+          "excerpt": "3. Read the [label meanings](references/labels.md) when labels are relevant."
+        }
+      ]
+    },
+    {
+      "id": "resource:eef8512a710ad4c3",
+      "from": "file:skills/create-issue/SKILL.md",
+      "to": "file:skills/create-issue/scripts/run.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "During the documented workflow; follow the quoted instruction",
+      "evidence": [
+        {
+          "path": "skills/create-issue/SKILL.md",
+          "excerpt": "   its [bundled entry point](scripts/run.mjs) and adjacent runtime modules from"
+        }
+      ]
+    },
+    {
+      "id": "resource:4460b5f2adbe687b",
+      "from": "file:skills/create-skills/references/personal-installation.md",
+      "to": "file:skills/create-skills/references/tools.md",
+      "kind": "resource",
+      "conditional": true,
+      "condition": "When following the source guidance or its documented branch",
+      "evidence": [
+        {
+          "path": "skills/create-skills/references/personal-installation.md",
+          "excerpt": "Read [local tools](tools.md) before running the bundled `install` command. Show the"
+        }
+      ]
+    },
+    {
+      "id": "resource:20b3ce06cf364a9c",
+      "from": "file:skills/create-skills/references/specification.md",
+      "to": "file:skills/create-skills/references/intent-capture.md",
+      "kind": "resource",
+      "conditional": true,
+      "condition": "When following the source guidance or its documented branch",
+      "evidence": [
+        {
+          "path": "skills/create-skills/references/specification.md",
+          "excerpt": "selected GT grill-me dependency using the [intent guide](intent-capture.md)."
+        }
+      ]
+    },
+    {
+      "id": "resource:ccec55377102e687",
+      "from": "file:skills/create-skills/references/submission.md",
+      "to": "file:skills/create-skills/references/intent-capture.md",
+      "kind": "resource",
+      "conditional": true,
+      "condition": "When following the source guidance or its documented branch",
+      "evidence": [
+        {
+          "path": "skills/create-skills/references/submission.md",
+          "excerpt": "[intent capture guide](intent-capture.md), plus optional `packageDirectory`."
+        }
+      ]
+    },
+    {
+      "id": "resource:8f833d1fe983e6fe",
+      "from": "file:skills/create-skills/references/submission.md",
+      "to": "file:skills/create-skills/references/tools.md",
+      "kind": "resource",
+      "conditional": true,
+      "condition": "When following the source guidance or its documented branch",
+      "evidence": [
+        {
+          "path": "skills/create-skills/references/submission.md",
+          "excerpt": "Read [local tools](tools.md) before using the bundled `prepare` command to produce"
+        }
+      ]
+    },
+    {
+      "id": "resource:3d7772c7deae1042",
+      "from": "file:skills/create-skills/references/tools.md",
+      "to": "file:skills/create-skills/scripts/run.mjs",
+      "kind": "resource",
+      "conditional": true,
+      "condition": "When following the source guidance or its documented branch",
+      "evidence": [
+        {
+          "path": "skills/create-skills/references/tools.md",
+          "excerpt": "Resolve [the entry point](../scripts/run.mjs) from this installed package, including"
+        }
+      ]
+    },
+    {
+      "id": "resource:a18fc7f2b7ffdb36",
+      "from": "file:skills/create-skills/scripts/install.mjs",
+      "to": "file:skills/create-skills/scripts/package.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "When loading this module",
+      "evidence": [
+        {
+          "path": "skills/create-skills/scripts/install.mjs",
+          "excerpt": "import { checkPackage, readPackage, regularDirectory } from './package.mjs';"
+        }
+      ]
+    },
+    {
+      "id": "resource:d4403ab50570f977",
+      "from": "file:skills/create-skills/scripts/intent-record.mjs",
+      "to": "file:skills/create-skills/scripts/review-handoff.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "When loading this module",
+      "evidence": [
+        {
+          "path": "skills/create-skills/scripts/intent-record.mjs",
+          "excerpt": "import { requireText } from './review-handoff.mjs';"
+        }
+      ]
+    },
+    {
+      "id": "resource:69c3a18232f17cc9",
+      "from": "file:skills/create-skills/scripts/package.mjs",
+      "to": "file:skills/create-skills/scripts/skill-package-validation.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "When loading this module",
+      "evidence": [
+        {
+          "path": "skills/create-skills/scripts/package.mjs",
+          "excerpt": "import { validateSkill } from './skill-package-validation.mjs';"
+        }
+      ]
+    },
+    {
+      "id": "resource:182e88ba77d93a17",
+      "from": "file:skills/create-skills/scripts/run.mjs",
+      "to": "file:skills/create-skills/scripts/install.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "When loading this module",
+      "evidence": [
+        {
+          "path": "skills/create-skills/scripts/run.mjs",
+          "excerpt": "import { installPackage } from './install.mjs';"
+        }
+      ]
+    },
+    {
+      "id": "resource:c43418f5b84c66da",
+      "from": "file:skills/create-skills/scripts/run.mjs",
+      "to": "file:skills/create-skills/scripts/package.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "When loading this module",
+      "evidence": [
+        {
+          "path": "skills/create-skills/scripts/run.mjs",
+          "excerpt": "import { checkDirectory } from './package.mjs';"
+        }
+      ]
+    },
+    {
+      "id": "resource:41101b6d5b7ab6e0",
+      "from": "file:skills/create-skills/scripts/run.mjs",
+      "to": "file:skills/create-skills/scripts/submission.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "When loading this module",
+      "evidence": [
+        {
+          "path": "skills/create-skills/scripts/run.mjs",
+          "excerpt": "import { prepareSubmission, nextSubmission, submissionLimits } from './submission.mjs';"
+        }
+      ]
+    },
+    {
+      "id": "resource:e8a5d603f016c5ca",
+      "from": "file:skills/create-skills/scripts/skill-package-validation.mjs",
+      "to": "file:skills/create-skills/scripts/release-validation.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "When loading this module",
+      "evidence": [
+        {
+          "path": "skills/create-skills/scripts/skill-package-validation.mjs",
+          "excerpt": "import { parseRelease } from './release-validation.mjs';"
+        }
+      ]
+    },
+    {
+      "id": "resource:1d0df3b239588b01",
+      "from": "file:skills/create-skills/scripts/submission.mjs",
+      "to": "file:skills/create-skills/scripts/intent-record.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "When loading this module",
+      "evidence": [
+        {
+          "path": "skills/create-skills/scripts/submission.mjs",
+          "excerpt": "import { intentSections } from './intent-record.mjs';"
+        }
+      ]
+    },
+    {
+      "id": "resource:7514b042effca752",
+      "from": "file:skills/create-skills/scripts/submission.mjs",
+      "to": "file:skills/create-skills/scripts/package.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "When loading this module",
+      "evidence": [
+        {
+          "path": "skills/create-skills/scripts/submission.mjs",
+          "excerpt": "import { sha256, readPackage } from './package.mjs';"
+        }
+      ]
+    },
+    {
+      "id": "resource:b6d4067f7eaefa3f",
+      "from": "file:skills/create-skills/scripts/submission.mjs",
+      "to": "file:skills/create-skills/scripts/review-handoff.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "When loading this module",
+      "evidence": [
+        {
+          "path": "skills/create-skills/scripts/submission.mjs",
+          "excerpt": "import { requireText, bytes, lf, split, fenced, prepareHandoff } from './review-handoff.mjs';"
+        }
+      ]
+    },
+    {
+      "id": "resource:aa4ffb4ed18f7dd5",
+      "from": "file:skills/create-skills/SKILL.md",
+      "to": "file:skills/create-skills/assets/matt-pocock-license.txt",
+      "kind": "resource",
+      "conditional": true,
+      "condition": "When copying or redistributing this package/guidance; preserve the notice",
+      "evidence": [
+        {
+          "path": "skills/create-skills/SKILL.md",
+          "excerpt": "[Matt Pocock license notice](assets/matt-pocock-license.txt); read it when copying"
+        }
+      ]
+    },
+    {
+      "id": "resource:f82bb0af4e1b19dc",
+      "from": "file:skills/create-skills/SKILL.md",
+      "to": "file:skills/create-skills/references/intent-capture.md",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "During the documented workflow; follow the quoted instruction",
+      "evidence": [
+        {
+          "path": "skills/create-skills/SKILL.md",
+          "excerpt": "1. Read the [intent capture guide](references/intent-capture.md) at the start,"
+        }
+      ]
+    },
+    {
+      "id": "resource:99a726beced6cb8b",
+      "from": "file:skills/create-skills/SKILL.md",
+      "to": "file:skills/create-skills/references/package-rules.md",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "During the documented workflow; follow the quoted instruction",
+      "evidence": [
+        {
+          "path": "skills/create-skills/SKILL.md",
+          "excerpt": "   drafting instructions and the [GT package rules](references/package-rules.md)"
+        }
+      ]
+    },
+    {
+      "id": "resource:97ff3cbd7114fc7f",
+      "from": "file:skills/create-skills/SKILL.md",
+      "to": "file:skills/create-skills/references/personal-installation.md",
+      "kind": "resource",
+      "conditional": true,
+      "condition": "After verified submission, only if the user requests a personal copy",
+      "evidence": [
+        {
+          "path": "skills/create-skills/SKILL.md",
+          "excerpt": "   user says yes, read [personal installation](references/personal-installation.md)"
+        }
+      ]
+    },
+    {
+      "id": "resource:00224bba988ff200",
+      "from": "file:skills/create-skills/SKILL.md",
+      "to": "file:skills/create-skills/references/specification.md",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "During the documented workflow; follow the quoted instruction",
+      "evidence": [
+        {
+          "path": "skills/create-skills/SKILL.md",
+          "excerpt": "   then the [interview and specification guide](references/specification.md)."
+        }
+      ]
+    },
+    {
+      "id": "resource:8e8f08a11725448d",
+      "from": "file:skills/create-skills/SKILL.md",
+      "to": "file:skills/create-skills/references/submission.md",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "During the documented workflow; follow the quoted instruction",
+      "evidence": [
+        {
+          "path": "skills/create-skills/SKILL.md",
+          "excerpt": "4. Read [submission and recovery](references/submission.md). Resolve the intended"
+        }
+      ]
+    },
+    {
+      "id": "resource:ebb85a794a1140bc",
+      "from": "file:skills/create-skills/SKILL.md",
+      "to": "file:skills/create-skills/references/tools.md",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "During the documented workflow; follow the quoted instruction",
+      "evidence": [
+        {
+          "path": "skills/create-skills/SKILL.md",
+          "excerpt": "3. Read [local tools and checks](references/tools.md). Attempt applicable"
+        }
+      ]
+    },
+    {
+      "id": "resource:d749f7747b37d695",
+      "from": "file:skills/create-skills/SKILL.md",
+      "to": "file:skills/create-skills/references/writing.md",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "During the documented workflow; follow the quoted instruction",
+      "evidence": [
+        {
+          "path": "skills/create-skills/SKILL.md",
+          "excerpt": "   Read the [writing guidance](references/writing.md) before"
+        }
+      ]
+    },
+    {
+      "id": "resource:0b92b6f495c52994",
+      "from": "file:skills/domain-modeling/SKILL.md",
+      "to": "file:skills/domain-modeling/ADR-FORMAT.md",
+      "kind": "resource",
+      "conditional": true,
+      "condition": "When an ADR is warranted and authorized",
+      "evidence": [
+        {
+          "path": "skills/domain-modeling/SKILL.md",
+          "excerpt": "If any of the three is missing, skip the ADR. Use the format in [ADR-FORMAT.md](./ADR-FORMAT.md)."
+        }
+      ]
+    },
+    {
+      "id": "resource:1101f6a9d5eb25a6",
+      "from": "file:skills/domain-modeling/SKILL.md",
+      "to": "file:skills/domain-modeling/assets/matt-pocock-license.txt",
+      "kind": "resource",
+      "conditional": true,
+      "condition": "When copying or redistributing this package/guidance; preserve the notice",
+      "evidence": [
+        {
+          "path": "skills/domain-modeling/SKILL.md",
+          "excerpt": "the bundled [MIT notice](assets/matt-pocock-license.txt) when copying or redistributing them."
+        }
+      ]
+    },
+    {
+      "id": "resource:73f1984158ff8351",
+      "from": "file:skills/domain-modeling/SKILL.md",
+      "to": "file:skills/domain-modeling/CONTEXT-FORMAT.md",
+      "kind": "resource",
+      "conditional": true,
+      "condition": "When recording agreed domain terms",
+      "evidence": [
+        {
+          "path": "skills/domain-modeling/SKILL.md",
+          "excerpt": "When a term is resolved, update `CONTEXT.md` right there. Don't batch these up: capture them as they happen. Use the format in [CONTEXT-FORMAT.md](./CONTEXT-FORMAT.md)."
+        }
+      ]
+    },
+    {
+      "id": "resource:72a0d86e6734f61c",
+      "from": "file:skills/grill-with-docs/SKILL.md",
+      "to": "file:skills/grill-with-docs/assets/matt-pocock-license.txt",
+      "kind": "resource",
+      "conditional": true,
+      "condition": "When copying or redistributing this package/guidance; preserve the notice",
+      "evidence": [
+        {
+          "path": "skills/grill-with-docs/SKILL.md",
+          "excerpt": "[MIT notice](assets/matt-pocock-license.txt) when copying or redistributing this skill."
+        }
+      ]
+    },
+    {
+      "id": "resource:dd1dbb0e688970b1",
+      "from": "file:skills/grilling/SKILL.md",
+      "to": "file:skills/grilling/assets/matt-pocock-license.txt",
+      "kind": "resource",
+      "conditional": true,
+      "condition": "When copying or redistributing this package/guidance; preserve the notice",
+      "evidence": [
+        {
+          "path": "skills/grilling/SKILL.md",
+          "excerpt": "[MIT notice](assets/matt-pocock-license.txt) when copying or redistributing this skill."
+        }
+      ]
+    },
+    {
+      "id": "resource:d738a034a72a7bff",
+      "from": "file:skills/skill-steal/references/submission.md",
+      "to": "file:skills/skill-steal/references/clarification.md",
+      "kind": "resource",
+      "conditional": true,
+      "condition": "When intent is unclear or adaptation could change behavior",
+      "evidence": [
+        {
+          "path": "skills/skill-steal/references/submission.md",
+          "excerpt": "[clarification guide](clarification.md), plus optional `packageDirectory`."
+        }
+      ]
+    },
+    {
+      "id": "resource:e12a4e4fdd0e0221",
+      "from": "file:skills/skill-steal/references/submission.md",
+      "to": "file:skills/skill-steal/references/tools.md",
+      "kind": "resource",
+      "conditional": true,
+      "condition": "When following the source guidance or its documented branch",
+      "evidence": [
+        {
+          "path": "skills/skill-steal/references/submission.md",
+          "excerpt": "Read [local tools](tools.md) before using the bundled `prepare` command to produce"
+        }
+      ]
+    },
+    {
+      "id": "resource:c527cc0c052d7693",
+      "from": "file:skills/skill-steal/references/tools.md",
+      "to": "file:skills/skill-steal/scripts/run.mjs",
+      "kind": "resource",
+      "conditional": true,
+      "condition": "When following the source guidance or its documented branch",
+      "evidence": [
+        {
+          "path": "skills/skill-steal/references/tools.md",
+          "excerpt": "Resolve [the entry point](../scripts/run.mjs) from this installed package, including"
+        }
+      ]
+    },
+    {
+      "id": "resource:be7ebe7fe2b46042",
+      "from": "file:skills/skill-steal/scripts/intent-record.mjs",
+      "to": "file:skills/skill-steal/scripts/review-handoff.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "When loading this module",
+      "evidence": [
+        {
+          "path": "skills/skill-steal/scripts/intent-record.mjs",
+          "excerpt": "import { requireText } from './review-handoff.mjs';"
+        }
+      ]
+    },
+    {
+      "id": "resource:8d420a10d9826b00",
+      "from": "file:skills/skill-steal/scripts/package.mjs",
+      "to": "file:skills/skill-steal/scripts/skill-package-validation.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "When loading this module",
+      "evidence": [
+        {
+          "path": "skills/skill-steal/scripts/package.mjs",
+          "excerpt": "import { validateSkill } from './skill-package-validation.mjs';"
+        }
+      ]
+    },
+    {
+      "id": "resource:4a3d9745a9d096b1",
+      "from": "file:skills/skill-steal/scripts/run.mjs",
+      "to": "file:skills/skill-steal/scripts/package.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "When loading this module",
+      "evidence": [
+        {
+          "path": "skills/skill-steal/scripts/run.mjs",
+          "excerpt": "import { checkDirectory } from './package.mjs';"
+        }
+      ]
+    },
+    {
+      "id": "resource:d2c84c29bff3fe0e",
+      "from": "file:skills/skill-steal/scripts/run.mjs",
+      "to": "file:skills/skill-steal/scripts/submission.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "When loading this module",
+      "evidence": [
+        {
+          "path": "skills/skill-steal/scripts/run.mjs",
+          "excerpt": "import { prepareSubmission, nextSubmission, submissionLimits } from './submission.mjs';"
+        }
+      ]
+    },
+    {
+      "id": "resource:06361c3737cba34c",
+      "from": "file:skills/skill-steal/scripts/skill-package-validation.mjs",
+      "to": "file:skills/skill-steal/scripts/release-validation.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "When loading this module",
+      "evidence": [
+        {
+          "path": "skills/skill-steal/scripts/skill-package-validation.mjs",
+          "excerpt": "import { parseRelease } from './release-validation.mjs';"
+        }
+      ]
+    },
+    {
+      "id": "resource:c7a2a5789eada167",
+      "from": "file:skills/skill-steal/scripts/submission.mjs",
+      "to": "file:skills/skill-steal/scripts/intent-record.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "When loading this module",
+      "evidence": [
+        {
+          "path": "skills/skill-steal/scripts/submission.mjs",
+          "excerpt": "import { intentSections } from './intent-record.mjs';"
+        }
+      ]
+    },
+    {
+      "id": "resource:219a42cc0a15e038",
+      "from": "file:skills/skill-steal/scripts/submission.mjs",
+      "to": "file:skills/skill-steal/scripts/package.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "When loading this module",
+      "evidence": [
+        {
+          "path": "skills/skill-steal/scripts/submission.mjs",
+          "excerpt": "import { sha256, readPackage } from './package.mjs';"
+        }
+      ]
+    },
+    {
+      "id": "resource:e37f9fc3b65366aa",
+      "from": "file:skills/skill-steal/scripts/submission.mjs",
+      "to": "file:skills/skill-steal/scripts/review-handoff.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "When loading this module",
+      "evidence": [
+        {
+          "path": "skills/skill-steal/scripts/submission.mjs",
+          "excerpt": "import { requireText, bytes, lf, split, fenced, prepareHandoff } from './review-handoff.mjs';"
+        }
+      ]
+    },
+    {
+      "id": "resource:4d4eada654f60a6e",
+      "from": "file:skills/skill-steal/SKILL.md",
+      "to": "file:skills/skill-steal/references/clarification.md",
+      "kind": "resource",
+      "conditional": true,
+      "condition": "When intent is unclear or adaptation could change behavior",
+      "evidence": [
+        {
+          "path": "skills/skill-steal/SKILL.md",
+          "excerpt": "   [clarification and dependencies](references/clarification.md) and invoke the"
+        }
+      ]
+    },
+    {
+      "id": "resource:7588faa958faa1fb",
+      "from": "file:skills/skill-steal/SKILL.md",
+      "to": "file:skills/skill-steal/references/package-rules.md",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "During the documented workflow; follow the quoted instruction",
+      "evidence": [
+        {
+          "path": "skills/skill-steal/SKILL.md",
+          "excerpt": "2. Read the bundled [GT package rules](references/package-rules.md) before deciding"
+        }
+      ]
+    },
+    {
+      "id": "resource:cfff90d2bc48e6c5",
+      "from": "file:skills/skill-steal/SKILL.md",
+      "to": "file:skills/skill-steal/references/source.md",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "During the documented workflow; follow the quoted instruction",
+      "evidence": [
+        {
+          "path": "skills/skill-steal/SKILL.md",
+          "excerpt": "   crawl unrelated directories. Read [source inspection](references/source.md)"
+        }
+      ]
+    },
+    {
+      "id": "resource:3f1905cc4ec00a50",
+      "from": "file:skills/skill-steal/SKILL.md",
+      "to": "file:skills/skill-steal/references/submission.md",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "During the documented workflow; follow the quoted instruction",
+      "evidence": [
+        {
+          "path": "skills/skill-steal/SKILL.md",
+          "excerpt": "   evidence. Read [submission and recovery](references/submission.md) to prepare"
+        }
+      ]
+    },
+    {
+      "id": "resource:4798c9d5c51bcd2a",
+      "from": "file:skills/skill-steal/SKILL.md",
+      "to": "file:skills/skill-steal/references/tools.md",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "During the documented workflow; follow the quoted instruction",
+      "evidence": [
+        {
+          "path": "skills/skill-steal/SKILL.md",
+          "excerpt": "5. Read [local tools and checks](references/tools.md). Use the bundled checker and"
+        }
+      ]
+    },
+    {
+      "id": "resource:24808b462614d07d",
+      "from": "file:skills/skill-tweak/references/evidence.md",
+      "to": "file:skills/skill-tweak/references/intent-capture.md",
+      "kind": "resource",
+      "conditional": true,
+      "condition": "When following the source guidance or its documented branch",
+      "evidence": [
+        {
+          "path": "skills/skill-tweak/references/evidence.md",
+          "excerpt": "following the [intent capture guide](intent-capture.md). Incident evidence explains"
+        }
+      ]
+    },
+    {
+      "id": "resource:d5c0c3c3fd5bb1a9",
+      "from": "file:skills/skill-tweak/references/submission.md",
+      "to": "file:skills/skill-tweak/references/intent-capture.md",
+      "kind": "resource",
+      "conditional": true,
+      "condition": "When following the source guidance or its documented branch",
+      "evidence": [
+        {
+          "path": "skills/skill-tweak/references/submission.md",
+          "excerpt": "from the [intent capture guide](intent-capture.md). `report` follows the"
+        }
+      ]
+    },
+    {
+      "id": "resource:3d6ace7e8aa19a7c",
+      "from": "file:skills/skill-tweak/references/submission.md",
+      "to": "file:skills/skill-tweak/scripts/run.mjs",
+      "kind": "resource",
+      "conditional": true,
+      "condition": "When following the source guidance or its documented branch",
+      "evidence": [
+        {
+          "path": "skills/skill-tweak/references/submission.md",
+          "excerpt": "Use the bundled [entry point](../scripts/run.mjs) with Node 22+:"
+        }
+      ]
+    },
+    {
+      "id": "resource:0ac28aa272dba7be",
+      "from": "file:skills/skill-tweak/references/submission.md",
+      "to": "file:skills/skill-tweak/templates/issue.md",
+      "kind": "resource",
+      "conditional": true,
+      "condition": "When following the source guidance or its documented branch",
+      "evidence": [
+        {
+          "path": "skills/skill-tweak/references/submission.md",
+          "excerpt": "[issue template](../templates/issue.md); keep the recap and interview separate"
+        }
+      ]
+    },
+    {
+      "id": "resource:6fbdda20c89254d1",
+      "from": "file:skills/skill-tweak/scripts/intent-record.mjs",
+      "to": "file:skills/skill-tweak/scripts/review-handoff.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "When loading this module",
+      "evidence": [
+        {
+          "path": "skills/skill-tweak/scripts/intent-record.mjs",
+          "excerpt": "import { requireText } from './review-handoff.mjs';"
+        }
+      ]
+    },
+    {
+      "id": "resource:470092674dc621a7",
+      "from": "file:skills/skill-tweak/scripts/run.mjs",
+      "to": "file:skills/skill-tweak/scripts/submission.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "When loading this module",
+      "evidence": [
+        {
+          "path": "skills/skill-tweak/scripts/run.mjs",
+          "excerpt": "import { prepareSubmission, nextSubmission, submissionLimits } from './submission.mjs';"
+        }
+      ]
+    },
+    {
+      "id": "resource:a3b7c9eba015e445",
+      "from": "file:skills/skill-tweak/scripts/submission.mjs",
+      "to": "file:skills/skill-tweak/scripts/intent-record.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "When loading this module",
+      "evidence": [
+        {
+          "path": "skills/skill-tweak/scripts/submission.mjs",
+          "excerpt": "import { intentSections } from './intent-record.mjs';"
+        }
+      ]
+    },
+    {
+      "id": "resource:27feceed2e9a1b8f",
+      "from": "file:skills/skill-tweak/scripts/submission.mjs",
+      "to": "file:skills/skill-tweak/scripts/review-handoff.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "When loading this module",
+      "evidence": [
+        {
+          "path": "skills/skill-tweak/scripts/submission.mjs",
+          "excerpt": "import { requireText, prepareHandoff } from './review-handoff.mjs';"
+        }
+      ]
+    },
+    {
+      "id": "resource:3c9ff0d9a153b466",
+      "from": "file:skills/skill-tweak/SKILL.md",
+      "to": "file:skills/skill-tweak/references/evidence.md",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "During the documented workflow; follow the quoted instruction",
+      "evidence": [
+        {
+          "path": "skills/skill-tweak/SKILL.md",
+          "excerpt": "   [evidence guide](references/evidence.md) and"
+        }
+      ]
+    },
+    {
+      "id": "resource:59063c894c7174e0",
+      "from": "file:skills/skill-tweak/SKILL.md",
+      "to": "file:skills/skill-tweak/references/intent-capture.md",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "During the documented workflow; follow the quoted instruction",
+      "evidence": [
+        {
+          "path": "skills/skill-tweak/SKILL.md",
+          "excerpt": "   [intent capture guide](references/intent-capture.md) now. Capture available"
+        }
+      ]
+    },
+    {
+      "id": "resource:5cfb4462c3b51265",
+      "from": "file:skills/skill-tweak/SKILL.md",
+      "to": "file:skills/skill-tweak/references/submission.md",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "During the documented workflow; follow the quoted instruction",
+      "evidence": [
+        {
+          "path": "skills/skill-tweak/SKILL.md",
+          "excerpt": "   Read [submission and recovery](references/submission.md) and prepare the bounded"
+        }
+      ]
+    },
+    {
+      "id": "resource:4415e49300ed3754",
+      "from": "file:skills/skill-tweak/SKILL.md",
+      "to": "file:skills/skill-tweak/templates/issue.md",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "During the documented workflow; follow the quoted instruction",
+      "evidence": [
+        {
+          "path": "skills/skill-tweak/SKILL.md",
+          "excerpt": "   [issue template](templates/issue.md) when drafting. Separate observed behavior,"
+        }
+      ]
+    },
+    {
+      "id": "resource:2aaccf1365111500",
+      "from": "file:skills/skill-tweak/templates/issue.md",
+      "to": "file:skills/skill-tweak/references/submission.md",
+      "kind": "resource",
+      "conditional": true,
+      "condition": "When following the source guidance or its documented branch",
+      "evidence": [
+        {
+          "path": "skills/skill-tweak/templates/issue.md",
+          "excerpt": "interview record using the [submission guide](../references/submission.md); both"
+        }
+      ]
+    },
+    {
+      "id": "resource:0f898410a5420ca8",
+      "from": "file:skills/skills-restore/references/operations.md",
+      "to": "file:skills/skills-restore/scripts/exporter/README.md",
+      "kind": "resource",
+      "conditional": true,
+      "condition": "When following the source guidance or its documented branch",
+      "evidence": [
+        {
+          "path": "skills/skills-restore/references/operations.md",
+          "excerpt": "Read the [direct guide](../scripts/exporter/README.md) for runtime, filesystem and"
+        }
+      ]
+    },
+    {
+      "id": "resource:b0dd3d357723ecd4",
+      "from": "file:skills/skills-restore/references/operations.md",
+      "to": "file:skills/skills-restore/scripts/exporter/run.mjs",
+      "kind": "resource",
+      "conditional": true,
+      "condition": "When following the source guidance or its documented branch",
+      "evidence": [
+        {
+          "path": "skills/skills-restore/references/operations.md",
+          "excerpt": "[entry point](../scripts/exporter/run.mjs) from the loaded skill's directory."
+        }
+      ]
+    },
+    {
+      "id": "resource:7385aeb46816f566",
+      "from": "file:skills/skills-restore/scripts/exporter/export-cli.mjs",
+      "to": "file:skills/skills-restore/scripts/exporter/export-filesystem.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "When loading this module",
+      "evidence": [
+        {
+          "path": "skills/skills-restore/scripts/exporter/export-cli.mjs",
+          "excerpt": "import { checkedPath, inspectCopy, targetPaths } from './export-filesystem.mjs';"
+        }
+      ]
+    },
+    {
+      "id": "resource:c907250e5b29d155",
+      "from": "file:skills/skills-restore/scripts/exporter/export-cli.mjs",
+      "to": "file:skills/skills-restore/scripts/exporter/export-protocol.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "When loading this module",
+      "evidence": [
+        {
+          "path": "skills/skills-restore/scripts/exporter/export-cli.mjs",
+          "excerpt": "import { acquireCatalog, checkRuntime, executePlan, makePlan, reviewPlan } from './export-protocol.mjs';"
+        }
+      ]
+    },
+    {
+      "id": "resource:c621b75dd7fae7de",
+      "from": "file:skills/skills-restore/scripts/exporter/export-cli.mjs",
+      "to": "file:skills/skills-restore/scripts/exporter/export-source.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "When loading this module",
+      "evidence": [
+        {
+          "path": "skills/skills-restore/scripts/exporter/export-cli.mjs",
+          "excerpt": "import { PROTOCOL_VERSION, requireExport } from './export-source.mjs';"
+        }
+      ]
+    },
+    {
+      "id": "resource:d0fd7852d97f65a1",
+      "from": "file:skills/skills-restore/scripts/exporter/export-filesystem.mjs",
+      "to": "file:skills/skills-restore/scripts/exporter/export-source.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "When loading this module",
+      "evidence": [
+        {
+          "path": "skills/skills-restore/scripts/exporter/export-filesystem.mjs",
+          "excerpt": "import { EXPORTER_VERSION, PROTOCOL_VERSION, REPOSITORY, prepareSource, requireExport, sha256, validateSourcePath } from './export-source.mjs';"
+        }
+      ]
+    },
+    {
+      "id": "resource:8bb4828ed35113a6",
+      "from": "file:skills/skills-restore/scripts/exporter/export-protocol.mjs",
+      "to": "file:skills/skills-restore/scripts/exporter/export-filesystem.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "When loading this module",
+      "evidence": [
+        {
+          "path": "skills/skills-restore/scripts/exporter/export-protocol.mjs",
+          "excerpt": "import { checkedPath, createCopy, ensureDirectory, isSecurityError, targetPaths } from './export-filesystem.mjs';"
+        }
+      ]
+    },
+    {
+      "id": "resource:f9a678d504e66ced",
+      "from": "file:skills/skills-restore/scripts/exporter/export-protocol.mjs",
+      "to": "file:skills/skills-restore/scripts/exporter/export-source.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "When loading this module",
+      "evidence": [
+        {
+          "path": "skills/skills-restore/scripts/exporter/export-protocol.mjs",
+          "excerpt": "import { EXPORTER_VERSION, PROTOCOL_VERSION, REPOSITORY, fileManifest, prepareSource, requireExport, sha256 } from './export-source.mjs';"
+        }
+      ]
+    },
+    {
+      "id": "resource:effc3d05786ca2b4",
+      "from": "file:skills/skills-restore/scripts/exporter/export-protocol.mjs",
+      "to": "file:skills/skills-restore/scripts/exporter/release-catalog-reader.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "When loading this module",
+      "evidence": [
+        {
+          "path": "skills/skills-restore/scripts/exporter/export-protocol.mjs",
+          "excerpt": "import { readReleaseCatalog, repositoryIdentity } from './release-catalog-reader.mjs';"
+        }
+      ]
+    },
+    {
+      "id": "resource:55e8ddd29217848d",
+      "from": "file:skills/skills-restore/scripts/exporter/export-protocol.mjs",
+      "to": "file:skills/skills-restore/scripts/exporter/release-snapshots.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "When loading this module",
+      "evidence": [
+        {
+          "path": "skills/skills-restore/scripts/exporter/export-protocol.mjs",
+          "excerpt": "import { readFirstParentCommits, readGitFiles, readGitSkillTrees, readRepositoryOrigin, resolveCommit } from './release-snapshots.mjs';"
+        }
+      ]
+    },
+    {
+      "id": "resource:1b4a36bfa2b8073e",
+      "from": "file:skills/skills-restore/scripts/exporter/export-source.mjs",
+      "to": "file:skills/skills-restore/scripts/exporter/release-catalog.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "When loading this module",
+      "evidence": [
+        {
+          "path": "skills/skills-restore/scripts/exporter/export-source.mjs",
+          "excerpt": "import { skillContentIdentity } from './release-catalog.mjs';"
+        }
+      ]
+    },
+    {
+      "id": "resource:d8a9a62c40cf92e1",
+      "from": "file:skills/skills-restore/scripts/exporter/export-source.mjs",
+      "to": "file:skills/skills-restore/scripts/exporter/release-validation.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "When loading this module",
+      "evidence": [
+        {
+          "path": "skills/skills-restore/scripts/exporter/export-source.mjs",
+          "excerpt": "import { parseRelease } from './release-validation.mjs';"
+        }
+      ]
+    },
+    {
+      "id": "resource:03020a3296d9b8bc",
+      "from": "file:skills/skills-restore/scripts/exporter/release-catalog-reader.mjs",
+      "to": "file:skills/skills-restore/scripts/exporter/release-catalog.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "When loading this module",
+      "evidence": [
+        {
+          "path": "skills/skills-restore/scripts/exporter/release-catalog-reader.mjs",
+          "excerpt": "import { buildReleaseCatalog } from './release-catalog.mjs';"
+        }
+      ]
+    },
+    {
+      "id": "resource:8c7b4553b6483826",
+      "from": "file:skills/skills-restore/scripts/exporter/release-catalog-reader.mjs",
+      "to": "file:skills/skills-restore/scripts/exporter/release-snapshots.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "When loading this module",
+      "evidence": [
+        {
+          "path": "skills/skills-restore/scripts/exporter/release-catalog-reader.mjs",
+          "excerpt": "import { readFirstParentCommits, readGitFiles, readGitSkillTrees, readRepositoryOrigin, resolveCommit } from './release-snapshots.mjs';"
+        }
+      ]
+    },
+    {
+      "id": "resource:00bf2a413b7aa739",
+      "from": "file:skills/skills-restore/scripts/exporter/release-catalog.mjs",
+      "to": "file:skills/skills-restore/scripts/exporter/release-validation.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "When loading this module",
+      "evidence": [
+        {
+          "path": "skills/skills-restore/scripts/exporter/release-catalog.mjs",
+          "excerpt": "import { parseRelease, validateReleaseChange } from './release-validation.mjs';"
+        }
+      ]
+    },
+    {
+      "id": "resource:b8c089ffc760bc1b",
+      "from": "file:skills/skills-restore/SKILL.md",
+      "to": "file:skills/skills-restore/references/operations.md",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "During the documented workflow; follow the quoted instruction",
+      "evidence": [
+        {
+          "path": "skills/skills-restore/SKILL.md",
+          "excerpt": "Read the bundled [operation procedure](references/operations.md) before calling"
+        }
+      ]
+    },
+    {
+      "id": "resource:2886731352916f12",
+      "from": "file:skills/skills-restore/SKILL.md",
+      "to": "file:skills/skills-restore/scripts/exporter/README.md",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "During the documented workflow; follow the quoted instruction",
+      "evidence": [
+        {
+          "path": "skills/skills-restore/SKILL.md",
+          "excerpt": "modules or substitute another implementation. The bundled [direct guide](scripts/exporter/README.md)"
+        }
+      ]
+    },
+    {
+      "id": "resource:40d114f8c9ee848c",
+      "from": "file:skills/skills-restore/SKILL.md",
+      "to": "file:skills/skills-restore/scripts/exporter/run.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "During the documented workflow; follow the quoted instruction",
+      "evidence": [
+        {
+          "path": "skills/skills-restore/SKILL.md",
+          "excerpt": "tools. Use only the fixed [exporter entry point](scripts/exporter/run.mjs) beside"
+        }
+      ]
+    },
+    {
+      "id": "resource:f476294a36c96e9a",
+      "from": "file:skills/skills-status/SKILL.md",
+      "to": "file:skills/skills-status/references/installation-target.md",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "During the documented workflow; follow the quoted instruction",
+      "evidence": [
+        {
+          "path": "skills/skills-status/SKILL.md",
+          "excerpt": "Read [the installation selection procedure](references/installation-target.md)."
+        }
+      ]
+    },
+    {
+      "id": "resource:07f9e0bd448ff1d0",
+      "from": "file:skills/skills-update/SKILL.md",
+      "to": "file:skills/skills-update/references/installation-target.md",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "During the documented workflow; follow the quoted instruction",
+      "evidence": [
+        {
+          "path": "skills/skills-update/SKILL.md",
+          "excerpt": "Read [the installation selection procedure](references/installation-target.md),"
+        }
+      ]
+    },
+    {
+      "id": "resource:6518851daaa74255",
+      "from": "file:skills/skills-update/SKILL.md",
+      "to": "file:skills/skills-update/references/update-report.md",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "During the documented workflow; follow the quoted instruction",
+      "evidence": [
+        {
+          "path": "skills/skills-update/SKILL.md",
+          "excerpt": "then [the snapshot and reporting procedure](references/update-report.md) before"
+        }
+      ]
+    },
+    {
+      "id": "export-load:exporter:bundle.json",
+      "from": "file:exporter/run.mjs",
+      "to": "file:exporter/bundle.json",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "Exporter verifies the manifest and every declared module before running any operation",
+      "evidence": [
+        {
+          "path": "exporter/run.mjs",
+          "excerpt": "  const manifestBytes = readFileSync(join(bundle, 'bundle.json'));"
+        }
+      ]
+    },
+    {
+      "id": "export-load:exporter:export-cli.mjs",
+      "from": "file:exporter/run.mjs",
+      "to": "file:exporter/export-cli.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "Exporter verifies the manifest and every declared module before running any operation",
+      "evidence": [
+        {
+          "path": "exporter/run.mjs",
+          "excerpt": "  for (const [name, digest] of Object.entries(manifest.files)) {"
+        }
+      ]
+    },
+    {
+      "id": "export-load:exporter:export-filesystem.mjs",
+      "from": "file:exporter/run.mjs",
+      "to": "file:exporter/export-filesystem.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "Exporter verifies the manifest and every declared module before running any operation",
+      "evidence": [
+        {
+          "path": "exporter/run.mjs",
+          "excerpt": "  for (const [name, digest] of Object.entries(manifest.files)) {"
+        }
+      ]
+    },
+    {
+      "id": "export-load:exporter:export-protocol.mjs",
+      "from": "file:exporter/run.mjs",
+      "to": "file:exporter/export-protocol.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "Exporter verifies the manifest and every declared module before running any operation",
+      "evidence": [
+        {
+          "path": "exporter/run.mjs",
+          "excerpt": "  for (const [name, digest] of Object.entries(manifest.files)) {"
+        }
+      ]
+    },
+    {
+      "id": "export-load:exporter:export-source.mjs",
+      "from": "file:exporter/run.mjs",
+      "to": "file:exporter/export-source.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "Exporter verifies the manifest and every declared module before running any operation",
+      "evidence": [
+        {
+          "path": "exporter/run.mjs",
+          "excerpt": "  for (const [name, digest] of Object.entries(manifest.files)) {"
+        }
+      ]
+    },
+    {
+      "id": "export-load:exporter:release-catalog-reader.mjs",
+      "from": "file:exporter/run.mjs",
+      "to": "file:exporter/release-catalog-reader.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "Exporter verifies the manifest and every declared module before running any operation",
+      "evidence": [
+        {
+          "path": "exporter/run.mjs",
+          "excerpt": "  for (const [name, digest] of Object.entries(manifest.files)) {"
+        }
+      ]
+    },
+    {
+      "id": "export-load:exporter:release-catalog.mjs",
+      "from": "file:exporter/run.mjs",
+      "to": "file:exporter/release-catalog.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "Exporter verifies the manifest and every declared module before running any operation",
+      "evidence": [
+        {
+          "path": "exporter/run.mjs",
+          "excerpt": "  for (const [name, digest] of Object.entries(manifest.files)) {"
+        }
+      ]
+    },
+    {
+      "id": "export-load:exporter:release-snapshots.mjs",
+      "from": "file:exporter/run.mjs",
+      "to": "file:exporter/release-snapshots.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "Exporter verifies the manifest and every declared module before running any operation",
+      "evidence": [
+        {
+          "path": "exporter/run.mjs",
+          "excerpt": "  for (const [name, digest] of Object.entries(manifest.files)) {"
+        }
+      ]
+    },
+    {
+      "id": "export-load:exporter:release-validation.mjs",
+      "from": "file:exporter/run.mjs",
+      "to": "file:exporter/release-validation.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "Exporter verifies the manifest and every declared module before running any operation",
+      "evidence": [
+        {
+          "path": "exporter/run.mjs",
+          "excerpt": "  for (const [name, digest] of Object.entries(manifest.files)) {"
+        }
+      ]
+    },
+    {
+      "id": "export-load:skills/skills-restore/scripts/exporter:bundle.json",
+      "from": "file:skills/skills-restore/scripts/exporter/run.mjs",
+      "to": "file:skills/skills-restore/scripts/exporter/bundle.json",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "Exporter verifies the manifest and every declared module before running any operation",
+      "evidence": [
+        {
+          "path": "skills/skills-restore/scripts/exporter/run.mjs",
+          "excerpt": "  const manifestBytes = readFileSync(join(bundle, 'bundle.json'));"
+        }
+      ]
+    },
+    {
+      "id": "export-load:skills/skills-restore/scripts/exporter:export-cli.mjs",
+      "from": "file:skills/skills-restore/scripts/exporter/run.mjs",
+      "to": "file:skills/skills-restore/scripts/exporter/export-cli.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "Exporter verifies the manifest and every declared module before running any operation",
+      "evidence": [
+        {
+          "path": "skills/skills-restore/scripts/exporter/run.mjs",
+          "excerpt": "  for (const [name, digest] of Object.entries(manifest.files)) {"
+        }
+      ]
+    },
+    {
+      "id": "export-load:skills/skills-restore/scripts/exporter:export-filesystem.mjs",
+      "from": "file:skills/skills-restore/scripts/exporter/run.mjs",
+      "to": "file:skills/skills-restore/scripts/exporter/export-filesystem.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "Exporter verifies the manifest and every declared module before running any operation",
+      "evidence": [
+        {
+          "path": "skills/skills-restore/scripts/exporter/run.mjs",
+          "excerpt": "  for (const [name, digest] of Object.entries(manifest.files)) {"
+        }
+      ]
+    },
+    {
+      "id": "export-load:skills/skills-restore/scripts/exporter:export-protocol.mjs",
+      "from": "file:skills/skills-restore/scripts/exporter/run.mjs",
+      "to": "file:skills/skills-restore/scripts/exporter/export-protocol.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "Exporter verifies the manifest and every declared module before running any operation",
+      "evidence": [
+        {
+          "path": "skills/skills-restore/scripts/exporter/run.mjs",
+          "excerpt": "  for (const [name, digest] of Object.entries(manifest.files)) {"
+        }
+      ]
+    },
+    {
+      "id": "export-load:skills/skills-restore/scripts/exporter:export-source.mjs",
+      "from": "file:skills/skills-restore/scripts/exporter/run.mjs",
+      "to": "file:skills/skills-restore/scripts/exporter/export-source.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "Exporter verifies the manifest and every declared module before running any operation",
+      "evidence": [
+        {
+          "path": "skills/skills-restore/scripts/exporter/run.mjs",
+          "excerpt": "  for (const [name, digest] of Object.entries(manifest.files)) {"
+        }
+      ]
+    },
+    {
+      "id": "export-load:skills/skills-restore/scripts/exporter:release-catalog-reader.mjs",
+      "from": "file:skills/skills-restore/scripts/exporter/run.mjs",
+      "to": "file:skills/skills-restore/scripts/exporter/release-catalog-reader.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "Exporter verifies the manifest and every declared module before running any operation",
+      "evidence": [
+        {
+          "path": "skills/skills-restore/scripts/exporter/run.mjs",
+          "excerpt": "  for (const [name, digest] of Object.entries(manifest.files)) {"
+        }
+      ]
+    },
+    {
+      "id": "export-load:skills/skills-restore/scripts/exporter:release-catalog.mjs",
+      "from": "file:skills/skills-restore/scripts/exporter/run.mjs",
+      "to": "file:skills/skills-restore/scripts/exporter/release-catalog.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "Exporter verifies the manifest and every declared module before running any operation",
+      "evidence": [
+        {
+          "path": "skills/skills-restore/scripts/exporter/run.mjs",
+          "excerpt": "  for (const [name, digest] of Object.entries(manifest.files)) {"
+        }
+      ]
+    },
+    {
+      "id": "export-load:skills/skills-restore/scripts/exporter:release-snapshots.mjs",
+      "from": "file:skills/skills-restore/scripts/exporter/run.mjs",
+      "to": "file:skills/skills-restore/scripts/exporter/release-snapshots.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "Exporter verifies the manifest and every declared module before running any operation",
+      "evidence": [
+        {
+          "path": "skills/skills-restore/scripts/exporter/run.mjs",
+          "excerpt": "  for (const [name, digest] of Object.entries(manifest.files)) {"
+        }
+      ]
+    },
+    {
+      "id": "export-load:skills/skills-restore/scripts/exporter:release-validation.mjs",
+      "from": "file:skills/skills-restore/scripts/exporter/run.mjs",
+      "to": "file:skills/skills-restore/scripts/exporter/release-validation.mjs",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "Exporter verifies the manifest and every declared module before running any operation",
+      "evidence": [
+        {
+          "path": "skills/skills-restore/scripts/exporter/run.mjs",
+          "excerpt": "  for (const [name, digest] of Object.entries(manifest.files)) {"
+        }
+      ]
+    },
+    {
+      "id": "compress-package-init",
+      "from": "file:skills/caveman-compress/scripts/__main__.py",
+      "to": "file:skills/caveman-compress/scripts/__init__.py",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "Python initializes the scripts package for the documented -m invocation",
+      "evidence": [
+        {
+          "path": "skills/caveman-compress/SKILL.md",
+          "excerpt": "   python3 -B -m scripts \"<absolute_filepath>\""
+        }
+      ]
+    }
+  ],
+  "provenance": [
+    {
+      "copy": "skills/create-skills/scripts/package.mjs",
+      "sources": [
+        "scripts/create-skills/package.mjs"
+      ],
+      "builder": "scripts/build-create-skills.mjs",
+      "transform": "local-imports",
+      "excerpt": "  const files = new Map(maintained.map(name => [`scripts/${name}`, normalize(readFileSync(join(base, 'scripts/create-skills', name), 'utf8')).replaceAll(\"from '../\", \"from './\")]));"
+    },
+    {
+      "copy": "skills/create-skills/scripts/run.mjs",
+      "sources": [
+        "scripts/create-skills/run.mjs"
+      ],
+      "builder": "scripts/build-create-skills.mjs",
+      "transform": "local-imports",
+      "excerpt": "  const files = new Map(maintained.map(name => [`scripts/${name}`, normalize(readFileSync(join(base, 'scripts/create-skills', name), 'utf8')).replaceAll(\"from '../\", \"from './\")]));"
+    },
+    {
+      "copy": "skills/create-skills/scripts/submission.mjs",
+      "sources": [
+        "scripts/create-skills/submission.mjs"
+      ],
+      "builder": "scripts/build-create-skills.mjs",
+      "transform": "local-imports",
+      "excerpt": "  const files = new Map(maintained.map(name => [`scripts/${name}`, normalize(readFileSync(join(base, 'scripts/create-skills', name), 'utf8')).replaceAll(\"from '../\", \"from './\")]));"
+    },
+    {
+      "copy": "skills/create-skills/scripts/install.mjs",
+      "sources": [
+        "scripts/create-skills/install.mjs"
+      ],
+      "builder": "scripts/build-create-skills.mjs",
+      "transform": "local-imports",
+      "excerpt": "  const files = new Map(maintained.map(name => [`scripts/${name}`, normalize(readFileSync(join(base, 'scripts/create-skills', name), 'utf8')).replaceAll(\"from '../\", \"from './\")]));"
+    },
+    {
+      "copy": "skills/create-skills/scripts/skill-package-validation.mjs",
+      "sources": [
+        "scripts/skill-package-validation.mjs"
+      ],
+      "builder": "scripts/build-create-skills.mjs",
+      "transform": "copy",
+      "excerpt": "  for (const name of ['skill-package-validation.mjs', 'release-validation.mjs', 'review-handoff.mjs', 'intent-record.mjs']) files.set(`scripts/${name}`, normalize(readFileSync(join(base, 'scripts', name), 'utf8')));"
+    },
+    {
+      "copy": "skills/create-skills/scripts/release-validation.mjs",
+      "sources": [
+        "scripts/release-validation.mjs"
+      ],
+      "builder": "scripts/build-create-skills.mjs",
+      "transform": "copy",
+      "excerpt": "  for (const name of ['skill-package-validation.mjs', 'release-validation.mjs', 'review-handoff.mjs', 'intent-record.mjs']) files.set(`scripts/${name}`, normalize(readFileSync(join(base, 'scripts', name), 'utf8')));"
+    },
+    {
+      "copy": "skills/create-skills/scripts/review-handoff.mjs",
+      "sources": [
+        "scripts/review-handoff.mjs"
+      ],
+      "builder": "scripts/build-create-skills.mjs",
+      "transform": "copy",
+      "excerpt": "  for (const name of ['skill-package-validation.mjs', 'release-validation.mjs', 'review-handoff.mjs', 'intent-record.mjs']) files.set(`scripts/${name}`, normalize(readFileSync(join(base, 'scripts', name), 'utf8')));"
+    },
+    {
+      "copy": "skills/create-skills/scripts/intent-record.mjs",
+      "sources": [
+        "scripts/intent-record.mjs"
+      ],
+      "builder": "scripts/build-create-skills.mjs",
+      "transform": "copy",
+      "excerpt": "  for (const name of ['skill-package-validation.mjs', 'release-validation.mjs', 'review-handoff.mjs', 'intent-record.mjs']) files.set(`scripts/${name}`, normalize(readFileSync(join(base, 'scripts', name), 'utf8')));"
+    },
+    {
+      "copy": "skills/create-skills/references/intent-capture.md",
+      "sources": [
+        "scripts/intent-capture.md"
+      ],
+      "builder": "scripts/build-create-skills.mjs",
+      "transform": "copy",
+      "excerpt": "  files.set('references/intent-capture.md', normalize(readFileSync(join(base, 'scripts/intent-capture.md'), 'utf8')));"
+    },
+    {
+      "copy": "skills/create-skills/references/package-rules.md",
+      "sources": [
+        "CONTRIBUTING.md"
+      ],
+      "builder": "scripts/build-create-skills.mjs",
+      "transform": "package-rules",
+      "excerpt": "  files.set('references/package-rules.md', guidance(readFileSync(join(base, 'CONTRIBUTING.md'), 'utf8')));"
+    },
+    {
+      "copy": "skills/skill-tweak/scripts/run.mjs",
+      "sources": [
+        "scripts/skill-tweak/run.mjs"
+      ],
+      "builder": "scripts/build-skill-tweak.mjs",
+      "transform": "local-imports",
+      "excerpt": "  for (const name of ['run.mjs', 'submission.mjs']) files.set(`scripts/${name}`, readFileSync(join(base, 'scripts/skill-tweak', name), 'utf8').replaceAll(\"from '../\", \"from './\"));"
+    },
+    {
+      "copy": "skills/skill-tweak/scripts/submission.mjs",
+      "sources": [
+        "scripts/skill-tweak/submission.mjs"
+      ],
+      "builder": "scripts/build-skill-tweak.mjs",
+      "transform": "local-imports",
+      "excerpt": "  for (const name of ['run.mjs', 'submission.mjs']) files.set(`scripts/${name}`, readFileSync(join(base, 'scripts/skill-tweak', name), 'utf8').replaceAll(\"from '../\", \"from './\"));"
+    },
+    {
+      "copy": "skills/skill-tweak/scripts/review-handoff.mjs",
+      "sources": [
+        "scripts/review-handoff.mjs"
+      ],
+      "builder": "scripts/build-skill-tweak.mjs",
+      "transform": "copy",
+      "excerpt": "  for (const name of ['review-handoff.mjs', 'intent-record.mjs']) files.set(`scripts/${name}`, readFileSync(join(base, 'scripts', name), 'utf8'));"
+    },
+    {
+      "copy": "skills/skill-tweak/scripts/intent-record.mjs",
+      "sources": [
+        "scripts/intent-record.mjs"
+      ],
+      "builder": "scripts/build-skill-tweak.mjs",
+      "transform": "copy",
+      "excerpt": "  for (const name of ['review-handoff.mjs', 'intent-record.mjs']) files.set(`scripts/${name}`, readFileSync(join(base, 'scripts', name), 'utf8'));"
+    },
+    {
+      "copy": "skills/skill-tweak/references/intent-capture.md",
+      "sources": [
+        "scripts/intent-capture.md"
+      ],
+      "builder": "scripts/build-skill-tweak.mjs",
+      "transform": "copy",
+      "excerpt": "  files.set('references/intent-capture.md', readFileSync(join(base, 'scripts/intent-capture.md'), 'utf8'));"
+    },
+    {
+      "copy": "skills/skill-steal/scripts/run.mjs",
+      "sources": [
+        "scripts/skill-steal/run.mjs"
+      ],
+      "builder": "scripts/build-skill-steal.mjs",
+      "transform": "steal-imports",
+      "excerpt": "  files.set('scripts/run.mjs', read('scripts/skill-steal/run.mjs').replaceAll(\"from '../create-skills/\", \"from './\"));"
+    },
+    {
+      "copy": "skills/skill-steal/scripts/package.mjs",
+      "sources": [
+        "scripts/create-skills/package.mjs"
+      ],
+      "builder": "scripts/build-skill-steal.mjs",
+      "transform": "local-imports",
+      "excerpt": "    files.set(`scripts/${name}`, read(`scripts/create-skills/${name}`).replaceAll(\"from '../\", \"from './\"));"
+    },
+    {
+      "copy": "skills/skill-steal/scripts/submission.mjs",
+      "sources": [
+        "scripts/create-skills/submission.mjs"
+      ],
+      "builder": "scripts/build-skill-steal.mjs",
+      "transform": "local-imports",
+      "excerpt": "    files.set(`scripts/${name}`, read(`scripts/create-skills/${name}`).replaceAll(\"from '../\", \"from './\"));"
+    },
+    {
+      "copy": "skills/skill-steal/scripts/skill-package-validation.mjs",
+      "sources": [
+        "scripts/skill-package-validation.mjs"
+      ],
+      "builder": "scripts/build-skill-steal.mjs",
+      "transform": "copy",
+      "excerpt": "  for (const name of ['skill-package-validation.mjs', 'release-validation.mjs', 'review-handoff.mjs', 'intent-record.mjs']) {"
+    },
+    {
+      "copy": "skills/skill-steal/scripts/release-validation.mjs",
+      "sources": [
+        "scripts/release-validation.mjs"
+      ],
+      "builder": "scripts/build-skill-steal.mjs",
+      "transform": "copy",
+      "excerpt": "  for (const name of ['skill-package-validation.mjs', 'release-validation.mjs', 'review-handoff.mjs', 'intent-record.mjs']) {"
+    },
+    {
+      "copy": "skills/skill-steal/scripts/review-handoff.mjs",
+      "sources": [
+        "scripts/review-handoff.mjs"
+      ],
+      "builder": "scripts/build-skill-steal.mjs",
+      "transform": "copy",
+      "excerpt": "  for (const name of ['skill-package-validation.mjs', 'release-validation.mjs', 'review-handoff.mjs', 'intent-record.mjs']) {"
+    },
+    {
+      "copy": "skills/skill-steal/scripts/intent-record.mjs",
+      "sources": [
+        "scripts/intent-record.mjs"
+      ],
+      "builder": "scripts/build-skill-steal.mjs",
+      "transform": "copy",
+      "excerpt": "  for (const name of ['skill-package-validation.mjs', 'release-validation.mjs', 'review-handoff.mjs', 'intent-record.mjs']) {"
+    },
+    {
+      "copy": "skills/skill-steal/references/package-rules.md",
+      "sources": [
+        "CONTRIBUTING.md",
+        "scripts/build-create-skills.mjs"
+      ],
+      "builder": "scripts/build-skill-steal.mjs",
+      "transform": "package-rules",
+      "excerpt": "  files.set('references/package-rules.md', guidance(read('CONTRIBUTING.md')));"
+    },
+    {
+      "copy": "skills/skill-steal/references/tools.md",
+      "sources": [
+        "skills/create-skills/references/tools.md"
+      ],
+      "builder": "scripts/build-skill-steal.mjs",
+      "transform": "steal-tools",
+      "excerpt": "  files.set('references/tools.md', notice + replaceOnce(read('skills/create-skills/references/tools.md'), 'preparation and installation commands', 'preparation commands'));"
+    },
+    {
+      "copy": "skills/skill-steal/references/submission.md",
+      "sources": [
+        "skills/create-skills/references/submission.md"
+      ],
+      "builder": "scripts/build-skill-steal.mjs",
+      "transform": "steal-submission",
+      "excerpt": "  files.set('references/submission.md', notice + submissionGuidance(read('skills/create-skills/references/submission.md')));"
+    },
+    {
+      "copy": "skills/create-issue/scripts/api.mjs",
+      "sources": [
+        "scripts/issue-submission/api.mjs"
+      ],
+      "builder": "scripts/build-issue-submission.mjs",
+      "transform": "copy",
+      "excerpt": "  const files = runtimeNames.map(name => [name, Buffer.from(readFileSync(join(source, name), 'utf8').replaceAll('\\r\\n', '\\n'))]);"
+    },
+    {
+      "copy": "skills/create-issue/scripts/contract.mjs",
+      "sources": [
+        "scripts/issue-submission/contract.mjs"
+      ],
+      "builder": "scripts/build-issue-submission.mjs",
+      "transform": "copy",
+      "excerpt": "  const files = runtimeNames.map(name => [name, Buffer.from(readFileSync(join(source, name), 'utf8').replaceAll('\\r\\n', '\\n'))]);"
+    },
+    {
+      "copy": "skills/create-issue/scripts/run.mjs",
+      "sources": [
+        "scripts/issue-submission/run.mjs"
+      ],
+      "builder": "scripts/build-issue-submission.mjs",
+      "transform": "copy",
+      "excerpt": "  const files = runtimeNames.map(name => [name, Buffer.from(readFileSync(join(source, name), 'utf8').replaceAll('\\r\\n', '\\n'))]);"
+    },
+    {
+      "copy": "skills/create-issue/scripts/runtime.mjs",
+      "sources": [
+        "scripts/issue-submission/runtime.mjs"
+      ],
+      "builder": "scripts/build-issue-submission.mjs",
+      "transform": "copy",
+      "excerpt": "  const files = runtimeNames.map(name => [name, Buffer.from(readFileSync(join(source, name), 'utf8').replaceAll('\\r\\n', '\\n'))]);"
+    },
+    {
+      "copy": "skills/create-issue/scripts/service.mjs",
+      "sources": [
+        "scripts/issue-submission/service.mjs"
+      ],
+      "builder": "scripts/build-issue-submission.mjs",
+      "transform": "copy",
+      "excerpt": "  const files = runtimeNames.map(name => [name, Buffer.from(readFileSync(join(source, name), 'utf8').replaceAll('\\r\\n', '\\n'))]);"
+    },
+    {
+      "copy": "exporter/export-cli.mjs",
+      "sources": [
+        "scripts/export-cli.mjs"
+      ],
+      "builder": "scripts/build-exporter.mjs",
+      "transform": "copy",
+      "excerpt": "const files = new Map(names.map(name => [name, source(name)]));"
+    },
+    {
+      "copy": "exporter/export-filesystem.mjs",
+      "sources": [
+        "scripts/export-filesystem.mjs"
+      ],
+      "builder": "scripts/build-exporter.mjs",
+      "transform": "copy",
+      "excerpt": "const files = new Map(names.map(name => [name, source(name)]));"
+    },
+    {
+      "copy": "exporter/export-protocol.mjs",
+      "sources": [
+        "scripts/export-protocol.mjs"
+      ],
+      "builder": "scripts/build-exporter.mjs",
+      "transform": "copy",
+      "excerpt": "const files = new Map(names.map(name => [name, source(name)]));"
+    },
+    {
+      "copy": "exporter/export-source.mjs",
+      "sources": [
+        "scripts/export-source.mjs"
+      ],
+      "builder": "scripts/build-exporter.mjs",
+      "transform": "copy",
+      "excerpt": "const files = new Map(names.map(name => [name, source(name)]));"
+    },
+    {
+      "copy": "exporter/release-catalog-reader.mjs",
+      "sources": [
+        "scripts/release-catalog-reader.mjs"
+      ],
+      "builder": "scripts/build-exporter.mjs",
+      "transform": "copy",
+      "excerpt": "const files = new Map(names.map(name => [name, source(name)]));"
+    },
+    {
+      "copy": "exporter/release-catalog.mjs",
+      "sources": [
+        "scripts/release-catalog.mjs"
+      ],
+      "builder": "scripts/build-exporter.mjs",
+      "transform": "copy",
+      "excerpt": "const files = new Map(names.map(name => [name, source(name)]));"
+    },
+    {
+      "copy": "exporter/release-snapshots.mjs",
+      "sources": [
+        "scripts/release-snapshots.mjs"
+      ],
+      "builder": "scripts/build-exporter.mjs",
+      "transform": "copy",
+      "excerpt": "const files = new Map(names.map(name => [name, source(name)]));"
+    },
+    {
+      "copy": "exporter/release-validation.mjs",
+      "sources": [
+        "scripts/release-validation.mjs"
+      ],
+      "builder": "scripts/build-exporter.mjs",
+      "transform": "copy",
+      "excerpt": "const files = new Map(names.map(name => [name, source(name)]));"
+    },
+    {
+      "copy": "exporter/bundle.json",
+      "sources": [
+        "scripts/export-cli.mjs",
+        "scripts/export-filesystem.mjs",
+        "scripts/export-protocol.mjs",
+        "scripts/export-source.mjs",
+        "scripts/release-catalog-reader.mjs",
+        "scripts/release-catalog.mjs",
+        "scripts/release-snapshots.mjs",
+        "scripts/release-validation.mjs"
+      ],
+      "builder": "scripts/build-exporter.mjs",
+      "transform": "export-manifest",
+      "excerpt": "files.set('bundle.json', manifest);"
+    },
+    {
+      "copy": "exporter/run.mjs",
+      "sources": [
+        "scripts/export-launcher.mjs",
+        "scripts/export-cli.mjs",
+        "scripts/export-filesystem.mjs",
+        "scripts/export-protocol.mjs",
+        "scripts/export-source.mjs",
+        "scripts/release-catalog-reader.mjs",
+        "scripts/release-catalog.mjs",
+        "scripts/release-snapshots.mjs",
+        "scripts/release-validation.mjs"
+      ],
+      "builder": "scripts/build-exporter.mjs",
+      "transform": "export-launcher",
+      "excerpt": "files.set('run.mjs', Buffer.from(source('export-launcher.mjs').toString().replace('__MANIFEST_HASH__', hash(manifest))));"
+    },
+    {
+      "copy": "skills/skills-restore/scripts/exporter/export-cli.mjs",
+      "sources": [
+        "scripts/export-cli.mjs"
+      ],
+      "builder": "scripts/build-exporter.mjs",
+      "transform": "copy",
+      "excerpt": "const files = new Map(names.map(name => [name, source(name)]));"
+    },
+    {
+      "copy": "skills/skills-restore/scripts/exporter/export-filesystem.mjs",
+      "sources": [
+        "scripts/export-filesystem.mjs"
+      ],
+      "builder": "scripts/build-exporter.mjs",
+      "transform": "copy",
+      "excerpt": "const files = new Map(names.map(name => [name, source(name)]));"
+    },
+    {
+      "copy": "skills/skills-restore/scripts/exporter/export-protocol.mjs",
+      "sources": [
+        "scripts/export-protocol.mjs"
+      ],
+      "builder": "scripts/build-exporter.mjs",
+      "transform": "copy",
+      "excerpt": "const files = new Map(names.map(name => [name, source(name)]));"
+    },
+    {
+      "copy": "skills/skills-restore/scripts/exporter/export-source.mjs",
+      "sources": [
+        "scripts/export-source.mjs"
+      ],
+      "builder": "scripts/build-exporter.mjs",
+      "transform": "copy",
+      "excerpt": "const files = new Map(names.map(name => [name, source(name)]));"
+    },
+    {
+      "copy": "skills/skills-restore/scripts/exporter/release-catalog-reader.mjs",
+      "sources": [
+        "scripts/release-catalog-reader.mjs"
+      ],
+      "builder": "scripts/build-exporter.mjs",
+      "transform": "copy",
+      "excerpt": "const files = new Map(names.map(name => [name, source(name)]));"
+    },
+    {
+      "copy": "skills/skills-restore/scripts/exporter/release-catalog.mjs",
+      "sources": [
+        "scripts/release-catalog.mjs"
+      ],
+      "builder": "scripts/build-exporter.mjs",
+      "transform": "copy",
+      "excerpt": "const files = new Map(names.map(name => [name, source(name)]));"
+    },
+    {
+      "copy": "skills/skills-restore/scripts/exporter/release-snapshots.mjs",
+      "sources": [
+        "scripts/release-snapshots.mjs"
+      ],
+      "builder": "scripts/build-exporter.mjs",
+      "transform": "copy",
+      "excerpt": "const files = new Map(names.map(name => [name, source(name)]));"
+    },
+    {
+      "copy": "skills/skills-restore/scripts/exporter/release-validation.mjs",
+      "sources": [
+        "scripts/release-validation.mjs"
+      ],
+      "builder": "scripts/build-exporter.mjs",
+      "transform": "copy",
+      "excerpt": "const files = new Map(names.map(name => [name, source(name)]));"
+    },
+    {
+      "copy": "skills/skills-restore/scripts/exporter/bundle.json",
+      "sources": [
+        "scripts/export-cli.mjs",
+        "scripts/export-filesystem.mjs",
+        "scripts/export-protocol.mjs",
+        "scripts/export-source.mjs",
+        "scripts/release-catalog-reader.mjs",
+        "scripts/release-catalog.mjs",
+        "scripts/release-snapshots.mjs",
+        "scripts/release-validation.mjs"
+      ],
+      "builder": "scripts/build-exporter.mjs",
+      "transform": "export-manifest",
+      "excerpt": "files.set('bundle.json', manifest);"
+    },
+    {
+      "copy": "skills/skills-restore/scripts/exporter/run.mjs",
+      "sources": [
+        "scripts/export-launcher.mjs",
+        "scripts/export-cli.mjs",
+        "scripts/export-filesystem.mjs",
+        "scripts/export-protocol.mjs",
+        "scripts/export-source.mjs",
+        "scripts/release-catalog-reader.mjs",
+        "scripts/release-catalog.mjs",
+        "scripts/release-snapshots.mjs",
+        "scripts/release-validation.mjs"
+      ],
+      "builder": "scripts/build-exporter.mjs",
+      "transform": "export-launcher",
+      "excerpt": "files.set('run.mjs', Buffer.from(source('export-launcher.mjs').toString().replace('__MANIFEST_HASH__', hash(manifest))));"
+    },
+    {
+      "copy": "skills/skills-restore/scripts/exporter/README.md",
+      "sources": [
+        "exporter/README.md"
+      ],
+      "builder": "scripts/build-exporter.mjs",
+      "transform": "copy",
+      "excerpt": "const guide = Buffer.from(readFileSync(join(root, 'exporter/README.md'), 'utf8').replaceAll('\\r\\n', '\\n'));"
+    }
+  ],
+  "exclusions": [
+    {
+      "candidate": "6ecd77d14f83ee622832d17a2edcefef1bda5d9bdcbcb4a49e7268c860026202",
+      "path": "CONTRIBUTING.md",
+      "target": "file:docs/planning/skill-migration-acceptance-notes.md",
+      "sourceDigest": "e33e9e5e08f29c2910df83725d5abea6848989d6bd76358f7846a23e364e5c5b",
+      "reason": "Repository authoring/navigation material outside the two extracted package-rule ranges; not a dependency of the bundled guidance."
+    },
+    {
+      "candidate": "72fca2459bb57fa6daac759fd43b5c14a39f8b5fa38941564afb896d14446393",
+      "path": "CONTRIBUTING.md",
+      "target": "file:docs/planning/skill-personal-export-contract.md",
+      "sourceDigest": "e33e9e5e08f29c2910df83725d5abea6848989d6bd76358f7846a23e364e5c5b",
+      "reason": "Repository authoring/navigation material outside the two extracted package-rule ranges; not a dependency of the bundled guidance."
+    },
+    {
+      "candidate": "31a336a67b5e4183775a7270bfd7f93acb726a0ec868df213fe0627aa4093da4",
+      "path": "CONTRIBUTING.md",
+      "target": "file:docs/planning/skill-publishing-notes.md",
+      "sourceDigest": "e33e9e5e08f29c2910df83725d5abea6848989d6bd76358f7846a23e364e5c5b",
+      "reason": "Repository authoring/navigation material outside the two extracted package-rule ranges; not a dependency of the bundled guidance."
+    },
+    {
+      "candidate": "eb1b8f6515365784b67d78e3b0202d7be5e2126604f58052bf7aba610dbe1c2d",
+      "path": "CONTRIBUTING.md",
+      "target": "file:docs/planning/skill-publishing-round-3.md",
+      "sourceDigest": "e33e9e5e08f29c2910df83725d5abea6848989d6bd76358f7846a23e364e5c5b",
+      "reason": "Repository authoring/navigation material outside the two extracted package-rule ranges; not a dependency of the bundled guidance."
+    },
+    {
+      "candidate": "b1faa87d3c79446c2521e86b33f6f728add902f71d6e38bcb0f6c7c53fae81db",
+      "path": "CONTRIBUTING.md",
+      "target": "file:docs/release-catalog.md",
+      "sourceDigest": "e33e9e5e08f29c2910df83725d5abea6848989d6bd76358f7846a23e364e5c5b",
+      "reason": "Repository authoring/navigation material outside the two extracted package-rule ranges; not a dependency of the bundled guidance."
+    },
+    {
+      "candidate": "c0a67d91f22618191c2e3098d689ba179b690f79964a763b5ca1aa969615c9ca",
+      "path": "CONTRIBUTING.md",
+      "target": "file:exporter/README.md",
+      "sourceDigest": "e33e9e5e08f29c2910df83725d5abea6848989d6bd76358f7846a23e364e5c5b",
+      "reason": "Repository authoring/navigation material outside the two extracted package-rule ranges; not a dependency of the bundled guidance."
+    },
+    {
+      "candidate": "34562b07832b2ba661874b833f82dafe44840b295efddeb2ba9afef60a06134c",
+      "path": "CONTRIBUTING.md",
+      "target": "file:README.md",
+      "sourceDigest": "e33e9e5e08f29c2910df83725d5abea6848989d6bd76358f7846a23e364e5c5b",
+      "reason": "Repository authoring/navigation material outside the two extracted package-rule ranges; not a dependency of the bundled guidance."
+    },
+    {
+      "candidate": "6c564917179f939c7d141c223d0918f71772e5b78cf4fac635b2f145a3b9c6db",
+      "path": "CONTRIBUTING.md",
+      "target": "file:templates/summary.md",
+      "sourceDigest": "e33e9e5e08f29c2910df83725d5abea6848989d6bd76358f7846a23e364e5c5b",
+      "reason": "Repository authoring/navigation material outside the two extracted package-rule ranges; not a dependency of the bundled guidance."
+    },
+    {
+      "candidate": "f882d5374ec70206d97809bc4b4953ff935825f5187aba2fabdcb6c498a7df9d",
+      "path": "CONTRIBUTING.md",
+      "target": "skill:skills-restore",
+      "sourceDigest": "e33e9e5e08f29c2910df83725d5abea6848989d6bd76358f7846a23e364e5c5b",
+      "reason": "Authoring/release documentation about the exporter packaging, not an invocation dependency of the extracted package rules."
+    },
+    {
+      "candidate": "468f64236603b4a37f94e52f8661797c8a7205776f336ed5b04bfe8713e0cbff",
+      "path": "exporter/README.md",
+      "target": "skill:grill-me",
+      "sourceDigest": "0e11d1df44d40cabf065f781e7401bd2fd0bb1440f24566bf091ceb2ac2f4e11",
+      "reason": "Illustrative historical export input/version, not a requirement to invoke Grill Me."
+    },
+    {
+      "candidate": "b7998e9d11ac0993e1aaa1bda852daa491447a95b32804a94c91cdf080db0342",
+      "path": "exporter/README.md",
+      "target": "skill:skills-restore",
+      "sourceDigest": "0e11d1df44d40cabf065f781e7401bd2fd0bb1440f24566bf091ceb2ac2f4e11",
+      "reason": "Describes an alternative chat entry point for the same exporter; the direct helper does not invoke the skill."
+    },
+    {
+      "candidate": "2c18582b8d98313b1610cf0f22e4daf1b88713abd15e30b4f0f82a684abcbc32",
+      "path": "scripts/build-create-skills.mjs",
+      "target": "skill:create-skills",
+      "sourceDigest": "13de8f4ae81b28db35d72a2816f8622123bdfde6919e36d79256a146bbe2b4ca",
+      "reason": "Build/source path or output identity; file reuse is recorded in resource/provenance edges, not a skill invocation."
+    },
+    {
+      "candidate": "33c391ba316f264189e551c3bdeed98459f1ff655d6245d5811b29d56e921f33",
+      "path": "scripts/build-exporter.mjs",
+      "target": "skill:skills-restore",
+      "sourceDigest": "876e87799c30f6bbda3698c58106bf872de1c25d57c44eb77ce4ab53e256d6af",
+      "reason": "Build/source path or output identity; file reuse is recorded in resource/provenance edges, not a skill invocation."
+    },
+    {
+      "candidate": "f18c06b85bda5aa94de78ebce0952dd9ec92fa954792f9eaad3df213ef76bc2a",
+      "path": "scripts/build-issue-submission.mjs",
+      "target": "skill:create-issue",
+      "sourceDigest": "6a3543f6203cd6fd275b4bb39fbf91487bba52b5f19d846112c85609e4a35eac",
+      "reason": "Build/source path or output identity; file reuse is recorded in resource/provenance edges, not a skill invocation."
+    },
+    {
+      "candidate": "248c31604898b8f66d669c35fb1882fcbf26d6f0aa4100388c71eec03ff0d328",
+      "path": "scripts/build-skill-steal.mjs",
+      "target": "file:scripts/clarification.md",
+      "sourceDigest": "21903240445d32c51b507fea9b07cba9f4133e3614256b7f2541f6ee331356bb",
+      "reason": "Literal link text being rewritten into bundled guidance; not a file read relative to the builder. Actual output references are recorded on the generated guidance."
+    },
+    {
+      "candidate": "750f6cb51c5cbce659239d19fafb86bea6e11a8a57142ec83eb3e666a83aa903",
+      "path": "scripts/build-skill-steal.mjs",
+      "target": "file:scripts/intent-capture.md",
+      "sourceDigest": "21903240445d32c51b507fea9b07cba9f4133e3614256b7f2541f6ee331356bb",
+      "reason": "Literal link text being rewritten into bundled guidance; not a file read relative to the builder. Actual output references are recorded on the generated guidance."
+    },
+    {
+      "candidate": "d0ce21933c16224906fd68a7ac5c9a3a53c7fbc09310649cf94dfa0a259c1a0c",
+      "path": "scripts/build-skill-steal.mjs",
+      "target": "skill:create-skills",
+      "sourceDigest": "21903240445d32c51b507fea9b07cba9f4133e3614256b7f2541f6ee331356bb",
+      "reason": "Build/source path or output identity; file reuse is recorded in resource/provenance edges, not a skill invocation."
+    },
+    {
+      "candidate": "6c59a54a4d1a751f939d1db49f03f462354aa6b2cc4954e52827906eb6190bec",
+      "path": "scripts/build-skill-steal.mjs",
+      "target": "skill:skill-steal",
+      "sourceDigest": "21903240445d32c51b507fea9b07cba9f4133e3614256b7f2541f6ee331356bb",
+      "reason": "Build/source path or output identity; file reuse is recorded in resource/provenance edges, not a skill invocation."
+    },
+    {
+      "candidate": "126389175e254b1a16d49e6b7d1df95d443aeb01c829de5b256e7e9d33cf2a03",
+      "path": "scripts/build-skill-tweak.mjs",
+      "target": "skill:skill-tweak",
+      "sourceDigest": "e1e6057e3dc2766825fb3caa0d44c78338ec15a5ff7b659d06fc4e1e1d2d98c1",
+      "reason": "Build/source path or output identity; file reuse is recorded in resource/provenance edges, not a skill invocation."
+    },
+    {
+      "candidate": "cfb5d76be7f55a449e39d550dd03e27a5aaa5d2ad61e68b43d007c7c60f70315",
+      "path": "scripts/intent-capture.md",
+      "target": "skill:create-skills",
+      "sourceDigest": "407607524a8d4eec771c4e39aeb20147ca306e050fd6158d9b1dc7b12e9dcb75",
+      "reason": "Names the consumers of this shared guide, not a dependency invoked by the consumer."
+    },
+    {
+      "candidate": "09a8c6ceb33fe50bc32deb951b7acac23a62924b9a8fc2c49264bd66040951b8",
+      "path": "scripts/intent-capture.md",
+      "target": "skill:grilling",
+      "sourceDigest": "407607524a8d4eec771c4e39aeb20147ca306e050fd6158d9b1dc7b12e9dcb75",
+      "reason": "Explicitly forbidden substitute for the required GT grill-me dependency; no grilling invocation."
+    },
+    {
+      "candidate": "d4dd5df43a47c2c5af400013a34cd097fcdd7994c8c32622522acfb7d7f46c9e",
+      "path": "scripts/intent-capture.md",
+      "target": "skill:skill-tweak",
+      "sourceDigest": "407607524a8d4eec771c4e39aeb20147ca306e050fd6158d9b1dc7b12e9dcb75",
+      "reason": "Names the consumers of this shared guide, not a dependency invoked by the consumer."
+    },
+    {
+      "candidate": "c547b747300a45205f017c9405422cc62b386c98878ce4db1a85b3d928adc6af",
+      "path": "scripts/issue-submission/run.mjs",
+      "target": "skill:create-issue",
+      "sourceDigest": "19c69230a8c2251203522fe7ef5a4dcc04a2bf695a8845917f6f13f69e80bdf7",
+      "reason": "Names the owning create-issue helper protocol in CLI help; does not invoke the skill."
+    },
+    {
+      "candidate": "dda02d761d5ce54f287236b05f105b49ca2f93dd6399f460f3ea882288b8b359",
+      "path": "scripts/skill-steal/run.mjs",
+      "target": "skill:create-skills",
+      "sourceDigest": "1206a68c6185be468f5d7b4480430c369b57af7648725b05a8adc5cf53c1d539",
+      "reason": "Build/source path or output identity; file reuse is recorded in resource/provenance edges, not a skill invocation."
+    },
+    {
+      "candidate": "2261e52e1e2cd30abfcc47d26c9c8fa2c959190457f3afcd29738825363a2699",
+      "path": "skills/caveman-commit/README.md",
+      "target": "skill:caveman",
+      "sourceDigest": "395d165fda9db8aae59258ada22b5af1b6b8b3327fb72f53e054db4863c9182e",
+      "reason": "Upstream attribution, product/style terminology or CLI description; does not invoke the GT caveman skill."
+    },
+    {
+      "candidate": "833d9630e776101b3445368c2deadca7fc1ed89d1ff446ced73d37a91e703d8c",
+      "path": "skills/caveman-commit/README.md",
+      "target": "skill:caveman-commit",
+      "sourceDigest": "395d165fda9db8aae59258ada22b5af1b6b8b3327fb72f53e054db4863c9182e",
+      "reason": "Skill identity, invocation documentation or attribution to itself; no recursive invocation instruction."
+    },
+    {
+      "candidate": "8623b87e3540b29078abc9e77df0df35e953081fff724406f2db649b26e9ca4b",
+      "path": "skills/caveman-commit/SKILL.md",
+      "target": "skill:caveman-commit",
+      "sourceDigest": "356cb81c9421f842441e861c1866d33ccc36b4e33d5a1a9a7c3bd60b5bfd8638",
+      "reason": "Skill identity, invocation documentation or attribution to itself; no recursive invocation instruction."
+    },
+    {
+      "candidate": "82a1a861478979dc9069481897cd8666f8b9acb329d717313eff3001ef48994c",
+      "path": "skills/caveman-compress/README.md",
+      "target": "skill:caveman",
+      "sourceDigest": "006fd5e8b7154fd139d41f4008fe55379cc8398e8f5dc3ab98055454ff3477bf",
+      "reason": "Upstream attribution, product/style terminology or CLI description; does not invoke the GT caveman skill."
+    },
+    {
+      "candidate": "897e47372309a5ba0215bb544bcf17636451baa01c32efc111c537735809ff01",
+      "path": "skills/caveman-compress/README.md",
+      "target": "skill:caveman-compress",
+      "sourceDigest": "006fd5e8b7154fd139d41f4008fe55379cc8398e8f5dc3ab98055454ff3477bf",
+      "reason": "Skill identity, invocation documentation or attribution to itself; no recursive invocation instruction."
+    },
+    {
+      "candidate": "5b4667567bd5707b425d9c4205efcabdf3b1e102d715dc54fe36aecd216083f2",
+      "path": "skills/caveman-compress/scripts/__init__.py",
+      "target": "skill:caveman",
+      "sourceDigest": "429c3e1c5cc5b9705f28d77f303c728304ae68693913ad3d5ce9b5a44c8ee40f",
+      "reason": "Upstream attribution, product/style terminology or CLI description; does not invoke the GT caveman skill."
+    },
+    {
+      "candidate": "b2cf44c937bd762b6f2035d50ff65ee110c45e356d2a5d5d71d4a83de90ef24a",
+      "path": "skills/caveman-compress/scripts/__init__.py",
+      "target": "skill:caveman-compress",
+      "sourceDigest": "429c3e1c5cc5b9705f28d77f303c728304ae68693913ad3d5ce9b5a44c8ee40f",
+      "reason": "Skill identity, invocation documentation or attribution to itself; no recursive invocation instruction."
+    },
+    {
+      "candidate": "02b47443b4409a53721369fba8f329c2ec1121b91ae50d4736f19a15a3336e2f",
+      "path": "skills/caveman-compress/scripts/benchmark.py",
+      "target": "skill:caveman-compress",
+      "sourceDigest": "6ff5098db623154161503595e3ef513516d1d47bed7c264c7e0378581945767b",
+      "reason": "Skill identity, invocation documentation or attribution to itself; no recursive invocation instruction."
+    },
+    {
+      "candidate": "c9699ae2e680e1daaafe8f3acd14cd3d78cacb2be2045b6498a7e4947a82c162",
+      "path": "skills/caveman-compress/scripts/cli.py",
+      "target": "skill:caveman",
+      "sourceDigest": "04d615a66dbf204e3a883b53706320c0c48e0a4c717b0516d41f647a7cfafeb2",
+      "reason": "Upstream attribution, product/style terminology or CLI description; does not invoke the GT caveman skill."
+    },
+    {
+      "candidate": "3c0a4de5677a51e1d3f91335a883c3060892b0315f3b7c046ce4087df6b04b3d",
+      "path": "skills/caveman-compress/scripts/cli.py",
+      "target": "skill:caveman-compress",
+      "sourceDigest": "04d615a66dbf204e3a883b53706320c0c48e0a4c717b0516d41f647a7cfafeb2",
+      "reason": "Skill identity, invocation documentation or attribution to itself; no recursive invocation instruction."
+    },
+    {
+      "candidate": "179ca7d0bc3e2a33125f433426d5481f2ec69aab4d71f7511e2d3606ef690fad",
+      "path": "skills/caveman-compress/scripts/compress.py",
+      "target": "skill:caveman",
+      "sourceDigest": "39bf1b20b018cd0eefa24fb3e3bbce31149d34dbe1975c48e01f9f173ae73bd5",
+      "reason": "Upstream attribution, product/style terminology or CLI description; does not invoke the GT caveman skill."
+    },
+    {
+      "candidate": "3f11549598fba23a5985eb927510d0b028f6346aaeaf84ba1dce88a75bb5ecca",
+      "path": "skills/caveman-compress/scripts/compress.py",
+      "target": "skill:caveman-compress",
+      "sourceDigest": "39bf1b20b018cd0eefa24fb3e3bbce31149d34dbe1975c48e01f9f173ae73bd5",
+      "reason": "Skill identity, invocation documentation or attribution to itself; no recursive invocation instruction."
+    },
+    {
+      "candidate": "c00a806f51550e0e06fec4349e08eae24e20decd15c3664515426ad484aa713e",
+      "path": "skills/caveman-compress/scripts/detect.py",
+      "target": "skill:caveman",
+      "sourceDigest": "8dbdce1df5b6ccb049cd2c84b16f3409ac5551abb9fbc07ddd1616393b78b8f5",
+      "reason": "Upstream attribution, product/style terminology or CLI description; does not invoke the GT caveman skill."
+    },
+    {
+      "candidate": "0f0c10fb4820d2b1425ecbfff5295609a2963e86a6487d88bc9c029f534d29a6",
+      "path": "skills/caveman-compress/scripts/validate.py",
+      "target": "skill:caveman",
+      "sourceDigest": "ca18ee71e206063077de128bc1e6569d01f8b2c0d52e071430d5a138edcec879",
+      "reason": "Upstream attribution, product/style terminology or CLI description; does not invoke the GT caveman skill."
+    },
+    {
+      "candidate": "6e0707aeeafdf203ce3b59ed3a6105c1a89031c88993eb290c6f25c028c05d62",
+      "path": "skills/caveman-compress/SKILL.md",
+      "target": "skill:caveman",
+      "sourceDigest": "4625ca722cfc4d21807984bff34806981429eaa0430bbab113a9cea2e2944b55",
+      "reason": "Upstream attribution, product/style terminology or CLI description; does not invoke the GT caveman skill."
+    },
+    {
+      "candidate": "0983cda97bd6f90e55ead39bdb1bce35a862f146849e4459bc6f961ef32bb943",
+      "path": "skills/caveman-compress/SKILL.md",
+      "target": "skill:caveman-compress",
+      "sourceDigest": "4625ca722cfc4d21807984bff34806981429eaa0430bbab113a9cea2e2944b55",
+      "reason": "Skill identity, invocation documentation or attribution to itself; no recursive invocation instruction."
+    },
+    {
+      "candidate": "54898b5b7e53c4a9e5095bab7b16253174e0e77ea656e7b20e6cb5ba2228a868",
+      "path": "skills/caveman-explore/README.md",
+      "target": "skill:caveman",
+      "sourceDigest": "7e8392635a6f8d3ad8212ec1b5f96f0712d2a7188756274085910108765d4e65",
+      "reason": "Upstream attribution, product/style terminology or CLI description; does not invoke the GT caveman skill."
+    },
+    {
+      "candidate": "eb70062cb6ce4042074df0f758753d8cc47fd7cac0624bb57e7814c9ccca640c",
+      "path": "skills/caveman-explore/README.md",
+      "target": "skill:caveman-explore",
+      "sourceDigest": "7e8392635a6f8d3ad8212ec1b5f96f0712d2a7188756274085910108765d4e65",
+      "reason": "Skill identity, invocation documentation or attribution to itself; no recursive invocation instruction."
+    },
+    {
+      "candidate": "2589c158f95c9b7ce5afc06cd38352660dece7a85b44589fcee7cf2e54b75014",
+      "path": "skills/caveman-explore/SKILL.md",
+      "target": "skill:caveman-explore",
+      "sourceDigest": "0afe82c9f4b58776cfafb0fdc59e54400b72e26f58b27f32c3e02209668a1389",
+      "reason": "Skill identity, invocation documentation or attribution to itself; no recursive invocation instruction."
+    },
+    {
+      "candidate": "214b88a67de195d30beeb25828b6a45167635876824620c935b4a392620bd9e4",
+      "path": "skills/caveman-review/README.md",
+      "target": "skill:caveman",
+      "sourceDigest": "65f4e0ddfebeb3eb6866d29ce239c2f5d5a439cbd32869a30b86e1a6a4464947",
+      "reason": "Upstream attribution, product/style terminology or CLI description; does not invoke the GT caveman skill."
+    },
+    {
+      "candidate": "e27c050c5f95b7b81ef08ebb77e6bb07fb7e3a27806b657656b8c88c4c9e163d",
+      "path": "skills/caveman-review/README.md",
+      "target": "skill:caveman-review",
+      "sourceDigest": "65f4e0ddfebeb3eb6866d29ce239c2f5d5a439cbd32869a30b86e1a6a4464947",
+      "reason": "Skill identity, invocation documentation or attribution to itself; no recursive invocation instruction."
+    },
+    {
+      "candidate": "6f4505f1ae2df9dc63d08a7a987e186d2e0a430928d2ff9e8f61bc55b332942c",
+      "path": "skills/caveman-review/SKILL.md",
+      "target": "skill:caveman-review",
+      "sourceDigest": "106aa564c7c4ebadfd34bf704578a54290915511e7361eefc55403da9a64057e",
+      "reason": "Skill identity, invocation documentation or attribution to itself; no recursive invocation instruction."
+    },
+    {
+      "candidate": "9376bbc8586cec9f94bc26cd62f558c7182f47218aa83d04f92438ff5aa463c7",
+      "path": "skills/caveman/README.md",
+      "target": "skill:caveman",
+      "sourceDigest": "463d5a1e33cd3cbf319ec33264e6fb1bd4a221632c6895fb41a03c355f3dcabf",
+      "reason": "Skill identity, invocation documentation or attribution to itself; no recursive invocation instruction."
+    },
+    {
+      "candidate": "a05eec9defb7abcb91b7a41ef6e14d389b97db02c33cb970c438c688e4490826",
+      "path": "skills/caveman/release.yaml",
+      "target": "skill:caveman",
+      "sourceDigest": "292182f137b8aff167ee05842cff9374661525d017bf4a7b272d29e737b7c1ae",
+      "reason": "Release-note description of an already recorded behavior, not an executable workflow or a separate dependency declaration."
+    },
+    {
+      "candidate": "d505caa445968d40754b18fe34f529da49ca13cad11a215b7731d814b79a3f8d",
+      "path": "skills/caveman/SKILL.md",
+      "target": "skill:caveman",
+      "sourceDigest": "20a09a0cb4a530111d2c423f9b5b837ff95b3c8080b1f8c27f8167e9551efcc8",
+      "reason": "Skill identity, invocation documentation or attribution to itself; no recursive invocation instruction."
+    },
+    {
+      "candidate": "b8230ce0580facdd21b56d93e2f3f629b38429ec491dffa9f8f3ad7892c408f5",
+      "path": "skills/caveman/SKILL.md",
+      "target": "skill:caveman-commit",
+      "sourceDigest": "20a09a0cb4a530111d2c423f9b5b837ff95b3c8080b1f8c27f8167e9551efcc8",
+      "reason": "Explicitly forbids implicitly invoking the named companion skills; style alone has no such workflow dependency."
+    },
+    {
+      "candidate": "1e48e2e5b4b3e34399520f912d4db9eff848faeaa06ae7928c245894b9bf7ed8",
+      "path": "skills/caveman/SKILL.md",
+      "target": "skill:caveman-compress",
+      "sourceDigest": "20a09a0cb4a530111d2c423f9b5b837ff95b3c8080b1f8c27f8167e9551efcc8",
+      "reason": "Explicitly forbids implicitly invoking the named companion skills; style alone has no such workflow dependency."
+    },
+    {
+      "candidate": "b9adc82bfb02427326ab8ab2e4b82e08107ac2f02e8693c2f6b97bec00a6d0d3",
+      "path": "skills/create-issue/scripts/run.mjs",
+      "target": "skill:create-issue",
+      "sourceDigest": "19c69230a8c2251203522fe7ef5a4dcc04a2bf695a8845917f6f13f69e80bdf7",
+      "reason": "Skill identity, invocation documentation or attribution to itself; no recursive invocation instruction."
+    },
+    {
+      "candidate": "b5ba0c645a3addd1936fcec9269f9dc3f6629a138e691a29cf6949b44309c32e",
+      "path": "skills/create-issue/SKILL.md",
+      "target": "skill:create-issue",
+      "sourceDigest": "3b161966c2f29474f34186219a0616896d877526d5067d1a60d6623a56d3d6e0",
+      "reason": "Skill identity, invocation documentation or attribution to itself; no recursive invocation instruction."
+    },
+    {
+      "candidate": "ec0be34cebbd525c88c4e2b7a9214f19829ca7653899b5fb63c012b5e437dd23",
+      "path": "skills/create-skills/references/intent-capture.md",
+      "target": "skill:create-skills",
+      "sourceDigest": "407607524a8d4eec771c4e39aeb20147ca306e050fd6158d9b1dc7b12e9dcb75",
+      "reason": "Names the consumers of this shared guide, not a dependency invoked by the consumer."
+    },
+    {
+      "candidate": "dca70ec33e19461b672bd2536fc672c5447fa8ba729572c4284f8ea794829c9f",
+      "path": "skills/create-skills/references/intent-capture.md",
+      "target": "skill:grilling",
+      "sourceDigest": "407607524a8d4eec771c4e39aeb20147ca306e050fd6158d9b1dc7b12e9dcb75",
+      "reason": "Explicitly forbidden substitute for the required GT grill-me dependency; no grilling invocation."
+    },
+    {
+      "candidate": "f854f34be3aeb4a2c9c84fb4ecadae41332c646c545ef00ff28632f89c0083e5",
+      "path": "skills/create-skills/references/intent-capture.md",
+      "target": "skill:skill-tweak",
+      "sourceDigest": "407607524a8d4eec771c4e39aeb20147ca306e050fd6158d9b1dc7b12e9dcb75",
+      "reason": "Names the consumers of this shared guide, not a dependency invoked by the consumer."
+    },
+    {
+      "candidate": "6be37080bf144a63ea5fac98cfb5f897a07f68358eff67b3ebc94b36740829b4",
+      "path": "skills/create-skills/release.yaml",
+      "target": "skill:grill-me",
+      "sourceDigest": "6a33041657a39ddc7a4911710a2e631e34d63086e5a9466b143ab9557ffd852e",
+      "reason": "Release-note description of an already recorded behavior, not an executable workflow or a separate dependency declaration."
+    },
+    {
+      "candidate": "b3a0fe12025a0662d1ea668084917a51c3a665fcd6a2698c9a5544540bb4957b",
+      "path": "skills/create-skills/SKILL.md",
+      "target": "skill:create-skills",
+      "sourceDigest": "5955ba17227a8e109b25f00ddea4cf76f7a49d7917abd3d35221d2c464d85ac0",
+      "reason": "Skill identity, invocation documentation or attribution to itself; no recursive invocation instruction."
+    },
+    {
+      "candidate": "4869c6c2a364df44afa0b305a5cbb291f92cc220fd221b4c83ca88d9f870bc49",
+      "path": "skills/domain-modeling/CONTEXT-FORMAT.md",
+      "target": "file:skills/domain-modeling/src/billing/CONTEXT.md",
+      "sourceDigest": "17ab16ce783e4d2801ee52fd9acdf550cbf44de65ae76797a93943bbedf22a13",
+      "reason": "Illustrative context-map links inside the format example, not files required by this skill."
+    },
+    {
+      "candidate": "7c0aaa8e411bb3dcaaf75a3626682b02194632a498acca76af1f9baa2c06aeb4",
+      "path": "skills/domain-modeling/CONTEXT-FORMAT.md",
+      "target": "file:skills/domain-modeling/src/fulfillment/CONTEXT.md",
+      "sourceDigest": "17ab16ce783e4d2801ee52fd9acdf550cbf44de65ae76797a93943bbedf22a13",
+      "reason": "Illustrative context-map links inside the format example, not files required by this skill."
+    },
+    {
+      "candidate": "39876a133d38c1033ff731db29a0adb336baa68ee5ebb2d47c1215efba24271f",
+      "path": "skills/domain-modeling/CONTEXT-FORMAT.md",
+      "target": "file:skills/domain-modeling/src/ordering/CONTEXT.md",
+      "sourceDigest": "17ab16ce783e4d2801ee52fd9acdf550cbf44de65ae76797a93943bbedf22a13",
+      "reason": "Illustrative context-map links inside the format example, not files required by this skill."
+    },
+    {
+      "candidate": "5ab51b33aff323334446b44e92a040b349a6c0befd148a5f44bccd1dc2f4a08b",
+      "path": "skills/domain-modeling/SKILL.md",
+      "target": "skill:domain-modeling",
+      "sourceDigest": "31c04d48c8ac100c0af804c299839d481fc9633e633248fd06eb72e4775c69b2",
+      "reason": "Skill identity, invocation documentation or attribution to itself; no recursive invocation instruction."
+    },
+    {
+      "candidate": "1c5a83ef1002426e888b470dd75cc76084a42a16da20608ed9dfaa1be622238e",
+      "path": "skills/grill-me/SKILL.md",
+      "target": "skill:grill-me",
+      "sourceDigest": "e523389e83ca4e434613ebc208a541a273d57323dbe272a4fcdc172fb417f187",
+      "reason": "Skill identity, invocation documentation or attribution to itself; no recursive invocation instruction."
+    },
+    {
+      "candidate": "b9c28611180ce7239b6a2efabc214ac1a2641b7bfee88a36a0112a41a3c4dc89",
+      "path": "skills/grill-with-docs/SKILL.md",
+      "target": "skill:grill-with-docs",
+      "sourceDigest": "62270fba2ed12fafa12231514e7de44b5b51948df1480c985a6407e9bccb6cdf",
+      "reason": "Skill identity, invocation documentation or attribution to itself; no recursive invocation instruction."
+    },
+    {
+      "candidate": "cca41f7ea4afe5bfa557a5d1a27e3f51814a796a527a0e1bd7521ccf38331758",
+      "path": "skills/grilling/SKILL.md",
+      "target": "skill:grilling",
+      "sourceDigest": "01869ed6f36c618413b3f1006d838274ab91ca7d176ae7c04913faeff48f51f9",
+      "reason": "Skill identity, invocation documentation or attribution to itself; no recursive invocation instruction."
+    },
+    {
+      "candidate": "cbaf7f4b045678323c9624cbe610208215622e885970eecb3ca21fef861fa872",
+      "path": "skills/skill-steal/references/clarification.md",
+      "target": "skill:create-skills",
+      "sourceDigest": "982b293062868fc70cf61e0ff91d3e116769044e61fba8c9db88d4fe39eefe97",
+      "reason": "Explicitly states the bundled tools do not require invoking or locating Create Skills; source reuse is recorded separately."
+    },
+    {
+      "candidate": "4fd077d81e83f9f24aa65fa207eaa1a159a489e38262f51ae67042ff8f23677c",
+      "path": "skills/skill-steal/SKILL.md",
+      "target": "skill:skill-steal",
+      "sourceDigest": "c1d3fb17e02cf293cddf1d5d367ab9bc1c5c3313e5d3d67ed716fd774c1393f2",
+      "reason": "Skill identity, invocation documentation or attribution to itself; no recursive invocation instruction."
+    },
+    {
+      "candidate": "af1fa3c9380bd8dc060f2bbfadd14906bd62ba7a0356fc450c690425174d0f06",
+      "path": "skills/skill-tweak/references/intent-capture.md",
+      "target": "skill:create-skills",
+      "sourceDigest": "407607524a8d4eec771c4e39aeb20147ca306e050fd6158d9b1dc7b12e9dcb75",
+      "reason": "Names the consumers of this shared guide, not a dependency invoked by the consumer."
+    },
+    {
+      "candidate": "1b1523476e19fd90ff4fad260a517ee1430da179a858f198ac23609f7806bf07",
+      "path": "skills/skill-tweak/references/intent-capture.md",
+      "target": "skill:grilling",
+      "sourceDigest": "407607524a8d4eec771c4e39aeb20147ca306e050fd6158d9b1dc7b12e9dcb75",
+      "reason": "Explicitly forbidden substitute for the required GT grill-me dependency; no grilling invocation."
+    },
+    {
+      "candidate": "6ced0822d1853f350ad57efe35401c5cd54495865aed3e73a842d70fc7de39ae",
+      "path": "skills/skill-tweak/references/intent-capture.md",
+      "target": "skill:skill-tweak",
+      "sourceDigest": "407607524a8d4eec771c4e39aeb20147ca306e050fd6158d9b1dc7b12e9dcb75",
+      "reason": "Names the consumers of this shared guide, not a dependency invoked by the consumer."
+    },
+    {
+      "candidate": "f822422d17e749cbf661c4e1322b37a9f0f848bccc2439596897bd81a9605005",
+      "path": "skills/skill-tweak/release.yaml",
+      "target": "skill:grill-me",
+      "sourceDigest": "9b927762530c3f1a135dd142986bc18a348db9cb828989d4170e5842684f35be",
+      "reason": "Release-note description of an already recorded behavior, not an executable workflow or a separate dependency declaration."
+    },
+    {
+      "candidate": "c932870fba18a6418787e4eb8e5bc41ce3997f20f826c56c5748f107f53aecc2",
+      "path": "skills/skill-tweak/SKILL.md",
+      "target": "skill:skill-tweak",
+      "sourceDigest": "01afe8ab404b48f3a1bf6926e0d4a3f27dccce5e0eb2398b7ec3b0d958cff6b5",
+      "reason": "Skill identity, invocation documentation or attribution to itself; no recursive invocation instruction."
+    },
+    {
+      "candidate": "2a32d8959cab299a315bef1b308ee295411c41da6f0a1d51f9476fed8ce5f14d",
+      "path": "skills/skill-tweak/templates/issue.md",
+      "target": "skill:skill-tweak",
+      "sourceDigest": "aa77c1cf16741e8a8a5574d95c2b3a49c49cf833114584f47177c08bd738da55",
+      "reason": "Skill identity, invocation documentation or attribution to itself; no recursive invocation instruction."
+    },
+    {
+      "candidate": "25e6617d4cbf1b755e0db5fb33c21e28e282f3cd746de859653a4f02a9bd1bfa",
+      "path": "skills/skills-restore/scripts/exporter/README.md",
+      "target": "skill:grill-me",
+      "sourceDigest": "0e11d1df44d40cabf065f781e7401bd2fd0bb1440f24566bf091ceb2ac2f4e11",
+      "reason": "Illustrative historical export input/version, not a requirement to invoke Grill Me."
+    },
+    {
+      "candidate": "e754d1143df4635f576467fb7e7f85f8ae81b9504a4f8224cfd9e5ae34b75afd",
+      "path": "skills/skills-restore/scripts/exporter/README.md",
+      "target": "skill:skills-restore",
+      "sourceDigest": "0e11d1df44d40cabf065f781e7401bd2fd0bb1440f24566bf091ceb2ac2f4e11",
+      "reason": "Skill identity, invocation documentation or attribution to itself; no recursive invocation instruction."
+    },
+    {
+      "candidate": "b57c77fba279eb60500601ff55357850de496ead85f1fa93d9119c16d453e9ea",
+      "path": "skills/skills-restore/SKILL.md",
+      "target": "skill:skills-restore",
+      "sourceDigest": "33dda0dde0390b91fdbf6adf56c70e512f3828ce800c4d4140788c1f50e5abdb",
+      "reason": "Skill identity, invocation documentation or attribution to itself; no recursive invocation instruction."
+    },
+    {
+      "candidate": "ad82cbf9cdb8a1fda9f060bddce73bf8ebb8432d235a10ee2597ba5ccae1cda5",
+      "path": "skills/skills-status/SKILL.md",
+      "target": "file:skills/skills-status/release.yaml",
+      "sourceDigest": "22821ede4493533e559f3b0c19f62daeedb5b147e0295bc377240b60c41c9f09",
+      "reason": "Describes reading each selected installed skill release record as user-requested data, not depending on this package release note as a runtime resource."
+    },
+    {
+      "candidate": "44fed6b1c3df0f57ad353263d63cc0b588cc29f7a09633dc647a6bf4f5f14d4c",
+      "path": "skills/skills-status/SKILL.md",
+      "target": "skill:skills-status",
+      "sourceDigest": "22821ede4493533e559f3b0c19f62daeedb5b147e0295bc377240b60c41c9f09",
+      "reason": "Skill identity, invocation documentation or attribution to itself; no recursive invocation instruction."
+    },
+    {
+      "candidate": "05dafa7d2f85c4dd6413f4a0db3acd93657fd42d49ba4022037778b6202e4900",
+      "path": "skills/skills-update/SKILL.md",
+      "target": "skill:skills-restore",
+      "sourceDigest": "ecace15ca747f829d7a7bb5d15c7de0b4589b77c3828834f49645ea38b0cad40",
+      "reason": "Optional recommendation for a separately requested workflow; expressly forbids automatic restore invocation."
+    },
+    {
+      "candidate": "f9cb632ba422954c70c71fd682c7acf334b6e391c46883a73df0d3d8731f859d",
+      "path": "skills/skills-update/SKILL.md",
+      "target": "skill:skills-update",
+      "sourceDigest": "ecace15ca747f829d7a7bb5d15c7de0b4589b77c3828834f49645ea38b0cad40",
+      "reason": "Skill identity, invocation documentation or attribution to itself; no recursive invocation instruction."
+    },
+    {
+      "candidate": "62d9eb1ab8e0557f2be1d081cad0edc838a4b87a0c021f16056e0347b85e2477",
+      "path": "skills/why-not/SKILL.md",
+      "target": "skill:why-not",
+      "sourceDigest": "15cd329e08a40682902d4984881320af0b4c0498332163ff5be15528f5c0ab1d",
+      "reason": "Skill identity, invocation documentation or attribution to itself; no recursive invocation instruction."
+    }
+  ],
+  "reviews": {}
+}

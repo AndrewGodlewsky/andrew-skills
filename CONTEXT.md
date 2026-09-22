@@ -4,6 +4,10 @@ A team-maintained collection with independently versioned skills and optional us
 
 ## Language
 
+**GT Help**:
+A user-invoked guide to the GT marketplace, skills and workflows that answers questions and recommends next steps without performing those steps. It is not available for model invocation.
+Scope: [Plan GT Help as a user-invoked marketplace and skills guide](https://github.com/AndrewGodlewsky/andrew-skills/issues/64).
+
 **GT collection**:
 The current team-distributed collection, updated as one plugin. Its skills can have different release versions.
 
@@ -73,6 +77,7 @@ Repository metadata and relationships used to organize issues, such as labels, p
 ## Skill map language
 
 Scope discussion: [issue #51](https://github.com/AndrewGodlewsky/andrew-skills/issues/51).
+Recording and verification: [issue #52](https://github.com/AndrewGodlewsky/andrew-skills/issues/52).
 
 **Simple skill map**:
 A view showing every skill and its actual dependencies on other skills, including skills with no dependencies. Recommendations and casual mentions are excluded.
@@ -103,4 +108,22 @@ A referenced dependency that cannot be resolved in the map's source. References 
 
 **Dependency cycle**:
 A chain of dependencies that returns to a skill already on the path, such as A -> B -> A. The map shows the cycle explicitly rather than hiding it.
+
+**Dependency record**:
+An explicit repository-owned declaration of a dependency, supported by the skill instructions and maintained by the agent adding or changing the skill. Automated checks flag missing or stale information; discovering a skill in the inventory does not establish that its dependency records are complete.
+
+**Dependency evidence**:
+A source-file reference and short quoted instruction supporting a dependency and its conditions. Current line links are derived from the source; missing or changed supporting text calls for review rather than silently preserving an unsupported claim.
+
+**Dependency review status**:
+Whether a skill's dependencies have been reviewed against its current instructions and relevant resources. New or changed sources need review; an empty dependency list alone does not mean the skill has been reviewed and has none.
+
+**Dependency candidate**:
+A possible dependency reference awaiting classification, kept separate from asserted dependency edges. The authoring agent resolves it from context or leaves it visibly unresolved for maintainer input when genuinely ambiguous.
+
+**Dependency exclusion**:
+A reviewed candidate that does not establish a dependency, with its supporting context and reason retained. A changed context requires reviewing the classification again.
+
+**Shared-source provenance**:
+The relationship between a maintained source, its generated copies and the skill packages consuming it. Generated copies do not count as independently authored sources, while each genuine consumer remains represented.
 

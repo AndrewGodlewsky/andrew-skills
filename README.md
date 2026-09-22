@@ -3,6 +3,13 @@
 One shared skills plugin for GitHub Copilot in VS Code and Copilot CLI.
 Installing the `gt` plugin includes every skill in this repository.
 
+Maintainers: review the [skill dependency map prototype](docs/skill-map.md)
+for the accepted overview graph and linked dependency table from
+[#53](https://github.com/AndrewGodlewsky/andrew-skills/issues/53). The
+[implementation handoff](docs/planning/skill-map-implementation-handoff.md)
+defines both map views, freshness checks and automatic inventory maintenance;
+production implementation is pending.
+
 ## Install
 
 For the usual setup, install the hub **once per user environment**, choosing
