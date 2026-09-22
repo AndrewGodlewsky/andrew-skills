@@ -1,6 +1,6 @@
 import assert from 'node:assert/strict';
 import test from 'node:test';
-import { mkdtempSync, mkdirSync, writeFileSync, rmSync, readFileSync, symlinkSync } from 'node:fs';
+import { mkdtempSync, mkdirSync, writeFileSync, rmSync, readFileSync, symlinkSync, realpathSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { join } from 'node:path';
 import { spawnSync } from 'node:child_process';
@@ -94,7 +94,8 @@ test('packaged JSON commands preserve shell-looking content and install only in 
   assert.equal(next.request.operation, 'create');
   const installed = run('install', { packageDirectory: root, expectedIdentity: checkDirectory(root).identity, approved: true });
   assert.equal(installed.status, 'installed');
-  assert.equal(installed.destination, join(personalHome, '.copilot', 'skills', 'sample'));
+  // Windows runner TEMP may use an 8.3 alias; the installer canonicalizes home.
+  assert.equal(installed.destination, join(realpathSync.native(personalHome), '.copilot', 'skills', 'sample'));
 });
 
 test('package file count and malformed metadata cannot be reported as a pass', t => {
