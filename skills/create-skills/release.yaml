@@ -1,2 +1,2 @@
-version: "3.0.1"
-notes: "Clarify instruction-based Grill Me invocation, confirmed intake with deferred decisions, and the runtime prerequisites for submission."
+version: "3.1.0"
+notes: "Use a scoped GT Caveman lite pass before issue review, preserving intent and skill content and retaining the original if the pass is unavailable or fails."

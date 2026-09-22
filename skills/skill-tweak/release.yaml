@@ -1,2 +1,2 @@
-version: "2.0.1"
-notes: "Accept instruction-based Grill Me invocation without a separate host receipt, while retaining the interview, confirmation and dependency safeguards."
+version: "2.1.0"
+notes: "Use a scoped GT Caveman lite pass before draft approval, preserving intent and skill content and retaining the original if the pass is unavailable or fails."

@@ -8,6 +8,7 @@ export function buildBundle({ base = root, output = join(base, 'skills/skill-twe
   for (const name of ['run.mjs', 'submission.mjs']) files.set(`scripts/${name}`, readFileSync(join(base, 'scripts/skill-tweak', name), 'utf8').replaceAll("from '../", "from './"));
   for (const name of ['review-handoff.mjs', 'intent-record.mjs']) files.set(`scripts/${name}`, readFileSync(join(base, 'scripts', name), 'utf8'));
   files.set('references/intent-capture.md', readFileSync(join(base, 'scripts/intent-capture.md'), 'utf8'));
+  files.set('references/issue-prose.md', readFileSync(join(base, 'scripts/issue-prose.md'), 'utf8'));
   const scripts = join(output, 'scripts');
   if (existsSync(scripts)) {
     if (lstatSync(scripts).isSymbolicLink() || !lstatSync(scripts).isDirectory()) throw new Error('Bundle scripts must be a real directory.');

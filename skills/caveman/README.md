@@ -2,7 +2,8 @@
 
 Two chat styles: **light** and **full**. Full is the default. Upstream `lite` is
 accepted as an alias for light. `off`, `stop caveman` and `normal mode` stop the
-style; no other intensity is available.
+style; no other intensity is available. An explicitly requested one-pass edit of
+explanatory issue prose uses light without changing the conversation's mode.
 
 Examples in a client that exposes GT slash commands:
 
@@ -22,7 +23,8 @@ token limit or a guaranteed token-saving percentage.
 
 The host must discover and enable the GT plugin and load [SKILL.md](SKILL.md)
 when invoked. This package permits manual and model
-selection for explicit Caveman-style requests. It needs no API key, runtime,
+selection for explicit Caveman-style requests and scoped issue-prose passes.
+It needs no API key, runtime,
 daemon, MCP server or companion skill. The other GT Caveman skills are independent
 workflows, not dependencies of this style.
 
@@ -48,6 +50,8 @@ not imply upstream sponsorship.
 
 GT keeps light/full styles, exact technical content, language preservation,
 conversation persistence, stop controls and clarity/external-artifact boundaries.
+An explicit one-pass exception edits only supplied eligible issue explanation;
+it preserves protected content and leaves chat mode unchanged.
 It removes the other intensities, accepts light as the public name for lite,
 clarifies unsupported-mode handling and preserves host-required progress updates.
 It removes unverified tokenizer-specific claims and preserves evidence-based

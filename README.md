@@ -86,7 +86,7 @@ Help gives advice and leaves actions to you. Other skills can write files or sub
 | [Skill tweak](skills/skill-tweak/SKILL.md) | Capture a GT skill incident and submit feedback after approval of the complete draft | `/gt:skill-tweak` |
 | [Skill steal](skills/skill-steal/SKILL.md) | Adapt a local skill while preserving behavior and submit it for GT review | `/gt:skill-steal` |
 | [Caveman commit](skills/caveman-commit/SKILL.md) | Write terse Conventional Commits messages from supplied change context | `/gt:caveman-commit` or model selection |
-| [Caveman](skills/caveman/SKILL.md) | Use light or full chat style while preserving technical meaning | `/gt:caveman` or model selection |
+| [Caveman](skills/caveman/SKILL.md) | Use light/full chat style or a scoped issue-prose pass while preserving meaning | `/gt:caveman` or model selection |
 | [Caveman review](skills/caveman-review/SKILL.md) | Review changes with one concise, actionable line per finding | `/gt:caveman-review` or model selection |
 | [Caveman explore](skills/caveman-explore/SKILL.md) | Delegate read-only repository localization and return verified path/line citations | `/gt:caveman-explore` or model selection |
 | [Caveman compress](skills/caveman-compress/SKILL.md) | Compress a selected prose file with a readable backup using Python and Claude | `/gt:caveman-compress` or model selection |
@@ -160,7 +160,11 @@ Both intake skills preserve requirements, corrections and consequential approval
 in a reviewed intent recap and interview record, with gaps and interpretations
 labeled. Long feedback also uses verified indexed comments; see
 [#46](https://github.com/AndrewGodlewsky/andrew-skills/issues/46).
-It previews the complete report and requires your approval before submission
+Before final review and payload preparation, both use GT Caveman `lite` on agent
+explanation only. User intent, requirements, specifications, quotes, exact evidence
+and proposed skill content stay protected. This pass leaves chat style unchanged;
+if unavailable or unsuccessful, it retains the original text and reports the skip.
+Skill Tweak previews the complete report and requires your approval before submission
 through `create-issue`. You can request a draft without publishing; an unavailable
 dependency also leaves a useful draft. It does not fix or rerun the affected skill.
 Client discovery and complete submission acceptance remain tracked in
@@ -181,7 +185,9 @@ actual client acceptance is tracked in
 use `/gt:caveman off`, `stop caveman` or `normal mode` to stop. The chosen mode lasts
 for the current conversation. Unsupported intensities leave the mode unchanged
 and prompt for light or full. It preserves exact technical details, uses normal
-prose when clarity requires it, and leaves external artifacts in normal prose.
+prose when clarity requires it, and leaves external artifacts in normal prose
+except for an explicitly requested one-pass edit of eligible issue explanation.
+That pass uses light without selecting or changing the conversation's chat mode.
 Only an enabled GT installation and normal skill loading are required: no hooks,
 API keys, external runtimes or companion Caveman skills. See its
 [usage and provenance guide](skills/caveman/README.md). The new source package
@@ -611,7 +617,9 @@ with only light/full modes, light/lite equivalence, explicit unsupported-mode
 handling, and host-required progress updates. It preserves meaningful uncertainty
 and removes unverified tokenizer claims. Its [MIT notice](skills/caveman/LICENSE)
 is bundled. Manual and model invocation are enabled for explicit Caveman-style
-requests. Session hooks, upstream engine/proxy products and other Caveman skills
+requests and the scoped issue-prose pass added in
+[#77](https://github.com/AndrewGodlewsky/andrew-skills/issues/77).
+Session hooks, upstream engine/proxy products and other Caveman skills
 are not dependencies and are not included in this adaptation.
 The request, exception rationale and actual checks are tracked in
 [#60](https://github.com/AndrewGodlewsky/andrew-skills/issues/60).

@@ -108,6 +108,12 @@ or unrelated requests to this marketplace's issue workflow.
 the contributor workflows. It is not a user slash command or a general-purpose
 GitHub issue manager. Help does not call it.
 
+Create Skills and Skill Tweak use GT Caveman light (`lite`) on explanatory issue
+prose before final preview. User intent, requirements, quotes and proposed skill
+content stay protected. This pass leaves chat style unchanged; if it is unavailable
+or fails, the workflows retain the original text and report the skipped pass.
+Their existing review and submission requirements still apply.
+
 ### I want to understand or update my installation
 
 - **Skills Status (`skills-status`)** reports skill versions and release notes
@@ -137,7 +143,9 @@ preservation of edits made inside a managed installation.
 - **Caveman Commit (`caveman-commit`)** drafts a terse Conventional Commits
   message from supplied change context. Drafting a message is not making a commit.
 - **Caveman (`caveman`)** changes chat style, with light and full modes, while
-  preserving technical meaning. Choose it for shorter responses.
+  preserving technical meaning. Choose it for shorter responses. It also supports
+  an explicitly requested one-pass edit of explanatory issue prose without
+  changing chat style or editing protected content.
 - **Caveman Compress (`caveman-compress`)** compresses a selected prose file,
   replacing it after checks while keeping an out-of-tree readable backup.
   Unlike chat style, this changes a file. It requires Python and a configured

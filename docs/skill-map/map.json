@@ -1,7 +1,7 @@
 {
   "schemaVersion": 1,
   "source": "current working files",
-  "fingerprint": "c272288f2a122fb470d585e91666dcd8048d8735bb1073b37dfe5837471aaba1",
+  "fingerprint": "56e3d089894f38338a58ff07f8215ddd1e4bceb02bb38475f60dcce3f5f1c505",
   "nodes": [
     {
       "id": "file:CONTRIBUTING.md",
@@ -196,6 +196,13 @@
       "id": "file:scripts/intent-record.mjs",
       "kind": "resource",
       "label": "scripts/intent-record.mjs",
+      "present": true,
+      "owner": null
+    },
+    {
+      "id": "file:scripts/issue-prose.md",
+      "kind": "resource",
+      "label": "scripts/issue-prose.md",
       "present": true,
       "owner": null
     },
@@ -529,6 +536,13 @@
       "owner": "create-skills"
     },
     {
+      "id": "file:skills/create-skills/references/issue-prose.md",
+      "kind": "resource",
+      "label": "skills/create-skills/references/issue-prose.md",
+      "present": true,
+      "owner": "create-skills"
+    },
+    {
       "id": "file:skills/create-skills/references/package-rules.md",
       "kind": "resource",
       "label": "skills/create-skills/references/package-rules.md",
@@ -816,6 +830,13 @@
       "owner": "skill-tweak"
     },
     {
+      "id": "file:skills/skill-tweak/references/issue-prose.md",
+      "kind": "resource",
+      "label": "skills/skill-tweak/references/issue-prose.md",
+      "present": true,
+      "owner": "skill-tweak"
+    },
+    {
       "id": "file:skills/skill-tweak/references/submission.md",
       "kind": "resource",
       "label": "skills/skill-tweak/references/submission.md",
@@ -1003,7 +1024,7 @@
       "label": "caveman",
       "present": true,
       "review": "reviewed",
-      "sourceDigest": "e7f76b707892bfdb0c03616e9a17e36d5888483d4a9f7eebb30af658a2f7f587",
+      "sourceDigest": "d8f1ba6b0415814784df4e7bfe1f8ba2aa94b1636766c56683f3056aa2b48156",
       "sourcePaths": [
         "skills/caveman/LICENSE",
         "skills/caveman/README.md",
@@ -1112,7 +1133,7 @@
       "label": "create-skills",
       "present": true,
       "review": "reviewed",
-      "sourceDigest": "684802217ce569da238115fab3fbfaeb9c3b329632b3c75a43b9eb9ca0ffac45",
+      "sourceDigest": "117793a762e2998b2b49a34ec494e87a41066fe8c63a7ae4c9a618c07a93ffdc",
       "sourcePaths": [
         "CONTRIBUTING.md",
         "scripts/build-create-skills.mjs",
@@ -1122,12 +1143,14 @@
         "scripts/create-skills/submission.mjs",
         "scripts/intent-capture.md",
         "scripts/intent-record.mjs",
+        "scripts/issue-prose.md",
         "scripts/release-validation.mjs",
         "scripts/review-handoff.mjs",
         "scripts/skill-package-validation.mjs",
         "skills/create-skills/SKILL.md",
         "skills/create-skills/assets/matt-pocock-license.txt",
         "skills/create-skills/references/intent-capture.md",
+        "skills/create-skills/references/issue-prose.md",
         "skills/create-skills/references/package-rules.md",
         "skills/create-skills/references/personal-installation.md",
         "skills/create-skills/references/specification.md",
@@ -1209,7 +1232,7 @@
       "label": "help",
       "present": true,
       "review": "reviewed",
-      "sourceDigest": "6f59da14bbfb45c12abde9f45e464063cf25bd05c36929fc3a2428341c9bcd44",
+      "sourceDigest": "cf1517a108a31bcc4b0bb5f4425466c209e13ad1cfe4c9d8dd4304e74111acc3",
       "sourcePaths": [
         "skills/help/SKILL.md",
         "skills/help/assets/matt-pocock-license.txt",
@@ -1223,7 +1246,7 @@
       "label": "skill-steal",
       "present": true,
       "review": "reviewed",
-      "sourceDigest": "653ca1d5c765fbb650c3a63d4635477cc42bb8ba17ff0549064bd88476c56c12",
+      "sourceDigest": "d3fbe7aced0dcac6ee1998c5d276fafe5c15547f043533c2d543155f0cf27ef4",
       "sourcePaths": [
         "CONTRIBUTING.md",
         "scripts/build-create-skills.mjs",
@@ -1260,17 +1283,19 @@
       "label": "skill-tweak",
       "present": true,
       "review": "reviewed",
-      "sourceDigest": "bdaf48c951a758bbfebbb0ea90a1ab3f9fb00084ff23f9383484e753ae21c36f",
+      "sourceDigest": "be4e7d4be2612d296841bd02ed4932d7af614cb9f526f65159b9d2c0163b3b40",
       "sourcePaths": [
         "scripts/build-skill-tweak.mjs",
         "scripts/intent-capture.md",
         "scripts/intent-record.mjs",
+        "scripts/issue-prose.md",
         "scripts/review-handoff.mjs",
         "scripts/skill-tweak/run.mjs",
         "scripts/skill-tweak/submission.mjs",
         "skills/skill-tweak/SKILL.md",
         "skills/skill-tweak/references/evidence.md",
         "skills/skill-tweak/references/intent-capture.md",
+        "skills/skill-tweak/references/issue-prose.md",
         "skills/skill-tweak/references/submission.md",
         "skills/skill-tweak/release.yaml",
         "skills/skill-tweak/scripts/intent-record.mjs",
@@ -1570,7 +1595,7 @@
           "path": "skills/create-skills/SKILL.md",
           "excerpt": "   enabled GT **create-issue** model-invocable dependency using the client-supplied",
           "status": "current",
-          "line": 41
+          "line": 45
         },
         {
           "path": "scripts/review-handoff.mjs",
@@ -2998,7 +3023,7 @@
           "path": "skills/caveman/README.md",
           "excerpt": "copyright (c) 2026 Julius Brussee, under the bundled [MIT license](LICENSE).",
           "status": "current",
-          "line": 44
+          "line": 46
         }
       ],
       "status": "current"
@@ -3015,7 +3040,7 @@
           "path": "skills/caveman/README.md",
           "excerpt": "The host must discover and enable the GT plugin and load [SKILL.md](SKILL.md)",
           "status": "current",
-          "line": 23
+          "line": 24
         }
       ],
       "status": "current"
@@ -3032,7 +3057,7 @@
           "path": "skills/caveman/SKILL.md",
           "excerpt": "when redistributing this package. Preserve the bundled [MIT notice](LICENSE).",
           "status": "current",
-          "line": 97
+          "line": 115
         }
       ],
       "status": "current"
@@ -3049,7 +3074,7 @@
           "path": "skills/caveman/SKILL.md",
           "excerpt": "[usage and provenance guide](README.md); read it for installation questions or",
           "status": "current",
-          "line": 96
+          "line": 114
         }
       ],
       "status": "current"
@@ -3508,7 +3533,7 @@
           "path": "skills/create-skills/SKILL.md",
           "excerpt": "[Matt Pocock license notice](assets/matt-pocock-license.txt); read it when copying",
           "status": "current",
-          "line": 65
+          "line": 69
         }
       ],
       "status": "current"
@@ -3559,7 +3584,7 @@
           "path": "skills/create-skills/SKILL.md",
           "excerpt": "   user says yes, read [personal installation](references/personal-installation.md)",
           "status": "current",
-          "line": 52
+          "line": 56
         }
       ],
       "status": "current"
@@ -3591,9 +3616,9 @@
       "evidence": [
         {
           "path": "skills/create-skills/SKILL.md",
-          "excerpt": "4. Read [submission and recovery](references/submission.md). Resolve the intended",
+          "excerpt": "   Read [submission and recovery](references/submission.md). Resolve the intended",
           "status": "current",
-          "line": 40
+          "line": 44
         }
       ],
       "status": "current"
@@ -4171,7 +4196,7 @@
           "path": "skills/skill-tweak/SKILL.md",
           "excerpt": "   Read [submission and recovery](references/submission.md) and prepare the bounded",
           "status": "current",
-          "line": 60
+          "line": 64
         }
       ],
       "status": "current"
@@ -4908,7 +4933,7 @@
           "path": "skills/help/SKILL.md",
           "excerpt": "`caveman`",
           "status": "current",
-          "line": 139
+          "line": 145
         }
       ],
       "status": "current"
@@ -4931,7 +4956,7 @@
           "path": "skills/help/SKILL.md",
           "excerpt": "`caveman-commit`",
           "status": "current",
-          "line": 137
+          "line": 143
         }
       ],
       "status": "current"
@@ -4954,7 +4979,7 @@
           "path": "skills/help/SKILL.md",
           "excerpt": "`caveman-compress`",
           "status": "current",
-          "line": 141
+          "line": 149
         }
       ],
       "status": "current"
@@ -4977,7 +5002,7 @@
           "path": "skills/help/SKILL.md",
           "excerpt": "`caveman-explore`",
           "status": "current",
-          "line": 132
+          "line": 138
         }
       ],
       "status": "current"
@@ -5000,7 +5025,7 @@
           "path": "skills/help/SKILL.md",
           "excerpt": "`caveman-review`",
           "status": "current",
-          "line": 135
+          "line": 141
         }
       ],
       "status": "current"
@@ -5069,7 +5094,7 @@
           "path": "skills/help/SKILL.md",
           "excerpt": "`domain-modeling`",
           "status": "current",
-          "line": 156
+          "line": 164
         }
       ],
       "status": "current"
@@ -5138,7 +5163,7 @@
           "path": "skills/help/SKILL.md",
           "excerpt": "`grilling`",
           "status": "current",
-          "line": 153
+          "line": 161
         }
       ],
       "status": "current"
@@ -5207,7 +5232,7 @@
           "path": "skills/help/SKILL.md",
           "excerpt": "`skills-restore`",
           "status": "current",
-          "line": 120
+          "line": 126
         }
       ],
       "status": "current"
@@ -5230,7 +5255,7 @@
           "path": "skills/help/SKILL.md",
           "excerpt": "`skills-status`",
           "status": "current",
-          "line": 113
+          "line": 119
         }
       ],
       "status": "current"
@@ -5253,7 +5278,7 @@
           "path": "skills/help/SKILL.md",
           "excerpt": "`skills-update`",
           "status": "current",
-          "line": 116
+          "line": 122
         }
       ],
       "status": "current"
@@ -5293,7 +5318,99 @@
           "path": "skills/help/SKILL.md",
           "excerpt": "[Matt Pocock MIT notice](assets/matt-pocock-license.txt).",
           "status": "current",
-          "line": 198
+          "line": 206
+        }
+      ],
+      "status": "current"
+    },
+    {
+      "id": "create-skills:caveman",
+      "from": "skill:create-skills",
+      "to": "skill:caveman",
+      "kind": "skill",
+      "conditional": true,
+      "condition": "Before final preview and payload preparation, when eligible explanation exists and the selected enabled GT Caveman supports the one-pass issue-prose capability; retain the original and report skipped if unavailable or failed.",
+      "evidence": [
+        {
+          "path": "skills/create-skills/SKILL.md",
+          "excerpt": "   [explanatory issue prose](references/issue-prose.md). Apply its scoped GT Caveman",
+          "status": "current",
+          "line": 41
+        },
+        {
+          "path": "skills/create-skills/references/issue-prose.md",
+          "excerpt": "Resolve the exposed, enabled **GT caveman** from the same client-selected GT",
+          "status": "current",
+          "line": 25
+        },
+        {
+          "path": "scripts/issue-prose.md",
+          "excerpt": "Resolve the exposed, enabled **GT caveman** from the same client-selected GT",
+          "status": "current",
+          "line": 25
+        }
+      ],
+      "status": "current"
+    },
+    {
+      "id": "create-skills:issue-prose-guide",
+      "from": "file:skills/create-skills/SKILL.md",
+      "to": "file:skills/create-skills/references/issue-prose.md",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "Read before final preview, required approval and delivery-payload preparation to classify/protect content and apply or skip the scoped prose pass.",
+      "evidence": [
+        {
+          "path": "skills/create-skills/SKILL.md",
+          "excerpt": "   [explanatory issue prose](references/issue-prose.md). Apply its scoped GT Caveman",
+          "status": "current",
+          "line": 41
+        }
+      ],
+      "status": "current"
+    },
+    {
+      "id": "skill-tweak:caveman",
+      "from": "skill:skill-tweak",
+      "to": "skill:caveman",
+      "kind": "skill",
+      "conditional": true,
+      "condition": "Before final preview and payload preparation, when eligible explanation exists and the selected enabled GT Caveman supports the one-pass issue-prose capability; retain the original and report skipped if unavailable or failed.",
+      "evidence": [
+        {
+          "path": "skills/skill-tweak/SKILL.md",
+          "excerpt": "   [explanatory issue prose](references/issue-prose.md). Apply its scoped GT Caveman",
+          "status": "current",
+          "line": 61
+        },
+        {
+          "path": "skills/skill-tweak/references/issue-prose.md",
+          "excerpt": "Resolve the exposed, enabled **GT caveman** from the same client-selected GT",
+          "status": "current",
+          "line": 25
+        },
+        {
+          "path": "scripts/issue-prose.md",
+          "excerpt": "Resolve the exposed, enabled **GT caveman** from the same client-selected GT",
+          "status": "current",
+          "line": 25
+        }
+      ],
+      "status": "current"
+    },
+    {
+      "id": "skill-tweak:issue-prose-guide",
+      "from": "file:skills/skill-tweak/SKILL.md",
+      "to": "file:skills/skill-tweak/references/issue-prose.md",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "Read before final preview, required approval and delivery-payload preparation to classify/protect content and apply or skip the scoped prose pass.",
+      "evidence": [
+        {
+          "path": "skills/skill-tweak/SKILL.md",
+          "excerpt": "   [explanatory issue prose](references/issue-prose.md). Apply its scoped GT Caveman",
+          "status": "current",
+          "line": 61
         }
       ],
       "status": "current"
@@ -5597,7 +5714,7 @@
           "path": "scripts/build-create-skills.mjs",
           "excerpt": "  files.set('references/package-rules.md', guidance(readFileSync(join(base, 'CONTRIBUTING.md'), 'utf8')));",
           "status": "current",
-          "line": 28
+          "line": 29
         }
       ],
       "status": "current"
@@ -5613,7 +5730,7 @@
           "path": "scripts/build-create-skills.mjs",
           "excerpt": "  files.set('references/package-rules.md', guidance(readFileSync(join(base, 'CONTRIBUTING.md'), 'utf8')));",
           "status": "current",
-          "line": 28
+          "line": 29
         }
       ],
       "status": "current"
@@ -7425,6 +7542,70 @@
         }
       ],
       "status": "current"
+    },
+    {
+      "id": "source:skills/create-skills/references/issue-prose.md:scripts/issue-prose.md",
+      "from": "file:skills/create-skills/references/issue-prose.md",
+      "to": "file:scripts/issue-prose.md",
+      "kind": "source",
+      "condition": "Generated from this maintained source",
+      "evidence": [
+        {
+          "path": "scripts/build-create-skills.mjs",
+          "excerpt": "  files.set('references/issue-prose.md', normalize(readFileSync(join(base, 'scripts/issue-prose.md'), 'utf8')));",
+          "status": "current",
+          "line": 28
+        }
+      ],
+      "status": "current"
+    },
+    {
+      "id": "source:skills/create-skills/references/issue-prose.md:scripts/build-create-skills.mjs",
+      "from": "file:skills/create-skills/references/issue-prose.md",
+      "to": "file:scripts/build-create-skills.mjs",
+      "kind": "build",
+      "condition": "Generated by this builder",
+      "evidence": [
+        {
+          "path": "scripts/build-create-skills.mjs",
+          "excerpt": "  files.set('references/issue-prose.md', normalize(readFileSync(join(base, 'scripts/issue-prose.md'), 'utf8')));",
+          "status": "current",
+          "line": 28
+        }
+      ],
+      "status": "current"
+    },
+    {
+      "id": "source:skills/skill-tweak/references/issue-prose.md:scripts/issue-prose.md",
+      "from": "file:skills/skill-tweak/references/issue-prose.md",
+      "to": "file:scripts/issue-prose.md",
+      "kind": "source",
+      "condition": "Generated from this maintained source",
+      "evidence": [
+        {
+          "path": "scripts/build-skill-tweak.mjs",
+          "excerpt": "  files.set('references/issue-prose.md', readFileSync(join(base, 'scripts/issue-prose.md'), 'utf8'));",
+          "status": "current",
+          "line": 11
+        }
+      ],
+      "status": "current"
+    },
+    {
+      "id": "source:skills/skill-tweak/references/issue-prose.md:scripts/build-skill-tweak.mjs",
+      "from": "file:skills/skill-tweak/references/issue-prose.md",
+      "to": "file:scripts/build-skill-tweak.mjs",
+      "kind": "build",
+      "condition": "Generated by this builder",
+      "evidence": [
+        {
+          "path": "scripts/build-skill-tweak.mjs",
+          "excerpt": "  files.set('references/issue-prose.md', readFileSync(join(base, 'scripts/issue-prose.md'), 'utf8'));",
+          "status": "current",
+          "line": 11
+        }
+      ],
+      "status": "current"
     }
   ],
   "provenance": [
@@ -7585,7 +7766,7 @@
         "path": "scripts/build-create-skills.mjs",
         "excerpt": "  files.set('references/package-rules.md', guidance(readFileSync(join(base, 'CONTRIBUTING.md'), 'utf8')));",
         "status": "current",
-        "line": 28
+        "line": 29
       }
     },
     {
@@ -8274,6 +8455,38 @@
         "status": "current",
         "line": 16
       }
+    },
+    {
+      "copy": "skills/create-skills/references/issue-prose.md",
+      "sources": [
+        "scripts/issue-prose.md"
+      ],
+      "builder": "scripts/build-create-skills.mjs",
+      "transform": "copy",
+      "excerpt": "  files.set('references/issue-prose.md', normalize(readFileSync(join(base, 'scripts/issue-prose.md'), 'utf8')));",
+      "status": "current",
+      "evidence": {
+        "path": "scripts/build-create-skills.mjs",
+        "excerpt": "  files.set('references/issue-prose.md', normalize(readFileSync(join(base, 'scripts/issue-prose.md'), 'utf8')));",
+        "status": "current",
+        "line": 28
+      }
+    },
+    {
+      "copy": "skills/skill-tweak/references/issue-prose.md",
+      "sources": [
+        "scripts/issue-prose.md"
+      ],
+      "builder": "scripts/build-skill-tweak.mjs",
+      "transform": "copy",
+      "excerpt": "  files.set('references/issue-prose.md', readFileSync(join(base, 'scripts/issue-prose.md'), 'utf8'));",
+      "status": "current",
+      "evidence": {
+        "path": "scripts/build-skill-tweak.mjs",
+        "excerpt": "  files.set('references/issue-prose.md', readFileSync(join(base, 'scripts/issue-prose.md'), 'utf8'));",
+        "status": "current",
+        "line": 11
+      }
     }
   ],
   "candidates": [
@@ -8818,7 +9031,7 @@
       "path": "scripts/build-create-skills.mjs",
       "target": "skill:create-skills",
       "kind": "skill",
-      "sourceDigest": "13de8f4ae81b28db35d72a2816f8622123bdfde6919e36d79256a146bbe2b4ca",
+      "sourceDigest": "bc0550e4d524a8971164b58e3c10d1a9799a7c16b169994f32b016d205412d0f",
       "occurrences": [
         {
           "line": 23,
@@ -9013,7 +9226,7 @@
       "path": "scripts/build-skill-tweak.mjs",
       "target": "skill:skill-tweak",
       "kind": "skill",
-      "sourceDigest": "e1e6057e3dc2766825fb3caa0d44c78338ec15a5ff7b659d06fc4e1e1d2d98c1",
+      "sourceDigest": "3da4c490b6b2c89c60171852f4ddaa38ea293c6e25cf0a17f4a7518b9fbe0316",
       "occurrences": [
         {
           "line": 6,
@@ -9486,6 +9699,30 @@
       "status": "dependency",
       "edges": [
         "resource:9225e9df319b340a"
+      ]
+    },
+    {
+      "id": "dab0d686e1c4c38b0ed062ba8dda4d2bb473385084a36b466648d1155123ba65",
+      "path": "scripts/issue-prose.md",
+      "target": "skill:caveman",
+      "kind": "skill",
+      "sourceDigest": "21542ebfa9c628cce7cd1193c5ee70279ebdb925a81c1a74597f229b9cf628f5",
+      "occurrences": [
+        {
+          "line": 23,
+          "offset": 1270,
+          "excerpt": "Caveman"
+        },
+        {
+          "line": 25,
+          "offset": 1313,
+          "excerpt": "caveman"
+        }
+      ],
+      "status": "dependency",
+      "edges": [
+        "create-skills:caveman",
+        "skill-tweak:caveman"
       ]
     },
     {
@@ -10895,11 +11132,11 @@
       "path": "skills/caveman/README.md",
       "target": "file:skills/caveman/LICENSE",
       "kind": "resource",
-      "sourceDigest": "463d5a1e33cd3cbf319ec33264e6fb1bd4a221632c6895fb41a03c355f3dcabf",
+      "sourceDigest": "14080e25b6c23c217057703455210762f81846c93b8a53bbea81e1e2f82ef1d6",
       "occurrences": [
         {
-          "line": 44,
-          "offset": 2057,
+          "line": 46,
+          "offset": 2205,
           "excerpt": "](LICENSE)"
         }
       ],
@@ -10913,11 +11150,11 @@
       "path": "skills/caveman/README.md",
       "target": "file:skills/caveman/SKILL.md",
       "kind": "resource",
-      "sourceDigest": "463d5a1e33cd3cbf319ec33264e6fb1bd4a221632c6895fb41a03c355f3dcabf",
+      "sourceDigest": "14080e25b6c23c217057703455210762f81846c93b8a53bbea81e1e2f82ef1d6",
       "occurrences": [
         {
-          "line": 23,
-          "offset": 793,
+          "line": 24,
+          "offset": 911,
           "excerpt": "](SKILL.md)"
         }
       ],
@@ -10931,7 +11168,7 @@
       "path": "skills/caveman/README.md",
       "target": "skill:caveman",
       "kind": "skill",
-      "sourceDigest": "463d5a1e33cd3cbf319ec33264e6fb1bd4a221632c6895fb41a03c355f3dcabf",
+      "sourceDigest": "14080e25b6c23c217057703455210762f81846c93b8a53bbea81e1e2f82ef1d6",
       "occurrences": [
         {
           "line": 1,
@@ -10944,83 +11181,83 @@
           "excerpt": "caveman"
         },
         {
-          "line": 10,
-          "offset": 287,
-          "excerpt": "caveman"
-        },
-        {
           "line": 11,
-          "offset": 305,
+          "offset": 405,
           "excerpt": "caveman"
         },
         {
           "line": 12,
-          "offset": 345,
+          "offset": 423,
           "excerpt": "caveman"
         },
         {
-          "line": 15,
-          "offset": 387,
+          "line": 13,
+          "offset": 463,
           "excerpt": "caveman"
         },
         {
-          "line": 15,
-          "offset": 435,
+          "line": 16,
+          "offset": 505,
           "excerpt": "caveman"
         },
         {
-          "line": 26,
-          "offset": 986,
+          "line": 16,
+          "offset": 553,
+          "excerpt": "caveman"
+        },
+        {
+          "line": 28,
+          "offset": 1134,
           "excerpt": "Caveman"
         },
         {
-          "line": 31,
-          "offset": 1287,
+          "line": 33,
+          "offset": 1435,
           "excerpt": "Caveman"
         },
         {
-          "line": 43,
-          "offset": 1858,
-          "excerpt": "caveman"
-        },
-        {
-          "line": 43,
-          "offset": 1912,
-          "excerpt": "caveman"
-        },
-        {
-          "line": 43,
-          "offset": 1973,
+          "line": 45,
+          "offset": 2006,
           "excerpt": "caveman"
         },
         {
           "line": 45,
-          "offset": 2131,
+          "offset": 2060,
           "excerpt": "caveman"
         },
         {
-          "line": 10,
-          "offset": 283,
-          "excerpt": "/gt:caveman"
+          "line": 45,
+          "offset": 2121,
+          "excerpt": "caveman"
+        },
+        {
+          "line": 47,
+          "offset": 2279,
+          "excerpt": "caveman"
         },
         {
           "line": 11,
-          "offset": 301,
+          "offset": 401,
           "excerpt": "/gt:caveman"
         },
         {
           "line": 12,
-          "offset": 341,
+          "offset": 419,
           "excerpt": "/gt:caveman"
         },
         {
-          "line": 15,
-          "offset": 431,
+          "line": 13,
+          "offset": 459,
+          "excerpt": "/gt:caveman"
+        },
+        {
+          "line": 16,
+          "offset": 549,
           "excerpt": "$gt:caveman"
         },
         {
-          "line": 43,
-          "offset": 1966,
+          "line": 45,
+          "offset": 2114,
           "excerpt": "skills/caveman"
         }
       ],
@@ -11028,31 +11265,15 @@
       "reason": "Skill identity, invocation documentation or attribution to itself; no recursive invocation instruction."
     },
     {
-      "id": "a05eec9defb7abcb91b7a41ef6e14d389b97db02c33cb970c438c688e4490826",
-      "path": "skills/caveman/release.yaml",
-      "target": "skill:caveman",
-      "kind": "skill",
-      "sourceDigest": "292182f137b8aff167ee05842cff9374661525d017bf4a7b272d29e737b7c1ae",
-      "occurrences": [
-        {
-          "line": 2,
-          "offset": 43,
-          "excerpt": "Caveman"
-        }
-      ],
-      "status": "excluded",
-      "reason": "Release-note description of an already recorded behavior, not an executable workflow or a separate dependency declaration."
-    },
-    {
       "id": "9441af68d0eea926fc3e38e286d8f4d9fad3641b3da89fde836f0c0664f39873",
       "path": "skills/caveman/SKILL.md",
       "target": "file:skills/caveman/LICENSE",
       "kind": "resource",
-      "sourceDigest": "20a09a0cb4a530111d2c423f9b5b837ff95b3c8080b1f8c27f8167e9551efcc8",
+      "sourceDigest": "23689f91f61258fa430fd9e6dcad53d2564e27f514c268c9c4c524877e63caf5",
       "occurrences": [
         {
-          "line": 97,
-          "offset": 5571,
+          "line": 115,
+          "offset": 6678,
           "excerpt": "](LICENSE)"
         }
       ],
@@ -11066,11 +11287,11 @@
       "path": "skills/caveman/SKILL.md",
       "target": "file:skills/caveman/README.md",
       "kind": "resource",
-      "sourceDigest": "20a09a0cb4a530111d2c423f9b5b837ff95b3c8080b1f8c27f8167e9551efcc8",
+      "sourceDigest": "23689f91f61258fa430fd9e6dcad53d2564e27f514c268c9c4c524877e63caf5",
       "occurrences": [
         {
-          "line": 96,
-          "offset": 5453,
+          "line": 114,
+          "offset": 6560,
           "excerpt": "](README.md)"
         }
       ],
@@ -11084,7 +11305,7 @@
       "path": "skills/caveman/SKILL.md",
       "target": "skill:caveman",
       "kind": "skill",
-      "sourceDigest": "20a09a0cb4a530111d2c423f9b5b837ff95b3c8080b1f8c27f8167e9551efcc8",
+      "sourceDigest": "23689f91f61258fa430fd9e6dcad53d2564e27f514c268c9c4c524877e63caf5",
       "occurrences": [
         {
           "line": 2,
@@ -11093,82 +11314,72 @@
         },
         {
           "line": 3,
-          "offset": 105,
-          "excerpt": "caveman"
-        },
-        {
-          "line": 3,
-          "offset": 129,
-          "excerpt": "caveman"
-        },
-        {
-          "line": 3,
-          "offset": 179,
+          "offset": 164,
           "excerpt": "Caveman"
         },
         {
-          "line": 16,
-          "offset": 583,
+          "line": 33,
+          "offset": 1646,
           "excerpt": "caveman"
         },
         {
-          "line": 19,
-          "offset": 768,
+          "line": 36,
+          "offset": 1831,
           "excerpt": "caveman"
         },
         {
-          "line": 22,
-          "offset": 978,
+          "line": 39,
+          "offset": 2041,
           "excerpt": "Caveman"
         },
         {
-          "line": 25,
-          "offset": 1194,
+          "line": 42,
+          "offset": 2257,
           "excerpt": "caveman"
         },
         {
-          "line": 25,
-          "offset": 1214,
+          "line": 42,
+          "offset": 2277,
           "excerpt": "caveman"
         },
         {
-          "line": 25,
-          "offset": 1245,
+          "line": 42,
+          "offset": 2308,
           "excerpt": "Caveman"
         },
         {
-          "line": 34,
-          "offset": 1910,
+          "line": 51,
+          "offset": 2973,
           "excerpt": "Caveman"
         },
         {
-          "line": 37,
-          "offset": 2009,
+          "line": 54,
+          "offset": 3072,
           "excerpt": "caveman"
         },
         {
-          "line": 37,
-          "offset": 2032,
+          "line": 54,
+          "offset": 3095,
           "excerpt": "caveman"
         },
         {
-          "line": 45,
-          "offset": 2415,
+          "line": 62,
+          "offset": 3478,
           "excerpt": "Caveman"
         },
         {
-          "line": 86,
-          "offset": 4970,
+          "line": 104,
+          "offset": 6083,
           "excerpt": "Caveman"
         },
         {
-          "line": 37,
-          "offset": 2005,
+          "line": 54,
+          "offset": 3068,
           "excerpt": "/gt:caveman"
         },
         {
-          "line": 37,
-          "offset": 2028,
+          "line": 54,
+          "offset": 3091,
           "excerpt": "$gt:caveman"
         }
       ],
@@ -11180,11 +11391,11 @@
       "path": "skills/caveman/SKILL.md",
       "target": "skill:caveman-commit",
       "kind": "skill",
-      "sourceDigest": "20a09a0cb4a530111d2c423f9b5b837ff95b3c8080b1f8c27f8167e9551efcc8",
+      "sourceDigest": "23689f91f61258fa430fd9e6dcad53d2564e27f514c268c9c4c524877e63caf5",
       "occurrences": [
         {
-          "line": 85,
-          "offset": 4900,
+          "line": 102,
+          "offset": 5963,
           "excerpt": "caveman-commit"
         }
       ],
@@ -11196,11 +11407,11 @@
       "path": "skills/caveman/SKILL.md",
       "target": "skill:caveman-compress",
       "kind": "skill",
-      "sourceDigest": "20a09a0cb4a530111d2c423f9b5b837ff95b3c8080b1f8c27f8167e9551efcc8",
+      "sourceDigest": "23689f91f61258fa430fd9e6dcad53d2564e27f514c268c9c4c524877e63caf5",
       "occurrences": [
         {
-          "line": 85,
-          "offset": 4882,
+          "line": 102,
+          "offset": 5945,
           "excerpt": "caveman-compress"
         }
       ],
@@ -11544,6 +11755,29 @@
       "reason": "Names the consumers of this shared guide, not a dependency invoked by the consumer."
     },
     {
+      "id": "ab4fca294c1c006d72b03e2dfced75b0c0351e118736204ab6840f2df993208d",
+      "path": "skills/create-skills/references/issue-prose.md",
+      "target": "skill:caveman",
+      "kind": "skill",
+      "sourceDigest": "21542ebfa9c628cce7cd1193c5ee70279ebdb925a81c1a74597f229b9cf628f5",
+      "occurrences": [
+        {
+          "line": 23,
+          "offset": 1270,
+          "excerpt": "Caveman"
+        },
+        {
+          "line": 25,
+          "offset": 1313,
+          "excerpt": "caveman"
+        }
+      ],
+      "status": "dependency",
+      "edges": [
+        "create-skills:caveman"
+      ]
+    },
+    {
       "id": "4460b5f2adbe687bf66ee5ec2cd516c1f290864e53223e438208149832874fad",
       "path": "skills/create-skills/references/personal-installation.md",
       "target": "file:skills/create-skills/references/tools.md",
@@ -11716,20 +11950,20 @@
       ]
     },
     {
-      "id": "6be37080bf144a63ea5fac98cfb5f897a07f68358eff67b3ebc94b36740829b4",
+      "id": "cf563426a50a9951948eb2b260e8d3c083856ad3444e556b6329995156b55a2b",
       "path": "skills/create-skills/release.yaml",
-      "target": "skill:grill-me",
+      "target": "skill:caveman",
       "kind": "skill",
-      "sourceDigest": "f0c570ecf5916febd78693fb468d34058d7fc1f1712400e65ec3f6d9b6134ad8",
+      "sourceDigest": "78f2e4f2b130971f18c52f620701c7471cc360236400acde1af4003930520509",
       "occurrences": [
         {
           "line": 2,
-          "offset": 51,
-          "excerpt": "Grill Me"
+          "offset": 41,
+          "excerpt": "Caveman"
         }
       ],
       "status": "excluded",
-      "reason": "Release-note description of an already recorded behavior, not an executable workflow or a separate dependency declaration."
+      "reason": "Release-note description of the scoped issue-prose behavior, not an instruction to invoke a skill or a separate dependency."
     },
     {
       "id": "a18fc7f2b7ffdb36e7101bd5bb29ad7878afb9934701e2715ce024e602205816",
@@ -11949,11 +12183,11 @@
       "path": "skills/create-skills/SKILL.md",
       "target": "file:skills/create-skills/assets/matt-pocock-license.txt",
       "kind": "resource",
-      "sourceDigest": "f3962618c3fdaeb7af183e71a2e0ed9b7ea4f9519c7327d6c7836b57df791679",
+      "sourceDigest": "c89fc466ba17690ce31b04cff29fcc1743e8a374552c7d4eff0003fd3302689e",
       "occurrences": [
         {
-          "line": 65,
-          "offset": 4421,
+          "line": 69,
+          "offset": 4750,
           "excerpt": "](assets/matt-pocock-license.txt)"
         }
       ],
@@ -11967,7 +12201,7 @@
       "path": "skills/create-skills/SKILL.md",
       "target": "file:skills/create-skills/references/intent-capture.md",
       "kind": "resource",
-      "sourceDigest": "f3962618c3fdaeb7af183e71a2e0ed9b7ea4f9519c7327d6c7836b57df791679",
+      "sourceDigest": "c89fc466ba17690ce31b04cff29fcc1743e8a374552c7d4eff0003fd3302689e",
       "occurrences": [
         {
           "line": 14,
@@ -11981,11 +12215,29 @@
       ]
     },
     {
+      "id": "b6f8462842d7443285b5301f634238a91b77b332b1547ea168074faa2c630f46",
+      "path": "skills/create-skills/SKILL.md",
+      "target": "file:skills/create-skills/references/issue-prose.md",
+      "kind": "resource",
+      "sourceDigest": "c89fc466ba17690ce31b04cff29fcc1743e8a374552c7d4eff0003fd3302689e",
+      "occurrences": [
+        {
+          "line": 41,
+          "offset": 2782,
+          "excerpt": "](references/issue-prose.md)"
+        }
+      ],
+      "status": "dependency",
+      "edges": [
+        "create-skills:issue-prose-guide"
+      ]
+    },
+    {
       "id": "99a726beced6cb8b75d76ddce9b127ccd48836f19908162cd91a1e09882278d7",
       "path": "skills/create-skills/SKILL.md",
       "target": "file:skills/create-skills/references/package-rules.md",
       "kind": "resource",
-      "sourceDigest": "f3962618c3fdaeb7af183e71a2e0ed9b7ea4f9519c7327d6c7836b57df791679",
+      "sourceDigest": "c89fc466ba17690ce31b04cff29fcc1743e8a374552c7d4eff0003fd3302689e",
       "occurrences": [
         {
           "line": 25,
@@ -12003,11 +12255,11 @@
       "path": "skills/create-skills/SKILL.md",
       "target": "file:skills/create-skills/references/personal-installation.md",
       "kind": "resource",
-      "sourceDigest": "f3962618c3fdaeb7af183e71a2e0ed9b7ea4f9519c7327d6c7836b57df791679",
+      "sourceDigest": "c89fc466ba17690ce31b04cff29fcc1743e8a374552c7d4eff0003fd3302689e",
       "occurrences": [
         {
-          "line": 52,
-          "offset": 3644,
+          "line": 56,
+          "offset": 3973,
           "excerpt": "](references/personal-installation.md)"
         }
       ],
@@ -12021,7 +12273,7 @@
       "path": "skills/create-skills/SKILL.md",
       "target": "file:skills/create-skills/references/specification.md",
       "kind": "resource",
-      "sourceDigest": "f3962618c3fdaeb7af183e71a2e0ed9b7ea4f9519c7327d6c7836b57df791679",
+      "sourceDigest": "c89fc466ba17690ce31b04cff29fcc1743e8a374552c7d4eff0003fd3302689e",
       "occurrences": [
         {
           "line": 15,
@@ -12039,11 +12291,11 @@
       "path": "skills/create-skills/SKILL.md",
       "target": "file:skills/create-skills/references/submission.md",
       "kind": "resource",
-      "sourceDigest": "f3962618c3fdaeb7af183e71a2e0ed9b7ea4f9519c7327d6c7836b57df791679",
+      "sourceDigest": "c89fc466ba17690ce31b04cff29fcc1743e8a374552c7d4eff0003fd3302689e",
       "occurrences": [
         {
-          "line": 40,
-          "offset": 2710,
+          "line": 44,
+          "offset": 3039,
           "excerpt": "](references/submission.md)"
         }
       ],
@@ -12057,7 +12309,7 @@
       "path": "skills/create-skills/SKILL.md",
       "target": "file:skills/create-skills/references/tools.md",
       "kind": "resource",
-      "sourceDigest": "f3962618c3fdaeb7af183e71a2e0ed9b7ea4f9519c7327d6c7836b57df791679",
+      "sourceDigest": "c89fc466ba17690ce31b04cff29fcc1743e8a374552c7d4eff0003fd3302689e",
       "occurrences": [
         {
           "line": 32,
@@ -12075,7 +12327,7 @@
       "path": "skills/create-skills/SKILL.md",
       "target": "file:skills/create-skills/references/writing.md",
       "kind": "resource",
-      "sourceDigest": "f3962618c3fdaeb7af183e71a2e0ed9b7ea4f9519c7327d6c7836b57df791679",
+      "sourceDigest": "c89fc466ba17690ce31b04cff29fcc1743e8a374552c7d4eff0003fd3302689e",
       "occurrences": [
         {
           "line": 24,
@@ -12089,15 +12341,33 @@
       ]
     },
     {
+      "id": "534617b95920cf36f018e3bb06830a5d4349b45c74c33f1b5aeec1ad36cc6a00",
+      "path": "skills/create-skills/SKILL.md",
+      "target": "skill:caveman",
+      "kind": "skill",
+      "sourceDigest": "c89fc466ba17690ce31b04cff29fcc1743e8a374552c7d4eff0003fd3302689e",
+      "occurrences": [
+        {
+          "line": 41,
+          "offset": 2832,
+          "excerpt": "Caveman"
+        }
+      ],
+      "status": "dependency",
+      "edges": [
+        "create-skills:caveman"
+      ]
+    },
+    {
       "id": "422f84f3cc632e356513ec04f1e8a696db4b168efb3084feb72ce7e2c69ceb66",
       "path": "skills/create-skills/SKILL.md",
       "target": "skill:create-issue",
       "kind": "skill",
-      "sourceDigest": "f3962618c3fdaeb7af183e71a2e0ed9b7ea4f9519c7327d6c7836b57df791679",
+      "sourceDigest": "c89fc466ba17690ce31b04cff29fcc1743e8a374552c7d4eff0003fd3302689e",
       "occurrences": [
         {
-          "line": 41,
-          "offset": 2776,
+          "line": 45,
+          "offset": 3105,
           "excerpt": "create-issue"
         }
       ],
@@ -12111,7 +12381,7 @@
       "path": "skills/create-skills/SKILL.md",
       "target": "skill:create-skills",
       "kind": "skill",
-      "sourceDigest": "f3962618c3fdaeb7af183e71a2e0ed9b7ea4f9519c7327d6c7836b57df791679",
+      "sourceDigest": "c89fc466ba17690ce31b04cff29fcc1743e8a374552c7d4eff0003fd3302689e",
       "occurrences": [
         {
           "line": 2,
@@ -12127,7 +12397,7 @@
       "path": "skills/create-skills/SKILL.md",
       "target": "skill:grill-me",
       "kind": "skill",
-      "sourceDigest": "f3962618c3fdaeb7af183e71a2e0ed9b7ea4f9519c7327d6c7836b57df791679",
+      "sourceDigest": "c89fc466ba17690ce31b04cff29fcc1743e8a374552c7d4eff0003fd3302689e",
       "occurrences": [
         {
           "line": 16,
@@ -12424,15 +12694,63 @@
       "reason": "Skill identity, invocation documentation or attribution to itself; no recursive invocation instruction."
     },
     {
+      "id": "3366e35868c18ddad1974ec5b80a686ebc0645308a78ed96e971bfbc399cb72a",
+      "path": "skills/help/release.yaml",
+      "target": "skill:caveman",
+      "kind": "skill",
+      "sourceDigest": "8aee90f712779c77f0ac7a0764534c4e67009e4380b08928ae9884528a15b0b7",
+      "occurrences": [
+        {
+          "line": 2,
+          "offset": 44,
+          "excerpt": "Caveman"
+        }
+      ],
+      "status": "excluded",
+      "reason": "Release-note description of the scoped issue-prose behavior, not an instruction to invoke a skill or a separate dependency."
+    },
+    {
+      "id": "271f3fce1e82a7e80aba00369b46f18e11efa24d743218cf320303417b26ed0d",
+      "path": "skills/help/release.yaml",
+      "target": "skill:create-skills",
+      "kind": "skill",
+      "sourceDigest": "8aee90f712779c77f0ac7a0764534c4e67009e4380b08928ae9884528a15b0b7",
+      "occurrences": [
+        {
+          "line": 2,
+          "offset": 72,
+          "excerpt": "Create Skills"
+        }
+      ],
+      "status": "excluded",
+      "reason": "Release-note description of the scoped issue-prose behavior, not an instruction to invoke a skill or a separate dependency."
+    },
+    {
+      "id": "0db4c125713e6c9a866c7484dd8d08cc1c7eba266f8b863c61ae21733a408021",
+      "path": "skills/help/release.yaml",
+      "target": "skill:skill-tweak",
+      "kind": "skill",
+      "sourceDigest": "8aee90f712779c77f0ac7a0764534c4e67009e4380b08928ae9884528a15b0b7",
+      "occurrences": [
+        {
+          "line": 2,
+          "offset": 90,
+          "excerpt": "Skill Tweak"
+        }
+      ],
+      "status": "excluded",
+      "reason": "Release-note description of the scoped issue-prose behavior, not an instruction to invoke a skill or a separate dependency."
+    },
+    {
       "id": "f4881b39ce3064ea5e266ec6d0e031cb64fa4cc9b845c3b798b7c1b53067b9d7",
       "path": "skills/help/SKILL.md",
       "target": "file:skills/help/assets/matt-pocock-license.txt",
       "kind": "resource",
-      "sourceDigest": "c99307893972cd05a5fbe9b257b9072468e3e6acd499e20b47951c6b6438478e",
+      "sourceDigest": "d6fc7f8e603223d6091bb951e2255a67cd7281005cc1161c2aeae4350852c5e0",
       "occurrences": [
         {
-          "line": 198,
-          "offset": 11303,
+          "line": 206,
+          "offset": 11835,
           "excerpt": "](assets/matt-pocock-license.txt)"
         }
       ],
@@ -12446,36 +12764,41 @@
       "path": "skills/help/SKILL.md",
       "target": "skill:caveman",
       "kind": "skill",
-      "sourceDigest": "c99307893972cd05a5fbe9b257b9072468e3e6acd499e20b47951c6b6438478e",
+      "sourceDigest": "d6fc7f8e603223d6091bb951e2255a67cd7281005cc1161c2aeae4350852c5e0",
       "occurrences": [
         {
-          "line": 132,
-          "offset": 7304,
+          "line": 111,
+          "offset": 6159,
           "excerpt": "Caveman"
         },
         {
-          "line": 135,
-          "offset": 7530,
+          "line": 138,
+          "offset": 7692,
           "excerpt": "Caveman"
-        },
-        {
-          "line": 137,
-          "offset": 7688,
-          "excerpt": "Caveman"
-        },
-        {
-          "line": 139,
-          "offset": 7847,
-          "excerpt": "Caveman"
-        },
-        {
-          "line": 139,
-          "offset": 7857,
-          "excerpt": "caveman"
         },
         {
           "line": 141,
-          "offset": 7991,
+          "offset": 7918,
+          "excerpt": "Caveman"
+        },
+        {
+          "line": 143,
+          "offset": 8076,
+          "excerpt": "Caveman"
+        },
+        {
+          "line": 145,
+          "offset": 8235,
+          "excerpt": "Caveman"
+        },
+        {
+          "line": 145,
+          "offset": 8245,
+          "excerpt": "caveman"
+        },
+        {
+          "line": 149,
+          "offset": 8523,
           "excerpt": "Caveman"
         }
       ],
@@ -12489,16 +12812,16 @@
       "path": "skills/help/SKILL.md",
       "target": "skill:caveman-commit",
       "kind": "skill",
-      "sourceDigest": "c99307893972cd05a5fbe9b257b9072468e3e6acd499e20b47951c6b6438478e",
+      "sourceDigest": "d6fc7f8e603223d6091bb951e2255a67cd7281005cc1161c2aeae4350852c5e0",
       "occurrences": [
         {
-          "line": 137,
-          "offset": 7688,
+          "line": 143,
+          "offset": 8076,
           "excerpt": "Caveman Commit"
         },
         {
-          "line": 137,
-          "offset": 7705,
+          "line": 143,
+          "offset": 8093,
           "excerpt": "caveman-commit"
         }
       ],
@@ -12512,16 +12835,16 @@
       "path": "skills/help/SKILL.md",
       "target": "skill:caveman-compress",
       "kind": "skill",
-      "sourceDigest": "c99307893972cd05a5fbe9b257b9072468e3e6acd499e20b47951c6b6438478e",
+      "sourceDigest": "d6fc7f8e603223d6091bb951e2255a67cd7281005cc1161c2aeae4350852c5e0",
       "occurrences": [
         {
-          "line": 141,
-          "offset": 7991,
+          "line": 149,
+          "offset": 8523,
           "excerpt": "Caveman Compress"
         },
         {
-          "line": 141,
-          "offset": 8010,
+          "line": 149,
+          "offset": 8542,
           "excerpt": "caveman-compress"
         }
       ],
@@ -12535,16 +12858,16 @@
       "path": "skills/help/SKILL.md",
       "target": "skill:caveman-explore",
       "kind": "skill",
-      "sourceDigest": "c99307893972cd05a5fbe9b257b9072468e3e6acd499e20b47951c6b6438478e",
+      "sourceDigest": "d6fc7f8e603223d6091bb951e2255a67cd7281005cc1161c2aeae4350852c5e0",
       "occurrences": [
         {
-          "line": 132,
-          "offset": 7304,
+          "line": 138,
+          "offset": 7692,
           "excerpt": "Caveman Explore"
         },
         {
-          "line": 132,
-          "offset": 7322,
+          "line": 138,
+          "offset": 7710,
           "excerpt": "caveman-explore"
         }
       ],
@@ -12558,16 +12881,16 @@
       "path": "skills/help/SKILL.md",
       "target": "skill:caveman-review",
       "kind": "skill",
-      "sourceDigest": "c99307893972cd05a5fbe9b257b9072468e3e6acd499e20b47951c6b6438478e",
+      "sourceDigest": "d6fc7f8e603223d6091bb951e2255a67cd7281005cc1161c2aeae4350852c5e0",
       "occurrences": [
         {
-          "line": 135,
-          "offset": 7530,
+          "line": 141,
+          "offset": 7918,
           "excerpt": "Caveman Review"
         },
         {
-          "line": 135,
-          "offset": 7547,
+          "line": 141,
+          "offset": 7935,
           "excerpt": "caveman-review"
         }
       ],
@@ -12581,7 +12904,7 @@
       "path": "skills/help/SKILL.md",
       "target": "skill:create-issue",
       "kind": "skill",
-      "sourceDigest": "c99307893972cd05a5fbe9b257b9072468e3e6acd499e20b47951c6b6438478e",
+      "sourceDigest": "d6fc7f8e603223d6091bb951e2255a67cd7281005cc1161c2aeae4350852c5e0",
       "occurrences": [
         {
           "line": 107,
@@ -12604,7 +12927,7 @@
       "path": "skills/help/SKILL.md",
       "target": "skill:create-skills",
       "kind": "skill",
-      "sourceDigest": "c99307893972cd05a5fbe9b257b9072468e3e6acd499e20b47951c6b6438478e",
+      "sourceDigest": "d6fc7f8e603223d6091bb951e2255a67cd7281005cc1161c2aeae4350852c5e0",
       "occurrences": [
         {
           "line": 84,
@@ -12622,8 +12945,13 @@
           "excerpt": "create-skills"
         },
         {
-          "line": 193,
-          "offset": 11061,
+          "line": 111,
+          "offset": 6122,
+          "excerpt": "Create Skills"
+        },
+        {
+          "line": 201,
+          "offset": 11593,
           "excerpt": "Create Skills"
         }
       ],
@@ -12637,7 +12965,7 @@
       "path": "skills/help/SKILL.md",
       "target": "skill:domain-modeling",
       "kind": "skill",
-      "sourceDigest": "c99307893972cd05a5fbe9b257b9072468e3e6acd499e20b47951c6b6438478e",
+      "sourceDigest": "d6fc7f8e603223d6091bb951e2255a67cd7281005cc1161c2aeae4350852c5e0",
       "occurrences": [
         {
           "line": 77,
@@ -12645,13 +12973,13 @@
           "excerpt": "Domain Modeling"
         },
         {
-          "line": 156,
-          "offset": 8835,
+          "line": 164,
+          "offset": 9367,
           "excerpt": "Domain Modeling"
         },
         {
-          "line": 156,
-          "offset": 8853,
+          "line": 164,
+          "offset": 9385,
           "excerpt": "domain-modeling"
         }
       ],
@@ -12665,7 +12993,7 @@
       "path": "skills/help/SKILL.md",
       "target": "skill:grill-me",
       "kind": "skill",
-      "sourceDigest": "c99307893972cd05a5fbe9b257b9072468e3e6acd499e20b47951c6b6438478e",
+      "sourceDigest": "d6fc7f8e603223d6091bb951e2255a67cd7281005cc1161c2aeae4350852c5e0",
       "occurrences": [
         {
           "line": 71,
@@ -12688,7 +13016,7 @@
       "path": "skills/help/SKILL.md",
       "target": "skill:grill-with-docs",
       "kind": "skill",
-      "sourceDigest": "c99307893972cd05a5fbe9b257b9072468e3e6acd499e20b47951c6b6438478e",
+      "sourceDigest": "d6fc7f8e603223d6091bb951e2255a67cd7281005cc1161c2aeae4350852c5e0",
       "occurrences": [
         {
           "line": 74,
@@ -12711,7 +13039,7 @@
       "path": "skills/help/SKILL.md",
       "target": "skill:grilling",
       "kind": "skill",
-      "sourceDigest": "c99307893972cd05a5fbe9b257b9072468e3e6acd499e20b47951c6b6438478e",
+      "sourceDigest": "d6fc7f8e603223d6091bb951e2255a67cd7281005cc1161c2aeae4350852c5e0",
       "occurrences": [
         {
           "line": 77,
@@ -12719,13 +13047,13 @@
           "excerpt": "Grilling"
         },
         {
-          "line": 153,
-          "offset": 8608,
+          "line": 161,
+          "offset": 9140,
           "excerpt": "Grilling"
         },
         {
-          "line": 153,
-          "offset": 8619,
+          "line": 161,
+          "offset": 9151,
           "excerpt": "grilling"
         }
       ],
@@ -12739,7 +13067,7 @@
       "path": "skills/help/SKILL.md",
       "target": "skill:help",
       "kind": "skill",
-      "sourceDigest": "c99307893972cd05a5fbe9b257b9072468e3e6acd499e20b47951c6b6438478e",
+      "sourceDigest": "d6fc7f8e603223d6091bb951e2255a67cd7281005cc1161c2aeae4350852c5e0",
       "occurrences": [
         {
           "line": 2,
@@ -12777,8 +13105,8 @@
           "excerpt": "Help"
         },
         {
-          "line": 130,
-          "offset": 7264,
+          "line": 136,
+          "offset": 7652,
           "excerpt": "help"
         }
       ],
@@ -12790,7 +13118,7 @@
       "path": "skills/help/SKILL.md",
       "target": "skill:skill-steal",
       "kind": "skill",
-      "sourceDigest": "c99307893972cd05a5fbe9b257b9072468e3e6acd499e20b47951c6b6438478e",
+      "sourceDigest": "d6fc7f8e603223d6091bb951e2255a67cd7281005cc1161c2aeae4350852c5e0",
       "occurrences": [
         {
           "line": 98,
@@ -12813,7 +13141,7 @@
       "path": "skills/help/SKILL.md",
       "target": "skill:skill-tweak",
       "kind": "skill",
-      "sourceDigest": "c99307893972cd05a5fbe9b257b9072468e3e6acd499e20b47951c6b6438478e",
+      "sourceDigest": "d6fc7f8e603223d6091bb951e2255a67cd7281005cc1161c2aeae4350852c5e0",
       "occurrences": [
         {
           "line": 94,
@@ -12824,6 +13152,11 @@
           "line": 94,
           "offset": 5091,
           "excerpt": "skill-tweak"
+        },
+        {
+          "line": 111,
+          "offset": 6140,
+          "excerpt": "Skill Tweak"
         }
       ],
       "status": "dependency",
@@ -12836,16 +13169,16 @@
       "path": "skills/help/SKILL.md",
       "target": "skill:skills-restore",
       "kind": "skill",
-      "sourceDigest": "c99307893972cd05a5fbe9b257b9072468e3e6acd499e20b47951c6b6438478e",
+      "sourceDigest": "d6fc7f8e603223d6091bb951e2255a67cd7281005cc1161c2aeae4350852c5e0",
       "occurrences": [
         {
-          "line": 120,
-          "offset": 6665,
+          "line": 126,
+          "offset": 7053,
           "excerpt": "Skills Restore"
         },
         {
-          "line": 120,
-          "offset": 6682,
+          "line": 126,
+          "offset": 7070,
           "excerpt": "skills-restore"
         }
       ],
@@ -12859,21 +13192,21 @@
       "path": "skills/help/SKILL.md",
       "target": "skill:skills-status",
       "kind": "skill",
-      "sourceDigest": "c99307893972cd05a5fbe9b257b9072468e3e6acd499e20b47951c6b6438478e",
+      "sourceDigest": "d6fc7f8e603223d6091bb951e2255a67cd7281005cc1161c2aeae4350852c5e0",
       "occurrences": [
         {
-          "line": 113,
-          "offset": 6178,
+          "line": 119,
+          "offset": 6566,
           "excerpt": "Skills Status"
         },
         {
-          "line": 113,
-          "offset": 6194,
+          "line": 119,
+          "offset": 6582,
           "excerpt": "skills-status"
         },
         {
-          "line": 188,
-          "offset": 10735,
+          "line": 196,
+          "offset": 11267,
           "excerpt": "Skills Status"
         }
       ],
@@ -12887,21 +13220,21 @@
       "path": "skills/help/SKILL.md",
       "target": "skill:skills-update",
       "kind": "skill",
-      "sourceDigest": "c99307893972cd05a5fbe9b257b9072468e3e6acd499e20b47951c6b6438478e",
+      "sourceDigest": "d6fc7f8e603223d6091bb951e2255a67cd7281005cc1161c2aeae4350852c5e0",
       "occurrences": [
         {
-          "line": 116,
-          "offset": 6385,
+          "line": 122,
+          "offset": 6773,
           "excerpt": "Skills Update"
         },
         {
-          "line": 116,
-          "offset": 6401,
+          "line": 122,
+          "offset": 6789,
           "excerpt": "skills-update"
         },
         {
-          "line": 180,
-          "offset": 10163,
+          "line": 188,
+          "offset": 10695,
           "excerpt": "Skills Update"
         }
       ],
@@ -12915,7 +13248,7 @@
       "path": "skills/help/SKILL.md",
       "target": "skill:why-not",
       "kind": "skill",
-      "sourceDigest": "c99307893972cd05a5fbe9b257b9072468e3e6acd499e20b47951c6b6438478e",
+      "sourceDigest": "d6fc7f8e603223d6091bb951e2255a67cd7281005cc1161c2aeae4350852c5e0",
       "occurrences": [
         {
           "line": 78,
@@ -13557,6 +13890,29 @@
       "reason": "Names the consumers of this shared guide, not a dependency invoked by the consumer."
     },
     {
+      "id": "8aa8a1887423533be85af11408f74eefa286d683be6d582566e03302c0806bbc",
+      "path": "skills/skill-tweak/references/issue-prose.md",
+      "target": "skill:caveman",
+      "kind": "skill",
+      "sourceDigest": "21542ebfa9c628cce7cd1193c5ee70279ebdb925a81c1a74597f229b9cf628f5",
+      "occurrences": [
+        {
+          "line": 23,
+          "offset": 1270,
+          "excerpt": "Caveman"
+        },
+        {
+          "line": 25,
+          "offset": 1313,
+          "excerpt": "caveman"
+        }
+      ],
+      "status": "dependency",
+      "edges": [
+        "skill-tweak:caveman"
+      ]
+    },
+    {
       "id": "d5c0c3c3fd5bb1a90b71ae27789eaabdcaaa7f36150d015cf351c0ee219d26ef",
       "path": "skills/skill-tweak/references/submission.md",
       "target": "file:skills/skill-tweak/references/intent-capture.md",
@@ -13629,20 +13985,20 @@
       ]
     },
     {
-      "id": "f822422d17e749cbf661c4e1322b37a9f0f848bccc2439596897bd81a9605005",
+      "id": "4b83262586be7cd62dcc943a1786faaa00f32e548bd7e2a6b97afc88181f71b2",
       "path": "skills/skill-tweak/release.yaml",
-      "target": "skill:grill-me",
+      "target": "skill:caveman",
       "kind": "skill",
-      "sourceDigest": "2377af5c92769d93cfdbfa1cddfbfcdeb44271f98d5bb2c47b7c39cb2f9becfa",
+      "sourceDigest": "44887692a74c500f015068119c3dd0f421dd92ada6dd04fa30f89b75c8cf5606",
       "occurrences": [
         {
           "line": 2,
-          "offset": 50,
-          "excerpt": "Grill Me"
+          "offset": 41,
+          "excerpt": "Caveman"
         }
       ],
       "status": "excluded",
-      "reason": "Release-note description of an already recorded behavior, not an executable workflow or a separate dependency declaration."
+      "reason": "Release-note description of the scoped issue-prose behavior, not an instruction to invoke a skill or a separate dependency."
     },
     {
       "id": "6fbdda20c89254d1828293ca7e4c7412281d81a9c11c141280487520b1b292aa",
@@ -13754,7 +14110,7 @@
       "path": "skills/skill-tweak/SKILL.md",
       "target": "file:skills/skill-tweak/references/evidence.md",
       "kind": "resource",
-      "sourceDigest": "f5ec6e46e6ffbeddbff328cfdadb499c0c8283662c564a996794e2be172eb0a8",
+      "sourceDigest": "0a21c35161023f516800155241063bf36b581c3534007183bc45a2273702b2e9",
       "occurrences": [
         {
           "line": 20,
@@ -13772,7 +14128,7 @@
       "path": "skills/skill-tweak/SKILL.md",
       "target": "file:skills/skill-tweak/references/intent-capture.md",
       "kind": "resource",
-      "sourceDigest": "f5ec6e46e6ffbeddbff328cfdadb499c0c8283662c564a996794e2be172eb0a8",
+      "sourceDigest": "0a21c35161023f516800155241063bf36b581c3534007183bc45a2273702b2e9",
       "occurrences": [
         {
           "line": 21,
@@ -13786,15 +14142,33 @@
       ]
     },
     {
+      "id": "48e76453c6c49c8e27bd982d9b41e889d1de3ff2bc4ccb8e1ea8b83e1e580018",
+      "path": "skills/skill-tweak/SKILL.md",
+      "target": "file:skills/skill-tweak/references/issue-prose.md",
+      "kind": "resource",
+      "sourceDigest": "0a21c35161023f516800155241063bf36b581c3534007183bc45a2273702b2e9",
+      "occurrences": [
+        {
+          "line": 61,
+          "offset": 4233,
+          "excerpt": "](references/issue-prose.md)"
+        }
+      ],
+      "status": "dependency",
+      "edges": [
+        "skill-tweak:issue-prose-guide"
+      ]
+    },
+    {
       "id": "5cfb4462c3b512650588e42fbd6960fe5da5780b281476858607f8cca497996d",
       "path": "skills/skill-tweak/SKILL.md",
       "target": "file:skills/skill-tweak/references/submission.md",
       "kind": "resource",
-      "sourceDigest": "f5ec6e46e6ffbeddbff328cfdadb499c0c8283662c564a996794e2be172eb0a8",
+      "sourceDigest": "0a21c35161023f516800155241063bf36b581c3534007183bc45a2273702b2e9",
       "occurrences": [
         {
-          "line": 60,
-          "offset": 4174,
+          "line": 64,
+          "offset": 4490,
           "excerpt": "](references/submission.md)"
         }
       ],
@@ -13808,7 +14182,7 @@
       "path": "skills/skill-tweak/SKILL.md",
       "target": "file:skills/skill-tweak/templates/issue.md",
       "kind": "resource",
-      "sourceDigest": "f5ec6e46e6ffbeddbff328cfdadb499c0c8283662c564a996794e2be172eb0a8",
+      "sourceDigest": "0a21c35161023f516800155241063bf36b581c3534007183bc45a2273702b2e9",
       "occurrences": [
         {
           "line": 38,
@@ -13822,11 +14196,29 @@
       ]
     },
     {
+      "id": "57e762ac116e03ebb1ca7c7d9578e8763fdb0e157c91398b41314187b114bd84",
+      "path": "skills/skill-tweak/SKILL.md",
+      "target": "skill:caveman",
+      "kind": "skill",
+      "sourceDigest": "0a21c35161023f516800155241063bf36b581c3534007183bc45a2273702b2e9",
+      "occurrences": [
+        {
+          "line": 61,
+          "offset": 4283,
+          "excerpt": "Caveman"
+        }
+      ],
+      "status": "dependency",
+      "edges": [
+        "skill-tweak:caveman"
+      ]
+    },
+    {
       "id": "c1cdaf2f6b264f2c965e3e586fc0d296043ec09b50449b4d5e1f29bb764e03f6",
       "path": "skills/skill-tweak/SKILL.md",
       "target": "skill:create-issue",
       "kind": "skill",
-      "sourceDigest": "f5ec6e46e6ffbeddbff328cfdadb499c0c8283662c564a996794e2be172eb0a8",
+      "sourceDigest": "0a21c35161023f516800155241063bf36b581c3534007183bc45a2273702b2e9",
       "occurrences": [
         {
           "line": 48,
@@ -13834,8 +14226,8 @@
           "excerpt": "create-issue"
         },
         {
-          "line": 72,
-          "offset": 5080,
+          "line": 76,
+          "offset": 5396,
           "excerpt": "create-issue"
         }
       ],
@@ -13849,7 +14241,7 @@
       "path": "skills/skill-tweak/SKILL.md",
       "target": "skill:grill-me",
       "kind": "skill",
-      "sourceDigest": "f5ec6e46e6ffbeddbff328cfdadb499c0c8283662c564a996794e2be172eb0a8",
+      "sourceDigest": "0a21c35161023f516800155241063bf36b581c3534007183bc45a2273702b2e9",
       "occurrences": [
         {
           "line": 28,
@@ -13877,7 +14269,7 @@
       "path": "skills/skill-tweak/SKILL.md",
       "target": "skill:skill-tweak",
       "kind": "skill",
-      "sourceDigest": "f5ec6e46e6ffbeddbff328cfdadb499c0c8283662c564a996794e2be172eb0a8",
+      "sourceDigest": "0a21c35161023f516800155241063bf36b581c3534007183bc45a2273702b2e9",
       "occurrences": [
         {
           "line": 2,

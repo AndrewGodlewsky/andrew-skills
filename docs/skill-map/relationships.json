@@ -1687,7 +1687,7 @@
       "evidence": [
         {
           "path": "skills/create-skills/SKILL.md",
-          "excerpt": "4. Read [submission and recovery](references/submission.md). Resolve the intended"
+          "excerpt": "   Read [submission and recovery](references/submission.md). Resolve the intended"
         }
       ]
     },
@@ -3074,6 +3074,78 @@
           "excerpt": "[Matt Pocock MIT notice](assets/matt-pocock-license.txt)."
         }
       ]
+    },
+    {
+      "id": "create-skills:caveman",
+      "from": "skill:create-skills",
+      "to": "skill:caveman",
+      "kind": "skill",
+      "conditional": true,
+      "condition": "Before final preview and payload preparation, when eligible explanation exists and the selected enabled GT Caveman supports the one-pass issue-prose capability; retain the original and report skipped if unavailable or failed.",
+      "evidence": [
+        {
+          "path": "skills/create-skills/SKILL.md",
+          "excerpt": "   [explanatory issue prose](references/issue-prose.md). Apply its scoped GT Caveman"
+        },
+        {
+          "path": "skills/create-skills/references/issue-prose.md",
+          "excerpt": "Resolve the exposed, enabled **GT caveman** from the same client-selected GT"
+        },
+        {
+          "path": "scripts/issue-prose.md",
+          "excerpt": "Resolve the exposed, enabled **GT caveman** from the same client-selected GT"
+        }
+      ]
+    },
+    {
+      "id": "create-skills:issue-prose-guide",
+      "from": "file:skills/create-skills/SKILL.md",
+      "to": "file:skills/create-skills/references/issue-prose.md",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "Read before final preview, required approval and delivery-payload preparation to classify/protect content and apply or skip the scoped prose pass.",
+      "evidence": [
+        {
+          "path": "skills/create-skills/SKILL.md",
+          "excerpt": "   [explanatory issue prose](references/issue-prose.md). Apply its scoped GT Caveman"
+        }
+      ]
+    },
+    {
+      "id": "skill-tweak:caveman",
+      "from": "skill:skill-tweak",
+      "to": "skill:caveman",
+      "kind": "skill",
+      "conditional": true,
+      "condition": "Before final preview and payload preparation, when eligible explanation exists and the selected enabled GT Caveman supports the one-pass issue-prose capability; retain the original and report skipped if unavailable or failed.",
+      "evidence": [
+        {
+          "path": "skills/skill-tweak/SKILL.md",
+          "excerpt": "   [explanatory issue prose](references/issue-prose.md). Apply its scoped GT Caveman"
+        },
+        {
+          "path": "skills/skill-tweak/references/issue-prose.md",
+          "excerpt": "Resolve the exposed, enabled **GT caveman** from the same client-selected GT"
+        },
+        {
+          "path": "scripts/issue-prose.md",
+          "excerpt": "Resolve the exposed, enabled **GT caveman** from the same client-selected GT"
+        }
+      ]
+    },
+    {
+      "id": "skill-tweak:issue-prose-guide",
+      "from": "file:skills/skill-tweak/SKILL.md",
+      "to": "file:skills/skill-tweak/references/issue-prose.md",
+      "kind": "resource",
+      "conditional": false,
+      "condition": "Read before final preview, required approval and delivery-payload preparation to classify/protect content and apply or skip the scoped prose pass.",
+      "evidence": [
+        {
+          "path": "skills/skill-tweak/SKILL.md",
+          "excerpt": "   [explanatory issue prose](references/issue-prose.md). Apply its scoped GT Caveman"
+        }
+      ]
     }
   ],
   "provenance": [
@@ -3566,6 +3638,24 @@
       "builder": "scripts/build-exporter.mjs",
       "transform": "copy",
       "excerpt": "const guide = Buffer.from(readFileSync(join(root, 'exporter/README.md'), 'utf8').replaceAll('\\r\\n', '\\n'));"
+    },
+    {
+      "copy": "skills/create-skills/references/issue-prose.md",
+      "sources": [
+        "scripts/issue-prose.md"
+      ],
+      "builder": "scripts/build-create-skills.mjs",
+      "transform": "copy",
+      "excerpt": "  files.set('references/issue-prose.md', normalize(readFileSync(join(base, 'scripts/issue-prose.md'), 'utf8')));"
+    },
+    {
+      "copy": "skills/skill-tweak/references/issue-prose.md",
+      "sources": [
+        "scripts/issue-prose.md"
+      ],
+      "builder": "scripts/build-skill-tweak.mjs",
+      "transform": "copy",
+      "excerpt": "  files.set('references/issue-prose.md', readFileSync(join(base, 'scripts/issue-prose.md'), 'utf8'));"
     }
   ],
   "exclusions": [
@@ -3650,7 +3740,7 @@
       "candidate": "2c18582b8d98313b1610cf0f22e4daf1b88713abd15e30b4f0f82a684abcbc32",
       "path": "scripts/build-create-skills.mjs",
       "target": "skill:create-skills",
-      "sourceDigest": "13de8f4ae81b28db35d72a2816f8622123bdfde6919e36d79256a146bbe2b4ca",
+      "sourceDigest": "bc0550e4d524a8971164b58e3c10d1a9799a7c16b169994f32b016d205412d0f",
       "reason": "Build/source path or output identity; file reuse is recorded in resource/provenance edges, not a skill invocation."
     },
     {
@@ -3699,7 +3789,7 @@
       "candidate": "126389175e254b1a16d49e6b7d1df95d443aeb01c829de5b256e7e9d33cf2a03",
       "path": "scripts/build-skill-tweak.mjs",
       "target": "skill:skill-tweak",
-      "sourceDigest": "e1e6057e3dc2766825fb3caa0d44c78338ec15a5ff7b659d06fc4e1e1d2d98c1",
+      "sourceDigest": "3da4c490b6b2c89c60171852f4ddaa38ea293c6e25cf0a17f4a7518b9fbe0316",
       "reason": "Build/source path or output identity; file reuse is recorded in resource/provenance edges, not a skill invocation."
     },
     {
@@ -3895,35 +3985,28 @@
       "candidate": "9376bbc8586cec9f94bc26cd62f558c7182f47218aa83d04f92438ff5aa463c7",
       "path": "skills/caveman/README.md",
       "target": "skill:caveman",
-      "sourceDigest": "463d5a1e33cd3cbf319ec33264e6fb1bd4a221632c6895fb41a03c355f3dcabf",
+      "sourceDigest": "14080e25b6c23c217057703455210762f81846c93b8a53bbea81e1e2f82ef1d6",
       "reason": "Skill identity, invocation documentation or attribution to itself; no recursive invocation instruction."
-    },
-    {
-      "candidate": "a05eec9defb7abcb91b7a41ef6e14d389b97db02c33cb970c438c688e4490826",
-      "path": "skills/caveman/release.yaml",
-      "target": "skill:caveman",
-      "sourceDigest": "292182f137b8aff167ee05842cff9374661525d017bf4a7b272d29e737b7c1ae",
-      "reason": "Release-note description of an already recorded behavior, not an executable workflow or a separate dependency declaration."
     },
     {
       "candidate": "d505caa445968d40754b18fe34f529da49ca13cad11a215b7731d814b79a3f8d",
       "path": "skills/caveman/SKILL.md",
       "target": "skill:caveman",
-      "sourceDigest": "20a09a0cb4a530111d2c423f9b5b837ff95b3c8080b1f8c27f8167e9551efcc8",
+      "sourceDigest": "23689f91f61258fa430fd9e6dcad53d2564e27f514c268c9c4c524877e63caf5",
       "reason": "Skill identity, invocation documentation or attribution to itself; no recursive invocation instruction."
     },
     {
       "candidate": "b8230ce0580facdd21b56d93e2f3f629b38429ec491dffa9f8f3ad7892c408f5",
       "path": "skills/caveman/SKILL.md",
       "target": "skill:caveman-commit",
-      "sourceDigest": "20a09a0cb4a530111d2c423f9b5b837ff95b3c8080b1f8c27f8167e9551efcc8",
+      "sourceDigest": "23689f91f61258fa430fd9e6dcad53d2564e27f514c268c9c4c524877e63caf5",
       "reason": "Explicitly forbids implicitly invoking the named companion skills; style alone has no such workflow dependency."
     },
     {
       "candidate": "1e48e2e5b4b3e34399520f912d4db9eff848faeaa06ae7928c245894b9bf7ed8",
       "path": "skills/caveman/SKILL.md",
       "target": "skill:caveman-compress",
-      "sourceDigest": "20a09a0cb4a530111d2c423f9b5b837ff95b3c8080b1f8c27f8167e9551efcc8",
+      "sourceDigest": "23689f91f61258fa430fd9e6dcad53d2564e27f514c268c9c4c524877e63caf5",
       "reason": "Explicitly forbids implicitly invoking the named companion skills; style alone has no such workflow dependency."
     },
     {
@@ -3962,17 +4045,10 @@
       "reason": "Names the consumers of this shared guide, not a dependency invoked by the consumer."
     },
     {
-      "candidate": "6be37080bf144a63ea5fac98cfb5f897a07f68358eff67b3ebc94b36740829b4",
-      "path": "skills/create-skills/release.yaml",
-      "target": "skill:grill-me",
-      "sourceDigest": "f0c570ecf5916febd78693fb468d34058d7fc1f1712400e65ec3f6d9b6134ad8",
-      "reason": "Release-note description of an already recorded behavior, not an executable workflow or a separate dependency declaration."
-    },
-    {
       "candidate": "b3a0fe12025a0662d1ea668084917a51c3a665fcd6a2698c9a5544540bb4957b",
       "path": "skills/create-skills/SKILL.md",
       "target": "skill:create-skills",
-      "sourceDigest": "f3962618c3fdaeb7af183e71a2e0ed9b7ea4f9519c7327d6c7836b57df791679",
+      "sourceDigest": "c89fc466ba17690ce31b04cff29fcc1743e8a374552c7d4eff0003fd3302689e",
       "reason": "Skill identity, invocation documentation or attribution to itself; no recursive invocation instruction."
     },
     {
@@ -4060,17 +4136,10 @@
       "reason": "Names the consumers of this shared guide, not a dependency invoked by the consumer."
     },
     {
-      "candidate": "f822422d17e749cbf661c4e1322b37a9f0f848bccc2439596897bd81a9605005",
-      "path": "skills/skill-tweak/release.yaml",
-      "target": "skill:grill-me",
-      "sourceDigest": "2377af5c92769d93cfdbfa1cddfbfcdeb44271f98d5bb2c47b7c39cb2f9becfa",
-      "reason": "Release-note description of an already recorded behavior, not an executable workflow or a separate dependency declaration."
-    },
-    {
       "candidate": "c932870fba18a6418787e4eb8e5bc41ce3997f20f826c56c5748f107f53aecc2",
       "path": "skills/skill-tweak/SKILL.md",
       "target": "skill:skill-tweak",
-      "sourceDigest": "f5ec6e46e6ffbeddbff328cfdadb499c0c8283662c564a996794e2be172eb0a8",
+      "sourceDigest": "0a21c35161023f516800155241063bf36b581c3534007183bc45a2273702b2e9",
       "reason": "Skill identity, invocation documentation or attribution to itself; no recursive invocation instruction."
     },
     {
@@ -4196,15 +4265,50 @@
       "candidate": "74dbcc50bb0979570fa2770c37559c65a2772cd8bd8dcfd86e008948035fb5cc",
       "path": "skills/help/SKILL.md",
       "target": "skill:help",
-      "sourceDigest": "c99307893972cd05a5fbe9b257b9072468e3e6acd499e20b47951c6b6438478e",
+      "sourceDigest": "d6fc7f8e603223d6091bb951e2255a67cd7281005cc1161c2aeae4350852c5e0",
       "reason": "Own identity, headings and self references; no self-call or lookup dependency."
+    },
+    {
+      "candidate": "cf563426a50a9951948eb2b260e8d3c083856ad3444e556b6329995156b55a2b",
+      "path": "skills/create-skills/release.yaml",
+      "target": "skill:caveman",
+      "sourceDigest": "78f2e4f2b130971f18c52f620701c7471cc360236400acde1af4003930520509",
+      "reason": "Release-note description of the scoped issue-prose behavior, not an instruction to invoke a skill or a separate dependency."
+    },
+    {
+      "candidate": "3366e35868c18ddad1974ec5b80a686ebc0645308a78ed96e971bfbc399cb72a",
+      "path": "skills/help/release.yaml",
+      "target": "skill:caveman",
+      "sourceDigest": "8aee90f712779c77f0ac7a0764534c4e67009e4380b08928ae9884528a15b0b7",
+      "reason": "Release-note description of the scoped issue-prose behavior, not an instruction to invoke a skill or a separate dependency."
+    },
+    {
+      "candidate": "271f3fce1e82a7e80aba00369b46f18e11efa24d743218cf320303417b26ed0d",
+      "path": "skills/help/release.yaml",
+      "target": "skill:create-skills",
+      "sourceDigest": "8aee90f712779c77f0ac7a0764534c4e67009e4380b08928ae9884528a15b0b7",
+      "reason": "Release-note description of the scoped issue-prose behavior, not an instruction to invoke a skill or a separate dependency."
+    },
+    {
+      "candidate": "0db4c125713e6c9a866c7484dd8d08cc1c7eba266f8b863c61ae21733a408021",
+      "path": "skills/help/release.yaml",
+      "target": "skill:skill-tweak",
+      "sourceDigest": "8aee90f712779c77f0ac7a0764534c4e67009e4380b08928ae9884528a15b0b7",
+      "reason": "Release-note description of the scoped issue-prose behavior, not an instruction to invoke a skill or a separate dependency."
+    },
+    {
+      "candidate": "4b83262586be7cd62dcc943a1786faaa00f32e548bd7e2a6b97afc88181f71b2",
+      "path": "skills/skill-tweak/release.yaml",
+      "target": "skill:caveman",
+      "sourceDigest": "44887692a74c500f015068119c3dd0f421dd92ada6dd04fa30f89b75c8cf5606",
+      "reason": "Release-note description of the scoped issue-prose behavior, not an instruction to invoke a skill or a separate dependency."
     }
   ],
   "reviews": {
     "caveman": {
-      "digest": "e7f76b707892bfdb0c03616e9a17e36d5888483d4a9f7eebb30af658a2f7f587",
-      "reviewer": "Codex dependency audit for Andrew, issue #61",
-      "note": "Session style only; companion invocations expressly forbidden. README and license apply to installation/redistribution."
+      "digest": "d8f1ba6b0415814784df4e7bfe1f8ba2aa94b1636766c56683f3056aa2b48156",
+      "reviewer": "Codex dependency review for Andrew, issue #77",
+      "note": "Issue #77: reviewed full instructions, README, metadata and retained license. One-pass issue explanation is an explicit artifact exception with no chat-mode mutation. It still invokes no other skill; self identity and forbidden companion names remain exclusions. Existing README/license resource edges are retained."
     },
     "caveman-commit": {
       "digest": "1ac288890cdc540be060f74de379f7628a9334c2e169b0358b772d54393ec4a4",
@@ -4232,9 +4336,9 @@
       "note": "Helper protocol and bundled Node runtime imports; caller owns content. No invocation of its callers."
     },
     "create-skills": {
-      "digest": "684802217ce569da238115fab3fbfaeb9c3b329632b3c75a43b9eb9ca0ffac45",
-      "reviewer": "Codex dependency review for Andrew, issue #76",
-      "note": "Reviewed issue #76 changes: required selected Grill Me interview uses supported instruction loading, with explicit confirmation and deferred-decision boundaries. Added tools-guide evidence for the existing Create Issue prerequisite. Shared-source/copy/builder relationships remain intact; consumer names, forbidden Grilling alias, self identity and release-note mentions retain their reviewed exclusions."
+      "digest": "117793a762e2998b2b49a34ec494e87a41066fe8c63a7ae4c9a618c07a93ffdc",
+      "reviewer": "Codex dependency review for Andrew, issue #77",
+      "note": "Issue #77: reviewed the new pre-preview guide pointer, selected GT Caveman optional invocation, protected-content comparison and fallback. Added resource, skill and generated-copy evidence for the shared issue-prose guide. Required Grill Me and conditional Create Issue semantics remain unchanged. Reviewed builder and metadata mentions as identities/release descriptions rather than extra invocations."
     },
     "domain-modeling": {
       "digest": "04135c6cdd861062ce86c14e0e4074d14a8e0181e0893c7341feaa12092577c2",
@@ -4257,14 +4361,14 @@
       "note": "Interview instructions use native host capabilities, not a separate GT skill. License is bundled."
     },
     "skill-steal": {
-      "digest": "653ca1d5c765fbb650c3a63d4635477cc42bb8ba17ff0549064bd88476c56c12",
-      "reviewer": "Codex dependency review for Andrew, issue #76",
-      "note": "Reviewed issue #76 inherited tools clarification and its builder transform: failed draft checks do not waive Create Issue runtime prerequisites. Added evidence to the existing conditional Create Issue edge. No new interview dependency or change to the separate clarification branch; source/copy/resource relationships remain intact."
+      "digest": "d3fbe7aced0dcac6ee1998c5d276fafe5c15547f043533c2d543155f0cf27ef4",
+      "reviewer": "Codex dependency review for Andrew, issue #77",
+      "note": "Issue #77 reverse impact: reviewed the shared creator builder addition and Skill Steal builder use of its unchanged package-rules function. Skill Steal package bytes and successful builder --check are unchanged. It neither copies nor reads issue-prose.md and gains no Caveman dependency; existing provenance remains accurate."
     },
     "skill-tweak": {
-      "digest": "bdaf48c951a758bbfebbb0ea90a1ab3f9fb00084ff23f9383484e753ae21c36f",
-      "reviewer": "Codex dependency review for Andrew, issue #76",
-      "note": "Reviewed issue #76 entry and shared intent guide: required Grill Me selection/loading/interview/confirmation remains an actual dependency; no standalone invocation receipt is required unless mandated by the host. Conditional Create Issue submission is unchanged. Consumer names, forbidden aliases, self identity and release summary are not new dependencies."
+      "digest": "be4e7d4be2612d296841bd02ed4932d7af614cb9f526f65159b9d2c0163b3b40",
+      "reviewer": "Codex dependency review for Andrew, issue #77",
+      "note": "Issue #77: reviewed the prose pass before prepare and exact draft approval, optional selected GT Caveman dependency, fallback and protected-span comparisons. Added shared guide resource/provenance evidence. Existing interview, approval, delivery and recovery dependencies remain unchanged."
     },
     "skills-restore": {
       "digest": "d552b93d1d722fb628e8d8e2a5892a809c749c07f044ff31470afe6ce6506365",
@@ -4287,9 +4391,9 @@
       "note": "Self-contained review discipline using native delegation where available, not another skill."
     },
     "help": {
-      "digest": "6f59da14bbfb45c12abde9f45e464063cf25bd05c36929fc3a2428341c9bcd44",
-      "reviewer": "Codex dependency review for Andrew, issue #63",
-      "note": "Reviewed complete Help instructions, release metadata and bundled notice. Conditional reads of each other GT skill are dependencies on their instructions as data, not invocation. Recommendations alone and self references are not dependencies. No external Ask Matt/runtime tool dependency."
+      "digest": "cf1517a108a31bcc4b0bb5f4425466c209e13ad1cfe4c9d8dd4304e74111acc3",
+      "reviewer": "Codex dependency review for Andrew, issue #77",
+      "note": "Issue #77: reviewed guide updates describing both caller workflows and the Caveman one-pass capability. Help remains guidance-only; existing conditional instruction-read dependencies cover these sources. New recommendations/descriptions are not invocations; release-note mentions are excluded."
     }
   }
 }

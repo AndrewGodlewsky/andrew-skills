@@ -25,6 +25,7 @@ export function buildBundle({ base = root, output = join(base, 'skills/create-sk
   const files = new Map(maintained.map(name => [`scripts/${name}`, normalize(readFileSync(join(base, 'scripts/create-skills', name), 'utf8')).replaceAll("from '../", "from './")]));
   for (const name of ['skill-package-validation.mjs', 'release-validation.mjs', 'review-handoff.mjs', 'intent-record.mjs']) files.set(`scripts/${name}`, normalize(readFileSync(join(base, 'scripts', name), 'utf8')));
   files.set('references/intent-capture.md', normalize(readFileSync(join(base, 'scripts/intent-capture.md'), 'utf8')));
+  files.set('references/issue-prose.md', normalize(readFileSync(join(base, 'scripts/issue-prose.md'), 'utf8')));
   files.set('references/package-rules.md', guidance(readFileSync(join(base, 'CONTRIBUTING.md'), 'utf8')));
   const scripts = join(output, 'scripts');
   if (existsSync(scripts)) {

@@ -11,6 +11,11 @@ Scope: [Plan GT Help as a user-invoked marketplace and skills guide](https://git
 **GT collection**:
 The current team-distributed collection, updated as one plugin. Its skills can have different release versions.
 
+**GT troubleshooting guide**:
+Documentation available outside the installed GT collection that helps a user investigate why an installed GT skill cannot be found or invoked. Agent-assisted installation is a separate, deferred concern.
+Scope: [Choose GT diagnostic delivery, scope and evidence boundaries](https://github.com/AndrewGodlewsky/andrew-skills/issues/75).
+_Avoid_: Diagnostic skill, setup agent
+
 **Personal skill copy**:
 A user-owned copy initially exported from a complete historical skill release, outside the GT plugin. The user may edit it freely; the team tooling stops managing it after creation and never imports those edits into the repository.
 _Avoid_: Managed pin, GT archive plugin
@@ -126,4 +131,3 @@ A reviewed candidate that does not establish a dependency, with its supporting c
 
 **Shared-source provenance**:
 The relationship between a maintained source, its generated copies and the skill packages consuming it. Generated copies do not count as independently authored sources, while each genuine consumer remains represented.
-

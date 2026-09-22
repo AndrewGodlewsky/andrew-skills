@@ -57,6 +57,10 @@ promise a fix, create a PR or schedule the maintainer's review.
    preflight before requesting approval; preserve its failure/security outcomes.
    A draft-only request may prepare and preview local content without resolving
    the live dependency, running a GitHub preflight or requesting publication approval.
+   Before preparing payloads or showing the final preview, read
+   [explanatory issue prose](references/issue-prose.md). Apply its scoped GT Caveman
+   `lite` pass to eligible explanation, preserving intent and skill content; keep
+   the original and report a skipped pass if that dependency or pass is unavailable.
    Read [submission and recovery](references/submission.md) and prepare the bounded
    delivery plan before preview. Show the intent recap and interview record during
    this review. Display the complete exact title, initial body, every planned

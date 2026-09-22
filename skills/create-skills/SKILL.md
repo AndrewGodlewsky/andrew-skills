@@ -37,7 +37,11 @@ request. An unrelated skill must not be submitted merely because GT is installed
    that no package could be built. A specification with explicit unresolved intent
    remains submittable; distinguish intake readiness from implementation readiness.
    Repository adoption will require independent maintainer validation.
-4. Read [submission and recovery](references/submission.md). Resolve the intended
+4. Before final preview, any required approval and payload preparation, read
+   [explanatory issue prose](references/issue-prose.md). Apply its scoped GT Caveman
+   `lite` pass to eligible explanation, preserving intent and skill content; keep
+   the original and report a skipped pass if that dependency or pass is unavailable.
+   Read [submission and recovery](references/submission.md). Resolve the intended
    enabled GT **create-issue** model-invocable dependency using the client-supplied
    installation identity. Invoke it with actual GT context and existing authority
    when that authority covers submission; ask only for missing authority. This
