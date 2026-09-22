@@ -8,6 +8,13 @@ defaults below complete that handoff; they are not implemented tooling. Keep dec
 check results in the [#54 resolution](https://github.com/AndrewGodlewsky/andrew-skills/issues/54#issuecomment-5771080202)
 and the execution issue carrying each change.
 
+**Current execution:** #61's data foundation and dependency-focused audit are
+implemented in the working tree. See the [data/API guide](../skill-map/README.md)
+for read-only analysis commands, coverage and limits. The production viewer
+(#62), generated presentation/freshness enforcement and authoring integration
+(#63) remain pending. The planning evidence at the end describes the earlier
+decision stage, not these subsequent implementation results.
+
 ## Settled requirements
 
 - [#51](https://github.com/AndrewGodlewsky/andrew-skills/issues/51#issuecomment-5770734161):

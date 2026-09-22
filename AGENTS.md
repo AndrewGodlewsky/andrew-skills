@@ -10,6 +10,21 @@ record. Keep runtime instructions self-contained; generated skills must not
 depend on repository-only authoring documents. Preserve the owner's separate
 authorization requirements for commits, pushes, PRs, merges and other Git writes.
 
+## GT Help maintenance
+
+Andrew owns keeping GT Help's Ask Matt-style authored guide current. During
+maintainer work in this repository, agents must review `skills/help/SKILL.md`
+when adding, changing, renaming or removing skills, or changing marketplace
+guidance. Update affected descriptions, recommendations, workflow branches and
+support advice in the same working change; follow the existing release rules
+when Help changes. If no guidance changes are needed, leave Help unchanged.
+
+This is a maintainer responsibility, not a contributor or end-user requirement.
+Do not add Help-maintenance prompts, checks or extra steps to Create Skills,
+other user-facing skills, or submission flows. Until Help exists, record relevant
+guidance implications in the existing issue rather than creating the skill early.
+Decision record: [Choose how GT Help stays current as skills and marketplace guidance change](https://github.com/AndrewGodlewsky/andrew-skills/issues/66).
+
 ## GitHub issue management
 
 On September 20, 2026, Andrew granted standing authorization: "Yes, I approve you to do anything you want with GitHub issues going forward for this project."

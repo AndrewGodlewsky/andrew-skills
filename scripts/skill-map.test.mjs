@@ -4,7 +4,7 @@ import { mkdtempSync, mkdirSync, readFileSync, rmSync, writeFileSync } from 'nod
 import { tmpdir } from 'node:os';
 import { join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
-import { analyzeSkillMap, expectedCopy, readSkillMapFiles, reverseImpact, scanCandidates, sourceDigest } from './skill-map.mjs';
+import { analyzeSkillMap, expectedCopy, inventorySkills, readSkillMapFiles, reverseImpact, scanCandidates, sourceDigest } from './skill-map.mjs';
 
 const collection = entries => new Map(Object.entries(entries).map(([path, content]) => [path, Buffer.from(content)]));
 const records = () => ({ schemaVersion: 1, edges: [], provenance: [], exclusions: [], reviews: {} });
@@ -22,7 +22,7 @@ function review(files, data) {
 test('new standalone skills are discovered but never implicitly reviewed', () => {
   const files = collection(Object.fromEntries([skill('alpha', 'Explain the input.')])), data = records();
   assert.equal(analyzeSkillMap(files, data).nodes.find(n => n.id === 'skill:alpha').review, 'pending');
-  assert.equal(review(files, data).nodes.find(n => n.id === 'skill:alpha').reviewedEmpty, true);
+  assert.equal(review(files, data).nodes.find(n => n.id === 'skill:alpha').reviewedSkillIndependent, true);
   files.set('skills/beta/SKILL.md', Buffer.from('Summarize the input.'));
   const changed = analyzeSkillMap(files, data);
   assert.equal(changed.nodes.find(n => n.id === 'skill:beta').review, 'pending');
@@ -138,10 +138,28 @@ test('expanded skill impact includes consumers of its maintained resources witho
   assert.deepEqual(reverseImpact(map,'skill:alpha',{expanded:true}).callers.map(c=>c.id),['skill:beta']);
 });
 
+test('adapted copies do not inherit removed runtime dependencies from their maintained source', () => {
+  const map={nodes:[],edges:[
+    {id:'a-entry',from:'skill:alpha',to:'file:original',kind:'entry'},
+    {id:'b-entry',from:'skill:beta',to:'file:adapted',kind:'entry'},
+    {id:'use',from:'file:original',to:'file:old-guide',kind:'resource'},
+    {id:'source',from:'file:adapted',to:'file:original',kind:'source'},
+    {id:'build',from:'file:adapted',to:'file:builder',kind:'build'},
+    {id:'import',from:'file:builder',to:'file:transform',kind:'resource'},
+  ]};
+  assert.deepEqual(reverseImpact(map,'file:old-guide',{expanded:true}).callers.map(c=>c.id),['skill:alpha']);
+  assert.deepEqual(reverseImpact(map,'file:original',{expanded:true}).callers.map(c=>c.id),['skill:alpha','skill:beta']);
+  assert.deepEqual(reverseImpact(map,'file:transform',{expanded:true}).callers.map(c=>c.id),['skill:beta']);
+});
+
 test('source and review fingerprints normalize CRLF text but preserve binary bytes and additions', () => {
-  const {files,data}=sharedFixture(); const first=review(files,data);
+  const {files,data}=sharedFixture();
+  for (const [path, bytes] of files) files.set(path, Buffer.from(bytes.toString()+'\n'));
+  const first=review(files,data);
   const changed=new Map([...files].map(([p,b])=>[p,Buffer.from(b.toString().replaceAll('\n','\r\n'))]));
   assert.deepEqual(analyzeSkillMap(changed,data), first);
+  assert.equal(sourceDigest(collection({'LICENSE':'Terms.\r\n'}),'LICENSE'),sourceDigest(collection({'LICENSE':'Terms.\n'}),'LICENSE'));
+  assert.notEqual(sourceDigest(collection({'a.txt':Buffer.from([255])}),'a.txt'),sourceDigest(collection({'a.txt':Buffer.from([254])}),'a.txt'));
   files.set('skills/alpha/asset.bin', Buffer.from([0,13,10,255]));
   const before=sourceDigest(files,'skills/alpha/asset.bin');
   files.set('skills/alpha/asset.bin',Buffer.from([0,10,255]));
@@ -154,10 +172,13 @@ test('repository reader includes untracked additions and performs no writes', ()
   const root=mkdtempSync(join(tmpdir(),'gt-skill-map-'));
   try {
     mkdirSync(join(root,'skills/alpha'),{recursive:true});
+    mkdirSync(join(root,'skills/empty'),{recursive:true});
     const path=join(root,'skills/alpha/SKILL.md');writeFileSync(path,'Explain.');
     const before=readFileSync(path);
     const map=analyzeSkillMap(readSkillMapFiles(root),records());
     assert.ok(map.nodes.some(n=>n.id==='skill:alpha'));
+    assert.ok(map.nodes.some(n=>n.id==='skill:empty' && !n.present));
+    assert.ok(map.diagnostics.some(d=>d.code==='missing-instructions'));
     assert.deepEqual(readFileSync(path),before);
   } finally { rmSync(root,{recursive:true,force:true}); }
 });
@@ -171,12 +192,17 @@ test('provenance transforms use maintained guidance and reject unsupported trans
 test('repository audit covers every current skill with evidence and all known shared consumers', () => {
   const root=resolve(fileURLToPath(new URL('..',import.meta.url)));
   const data=JSON.parse(readFileSync(join(root,'docs/skill-map/relationships.json'),'utf8'));
-  const map=analyzeSkillMap(readSkillMapFiles(root),data);
+  const files=readSkillMapFiles(root), map=analyzeSkillMap(files,data);
   assert.deepEqual(map.diagnostics,[]);
-  assert.equal(map.nodes.filter(n=>n.kind==='skill').length,17);
-  assert.equal(map.edges.filter(e=>e.kind==='skill').length,8);
-  assert.equal(map.provenance.length,51);
+  assert.deepEqual(map.nodes.filter(n=>n.kind==='skill').map(n=>n.label).sort(), inventorySkills(files));
   assert.deepEqual(reverseImpact(map,'skill:grill-me').callers.map(c=>c.id),['skill:create-skills','skill:skill-steal','skill:skill-tweak']);
   assert.deepEqual(reverseImpact(map,'file:scripts/intent-record.mjs',{expanded:true}).callers.map(c=>c.id),['skill:create-skills','skill:skill-steal','skill:skill-tweak']);
+  assert.deepEqual(reverseImpact(map,'file:scripts/intent-capture.md',{expanded:true}).callers.map(c=>c.id),['skill:create-skills','skill:skill-tweak']);
   assert.ok(!map.edges.some(e=>e.from==='skill:skills-update'&&e.to==='skill:skills-restore'));
+  const modified = new Map(files);
+  modified.set('scripts/intent-capture.md', Buffer.concat([files.get('scripts/intent-capture.md'),Buffer.from('\nClarification changed.\n')]));
+  const after=analyzeSkillMap(modified,data);
+  assert.equal(after.nodes.find(n=>n.id==='skill:skill-steal').review,'reviewed');
+  assert.equal(after.nodes.find(n=>n.id==='skill:create-skills').review,'stale');
+  assert.equal(after.nodes.find(n=>n.id==='skill:skill-tweak').review,'stale');
 });

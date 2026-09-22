@@ -3807,7 +3807,107 @@
       "target": "skill:why-not",
       "sourceDigest": "15cd329e08a40682902d4984881320af0b4c0498332163ff5be15528f5c0ab1d",
       "reason": "Skill identity, invocation documentation or attribution to itself; no recursive invocation instruction."
+    },
+    {
+      "candidate": "34ecff4c8d041592c61bad9f313851138122e7955df71465948f0c9d45670ffa",
+      "path": "CONTRIBUTING.md",
+      "target": "skill:explain-design",
+      "sourceDigest": "e33e9e5e08f29c2910df83725d5abea6848989d6bd76358f7846a23e364e5c5b",
+      "reason": "Illustrative package names in authoring examples, outside the guidance ranges bundled into skills; not invocations."
+    },
+    {
+      "candidate": "125ff3ec7c4973271a14a24c261fdc5593748016189cfe22f7f50d88675dffa4",
+      "path": "CONTRIBUTING.md",
+      "target": "skill:summarize-notes",
+      "sourceDigest": "e33e9e5e08f29c2910df83725d5abea6848989d6bd76358f7846a23e364e5c5b",
+      "reason": "Illustrative package names in authoring examples, outside the guidance ranges bundled into skills; not invocations."
     }
   ],
-  "reviews": {}
+  "reviews": {
+    "caveman": {
+      "digest": "e7f76b707892bfdb0c03616e9a17e36d5888483d4a9f7eebb30af658a2f7f587",
+      "reviewer": "Codex dependency audit for Andrew, issue #61",
+      "note": "Session style only; companion invocations expressly forbidden. README and license apply to installation/redistribution."
+    },
+    "caveman-commit": {
+      "digest": "1ac288890cdc540be060f74de379f7628a9334c2e169b0358b772d54393ec4a4",
+      "reviewer": "Codex dependency audit for Andrew, issue #61",
+      "note": "Commit-message drafting only; self examples and upstream Caveman attribution are not dependencies."
+    },
+    "caveman-compress": {
+      "digest": "2383821252e2be54c0d908049f52563a8d604f690b531bf6dafc0bf7635ad0ef",
+      "reviewer": "Codex dependency audit for Andrew, issue #61",
+      "note": "Audited CLI/Python imports, runtime/data-flow guidance, backup recovery and optional benchmark. No GT caveman invocation; external provider/runtime prerequisites are outside this repository graph."
+    },
+    "caveman-explore": {
+      "digest": "00751345322ba4765b0e73069ec28c3225a2cdb7c106595ad21f4169b2b734d9",
+      "reviewer": "Codex dependency audit for Andrew, issue #61",
+      "note": "Native host delegation, not another GT skill. Upstream attribution and self identity excluded."
+    },
+    "caveman-review": {
+      "digest": "8896ead6de82753453ebc367fd942da57130468fc5a4a94f81a7fcf3afdb23c0",
+      "reviewer": "Codex dependency audit for Andrew, issue #61",
+      "note": "Review-output instructions only; no GT dependencies. Self examples and upstream attribution excluded."
+    },
+    "create-issue": {
+      "digest": "0901d59d832576b4b772fadc36393d3d611a8abd896e903a43d0d51d303c1cc7",
+      "reviewer": "Codex dependency audit for Andrew, issue #61",
+      "note": "Helper protocol and bundled Node runtime imports; caller owns content. No invocation of its callers."
+    },
+    "create-skills": {
+      "digest": "f5816762af1aea3febdf47a3534c865044498987ca32160cd8133a5f69630adc",
+      "reviewer": "Codex dependency audit for Andrew, issue #61",
+      "note": "Required Grill Me interview, conditional Create Issue delivery and optional personal-copy tools. All reference/script imports and builder provenance audited."
+    },
+    "domain-modeling": {
+      "digest": "04135c6cdd861062ce86c14e0e4074d14a8e0181e0893c7341feaa12092577c2",
+      "reviewer": "Codex dependency audit for Andrew, issue #61",
+      "note": "Glossary and authorized ADR formats are bundled resources; example context paths are examples, not missing dependencies."
+    },
+    "grill-me": {
+      "digest": "10aeda4119634fe960ed1de08ad91a732a558284e339b65255dd0782129f6439",
+      "reviewer": "Codex dependency audit for Andrew, issue #61",
+      "note": "Self-contained interview instructions; no bundled resources or other skill invocation."
+    },
+    "grill-with-docs": {
+      "digest": "67a31129e21cbc650b573ca3a37f2022e89f35a33f09063eebdb2b5f13b63996",
+      "reviewer": "Codex dependency audit for Andrew, issue #61",
+      "note": "Requires both Grilling and Domain Modeling before starting; license preserved on redistribution."
+    },
+    "grilling": {
+      "digest": "cd849f21e37288dc714953583e18b55352daa5e52a221d0abe63b68d82f13169",
+      "reviewer": "Codex dependency audit for Andrew, issue #61",
+      "note": "Interview instructions use native host capabilities, not a separate GT skill. License is bundled."
+    },
+    "skill-steal": {
+      "digest": "3935e61bd0220f1bdb1ce70a5fa79960393dad88e908c9365735326c8bca46b8",
+      "reviewer": "Codex dependency audit for Andrew, issue #61",
+      "note": "Conditional Grill Me clarification and Create Issue delivery. Creator helpers/guidance are reused files, not a Create Skills invocation; all builders and adapted guidance audited."
+    },
+    "skill-tweak": {
+      "digest": "81f63e63d3773b8ef7941bfc2f54f55c8f00ab99c41ac713213cc8465ef09f8a",
+      "reviewer": "Codex dependency audit for Andrew, issue #61",
+      "note": "Required Grill Me interview and conditional Create Issue delivery, with shared intent/handoff tools and issue template."
+    },
+    "skills-restore": {
+      "digest": "992d847af577bc9e4a9383681d0cc3efb09e7bfb6010e1ac43a46e90813291ce",
+      "reviewer": "Codex dependency audit for Andrew, issue #61",
+      "note": "Audited wrapper and bundled exporter, manifest, dynamically verified modules and maintained-source provenance. Grill Me is an export example only."
+    },
+    "skills-status": {
+      "digest": "434dd47d0b17ff84160ca24eafb485a5a7d57dbf9c9220d9c08acd45a52940b0",
+      "reviewer": "Codex dependency audit for Andrew, issue #61",
+      "note": "Read-only installed data inspection with bundled target-selection guidance; release.yaml names inspected data, not its own runtime dependency."
+    },
+    "skills-update": {
+      "digest": "04a3e7f575938198902b31f1b9f3716a2aa5be98e6efd0b2bbe3344f0f2e3542",
+      "reviewer": "Codex dependency audit for Andrew, issue #61",
+      "note": "Native update workflow and bundled selection/report guidance; Skills Restore is explicitly an optional separately requested recommendation."
+    },
+    "why-not": {
+      "digest": "b32efb6b68afed869bb92c91a82744246f2142fc179553839769ec641961e6ab",
+      "reviewer": "Codex dependency audit for Andrew, issue #61",
+      "note": "Self-contained review discipline using native delegation where available, not another skill."
+    }
+  }
 }
