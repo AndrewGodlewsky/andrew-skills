@@ -6,6 +6,8 @@ Turn a rough idea into a clearer plan, get concise code review findings, and cre
 
 A skill gives your AI assistant instructions for a particular task. GT brings a collection of these workflows to GitHub Copilot in VS Code and Copilot CLI. Install the `gt` plugin once to get the collection, then choose a skill when you need it.
 
+Moving this repository to another account or GitHub environment? Use the [repository rehome handoff](REHOME-HANDOFF.md) to find the identities, fixed destinations and release-history decisions that need review.
+
 ## Install
 
 Choose the route for the client you use:
