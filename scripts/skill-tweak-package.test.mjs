@@ -8,7 +8,7 @@ import { buildBundle } from './build-skill-tweak.mjs';
 import { readPackage, checkPackage } from './create-skills/package.mjs';
 
 test('tweak package has valid metadata and self-contained resource links', () => {
-  const pkg = readPackage(resolve('skills/skill-tweak'));
+  const pkg = readPackage(resolve('plugins/gt/skills/skill-tweak'));
   assert.equal(checkPackage(pkg).status, 'passed');
   for (const [path, file] of pkg.files) {
     if (!path.endsWith('.md')) continue;

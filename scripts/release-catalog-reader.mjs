@@ -1,3 +1,4 @@
+import { resolvePluginLayout } from './plugin-layout.mjs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parseArgs } from 'node:util';
@@ -21,8 +22,11 @@ export function readReleaseCatalog(root, { ref = 'origin/main', repository, prev
   const origin = repositoryIdentity(repository ?? readRepositoryOrigin(root));
   const lineage = readFirstParentCommits(root, headCommit);
   function* snapshots() {
-    for (const entry of lineage) yield { ...entry,
-      files: readGitFiles(root, entry.commit, { allowUnsupportedModes: true }), skillTrees: readGitSkillTrees(root, entry.commit) };
+    for (const entry of lineage) {
+      const files = readGitFiles(root, entry.commit, { allowUnsupportedModes: true });
+      const skillsRoot = files.has('release-baseline.json') ? resolvePluginLayout(files).skills : 'skills';
+      yield { ...entry, files, skillTrees: readGitSkillTrees(root, entry.commit, skillsRoot) };
+    }
   }
   return buildReleaseCatalog({ repository: origin, headCommit, snapshots: snapshots(), previousCatalog, migrationParent });
 }

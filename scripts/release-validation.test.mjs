@@ -97,7 +97,7 @@ test('unchanged skills, plugin-only configuration and exporter changes obey one 
   assert.deepEqual(validateReleaseChange(bundle(), exporter).changedSkills, []);
   const config = bundle('0.1.23'); const plugin = JSON.parse(config.get('plugin.json').data); plugin.description = 'New'; set(config, 'plugin.json', JSON.stringify(plugin));
   assert.deepEqual(validateReleaseChange(bundle(), config).changedSkills, []);
-  set(config, '.claude-plugin/marketplace.json', '{}'); assert.throws(() => validateReleaseChange(bundle(), config), /must match/);
+  set(config, '.claude-plugin/marketplace.json', '{}'); assert.throws(() => validateReleaseChange(bundle(), config), /must match|Marketplace source/);
 });
 
 test('established boundaries cannot change or disappear; stale comparisons fail', () => {

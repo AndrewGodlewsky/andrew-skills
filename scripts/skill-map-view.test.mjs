@@ -11,13 +11,13 @@ import { graphProjection, layoutGraph, renderMarkdown, renderPage, viewState } f
 
 function fixture() {
   const files = new Map(Object.entries({
-    'skills/alpha/SKILL.md': 'Invoke beta.\nInvoke missing.\nExample <script>alert(1)</script>',
-    'skills/beta/SKILL.md': 'Invoke gamma.', 'skills/gamma/SKILL.md': 'Invoke beta.',
-    'skills/isolated/SKILL.md': 'Explain.'
+    'plugins/gt/skills/alpha/SKILL.md': 'Invoke beta.\nInvoke missing.\nExample <script>alert(1)</script>',
+    'plugins/gt/skills/beta/SKILL.md': 'Invoke gamma.', 'plugins/gt/skills/gamma/SKILL.md': 'Invoke beta.',
+    'plugins/gt/skills/isolated/SKILL.md': 'Explain.'
   }).map(([path, text]) => [path, Buffer.from(text)]));
   const edge = (from, to) => ({ id: `${from}-${to}`, from: `skill:${from}`, to: `skill:${to}`, kind: 'skill',
     conditional: from === 'alpha', condition: from === 'alpha' ? 'Only when requested' : 'Always',
-    evidence: [{ path: `skills/${from}/SKILL.md`, excerpt: `Invoke ${to}.` }] });
+    evidence: [{ path: `plugins/gt/skills/${from}/SKILL.md`, excerpt: `Invoke ${to}.` }] });
   const records = { schemaVersion: 1, edges: [edge('alpha', 'beta'), edge('alpha', 'missing'), edge('beta', 'gamma'), edge('gamma', 'beta')], provenance: [], exclusions: [], reviews: {} };
   return { files, records, map: analyzeSkillMap(files, records) };
 }
@@ -90,10 +90,10 @@ test('HTTP refresh observes local edits, exposes escaped evidence and stays read
   const first = await fetch(`${base}/data.json`), original = await first.json();
   assert.equal(first.headers.get('cache-control'), 'no-store');
   assert.match(first.headers.get('content-security-policy'), /default-src 'none'/);
-  writeFileSync(join(root, 'skills/alpha/SKILL.md'), 'Invoke beta.\nChanged context <script>alert(1)</script>');
+  writeFileSync(join(root, 'plugins/gt/skills/alpha/SKILL.md'), 'Invoke beta.\nChanged context <script>alert(1)</script>');
   const second = await (await fetch(`${base}/data.json`)).json();
   assert.notEqual(second.fingerprint, original.fingerprint);
-  const source = await (await fetch(`${base}/source?path=skills/alpha/SKILL.md&snapshot=${original.fingerprint}`)).text();
+  const source = await (await fetch(`${base}/source?path=plugins/gt/skills/alpha/SKILL.md&snapshot=${original.fingerprint}`)).text();
   assert.match(source, /Source snapshot changed/);
   assert.match(source, /id="L1"/);
   assert.match(source, /&lt;script&gt;/);

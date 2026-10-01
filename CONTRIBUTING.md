@@ -22,7 +22,7 @@ repository settings; GitHub issue-management permission is separate.
 
 ## Skill standard
 
-Each active skill lives in `skills/<name>/` and contains `SKILL.md` and
+Each active skill lives in `plugins/gt/skills/<name>/` and contains `SKILL.md` and
 `release.yaml`. Source names use lowercase letters, numbers and single hyphens,
 match the folder, and contain neither a plugin prefix nor a release suffix.
 Only add `scripts/`, `references/`, `templates/` or `assets/` when used.
@@ -81,7 +81,7 @@ relevant example in your change; do not maintain another repository template.
 ### Minimal instruction-only skill
 
 ```text
-skills/explain-design/
+plugins/gt/skills/explain-design/
   SKILL.md
   release.yaml
 ```
@@ -120,7 +120,7 @@ claim that either client has run this example.
 ### Bundled-resource skill and invocation exception
 
 ```text
-skills/summarize-notes/
+plugins/gt/skills/summarize-notes/
   SKILL.md
   release.yaml
   templates/
@@ -306,7 +306,7 @@ refresh the candidate and its parent declaration and revalidate; never change
 an already published marker. See [the catalog contract](docs/release-catalog.md).
 
 Increment the overall plugin patch version once per bundle change (including
-skill additions/removals and plugin behavior/configuration), and keep root and
+skill additions/removals and plugin behavior/configuration), and keep plugin-manifest and
 marketplace versions equal. A skill major bump does not require a plugin major
 bump. Repository-only documentation changes need neither bump.
 
@@ -327,7 +327,7 @@ WSL and live-client acceptance remain outstanding. Maintain its modules under
 root `scripts/` and the direct guide at `exporter/README.md`, then run
 `node scripts/build-exporter.mjs` and `node scripts/build-exporter.mjs --check`.
 The build checks both root `exporter/` and the complete helper/guide under
-`skills/skills-restore/scripts/exporter/`. Do not edit generated copies manually.
+`plugins/gt/skills/skills-restore/scripts/exporter/`. Do not edit generated copies manually.
 Helper or guide changes change the restore skill's complete package, so update
 its release metadata plus one plugin patch without changing unrelated skills.
 Keep the helper's exporter version aligned with its behavior; a version mismatch
@@ -341,7 +341,7 @@ separate. See
 For each published plugin update:
 
 1. Update each changed skill's metadata using the rules above. For a bundle
-   change, increment `version` in root `plugin.json` by one patch and update
+   change, increment `version` in `plugins/gt/plugin.json` by one patch and update
    `.claude-plugin/marketplace.json` to match. Leave both unchanged for docs only.
 2. Run the checks below and test changed skill behavior in VS Code.
 3. The maintainer publishes through a validated PR using merge or squash into
@@ -353,7 +353,7 @@ A GitHub release, package registry, or extension build is not required for this
 plugin. Teammates update their entire `gt` installation using the
 command or VS Code steps in the README. Do not edit an installed plugin cache
 to contribute changes. This repository ships one plugin; all skills belong in
-its root `skills/` folder.
+`plugins/gt/skills/` in this repository (`skills/` inside the installed plugin).
 
 ## Maintain the dependency map
 
@@ -416,7 +416,7 @@ These commands require Node.js 22 or newer. Git is also required for release
 comparisons and the snapshot tests; no package installation is needed.
 
 ```sh
-node --test scripts/release-validation.test.mjs scripts/release-snapshots.test.mjs scripts/skill-architecture.test.mjs scripts/release-catalog.test.mjs scripts/release-catalog-reader.test.mjs
+node --test scripts/plugin-layout.test.mjs scripts/plugin-migration.test.mjs scripts/release-validation.test.mjs scripts/release-snapshots.test.mjs scripts/skill-architecture.test.mjs scripts/release-catalog.test.mjs scripts/release-catalog-reader.test.mjs
 node scripts/validate.mjs
 node scripts/build-skill-map.mjs --check
 node scripts/validate.mjs --base origin/main --current-main origin/main
@@ -457,8 +457,8 @@ settings are changed by this implementation.
 
 ## Validation scope
 
-The validator checks the root plugin identity and version format, the marketplace
-entry's root source and matching identity/version,
+The validator resolves the plugin layout for each snapshot and checks its identity
+and version, the marketplace source and matching identity/version,
 the supported manifest fields, the four required skill header fields, the
 six-field allowlist above, valid invocation combinations, nonempty instruction
 bodies, and inline relative Markdown resource links inside

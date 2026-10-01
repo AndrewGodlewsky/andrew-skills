@@ -24,7 +24,7 @@ available. This is repository maintenance, not an installed-skill runtime step.
 ## GT Help maintenance
 
 Andrew owns keeping GT Help's Ask Matt-style authored guide current. During
-maintainer work in this repository, agents must review `skills/help/SKILL.md`
+maintainer work in this repository, agents must review `plugins/gt/skills/help/SKILL.md`
 when adding, changing, renaming or removing skills, or changing marketplace
 guidance. Update affected descriptions, recommendations, workflow branches and
 support advice in the same working change; follow the existing release rules

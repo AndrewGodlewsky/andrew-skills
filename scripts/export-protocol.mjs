@@ -100,7 +100,7 @@ function sourceSelection(target, cache, skill, commit) {
   const candidates = verified.catalog.records.filter(record => record.skill === skill && record.sourceCommit === commit);
   requireExport(candidates.length === 1, 'choose one exact catalog skill and full source commit');
   const record = candidates[0];
-  requireExport(readGitSkillTrees(verified.objects, commit).get(skill) === record.sourceTree, 'source tree does not match the catalog');
+  requireExport(readGitSkillTrees(verified.objects, commit, record.skillPath.slice(0, -(skill.length + 1))).get(skill) === record.sourceTree, 'source tree does not match the catalog');
   const files = new Map([...readGitFiles(verified.objects, commit)].filter(([path]) => path.startsWith(`${record.skillPath}/`))
     .map(([path, file]) => [path.slice(record.skillPath.length + 1), file]));
   return { ...verified, record, files };
@@ -138,7 +138,7 @@ export function reviewPlan({ target, cache, skill, commit }) {
 
 export function executePlan({ target, plan, portabilityReviewed }) {
   checkRuntime();
-  requireExport(plan?.protocolVersion === PROTOCOL_VERSION && plan.exporterVersion === EXPORTER_VERSION, 'unsupported plan protocol or exporter version');
+  requireExport(plan?.protocolVersion === PROTOCOL_VERSION && plan.exporterVersion === EXPORTER_VERSION, 'unsupported plan protocol or exporter version; regenerate the plan with this exporter');
   const current = makePlan({ target, cache: plan.cache, skill: plan.source?.skill, commit: plan.source?.sourceCommit });
   requireExport(isDeepStrictEqual(current, plan), 'plan differs from the current verified source, target or protocol; plan again');
   const { record, files } = sourceSelection(target, plan.cache, plan.source.skill, plan.source.sourceCommit);

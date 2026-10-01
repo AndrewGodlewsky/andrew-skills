@@ -5,7 +5,7 @@ import { posix, resolve } from 'node:path';
 import { readPackage, checkPackage } from './create-skills/package.mjs';
 
 test('distributed creator has valid metadata and every inline resource pointer resolves within its package', () => {
-  const pkg = readPackage(resolve('skills/create-skills'));
+  const pkg = readPackage(resolve('plugins/gt/skills/create-skills'));
   assert.equal(checkPackage(pkg).status, 'passed');
   for (const [path, file] of pkg.files) {
     if (!path.endsWith('.md')) continue;
@@ -19,7 +19,7 @@ test('distributed creator has valid metadata and every inline resource pointer r
 });
 
 test('bundled Matt notice matches the pinned reviewed MIT source', () => {
-  const pkg = readPackage(resolve('skills/create-skills'));
+  const pkg = readPackage(resolve('plugins/gt/skills/create-skills'));
   const notice = pkg.files.get('assets/matt-pocock-license.txt').data.toString('utf8');
   // The reviewed CRLF source hashes to 4981c5f6...; Git checks it out as LF
   // on Linux. Normalize line endings only, retaining every license character.

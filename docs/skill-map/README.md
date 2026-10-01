@@ -59,7 +59,7 @@ automatic form submission and focus transfer. Stop the server with Ctrl+C.
 [relationships.json](relationships.json) is authored repository metadata, not a
 generated inventory. It contains explicit edges, generated-copy provenance,
 reviewed exclusions and per-skill review attestations. Inventory is discovered
-from the current `skills/` tree, including local additions and incomplete folders.
+from the current `plugins/gt/skills/` tree, including local additions and incomplete folders.
 No skill header changes or runtime dependency on these files is required.
 
 [skill-map.mjs](../../scripts/skill-map.mjs) exports:
@@ -139,7 +139,7 @@ transforms; existing bundle `--check` commands remain the byte-level authority.
 ## Limits
 
 This is a dependency-focused audit, not a security or runtime-compatibility
-audit. The graph covers repository skills/resources; host tools, Python/Node,
+audit. The graph covers repository skills and their resources; host tools, Python/Node,
 providers and arbitrary user-selected files are not graph nodes. Read source
 instructions for those external prerequisites.
 

@@ -84,6 +84,21 @@ rejects invented/missing/reordered/revised releases, not just malformed YAML.
 Note-only corrections require a patch and retain the old published note.
 Unsupported paths, symlinks and submodules fail rather than being followed.
 
+## Plugin source layouts
+
+Each publication selects either the original root layout (`./`) or the dedicated
+`./plugins/gt` layout through its marketplace entry. Conflicting roots fail.
+Catalog records retain the actual `skills/<name>` or `plugins/gt/skills/<name>`
+path belonging to their original publication. A byte-identical folder move keeps
+its existing version, source commit, tree and record; the marketplace change
+requires one plugin patch. Subsequent changed releases use the new folder path.
+The baseline marker and `gt-skill-folder-v1` hash encoding stay unchanged.
+
+Exporter 2.1.0 reads both layouts and inspects existing exporter 2.0.0 receipts.
+Old verified caches retain their catalog meaning. Saved 2.0.0 plans must be
+regenerated explicitly before export. Update the whole plugin before restoring
+from migrated history with an older bundled helper.
+
 ## Complete-folder integrity
 
 `sourceTree` is the actual Git object ID for the selected folder, not a fabricated tree ID. `contentIdentity` independently covers the complete folder's relative tracked paths, regular file modes and exact stored blob bytes, including `release.yaml` and every resource. Checkout line endings are not the source bytes.

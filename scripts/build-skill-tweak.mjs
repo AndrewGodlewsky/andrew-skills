@@ -3,7 +3,7 @@ import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath, pathToFileURL } from 'node:url';
 
 const root = resolve(dirname(fileURLToPath(import.meta.url)), '..');
-export function buildBundle({ base = root, output = join(base, 'skills/skill-tweak'), check = false } = {}) {
+export function buildBundle({ base = root, output = join(base, 'plugins/gt/skills/skill-tweak'), check = false } = {}) {
   const files = new Map();
   for (const name of ['run.mjs', 'submission.mjs']) files.set(`scripts/${name}`, readFileSync(join(base, 'scripts/skill-tweak', name), 'utf8').replaceAll("from '../", "from './"));
   for (const name of ['review-handoff.mjs', 'intent-record.mjs']) files.set(`scripts/${name}`, readFileSync(join(base, 'scripts', name), 'utf8'));

@@ -39,7 +39,7 @@ test('the shipped helper matches sources and runs from an unrelated renamed pack
   buildBundle({ check: true });
   const directory = fixture(t);
   const copied = join(directory, 'renamed dependency with spaces');
-  cpSync(join(root, 'skills/create-issue'), copied, { recursive: true });
+  cpSync(join(root, 'plugins/gt/skills/create-issue'), copied, { recursive: true });
   assert.deepEqual(readdirSync(join(copied, 'scripts')).sort(), [...runtimeNames].sort());
   const run = args => spawnSync(process.execPath, [join(copied, 'scripts/run.mjs'), ...args], {
     cwd: directory, encoding: 'utf8', timeout: 5000, input: '{}', env: { ...process.env, GH_HOST: 'example.invalid', GH_REPO: 'other/repo' }
@@ -63,7 +63,7 @@ test('existing exporter conservatively refuses the fixed API paths without rewri
       else files.set(path, { mode: '100644', data: readFileSync(join(directory, entry.name)) });
     }
   }
-  collect(join(root, 'skills/create-issue'));
+  collect(join(root, 'plugins/gt/skills/create-issue'));
   const record = { repository: 'https://github.com/AndrewGodlewsky/andrew-skills', skill: 'create-issue',
     skillPath: 'skills/create-issue', sourceCommit: 'a'.repeat(40), sourceTree: 'b'.repeat(40) };
   assert.throws(() => prepareSource(record, files, { portabilityReviewed: true }), /known plugin\/self\/absolute-path dependency prevents portability: scripts\/api.mjs/);

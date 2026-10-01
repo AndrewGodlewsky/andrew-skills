@@ -17,20 +17,20 @@ export function submissionGuidance(source) {
   return result;
 }
 
-export function buildBundle({ base = root, output = join(base, 'skills/skill-steal'), check = false } = {}) {
+export function buildBundle({ base = root, output = join(base, 'plugins/gt/skills/skill-steal'), check = false } = {}) {
   const read = path => normalize(readFileSync(join(base, path), 'utf8'));
   const files = new Map();
   files.set('scripts/run.mjs', read('scripts/skill-steal/run.mjs').replaceAll("from '../create-skills/", "from './"));
   for (const name of ['package.mjs', 'submission.mjs']) {
     files.set(`scripts/${name}`, read(`scripts/create-skills/${name}`).replaceAll("from '../", "from './"));
   }
-  for (const name of ['skill-package-validation.mjs', 'release-validation.mjs', 'review-handoff.mjs', 'intent-record.mjs']) {
+  for (const name of ['plugin-layout.mjs', 'skill-package-validation.mjs', 'release-validation.mjs', 'review-handoff.mjs', 'intent-record.mjs']) {
     files.set(`scripts/${name}`, read(`scripts/${name}`));
   }
   files.set('references/package-rules.md', guidance(read('CONTRIBUTING.md')));
   const notice = 'Generated from shared creator guidance; edit the maintained source or builder, then rebuild.\n\n';
-  files.set('references/tools.md', notice + replaceOnce(read('skills/create-skills/references/tools.md'), 'preparation and installation commands', 'preparation commands'));
-  files.set('references/submission.md', notice + submissionGuidance(read('skills/create-skills/references/submission.md')));
+  files.set('references/tools.md', notice + replaceOnce(read('plugins/gt/skills/create-skills/references/tools.md'), 'preparation and installation commands', 'preparation commands'));
+  files.set('references/submission.md', notice + submissionGuidance(read('plugins/gt/skills/create-skills/references/submission.md')));
   const scripts = join(output, 'scripts');
   if (existsSync(scripts)) {
     if (lstatSync(scripts).isSymbolicLink() || !lstatSync(scripts).isDirectory()) throw new Error('Bundle scripts must be a real directory.');

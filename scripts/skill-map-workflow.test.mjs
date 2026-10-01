@@ -37,11 +37,11 @@ function contents(root) {
   visit(); return result.sort((a, b) => a[0].localeCompare(b[0]));
 }
 const dependency = (from, to) => ({ id: `${from}-${to}`, from: `skill:${from}`, to: `skill:${to}`, kind: 'skill',
-  conditional: true, condition: 'When requested', evidence: [{ path: `skills/${from}/SKILL.md`, excerpt: `Invoke ${to}.` }] });
+  conditional: true, condition: 'When requested', evidence: [{ path: `plugins/gt/skills/${from}/SKILL.md`, excerpt: `Invoke ${to}.` }] });
 
 test('author workflow discovers additions, requires review, preserves impact and rejects stale context/renames/deletions', t => {
   const w = workspace(t);
-  w.write('skills/standalone/SKILL.md', 'Explain the input.');
+  w.write('plugins/gt/skills/standalone/SKILL.md', 'Explain the input.');
   let result = buildSkillMap({ root: w.root });
   assert.equal(result.ready, false);
   assert.equal(result.map.nodes.find(n => n.id === 'skill:standalone').review, 'pending');
@@ -49,31 +49,31 @@ test('author workflow discovers additions, requires review, preserves impact and
   w.review(); buildSkillMap({ root: w.root });
   assert.equal(buildSkillMap({ root: w.root, check: true }).ready, true);
 
-  w.write('skills/caller/SKILL.md', 'Invoke standalone.\nOnly when requested.');
+  w.write('plugins/gt/skills/caller/SKILL.md', 'Invoke standalone.\nOnly when requested.');
   result = buildSkillMap({ root: w.root });
   assert.ok(result.diagnostics.some(d => d.code === 'unclassified-candidate'));
   w.records.edges.push(dependency('caller', 'standalone')); w.review();
   result = buildSkillMap({ root: w.root });
   assert.equal(result.ready, true);
   assert.deepEqual(reverseImpact(result.map, 'skill:standalone').callers.map(c => c.id), ['skill:caller']);
-  w.write('skills/caller/SKILL.md', 'Invoke standalone.\nOnly after explicit selection.');
+  w.write('plugins/gt/skills/caller/SKILL.md', 'Invoke standalone.\nOnly after explicit selection.');
   assert.ok(buildSkillMap({ root: w.root, check: true }).diagnostics.some(d => d.code === 'stale-review'));
   w.review(); buildSkillMap({ root: w.root });
-  renameSync(join(w.root, 'skills/standalone'), join(w.root, 'skills/renamed'));
+  renameSync(join(w.root, 'plugins/gt/skills/standalone'), join(w.root, 'plugins/gt/skills/renamed'));
   result = buildSkillMap({ root: w.root });
   assert.ok(result.diagnostics.some(d => d.code === 'missing-target'));
   assert.ok(result.diagnostics.some(d => d.code === 'orphaned-review'));
   assert.ok(result.map.nodes.find(n => n.id === 'skill:renamed').review === 'pending');
   w.records.edges = [dependency('caller', 'renamed')];
   delete w.records.reviews.standalone;
-  w.write('skills/caller/SKILL.md', 'Invoke renamed.'); w.review();
+  w.write('plugins/gt/skills/caller/SKILL.md', 'Invoke renamed.'); w.review();
   assert.equal(buildSkillMap({ root: w.root }).ready, true);
-  rmSync(join(w.root, 'skills/renamed/SKILL.md'));
+  rmSync(join(w.root, 'plugins/gt/skills/renamed/SKILL.md'));
   assert.ok(buildSkillMap({ root: w.root }).diagnostics.some(d => d.code === 'missing-instructions'));
 });
 
 test('checking missing/tampered artifacts never writes; repeated generation and CRLF stay deterministic', t => {
-  const w = workspace(t); w.write('skills/one/SKILL.md', 'Explain.\n'); w.review();
+  const w = workspace(t); w.write('plugins/gt/skills/one/SKILL.md', 'Explain.\n'); w.review();
   const beforeMissing = contents(w.root);
   assert.equal(buildSkillMap({ root: w.root, check: true }).ready, false);
   assert.deepEqual(contents(w.root), beforeMissing);
@@ -81,7 +81,7 @@ test('checking missing/tampered artifacts never writes; repeated generation and 
   const first = artifactPaths.map(p => readFileSync(join(w.root, p)));
   buildSkillMap({ root: w.root });
   artifactPaths.forEach((p, i) => assert.deepEqual(readFileSync(join(w.root, p)), first[i]));
-  w.write('skills/one/SKILL.md', 'Explain.\r\n');
+  w.write('plugins/gt/skills/one/SKILL.md', 'Explain.\r\n');
   for (const path of artifactPaths) w.write(path, readFileSync(join(w.root, path), 'utf8').replaceAll('\n', '\r\n'));
   assert.equal(buildSkillMap({ root: w.root, check: true }).ready, true);
   w.write(artifactPaths[0], '{"nodes":[]}\n');
@@ -90,7 +90,7 @@ test('checking missing/tampered artifacts never writes; repeated generation and 
   assert.equal(result.diagnostics.filter(d => d.code === 'stale-artifact').length, 2);
   assert.deepEqual(contents(w.root), before);
   const reviewed = JSON.stringify(w.records);
-  w.write('skills/one/SKILL.md', 'Changed.'); buildSkillMap({ root: w.root });
+  w.write('plugins/gt/skills/one/SKILL.md', 'Changed.'); buildSkillMap({ root: w.root });
   assert.equal(readFileSync(join(w.root, 'docs/skill-map/relationships.json'), 'utf8'), JSON.stringify(w.records, null, 2) + '\n');
   assert.equal(JSON.stringify(w.records), reviewed);
 });
@@ -100,11 +100,11 @@ test('shared-source edits invalidate both consumers and copies until rebuilt and
   w.write('scripts/shared.txt', 'Shared guidance.\n');
   w.write('scripts/builder.mjs', '// Copies maintained guidance.\n');
   for (const name of ['one', 'two']) {
-    w.write(`skills/${name}/SKILL.md`, 'Read [guidance](guide.txt).');
-    w.write(`skills/${name}/guide.txt`, 'Shared guidance.\n');
-    w.records.edges.push({ id: `${name}-guide`, from: `file:skills/${name}/SKILL.md`, to: `file:skills/${name}/guide.txt`, kind: 'resource',
-      conditional: false, condition: 'Read before answering', evidence: [{ path: `skills/${name}/SKILL.md`, excerpt: 'Read [guidance](guide.txt).' }] });
-    w.records.provenance.push({ copy: `skills/${name}/guide.txt`, sources: ['scripts/shared.txt'], builder: 'scripts/builder.mjs', transform: 'copy', excerpt: '// Copies maintained guidance.' });
+    w.write(`plugins/gt/skills/${name}/SKILL.md`, 'Read [guidance](guide.txt).');
+    w.write(`plugins/gt/skills/${name}/guide.txt`, 'Shared guidance.\n');
+    w.records.edges.push({ id: `${name}-guide`, from: `file:plugins/gt/skills/${name}/SKILL.md`, to: `file:plugins/gt/skills/${name}/guide.txt`, kind: 'resource',
+      conditional: false, condition: 'Read before answering', evidence: [{ path: `plugins/gt/skills/${name}/SKILL.md`, excerpt: 'Read [guidance](guide.txt).' }] });
+    w.records.provenance.push({ copy: `plugins/gt/skills/${name}/guide.txt`, sources: ['scripts/shared.txt'], builder: 'scripts/builder.mjs', transform: 'copy', excerpt: '// Copies maintained guidance.' });
   }
   w.review(); assert.equal(buildSkillMap({ root: w.root }).ready, true);
   w.write('scripts/shared.txt', 'Changed shared guidance.\n');
@@ -112,17 +112,17 @@ test('shared-source edits invalidate both consumers and copies until rebuilt and
   assert.equal(result.diagnostics.filter(d => d.code === 'stale-copy').length, 2);
   assert.equal(result.diagnostics.filter(d => d.code === 'stale-review').length, 2);
   assert.deepEqual(reverseImpact(result.map, 'file:scripts/shared.txt', { expanded: true }).callers.map(c => c.id), ['skill:one', 'skill:two']);
-  for (const name of ['one', 'two']) w.write(`skills/${name}/guide.txt`, 'Changed shared guidance.\n');
+  for (const name of ['one', 'two']) w.write(`plugins/gt/skills/${name}/guide.txt`, 'Changed shared guidance.\n');
   w.review(); buildSkillMap({ root: w.root });
   assert.equal(buildSkillMap({ root: w.root, check: true }).ready, true);
 });
 
 test('cycles and conditional edges pass; ambiguous evidence and invalid records fail without rewriting checks', t => {
   const w = workspace(t);
-  for (const [a, b] of [['one', 'two'], ['two', 'one']]) { w.write(`skills/${a}/SKILL.md`, `Invoke ${b}.`); w.records.edges.push(dependency(a, b)); }
+  for (const [a, b] of [['one', 'two'], ['two', 'one']]) { w.write(`plugins/gt/skills/${a}/SKILL.md`, `Invoke ${b}.`); w.records.edges.push(dependency(a, b)); }
   w.review(); assert.equal(buildSkillMap({ root: w.root }).ready, true);
   assert.equal(buildSkillMap({ root: w.root, check: true }).ready, true);
-  w.write('skills/one/SKILL.md', 'Invoke two.\nInvoke two.');
+  w.write('plugins/gt/skills/one/SKILL.md', 'Invoke two.\nInvoke two.');
   assert.ok(buildSkillMap({ root: w.root }).diagnostics.some(d => d.code === 'ambiguous-evidence'));
   w.records.edges.push(null); w.save();
   const before = contents(w.root);
@@ -133,7 +133,7 @@ test('cycles and conditional edges pass; ambiguous evidence and invalid records 
 });
 
 test('unsupported output targets fail before either artifact is overwritten', t => {
-  const w = workspace(t); w.write('skills/one/SKILL.md', 'Explain.'); w.review();
+  const w = workspace(t); w.write('plugins/gt/skills/one/SKILL.md', 'Explain.'); w.review();
   buildSkillMap({ root: w.root });
   rmSync(join(w.root, artifactPaths[1])); mkdirSync(join(w.root, artifactPaths[1]));
   const before = contents(w.root);

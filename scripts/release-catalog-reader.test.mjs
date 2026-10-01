@@ -16,7 +16,7 @@ test('trusted origins have one credential-free identity', () => {
 for (const publication of ['merge', 'squash']) test(`${publication}: prospective migration, accepted publication and later release retain exact source identities`, t => {
   const repo = releaseRepository(t, { publication });
   mkdirSync(join(repo.root, 'scripts'));
-  for (const module of ['validate', 'release-validation', 'release-catalog', 'release-catalog-reader', 'release-snapshots', 'skill-package-validation']) {
+  for (const module of ['plugin-layout', 'validate', 'release-validation', 'release-catalog', 'release-catalog-reader', 'release-snapshots', 'skill-package-validation']) {
     copyFileSync(new URL(`./${module}.mjs`, import.meta.url), join(repo.root, 'scripts', `${module}.mjs`));
   }
   // Exercise the actual CLI argument paths used by PR, main-push and manual CI.

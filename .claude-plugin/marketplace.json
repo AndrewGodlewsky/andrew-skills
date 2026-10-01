@@ -7,8 +7,8 @@
     {
       "name": "gt",
       "description": "Skills to sharpen plans, review code, and create, contribute and manage reusable AI workflows.",
-      "version": "0.1.22",
-      "source": "./"
+      "version": "0.1.23",
+      "source": "./plugins/gt"
     }
   ]
 }

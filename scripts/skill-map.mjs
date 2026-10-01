@@ -12,7 +12,7 @@ const sorted = values => [...values].sort();
 const nonempty = value => typeof value === 'string' && value.trim().length > 0;
 const safePath = path => typeof path === 'string' && path.length > 0 && !path.includes('\\')
   && !path.includes(':') && !path.startsWith('/') && path.split('/').every(part => part && part !== '.' && part !== '..');
-const owner = path => /^skills\/([^/]+)\//.exec(path)?.[1];
+const owner = path => /^plugins\/gt\/skills\/([^/]+)\//.exec(path)?.[1];
 const fileId = path => `file:${path}`;
 const skillId = name => `skill:${name}`;
 const validId = id => typeof id === 'string' && (id.startsWith('file:') ? safePath(id.slice(5)) : /^skill:[a-z0-9]+(?:-[a-z0-9]+)*$/.test(id));
@@ -30,19 +30,23 @@ function normalizedBytes(path, bytes) {
 
 export function readSkillMapFiles(root) {
   const files = new Map();
+  for (const path of ['plugins', 'plugins/gt']) {
+    const stat = lstatSync(join(root, path), { throwIfNoEntry: false });
+    if (stat && (!stat.isDirectory() || stat.isSymbolicLink())) throw new Error(`${path}: skill map requires regular directories, not links`);
+  }
   function visit(path) {
     const absolute = join(root, path), stat = lstatSync(absolute);
     if (stat.isSymbolicLink()) throw new Error(`${path}: skill map requires regular files, not links`);
     if (stat.isDirectory()) {
       const children = readdirSync(absolute).sort();
       // Retain empty package folders as incomplete inventory entries.
-      if (!children.length && /^skills\/[^/]+$/.test(path)) files.set(`${path}/`, Buffer.alloc(0));
+      if (!children.length && /^plugins\/gt\/skills\/[^/]+$/.test(path)) files.set(`${path}/`, Buffer.alloc(0));
       for (const name of children) visit(`${path}/${name}`);
     }
     else if (stat.isFile()) files.set(path, readFileSync(absolute));
     else throw new Error(`${path}: unsupported source type`);
   }
-  for (const path of ['skills', 'scripts', 'exporter', 'CONTRIBUTING.md']) if (existsSync(join(root, path))) visit(path);
+  for (const path of ['plugins/gt/skills', 'scripts', 'exporter', 'CONTRIBUTING.md']) if (existsSync(join(root, path))) visit(path);
   return files;
 }
 
@@ -82,7 +86,7 @@ export function scanCandidates(files, names, paths = [...files.keys()].filter(ow
     for (const [match, reference, base] of references) {
       const target = reference.split('#')[0];
       if (!target || /^[a-z]+:|^\/|[<>$*{}]/i.test(target)) continue;
-      const root = base === 'package' && owner(path) ? `skills/${owner(path)}` : posix.dirname(path);
+      const root = base === 'package' && owner(path) ? `plugins/gt/skills/${owner(path)}` : posix.dirname(path);
       const resolved = posix.normalize(posix.join(root, target));
       if (safePath(resolved)) add(path, fileId(resolved), match.index, match[0].length, 'resource');
     }
@@ -137,7 +141,7 @@ export function analyzeSkillMap(files, records) {
   const node = id => {
     if (!nodes.has(id)) {
       const kind = id.startsWith('skill:') ? 'skill' : 'resource', path = id.slice(kind === 'skill' ? 6 : 5);
-      const present = kind === 'skill' ? names.includes(path) && files.has(`skills/${path}/SKILL.md`) : files.has(path);
+      const present = kind === 'skill' ? names.includes(path) && files.has(`plugins/gt/skills/${path}/SKILL.md`) : files.has(path);
       nodes.set(id, { id, kind, label: path, present, ...(kind === 'resource' ? { owner: owner(path) ?? null } : {}) });
     }
     return nodes.get(id);
@@ -149,7 +153,7 @@ export function analyzeSkillMap(files, records) {
   for (const name of names) {
     node(skillId(name));
     if (!validId(skillId(name))) report('invalid-skill-name', name, 'Skill directory must use a lowercase hyphenated name');
-    const path = `skills/${name}/SKILL.md`;
+    const path = `plugins/gt/skills/${name}/SKILL.md`;
     if (!files.has(path)) report('missing-instructions', name, `${path} is missing`);
     node(fileId(path));
     edges.push({ id: `entry:${name}`, from: skillId(name), to: fileId(path), kind: 'entry', condition: 'Skill entry instructions', evidence: [], status: 'current' });

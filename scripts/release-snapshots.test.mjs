@@ -1,6 +1,7 @@
+import { resolvePluginLayout } from './plugin-layout.mjs';
 import assert from 'node:assert/strict';
 import { execFileSync, spawnSync } from 'node:child_process';
-import { mkdtempSync, mkdirSync, writeFileSync, rmSync } from 'node:fs';
+import { mkdtempSync, mkdirSync, writeFileSync, rmSync, symlinkSync } from 'node:fs';
 import { tmpdir } from 'node:os';
 import { dirname, join, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
@@ -30,14 +31,40 @@ test('working snapshots preserve binary resources and do not execute them', t =>
   assert.throws(() => readWorkingFiles(root), /empty\/SKILL.md is required/);
 });
 
+test('nested working snapshots discover untracked packages, preserve relocation modes and reject duplicate or linked roots', t => {
+  const parent = resolve(tmpdir());
+  const root = mkdtempSync(join(parent, 'gt-nested-snapshot-'));
+  t.after(() => {
+    assert.equal(dirname(root), parent);
+    assert.ok(root.startsWith(join(parent, 'gt-nested-snapshot-')));
+    rmSync(root, { recursive: true, force: true });
+  });
+  mkdirSync(join(root, '.claude-plugin'));
+  mkdirSync(join(root, 'plugins/gt/skills/new'), { recursive: true });
+  writeFileSync(join(root, 'plugins/gt/plugin.json'), '{}');
+  writeFileSync(join(root, '.claude-plugin/marketplace.json'), JSON.stringify({ plugins: [{ source: './plugins/gt' }] }));
+  writeFileSync(join(root, 'plugins/gt/skills/new/SKILL.md'), 'Explain.');
+  writeFileSync(join(root, 'plugins/gt/skills/new/tool.mjs'), 'Never execute.');
+  const files = readWorkingFiles(root, new Map([['skills/new/tool.mjs', '100755']]));
+  assert.ok(files.has('plugins/gt/skills/new/SKILL.md'));
+  if (process.platform === 'win32') assert.equal(files.get('plugins/gt/skills/new/tool.mjs').mode, '100755');
+  assert.equal(resolvePluginLayout(files).skills, 'plugins/gt/skills');
+  mkdirSync(join(root, 'skills'));
+  assert.throws(() => readWorkingFiles(root), /Ambiguous/);
+  rmSync(join(root, 'skills'), { recursive: true });
+  symlinkSync(join(root, '.claude-plugin'), join(root, 'plugins/gt/skills/linked'), process.platform === 'win32' ? 'junction' : 'dir');
+  assert.throws(() => readWorkingFiles(root), /not links/);
+});
+
 test('Git snapshots read stored blobs and modes without checking out a historical tree', () => {
   const commit = resolveCommit(repository, 'HEAD');
   const beforeHead = commit;
   const files = readGitFiles(repository, commit);
-  const manifest = files.get('plugin.json');
+  const layout = resolvePluginLayout(files);
+  const manifest = files.get(layout.manifest);
   assert.equal(manifest.mode, '100644');
   assert.equal(JSON.parse(manifest.data.toString('utf8')).name, 'gt');
-  const stored = execFileSync('git', ['--no-optional-locks', '-C', repository, 'show', `${commit}:plugin.json`]);
+  const stored = execFileSync('git', ['--no-optional-locks', '-C', repository, 'show', `${commit}:${layout.manifest}`]);
   assert.deepEqual(manifest.data, stored);
   assert.equal(resolveCommit(repository, 'HEAD'), beforeHead);
   assert.throws(() => readGitFiles(repository, 'refs/heads/fixture-that-does-not-exist'));

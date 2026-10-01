@@ -13,7 +13,7 @@ function fixture(t) {
   const root = mkdtempSync(join(tmpdir(), 'gt-steal-'));
   t.after(() => rmSync(root, { recursive: true, force: true }));
   const output = join(root, 'isolated bundle');
-  cpSync(resolve('skills/skill-steal'), output, { recursive: true });
+  cpSync(resolve('plugins/gt/skills/skill-steal'), output, { recursive: true });
   const run = (command, input) => spawnSync(process.execPath,
     [join(output, 'scripts/run.mjs'), ...command],
     { cwd: root, shell: false, input: input === undefined ? undefined : JSON.stringify(input), encoding: 'utf8' });
@@ -48,7 +48,7 @@ test('standalone importer checks the cumulative schema and rejects invalid histo
 
 test('Skill Steal metadata, transitive resource links and generated bundle are complete', () => {
   buildBundle({ check: true });
-  const pkg = readPackage(resolve('skills/skill-steal'));
+  const pkg = readPackage(resolve('plugins/gt/skills/skill-steal'));
   assert.equal(checkPackage(pkg).status, 'passed');
   for (const [path, file] of pkg.files) {
     if (!path.endsWith('.md')) continue;
@@ -144,6 +144,6 @@ test('generated rules, shared code and guidance reject drift and unexpected runt
   }
   writeFileSync(join(output, 'scripts/install.mjs'), '');
   assert.throws(() => buildBundle({ output, check: true }), /Unexpected/);
-  const source = readFileSync(resolve('skills/create-skills/references/submission.md'), 'utf8');
+  const source = readFileSync(resolve('plugins/gt/skills/create-skills/references/submission.md'), 'utf8');
   assert.throws(() => submissionGuidance(source.replaceAll('intent-capture.md', 'moved.md')), /guidance changed/);
 });

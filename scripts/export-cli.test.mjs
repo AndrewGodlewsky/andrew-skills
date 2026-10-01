@@ -11,7 +11,7 @@ import { PROTOCOL_VERSION, EXPORTER_VERSION } from './export-source.mjs';
 import { CATALOG_FORMAT_VERSION } from './release-catalog.mjs';
 
 test('travelling Restore procedure accepts the versions emitted by its helper', () => {
-  const procedure = readFileSync('skills/skills-restore/references/operations.md', 'utf8');
+  const procedure = readFileSync('plugins/gt/skills/skills-restore/references/operations.md', 'utf8');
   const supported = /supports protocol (\d+) and exporter (\d+\.\d+\.\d+)/.exec(procedure);
   assert.equal(Number(supported?.[1]), PROTOCOL_VERSION);
   assert.equal(supported?.[2], EXPORTER_VERSION);
@@ -27,7 +27,7 @@ for (const delivery of ['checkout helper', 'standalone restore skill']) for (con
   let entry = resolve('exporter/run.mjs');
   if (delivery === 'standalone restore skill') {
     const standalone = join(home, 'standalone-skill');
-    cpSync(resolve('skills/skills-restore'), standalone, { recursive: true });
+    cpSync(resolve('plugins/gt/skills/skills-restore'), standalone, { recursive: true });
     entry = join(standalone, 'scripts/exporter/run.mjs');
   }
   function run(command, ...args) {

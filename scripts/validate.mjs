@@ -1,3 +1,4 @@
+import { resolvePluginLayout } from './plugin-layout.mjs';
 import { dirname, resolve } from 'node:path';
 import { fileURLToPath } from 'node:url';
 import { parseArgs } from 'node:util';
@@ -32,8 +33,8 @@ function source(files, path) {
 
 export function validateFiles(files) {
   readBaseline(files);
-  check(!files.has('skills'), 'skills must be a directory');
-  const plugin = JSON.parse(source(files, 'plugin.json'));
+  const layout = resolvePluginLayout(files);
+  const plugin = JSON.parse(source(files, layout.manifest));
   check(object(plugin), 'Plugin manifest must be an object');
   check(plugin.$schema === schema, 'Expected Agent Plugins 1.0 schema');
   check(plugin.name === 'gt', 'Plugin name must be gt');
@@ -45,7 +46,7 @@ export function validateFiles(files) {
   check(Array.isArray(marketplace.plugins) && marketplace.plugins.length === 1, 'Marketplace must list exactly one plugin');
   const entry = marketplace.plugins[0];
   check(object(entry) && entry.name === plugin.name, 'Marketplace plugin name must match the root manifest');
-  check(entry.source === './', 'Marketplace source must point to the repository root (./)');
+  check(entry.source === layout.source, 'Marketplace source must match the plugin layout');
   check(entry.version === plugin.version, 'Marketplace and plugin versions must match');
   check(text(entry.description), 'Marketplace plugin description is required');
   const allowed = new Set(['$schema', 'name', 'version', 'description', 'author', 'homepage', 'repository', 'license', 'keywords', 'extensions']);
@@ -68,8 +69,8 @@ export function validateFiles(files) {
   for (const [path, file] of files) {
     check(['100644', '100755'].includes(file.mode), `${path}: unsupported file mode ${file.mode}`);
   }
-  const skills = [...new Set([...files.keys()].filter(path => path.startsWith('skills/')).map(path => path.split('/')[1]))].sort();
-  for (const skill of skills) validateSkill(files, skill);
+  const skills = [...new Set([...files.keys()].filter(path => path.startsWith(`${layout.skills}/`)).map(path => path.slice(layout.skills.length + 1).split('/')[0]))].sort();
+  for (const skill of skills) validateSkill(files, skill, layout.skills);
   return `Validated marketplace, ${plugin.name} ${plugin.version}, and ${skills.length} skill(s).`;
 }
 

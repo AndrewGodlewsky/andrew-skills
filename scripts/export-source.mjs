@@ -1,3 +1,4 @@
+import { isSkillSourcePath } from './plugin-layout.mjs';
 import { createHash } from 'node:crypto';
 import { posix } from 'node:path';
 import { isDeepStrictEqual } from 'node:util';
@@ -5,7 +6,7 @@ import { parseRelease } from './release-validation.mjs';
 import { skillContentIdentity } from './release-catalog.mjs';
 
 export const PROTOCOL_VERSION = 2;
-export const EXPORTER_VERSION = '2.0.0';
+export const EXPORTER_VERSION = '2.1.0';
 export const REPOSITORY = 'https://github.com/AndrewGodlewsky/andrew-skills';
 
 export function requireExport(condition, message) {
@@ -71,7 +72,7 @@ export function fileManifest(files) {
 export function prepareSource(record, sourceFiles, { portabilityReviewed = false } = {}) {
   requireExport(portabilityReviewed === true, 'author/source portability review is required before creation');
   requireExport(record && record.repository === REPOSITORY && /^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(record.skill) &&
-    record.skillPath === `skills/${record.skill}` && /^(?:[a-f0-9]{40}|[a-f0-9]{64})$/.test(record.sourceCommit) &&
+    isSkillSourcePath(record.skillPath, record.skill) && /^(?:[a-f0-9]{40}|[a-f0-9]{64})$/.test(record.sourceCommit) &&
     /^(?:[a-f0-9]{40}|[a-f0-9]{64})$/.test(record.sourceTree), 'invalid exact source record');
   checkPortability(sourceFiles, record.skill);
   requireExport(skillContentIdentity(sourceFiles) === record.contentIdentity, 'source integrity does not match the catalog');

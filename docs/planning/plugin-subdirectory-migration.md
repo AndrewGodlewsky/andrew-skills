@@ -2,6 +2,12 @@
 
 Prepared September 30, 2026. Status: owner-selected direction; implementation and live client verification remain outstanding.
 
+Implementation update, October 1, 2026: the uncommitted migration and actual
+verification are tracked in [issue #80](https://github.com/AndrewGodlewsky/andrew-skills/issues/80).
+The brief below preserves its pre-implementation starting state; current authoring
+paths and release instructions are in CONTRIBUTING.md. Live client acceptance
+remains separate from repository checks.
+
 ## Purpose and decision context
 
 Andrew reports that installing this repository as a Copilot plugin brings repository maintenance material into the local plugin installation. Users need the operational skill packages, not the authoring guides, test suites, dependency-map tooling, or planning documents.

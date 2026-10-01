@@ -2,7 +2,7 @@ import { execFileSync } from 'node:child_process';
 import { existsSync, lstatSync, readFileSync, readdirSync } from 'node:fs';
 import { join } from 'node:path';
 
-const runtimePaths = ['plugin.json', '.claude-plugin/marketplace.json', 'release-baseline.json', 'skills', 'exporter'];
+const runtimePaths = ['plugin.json', '.claude-plugin/marketplace.json', 'release-baseline.json', 'skills', 'plugins/gt', 'exporter'];
 
 function git(root, args, input) {
   const env = { ...process.env };
@@ -65,13 +65,15 @@ export function readRepositoryOrigin(root) {
   return git(root, ['remote', 'get-url', 'origin']).toString('utf8').trim();
 }
 
-export function readGitSkillTrees(root, commit) {
+export function readGitSkillTrees(root, commit, skillsRoot = 'skills') {
   const trees = new Map();
   const listing = new TextDecoder('utf8', { fatal: true }).decode(
-    git(root, ['ls-tree', '-r', '-t', '-z', '--full-tree', commit, '--', 'skills']));
+    git(root, ['ls-tree', '-r', '-t', '-z', '--full-tree', commit, '--', skillsRoot]));
   for (const record of listing.split('\0').filter(Boolean)) {
-    const match = /^040000 tree ([0-9a-f]+)\tskills\/([^/]+)$/.exec(record);
-    if (match) trees.set(match[2], match[1]);
+    const match = /^040000 tree ([0-9a-f]+)\t([\s\S]+)$/.exec(record);
+    if (!match || !match[2].startsWith(`${skillsRoot}/`)) continue;
+    const name = match[2].slice(skillsRoot.length + 1);
+    if (!name.includes('/')) trees.set(name, match[1]);
   }
   return trees;
 }
@@ -93,15 +95,17 @@ export function readWorkingFiles(root, indexModes = new Map()) {
     const absolute = join(root, path);
     const stat = lstatSync(absolute);
     if (stat.isSymbolicLink()) throw new Error(`${path}: use regular files/directories, not links`);
-    if (path === 'skills' && !stat.isDirectory()) throw new Error('skills must be a directory');
+    if (['skills', 'plugins', 'plugins/gt', 'plugins/gt/skills'].includes(path) && !stat.isDirectory()) throw new Error('skills must be a directory');
     if (stat.isDirectory()) {
-      if (/^skills\/[^/]+$/.test(path) && !existsSync(join(absolute, 'SKILL.md'))) {
+      if (/^(?:plugins\/gt\/)?skills\/[^/]+$/.test(path) && !existsSync(join(absolute, 'SKILL.md'))) {
         throw new Error(`${path}/SKILL.md is required`);
       }
       for (const name of readdirSync(absolute).sort()) visit(`${path}/${name}`);
     } else if (stat.isFile()) {
+      // A working-tree move has no new index entries yet. Retain the legacy
+      // executable bit on Windows until the relocated path is staged.
       const mode = process.platform === 'win32'
-        ? (indexModes.get(path) ?? '100644')
+        ? (indexModes.get(path) ?? indexModes.get(path.replace(/^plugins\/gt\//, '')) ?? '100644')
         : ((stat.mode & 0o111) ? '100755' : '100644');
       files.set(path, { mode, data: readFileSync(absolute) });
     } else {
@@ -112,10 +116,17 @@ export function readWorkingFiles(root, indexModes = new Map()) {
   if (!catalogDirectory.isDirectory() || catalogDirectory.isSymbolicLink()) {
     throw new Error('.claude-plugin must be a regular directory');
   }
-  visit('plugin.json');
+  if (readdirSync(root).includes('plugin.json')) visit('plugin.json');
   visit('.claude-plugin/marketplace.json');
   if (readdirSync(root).includes('release-baseline.json')) visit('release-baseline.json');
   if (readdirSync(root).includes('skills')) visit('skills');
+  if (readdirSync(root).includes('plugins')) {
+    const plugins = lstatSync(join(root, 'plugins'));
+    if (!plugins.isDirectory() || plugins.isSymbolicLink()) throw new Error('plugins must be a regular directory');
+    if (readdirSync(join(root, 'plugins')).includes('gt')) visit('plugins/gt');
+    if (existsSync(join(root, 'plugins/gt/plugin.json')) && existsSync(join(root, 'skills'))) throw new Error('Ambiguous plugin layout: root skills directory remains');
+    if (existsSync(join(root, 'plugin.json')) && existsSync(join(root, 'plugins/gt/skills'))) throw new Error('Ambiguous plugin layout: nested skills directory remains');
+  }
   if (readdirSync(root).includes('exporter')) visit('exporter');
   return files;
 }

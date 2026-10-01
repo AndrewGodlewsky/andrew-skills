@@ -26,7 +26,7 @@ jobs:
       - uses: actions/setup-node@v4
         with:
           node-version: ${{ matrix.node }}
-      - run: node --test scripts/release-validation.test.mjs scripts/release-snapshots.test.mjs scripts/release-catalog.test.mjs scripts/release-catalog-reader.test.mjs scripts/export-source.test.mjs scripts/skill-architecture.test.mjs
+      - run: node --test scripts/plugin-layout.test.mjs scripts/plugin-migration.test.mjs scripts/release-validation.test.mjs scripts/release-snapshots.test.mjs scripts/release-catalog.test.mjs scripts/release-catalog-reader.test.mjs scripts/export-source.test.mjs scripts/skill-architecture.test.mjs
 
   caveman-compress:
     name: Caveman compress / ${{ matrix.os }} / Python 3.10
@@ -91,7 +91,7 @@ jobs:
         with:
           node-version: '22'
       - name: Test release validation
-        run: node --test scripts/release-validation.test.mjs scripts/release-snapshots.test.mjs scripts/skill-architecture.test.mjs scripts/release-catalog.test.mjs scripts/release-catalog-reader.test.mjs scripts/export-source.test.mjs
+        run: node --test scripts/plugin-layout.test.mjs scripts/plugin-migration.test.mjs scripts/release-validation.test.mjs scripts/release-snapshots.test.mjs scripts/skill-architecture.test.mjs scripts/release-catalog.test.mjs scripts/release-catalog-reader.test.mjs scripts/export-source.test.mjs
       - name: Check bundled exporter
         run: node scripts/build-exporter.mjs --check
       - name: Check skill-map inventory, review and generated output

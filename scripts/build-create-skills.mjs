@@ -20,10 +20,10 @@ export function guidance(source) {
   return result;
 }
 
-export function buildBundle({ base = root, output = join(base, 'skills/create-skills'), check = false } = {}) {
+export function buildBundle({ base = root, output = join(base, 'plugins/gt/skills/create-skills'), check = false } = {}) {
   const maintained = ['package.mjs', 'run.mjs', 'submission.mjs', 'install.mjs'];
   const files = new Map(maintained.map(name => [`scripts/${name}`, normalize(readFileSync(join(base, 'scripts/create-skills', name), 'utf8')).replaceAll("from '../", "from './")]));
-  for (const name of ['skill-package-validation.mjs', 'release-validation.mjs', 'review-handoff.mjs', 'intent-record.mjs']) files.set(`scripts/${name}`, normalize(readFileSync(join(base, 'scripts', name), 'utf8')));
+  for (const name of ['plugin-layout.mjs', 'skill-package-validation.mjs', 'release-validation.mjs', 'review-handoff.mjs', 'intent-record.mjs']) files.set(`scripts/${name}`, normalize(readFileSync(join(base, 'scripts', name), 'utf8')));
   files.set('references/intent-capture.md', normalize(readFileSync(join(base, 'scripts/intent-capture.md'), 'utf8')));
   files.set('references/issue-prose.md', normalize(readFileSync(join(base, 'scripts/issue-prose.md'), 'utf8')));
   files.set('references/package-rules.md', guidance(readFileSync(join(base, 'CONTRIBUTING.md'), 'utf8')));

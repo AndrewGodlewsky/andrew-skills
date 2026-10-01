@@ -1,0 +1,7 @@
+version: "1.0.1"
+notes: "Use the dedicated GT plugin source layout in package guidance and bundled validation."
+period: 1
+history:
+  - period: 1
+    version: "1.0.0"
+    notes: "Interview a new skill idea, preserve a rebuildable specification, attempt and check its package, and submit review evidence."

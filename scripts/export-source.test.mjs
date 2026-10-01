@@ -29,6 +29,16 @@ test('a verified historical package changes only its frontmatter name and record
     result.installedFiles.find(f => f.path === 'SKILL.md').sha256);
 });
 
+test('exact source paths accept either known layout without accepting traversal or mismatched names', () => {
+  const { files, record } = source();
+  for (const path of ['skills/example', 'plugins/gt/skills/example']) {
+    assert.equal(prepareSource({ ...record, skillPath: path }, files, { portabilityReviewed: true }).personalName, 'example-v1-0-0');
+  }
+  for (const path of ['plugins/gt/skills/other', 'plugins/gt/skills/../example', '/skills/example', 'plugins/other/skills/example']) {
+    assert.throws(() => prepareSource({ ...record, skillPath: path }, files, { portabilityReviewed: true }), /invalid exact source/);
+  }
+});
+
 test('BOM and instruction bytes survive the single-field adaptation, and nonregular source modes fail', () => {
   const { files, record, text } = source();
   files.get('SKILL.md').data = Buffer.from('\uFEFF' + text);

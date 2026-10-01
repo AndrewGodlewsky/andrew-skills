@@ -74,24 +74,24 @@ Help gives advice and leaves actions to you. Other skills can write files or sub
 
 | Skill | Purpose | Command |
 | --- | --- | --- |
-| [Help](skills/help/SKILL.md) | Ask about GT and choose suitable skills or workflows; guidance only | Select GT Help in the client skill picker; exact command verification pending |
-| [Grill me](skills/grill-me/SKILL.md) | Sharpen a plan or design through an interview | `/gt:grill-me` |
-| [Grill with docs](skills/grill-with-docs/SKILL.md) | Interview about a plan while recording agreed terms and selected architectural decisions | `/gt:grill-with-docs` |
-| [Grilling](skills/grilling/SKILL.md) | Explore a design in rounds of questions whose prerequisites are settled | `/gt:grilling` or model selection |
-| [Domain modeling](skills/domain-modeling/SKILL.md) | Refine domain vocabulary and write glossary entries and qualifying ADRs | `/gt:domain-modeling` or model selection |
-| [Why not](skills/why-not/SKILL.md) | Check intent drift and suggest simpler designs at a high level | `/gt:why-not` or model selection |
-| [Skills update](skills/skills-update/SKILL.md) | Update the intended managed GT copy and report verified skill changes | `/gt:skills-update` |
-| [Skills status](skills/skills-status/SKILL.md) | Show versions and release notes in one selected local GT installation | `/gt:skills-status` |
-| [Skills restore](skills/skills-restore/SKILL.md) | Browse exact historical releases and create an independent personal copy | `/gt:skills-restore` |
-| [Create issue](skills/create-issue/SKILL.md) | Submit caller-prepared GT proposals and feedback to this repository | Model-only dependency; no manual command |
-| [Create skills](skills/create-skills/SKILL.md) | Specify a new GT skill, attempt its package/checks, and submit it for review | `/gt:create-skills` |
-| [Skill tweak](skills/skill-tweak/SKILL.md) | Capture a GT skill incident and submit feedback after approval of the complete draft | `/gt:skill-tweak` |
-| [Skill steal](skills/skill-steal/SKILL.md) | Adapt a local skill while preserving behavior and submit it for GT review | `/gt:skill-steal` |
-| [Caveman commit](skills/caveman-commit/SKILL.md) | Write terse Conventional Commits messages from supplied change context | `/gt:caveman-commit` or model selection |
-| [Caveman](skills/caveman/SKILL.md) | Use light/full chat style or a scoped issue-prose pass while preserving meaning | `/gt:caveman` or model selection |
-| [Caveman review](skills/caveman-review/SKILL.md) | Review changes with one concise, actionable line per finding | `/gt:caveman-review` or model selection |
-| [Caveman explore](skills/caveman-explore/SKILL.md) | Delegate read-only repository localization and return verified path/line citations | `/gt:caveman-explore` or model selection |
-| [Caveman compress](skills/caveman-compress/SKILL.md) | Compress a selected prose file with a readable backup using Python and Claude | `/gt:caveman-compress` or model selection |
+| [Help](plugins/gt/skills/help/SKILL.md) | Ask about GT and choose suitable skills or workflows; guidance only | Select GT Help in the client skill picker; exact command verification pending |
+| [Grill me](plugins/gt/skills/grill-me/SKILL.md) | Sharpen a plan or design through an interview | `/gt:grill-me` |
+| [Grill with docs](plugins/gt/skills/grill-with-docs/SKILL.md) | Interview about a plan while recording agreed terms and selected architectural decisions | `/gt:grill-with-docs` |
+| [Grilling](plugins/gt/skills/grilling/SKILL.md) | Explore a design in rounds of questions whose prerequisites are settled | `/gt:grilling` or model selection |
+| [Domain modeling](plugins/gt/skills/domain-modeling/SKILL.md) | Refine domain vocabulary and write glossary entries and qualifying ADRs | `/gt:domain-modeling` or model selection |
+| [Why not](plugins/gt/skills/why-not/SKILL.md) | Check intent drift and suggest simpler designs at a high level | `/gt:why-not` or model selection |
+| [Skills update](plugins/gt/skills/skills-update/SKILL.md) | Update the intended managed GT copy and report verified skill changes | `/gt:skills-update` |
+| [Skills status](plugins/gt/skills/skills-status/SKILL.md) | Show versions and release notes in one selected local GT installation | `/gt:skills-status` |
+| [Skills restore](plugins/gt/skills/skills-restore/SKILL.md) | Browse exact historical releases and create an independent personal copy | `/gt:skills-restore` |
+| [Create issue](plugins/gt/skills/create-issue/SKILL.md) | Submit caller-prepared GT proposals and feedback to this repository | Model-only dependency; no manual command |
+| [Create skills](plugins/gt/skills/create-skills/SKILL.md) | Specify a new GT skill, attempt its package/checks, and submit it for review | `/gt:create-skills` |
+| [Skill tweak](plugins/gt/skills/skill-tweak/SKILL.md) | Capture a GT skill incident and submit feedback after approval of the complete draft | `/gt:skill-tweak` |
+| [Skill steal](plugins/gt/skills/skill-steal/SKILL.md) | Adapt a local skill while preserving behavior and submit it for GT review | `/gt:skill-steal` |
+| [Caveman commit](plugins/gt/skills/caveman-commit/SKILL.md) | Write terse Conventional Commits messages from supplied change context | `/gt:caveman-commit` or model selection |
+| [Caveman](plugins/gt/skills/caveman/SKILL.md) | Use light/full chat style or a scoped issue-prose pass while preserving meaning | `/gt:caveman` or model selection |
+| [Caveman review](plugins/gt/skills/caveman-review/SKILL.md) | Review changes with one concise, actionable line per finding | `/gt:caveman-review` or model selection |
+| [Caveman explore](plugins/gt/skills/caveman-explore/SKILL.md) | Delegate read-only repository localization and return verified path/line citations | `/gt:caveman-explore` or model selection |
+| [Caveman compress](plugins/gt/skills/caveman-compress/SKILL.md) | Compress a selected prose file with a readable backup using Python and Claude | `/gt:caveman-compress` or model selection |
 
 `help` is an Ask Matt-style guide to this collection. It answers questions,
 recommends a starting point or workflow, and reads relevant installed GT
@@ -192,7 +192,7 @@ except for an explicitly requested one-pass edit of eligible issue explanation.
 That pass uses light without selecting or changing the conversation's chat mode.
 Only an enabled GT installation and normal skill loading are required: no hooks,
 API keys, external runtimes or companion Caveman skills. See its
-[usage and provenance guide](skills/caveman/README.md). The new source package
+[usage and provenance guide](plugins/gt/skills/caveman/README.md). The new source package
 becomes available in installed GT copies after owner publication and native update.
 
 ## Update
@@ -326,13 +326,13 @@ use the [interactive viewer](docs/skill-map.md) for current working files.*
 
 ## Test locally before publishing
 
-Register the checkout root in VS Code's **User Settings (JSON)**:
+Register the checkout's `plugins/gt` directory in VS Code's **User Settings (JSON)**:
 
 ```json
 {
   "chat.plugins.enabled": true,
   "chat.pluginLocations": {
-    "A:/Claude/andrew-skills": true
+    "A:/Claude/andrew-skills/plugins/gt": true
   }
 }
 ```
@@ -424,10 +424,10 @@ and agent plugins enabled. Reload the window if the plugin is not yet listed.
 ## Repository layout
 
 ```text
-plugin.json                  Plugin identity and version
-.claude-plugin/marketplace.json  Catalog listing this root plugin
+plugins/gt/plugin.json       Plugin identity and version
+.claude-plugin/marketplace.json  Catalog selecting ./plugins/gt
 install.ps1                  One-command setup from a downloaded checkout
-skills/
+plugins/gt/skills/
   grill-me/
     SKILL.md                 Self-contained interview skill
     release.yaml             Current version, note and cumulative history
@@ -480,11 +480,13 @@ README.md
 CONTRIBUTING.md
 ```
 
-The repository root is the plugin root. Its manifest uses
-[Agent Plugins 1.0](https://agent-plugins.org/plugin-authors/manifest).
-The marketplace lists this same root with `"source": "./"`; there is no nested
-plugin bundle. See the [marketplace format](https://code.claude.com/docs/en/plugin-marketplaces).
-Add future skills under `skills/`; everyone installing the plugin receives them
+The plugin root is `plugins/gt/`. Its manifest uses
+[Agent Plugins 1.0](https://agent-plugins.org/plugin-authors/manifest), and the
+marketplace selects it with `"source": "./plugins/gt"`. Maintainer scripts,
+tests and documentation stay outside that package. Clients may still retain
+the whole repository in their marketplace cache; this is not a download-size
+or access-control guarantee. See the [migration record](https://github.com/AndrewGodlewsky/andrew-skills/issues/80).
+Add future skills under `plugins/gt/skills/`; everyone installing the plugin receives them
 together.
 
 ## Contribute and validate
@@ -510,7 +512,7 @@ exact source snapshots distinguish repeated version labels.
 
 **Names inside the GT plugin stay unchanged**: `grill-me` stays `grill-me`.
 Only optional historical personal exports use names such as `grill-me-v1-2-0`.
-The [skills-restore skill](skills/skills-restore/SKILL.md) creates that personal copy and leaves it to the user;
+The [skills-restore skill](plugins/gt/skills/skills-restore/SKILL.md) creates that personal copy and leaves it to the user;
 it never overwrites an existing destination or manages the copy afterward.
 The [fixed exporter helper](exporter/README.md) implements direct list, plan,
 create-only export and read-only recovery inspection. It requires Node and Git;
@@ -538,7 +540,7 @@ tracks the work and owner pilot before team adoption. Existing users retain the
 native update path. Edits inside managed GT skills are unsupported and native
 updates replace them; personal and project-level skills remain user-owned.
 
-The manual [skills-status report](skills/skills-status/SKILL.md) shows only
+The manual [skills-status report](plugins/gt/skills/skills-status/SKILL.md) shows only
 installed GT skills: skill name, installed version and that release's short note.
 It reads one selected local installation without online release comparisons or
 personal-copy tracking. Invoke `/gt:skills-status`; when several installations
@@ -575,7 +577,7 @@ node scripts/build-skill-tweak.mjs --check
 node scripts/build-skill-steal.mjs --check
 node --test scripts/create-skills*.test.mjs scripts/skill-tweak*.test.mjs scripts/skill-steal*.test.mjs scripts/intent-record.test.mjs
 node scripts/validate.mjs --base origin/main --current-main origin/main
-node --test scripts/release-validation.test.mjs scripts/release-snapshots.test.mjs scripts/skill-architecture.test.mjs scripts/release-catalog.test.mjs scripts/release-catalog-reader.test.mjs
+node --test scripts/plugin-layout.test.mjs scripts/plugin-migration.test.mjs scripts/release-validation.test.mjs scripts/release-snapshots.test.mjs scripts/skill-architecture.test.mjs scripts/release-catalog.test.mjs scripts/release-catalog-reader.test.mjs
 ```
 
 The plain validator checks metadata and structure. The comparison command also
@@ -612,14 +614,14 @@ it is not claimed to match that upstream snapshot. GT-specific descriptions,
 marketplace guidance, manual-only headers, selective source-reading rules and
 action boundaries are authored for this collection. No upstream skill catalog,
 helper or personal installation path is required at runtime. The
-[2026 MIT notice](skills/help/assets/matt-pocock-license.txt) travels with the
+[2026 MIT notice](plugins/gt/skills/help/assets/matt-pocock-license.txt) travels with the
 adaptation. Scope and evidence are recorded in
 [the implementation issue](https://github.com/AndrewGodlewsky/andrew-skills/issues/69).
 
 `caveman` adapts the [upstream style skill at 2fd153c6](https://github.com/JuliusBrussee/caveman/blob/2fd153c67988e980fb0b2455c90832159a6a5a25/skills/caveman/SKILL.md)
 with only light/full modes, light/lite equivalence, explicit unsupported-mode
 handling, and host-required progress updates. It preserves meaningful uncertainty
-and removes unverified tokenizer claims. Its [MIT notice](skills/caveman/LICENSE)
+and removes unverified tokenizer claims. Its [MIT notice](plugins/gt/skills/caveman/LICENSE)
 is bundled. Manual and model invocation are enabled for explicit Caveman-style
 requests and the scoped issue-prose pass added in
 [#77](https://github.com/AndrewGodlewsky/andrew-skills/issues/77).
@@ -653,9 +655,9 @@ missing-input/access handling, repository documentation conventions, cancellatio
 boundaries, user-selected question pacing, and local fact-finding when delegation
 is unavailable. The two dependencies permit model invocation so the wrapper can
 compose them; the wrapper remains manual-only. Each package includes Matt's
-2026 MIT notice: [wrapper](skills/grill-with-docs/assets/matt-pocock-license.txt),
-[interview](skills/grilling/assets/matt-pocock-license.txt), and
-[domain modeling](skills/domain-modeling/assets/matt-pocock-license.txt).
+2026 MIT notice: [wrapper](plugins/gt/skills/grill-with-docs/assets/matt-pocock-license.txt),
+[interview](plugins/gt/skills/grilling/assets/matt-pocock-license.txt), and
+[domain modeling](plugins/gt/skills/domain-modeling/assets/matt-pocock-license.txt).
 The request, invocation rationale, expected behavior and actual validation are
 tracked in [#48](https://github.com/AndrewGodlewsky/andrew-skills/issues/48).
 
@@ -684,7 +686,7 @@ and adapted package.
 It includes an adapted interview, specification-first submission, GT-specific
 invocation/architecture rules and an optional personal copy. It omits obsolete
 line-count limits and upstream client-specific invocation claims. The
-[MIT notice](skills/create-skills/assets/matt-pocock-license.txt) travels with the
+[MIT notice](plugins/gt/skills/create-skills/assets/matt-pocock-license.txt) travels with the
 adaptation. Exact reviewed source hashes are recorded in
 [the architecture notes](docs/planning/create-skills-architecture-notes.md#source-identity-recorded-for-adaptation).
 

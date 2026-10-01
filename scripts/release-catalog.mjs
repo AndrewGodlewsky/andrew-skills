@@ -1,3 +1,4 @@
+import { resolvePluginLayout } from './plugin-layout.mjs';
 import { createHash } from 'node:crypto';
 import { isDeepStrictEqual } from 'node:util';
 import { parseRelease, readBaseline, releaseEntry, validateReleaseChange } from './release-validation.mjs';
@@ -10,11 +11,11 @@ function check(condition, message) {
 }
 
 function skillFolders(files) {
-  check(!files.has('skills'), 'skills must be a directory');
+  const layout = resolvePluginLayout(files);
   const skills = new Map();
   for (const [path, file] of files) {
-    if (!path.startsWith('skills/')) continue;
-    const [, name, ...parts] = path.split('/');
+    if (!path.startsWith(`${layout.skills}/`)) continue;
+    const [name, ...parts] = path.slice(layout.skills.length + 1).split('/');
     check(/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(name) && name.length <= 64 && parts.length &&
       parts.every(part => part && part !== '.' && part !== '..' && !/[\\\0]/.test(part)),
     `unsupported skill path ${path}`);
@@ -42,12 +43,13 @@ export function skillContentIdentity(files) {
 }
 
 function releases(files, skillTrees) {
+  const layout = resolvePluginLayout(files);
   const folders = skillFolders(files);
   if (skillTrees) for (const skill of skillTrees.keys()) check(folders.has(skill), `${skill}: SKILL.md is required`);
   return [...folders].map(([skill, folder]) => {
     check(folder.has('SKILL.md'), `${skill}: SKILL.md is required`);
     check(folder.has('release.yaml'), `${skill}: release.yaml is required`);
-    return { skill, skillPath: `skills/${skill}`, ...parseRelease(folder.get('release.yaml').data),
+    return { skill, skillPath: `${layout.skills}/${skill}`, ...parseRelease(folder.get('release.yaml').data),
       contentIdentity: skillContentIdentity(folder) };
   });
 }
@@ -136,8 +138,12 @@ export function validateCatalogCandidate(catalog, baseFiles, candidateFiles, { b
   const result = validateReleaseChange(baseFiles, candidateFiles, { baseCommit, currentMainCommit, publishedRecords: catalog.records });
   for (const release of releases(candidateFiles)) {
     const existing = catalog.active.find(record => record.skill === release.skill);
+    // Working snapshots can have CRLF bytes but the same Git-canonical blob
+    // identities. The validated change result, not a checkout-byte digest,
+    // determines whether the existing publication remains current.
+    const unchanged = existing && !result.changedSkills.includes(release.skill);
     const earlier = catalog.records.filter(record => record.skill === release.skill &&
-      !(existing && existing.contentIdentity === release.contentIdentity && record.sourceCommit === existing.sourceCommit)).map(releaseEntry);
+      !(unchanged && record.sourceCommit === existing.sourceCommit)).map(releaseEntry);
     check(isDeepStrictEqual(release.history, earlier), `${release.skill}: candidate history conflicts with actual publications`);
   }
   return result;

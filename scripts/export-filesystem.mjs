@@ -1,3 +1,4 @@
+import { isSkillSourcePath } from './plugin-layout.mjs';
 import { execFileSync } from 'node:child_process';
 import { randomUUID } from 'node:crypto';
 import { closeSync, fsyncSync, fstatSync, lstatSync, linkSync, mkdirSync, mkdtempSync, openSync,
@@ -242,12 +243,12 @@ export function inspectCopy({ target, personalName }) {
   checkedPath(receiptPath);
   let receipt;
   try { receipt = JSON.parse(readFileSync(receiptPath, 'utf8')); } catch (error) { if (isSecurityError(error)) throw error; return result; }
-  if (receipt?.schemaVersion !== 2 || receipt.exporterVersion !== EXPORTER_VERSION || receipt.installed?.name !== personalName || receipt.installed?.transform !== 'frontmatter-name-v1' ||
+  if (receipt?.schemaVersion !== 2 || !['2.0.0', EXPORTER_VERSION].includes(receipt.exporterVersion) || receipt.installed?.name !== personalName || receipt.installed?.transform !== 'frontmatter-name-v1' ||
     receipt.source?.repository !== REPOSITORY || !Array.isArray(receipt.installed.files) ||
     typeof receipt.source.skill !== 'string' || !/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(receipt.source.skill) ||
     !/^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$/.test(receipt.source.version) ||
     `${receipt.source.skill}-v${receipt.source.version.replaceAll('.', '-')}` !== personalName ||
-    receipt.source.path !== `skills/${receipt.source.skill}` ||
+    !isSkillSourcePath(receipt.source.path, receipt.source.skill) ||
     !/^(?:[a-f0-9]{40}|[a-f0-9]{64})$/.test(receipt.source.commit) ||
     !/^(?:[a-f0-9]{40}|[a-f0-9]{64})$/.test(receipt.source.tree) ||
     !Array.isArray(receipt.source.files) || typeof receipt.exporterVersion !== 'string' || typeof receipt.operationId !== 'string') return result;

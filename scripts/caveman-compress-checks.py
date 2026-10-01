@@ -12,7 +12,7 @@ import tempfile
 from unittest.mock import patch
 
 ROOT = Path(__file__).resolve().parents[1]
-PACKAGE = ROOT / 'skills' / 'caveman-compress'
+PACKAGE = ROOT / 'plugins' / 'gt' / 'skills' / 'caveman-compress'
 sys.dont_write_bytecode = True
 sys.path.insert(0, str(PACKAGE))
 from scripts import compress as c, detect as d, validate as v

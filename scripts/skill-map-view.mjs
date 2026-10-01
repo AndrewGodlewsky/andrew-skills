@@ -115,7 +115,7 @@ function impactPanel(map, state, impact) {
   const outgoing = map.edges.filter(edge => edge.from === state.selected && (state.expanded || edge.kind === 'skill'));
   const resources = state.expanded && selected.kind === 'skill' ? map.nodes.filter(node => node.owner === selected.label) : [];
   return `<aside class="panel impact"><h2>Changing <span>${h(selected.label)}</span></h2>${pill(status(selected), selected.review && selected.review !== 'reviewed' || !selected.present)}
-    <p>${sourceLink({ path: selected.kind === 'skill' ? `skills/${selected.label}/SKILL.md` : selected.label }, map.fingerprint)}</p><p class="muted">Potential review scope, not proven breakage.</p><div class="counts"><div><strong>${impact.callers.length}</strong><span>skills to review</span></div><p>${direct} direct<br>${impact.callers.length - direct} through a path</p></div>
+    <p>${sourceLink({ path: selected.kind === 'skill' ? `plugins/gt/skills/${selected.label}/SKILL.md` : selected.label }, map.fingerprint)}</p><p class="muted">Potential review scope, not proven breakage.</p><div class="counts"><div><strong>${impact.callers.length}</strong><span>skills to review</span></div><p>${direct} direct<br>${impact.callers.length - direct} through a path</p></div>
     ${impact.truncated ? `<p class="notice">Path limit reached (${impact.maxPaths}). These results are incomplete; narrow the selected resource. Counts are lower bounds.</p>` : ''}
     ${impact.cycleEdges.length ? `<p class="notice">Cycles occur on the traversed routes. Callers are counted once and traversal stops at repeated nodes.</p>` : ''}
     <h3>Callers to review</h3>${impact.callers.length ? impact.callers.map(caller => {

@@ -4,7 +4,7 @@ import { dirname, join } from 'node:path';
 import { fileURLToPath } from 'node:url';
 
 const root = join(dirname(fileURLToPath(import.meta.url)), '..');
-const names = ['export-cli.mjs', 'export-filesystem.mjs', 'export-protocol.mjs', 'export-source.mjs',
+const names = ['plugin-layout.mjs', 'export-cli.mjs', 'export-filesystem.mjs', 'export-protocol.mjs', 'export-source.mjs',
   'release-catalog-reader.mjs', 'release-catalog.mjs', 'release-snapshots.mjs', 'release-validation.mjs'];
 // Normalize the generated artifact regardless of checkout autocrlf; runtime bytes remain manifest-bound.
 const source = name => Buffer.from(readFileSync(join(root, 'scripts', name), 'utf8').replaceAll('\r\n', '\n'));
@@ -14,7 +14,7 @@ const manifest = Buffer.from(JSON.stringify({ schemaVersion: 1, files: Object.fr
 files.set('bundle.json', manifest);
 files.set('run.mjs', Buffer.from(source('export-launcher.mjs').toString().replace('__MANIFEST_HASH__', hash(manifest))));
 const guide = Buffer.from(readFileSync(join(root, 'exporter/README.md'), 'utf8').replaceAll('\r\n', '\n'));
-for (const directory of ['exporter', 'skills/skills-restore/scripts/exporter']) {
+for (const directory of ['exporter', 'plugins/gt/skills/skills-restore/scripts/exporter']) {
   const output = join(root, directory);
   if (!process.argv.includes('--check')) mkdirSync(output, { recursive: true });
   const bundled = directory === 'exporter' ? files : new Map([...files, ['README.md', guide]]);

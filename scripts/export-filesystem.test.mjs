@@ -32,6 +32,21 @@ function fixture(t) {
   return { record, files, target: { environment: process.platform === 'win32' ? 'windows' : 'wsl', home }, portabilityReviewed: true };
 }
 
+test('inspection preserves legacy receipts and recognizes nested-layout receipts', t => {
+  for (const nested of [false, true]) {
+    const input = fixture(t);
+    if (nested) input.record.skillPath = 'plugins/gt/skills/example';
+    const copy = createCopy(input);
+    if (!nested) {
+      const path = join(copy.destination, '.gt-export.json');
+      const receipt = JSON.parse(readFileSync(path, 'utf8'));
+      receipt.exporterVersion = '2.0.0';
+      writeFileSync(path, JSON.stringify(receipt));
+    }
+    assert.equal(inspectCopy({ target: input.target, personalName: 'example-v1-0-0' }).integrity, 'matches-receipt');
+  }
+});
+
 test('export creates a complete personal copy by publishing its root instructions last', t => {
   const input = fixture(t);
   const destination = join(realpathSync.native(input.target.home), '.copilot/skills/example-v1-0-0');

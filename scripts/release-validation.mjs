@@ -1,4 +1,5 @@
 import { isDeepStrictEqual } from 'node:util';
+import { resolvePluginLayout } from './plugin-layout.mjs';
 
 const versionPattern = /^(0|[1-9]\d*)\.(0|[1-9]\d*)\.(0|[1-9]\d*)$/;
 export const BASELINE_PATH = 'release-baseline.json';
@@ -106,19 +107,19 @@ function snapshotInfo(files, development = false) {
     check(files.has(path), `Missing ${path} in release snapshot`);
     return JSON.parse(new TextDecoder('utf-8', { fatal: true }).decode(files.get(path).data));
   };
-  const plugin = readJson('plugin.json');
+  const layout = resolvePluginLayout(files);
+  const plugin = readJson(layout.manifest);
   const marketplace = readJson('.claude-plugin/marketplace.json');
   check(plugin.name === 'gt' && typeof plugin.version === 'string' && versionPattern.test(plugin.version),
     'Release snapshot plugin must be gt with an x.y.z version');
   check(marketplace.name === 'andrew-skills' && marketplace.plugins?.length === 1 &&
-    marketplace.plugins[0].name === 'gt' && marketplace.plugins[0].source === './' &&
+    marketplace.plugins[0].name === 'gt' && marketplace.plugins[0].source === layout.source &&
     marketplace.plugins[0].version === plugin.version, 'Marketplace and plugin versions/identity must match');
   const skills = new Map();
   for (const [path, file] of files) {
-    if (!path.startsWith('skills/') && !path.startsWith('exporter/') && !['plugin.json', '.claude-plugin/marketplace.json'].includes(path)) continue;
     check(['100644', '100755'].includes(file.mode), `${path}: unsupported file mode ${file.mode}`);
-    if (!path.startsWith('skills/')) continue;
-    const [, name, ...parts] = path.split('/');
+    if (!path.startsWith(`${layout.skills}/`)) continue;
+    const [name, ...parts] = path.slice(layout.skills.length + 1).split('/');
     check(/^[a-z0-9]+(?:-[a-z0-9]+)*$/.test(name) && parts.length > 0 &&
       parts.every(part => part && part !== '.' && part !== '..' && !part.includes('\\')),
     `${path}: invalid skill resource path`);
@@ -131,10 +132,10 @@ function snapshotInfo(files, development = false) {
     const metadata = skill.files.get('release.yaml');
     if (development) continue;
     if (metadata) {
-      skill.release = parseRelease(metadata.data, `skills/${name}/release.yaml`);
+      skill.release = parseRelease(metadata.data, `${layout.skills}/${name}/release.yaml`);
       releaseCount++;
     } else {
-      check(false, `skills/${name}/release.yaml is required`);
+      check(false, `${layout.skills}/${name}/release.yaml is required`);
     }
   }
   check(releaseCount === 0 || releaseCount === skills.size, 'Partial metadata baseline is invalid');
@@ -143,7 +144,7 @@ function snapshotInfo(files, development = false) {
   delete marketplace.plugins[0].version;
   const config = JSON.stringify(sortedJson({
     plugin, marketplace,
-    modes: [files.get('plugin.json').mode, files.get('.claude-plugin/marketplace.json').mode],
+    modes: [files.get(layout.manifest).mode, files.get('.claude-plugin/marketplace.json').mode],
   }));
   const exporter = new Map([...files].filter(([path]) => path.startsWith('exporter/')));
   return { skills, version, config, exporter, legacy: skills.size > 0 && releaseCount === 0 };
