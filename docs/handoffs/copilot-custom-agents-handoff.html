@@ -1,0 +1,300 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Implementation handoff for adding Markdown custom agents to an existing GitHub Copilot marketplace plugin.">
+  <title>Custom agents inside an existing Copilot plugin — implementation handoff</title>
+  <style>
+    :root{color-scheme:light;--ink:#172d35;--muted:#526971;--paper:#f4f6f2;--line:#d7e0dc;--accent:#116959;--soft:#e6f2ec}
+    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:var(--paper);color:var(--ink);font:16px/1.65 system-ui,-apple-system,"Segoe UI",sans-serif}
+    a{color:var(--accent);text-underline-offset:3px}a:hover{text-decoration-thickness:2px}a:focus-visible{outline:3px solid #d18a23;outline-offset:4px}
+    .wrap{max-width:1180px;margin:auto;padding:48px 36px 80px}.eyebrow{font-size:12px;font-weight:750;letter-spacing:.14em;text-transform:uppercase;color:var(--accent)}
+    header{padding:20px 0 36px;border-bottom:1px solid var(--line)}h1{font-size:clamp(32px,4.6vw,54px);line-height:1.08;letter-spacing:-.035em;max-width:870px;margin:14px 0 22px}
+    .lead{font-size:21px;line-height:1.5;max-width:860px}.meta{font-size:13px;color:var(--muted)}.layout{display:grid;grid-template-columns:215px minmax(0,1fr);gap:44px;margin-top:36px}
+    nav{position:sticky;top:24px;align-self:start;font-size:14px}nav a{display:block;padding:7px 0;text-decoration:none}nav strong{display:block;margin-bottom:10px}
+    main{min-width:0}section{scroll-margin-top:24px;margin-bottom:44px}h2{font-size:27px;line-height:1.2;letter-spacing:-.02em;margin:0 0 18px}h3{font-size:19px;margin:26px 0 10px}
+    p{margin:0 0 15px}ul,ol{padding-left:24px}li{margin:8px 0}li p{margin-top:7px}.note{border-left:4px solid var(--accent);background:var(--soft);padding:18px 22px;margin:20px 0}.note p:last-child{margin:0}
+    .flow{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin:24px 0}.card{background:#fff;border:1px solid var(--line);border-radius:12px;padding:18px}.card b{display:block;margin-bottom:6px}.card span{font-size:14px;color:var(--muted)}
+    code{font-family:Consolas,"Liberation Mono",monospace;font-size:.89em;overflow-wrap:anywhere}p code,li code,td code{background:#e8eeeb;padding:2px 5px;border-radius:4px}
+    pre{background:#152f38;color:#f2f7f5;border-radius:10px;padding:22px;overflow:auto;line-height:1.55;font-size:14px;tab-size:2}pre code{font-size:inherit;overflow-wrap:normal}
+    .caption{font-size:13px;color:var(--muted);margin:10px 0 6px}.table-wrap{overflow-x:auto}table{width:100%;border-collapse:collapse;margin:16px 0;font-size:14px}th,td{padding:13px 12px;text-align:left;vertical-align:top;border-bottom:1px solid var(--line)}th{background:#e7eeea}
+    .checklist{list-style:none;padding:0}.checklist li{padding-left:26px;position:relative}.checklist li:before{content:"□";position:absolute;left:0;color:var(--accent);font-weight:bold}
+    .small{font-size:14px;color:var(--muted)}.brief{border:1px solid var(--line);border-radius:12px;background:white;padding:24px}.brief h3{margin-top:0}footer{border-top:1px solid var(--line);padding-top:20px;font-size:13px;color:var(--muted)}
+    @media(max-width:800px){.wrap{padding:24px 20px 48px}.layout{display:block}nav{position:static;border-bottom:1px solid var(--line);padding-bottom:22px;margin-bottom:30px;columns:2}nav strong{column-span:all}.flow{grid-template-columns:1fr}pre{padding:16px;font-size:12px}}
+    @media print{body{background:white;font-size:10pt}.wrap{max-width:none;padding:0}nav{display:none}.layout{display:block}header{padding-top:0}h1{font-size:28pt}.lead{font-size:13pt}section{margin-bottom:24px}pre{white-space:pre-wrap;overflow-wrap:anywhere;background:#f0f3f1;color:#172d35;border:1px solid #ccd6d0;font-size:9pt}.card,.note,.brief{break-inside:avoid}h2,h3{break-after:avoid}a{color:inherit}table{font-size:9pt}}
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div class="eyebrow">Agent handoff · Architecture &amp; implementation</div>
+    <h1>Ship custom agents inside your existing Copilot plugin.</h1>
+    <p class="lead">Add Markdown agent definitions alongside the plugin’s skills. Keep the existing plugin identity and marketplace entry so users receive both through the same installation.</p>
+    <p class="meta">Prepared October 13, 2026 · Reference project: AndrewGodlewsky/andrew-skills, plugin <code>gt</code> · Self-contained HTML; no external assets or scripts</p>
+  </header>
+  <div class="layout">
+    <nav aria-label="Contents">
+      <strong>In this handoff</strong>
+      <a href="#intent">1. Intent and scope</a>
+      <a href="#structure">2. Folder structure</a>
+      <a href="#formats">3. Detect the format</a>
+      <a href="#examples">4. Example files</a>
+      <a href="#implementation">5. Implementation sequence</a>
+      <a href="#verification">6. Verify in Copilot</a>
+      <a href="#troubleshooting">7. Troubleshooting</a>
+      <a href="#gt">8. GT-specific context</a>
+      <a href="#brief">9. Receiving-agent brief</a>
+      <a href="#sources">10. Evidence and sources</a>
+    </nav>
+    <main>
+      <section id="intent">
+        <h2>1. Intent and scope</h2>
+        <p>The owner wants to author Markdown files that become selectable custom Copilot agents and distribute them through an existing plugin marketplace project. The agreed design keeps those agents inside the existing plugin alongside its skills. A new marketplace listing or separate agent plugin is unnecessary for this goal.</p>
+        <div class="flow" aria-label="Marketplace contains a plugin, which contains skills and agents">
+          <div class="card"><b>Marketplace</b><span>The catalog where users find the existing plugin.</span></div>
+          <div class="card"><b>Existing plugin</b><span>The package users install and update.</span></div>
+          <div class="card"><b>Skills + custom agents</b><span>Components delivered inside that package.</span></div>
+        </div>
+        <p>A custom agent provides a reusable role, instructions, and tool configuration in a <code>.agent.md</code> file. VS Code supports selecting these agents for a conversation. <a href="https://code.visualstudio.com/docs/agent-customization/custom-agents">Custom agent documentation</a>.</p>
+        <div class="note"><p><strong>The filename distinction is settled.</strong> This request concerns custom agent definitions such as <code>reviewer.agent.md</code>. It does not ask to create or modify the repository instruction file <code>AGENTS.md</code>.</p></div>
+        <p>The owner has not chosen actual agent roles, names, tools, or workflows yet. “Reviewer” and “planner” below are original examples for implementation discussion, not approved product requirements. This handoff itself does not install agents, change a plugin, or authorize publication.</p>
+      </section>
+
+      <section id="structure">
+        <h2>2. Folder structure</h2>
+        <p>GT currently declares the Agent Plugins 1.0 schema. For that format, the documented Copilot agent location is <code>com.github.copilot/agents/</code> relative to the <strong>plugin root</strong>. VS Code and Copilot CLI document this layout. <a href="https://code.visualstudio.com/docs/agent-customization/agent-plugins#plugin-manifest-pluginjson">VS Code layout</a> · <a href="https://docs.github.com/en/copilot/reference/copilot-cli-reference/cli-plugin-reference">CLI layout</a>.</p>
+        <p class="caption">Proposed GT layout. The agents folder and example files are additions, not existing implemented agents.</p>
+        <pre><code>andrew-skills/                         ← repository / marketplace root
+├── .claude-plugin/
+│   └── marketplace.json               ← existing catalog entry for gt
+└── plugins/
+    └── gt/                            ← plugin root
+        ├── plugin.json                ← existing plugin identity
+        ├── skills/
+        │   ├── grill-me/
+        │   │   ├── SKILL.md
+        │   │   └── release.yaml       ← GT convention
+        │   └── ...
+        └── com.github.copilot/
+            └── agents/
+                ├── reviewer.agent.md  ← example addition
+                └── planner.agent.md   ← example addition</code></pre>
+        <p>In another project, substitute the plugin directory selected by that project’s marketplace entry. A plugin rooted directly at the repository root would use <code>com.github.copilot/agents/reviewer.agent.md</code> there. The <code>plugins/gt/</code> prefix is GT’s repository organization, not a universal Copilot requirement.</p>
+        <p>Keep one existing marketplace entry for the selected plugin. The namespace folder has no separate plugin manifest or installation identity. Other existing plugins in the receiving marketplace remain independent and unchanged.</p>
+      </section>
+
+      <section id="formats">
+        <h2>3. Detect the receiving project’s format first</h2>
+        <p>Read the selected plugin’s manifest before copying the GT path. The current creation guide distinguishes schema-based Agent Plugins packages from legacy Copilot packages. Legacy packages retain their own component locations. <a href="https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/plugins-creating">GitHub’s plugin creation guide</a>.</p>
+        <div class="table-wrap"><table>
+          <thead><tr><th>What you find</th><th>Implementation route</th></tr></thead>
+          <tbody>
+            <tr><td>Root <code>plugin.json</code> declares <code>https://agent-plugins.org/schemas/1.0.0/plugin.schema.json</code></td><td>Use <code>com.github.copilot/agents/*.agent.md</code> beneath that plugin root.</td></tr>
+            <tr><td>Legacy Copilot manifest without that schema</td><td>Use its configured agent directory, or the documented <code>agents/</code> default. Preserve the format unless migration is separately requested.</td></tr>
+            <tr><td>Claude-format package, a different schema version, or multiple candidate manifests</td><td>Resolve the active format against the intended client’s current documentation. Record the chosen root and discovery path before editing.</td></tr>
+          </tbody>
+        </table></div>
+        <p>For Agent Plugins 1.0, a top-level <code>"agents"</code> path field is not part of the portable manifest; Copilot components use the namespace directory. A default-location agent addition does not need an invented manifest extension. The portable component types are skills and MCP servers; custom agents remain client-specific. <a href="https://code.visualstudio.com/docs/agent-customization/agent-plugins#plugin-manifest-pluginjson">Manifest rules</a>.</p>
+        <p><strong>Implementation recommendation:</strong> retain the target project’s format, marketplace identity, unrelated manifest fields, and release conventions. Avoid expanding a small agent addition into a plugin migration.</p>
+      </section>
+
+      <section id="examples">
+        <h2>4. Example files to adapt</h2>
+        <p>These examples illustrate the same-plugin design in a fictional project. Merge the relevant addition into existing files; do not replace a real marketplace catalog with the one-entry example.</p>
+        <h3>Existing marketplace entry</h3>
+        <p class="caption">Example: <code>.claude-plugin/marketplace.json</code>. The source resolves to the plugin directory.</p>
+        <pre><code>{
+  "name": "team-marketplace",
+  "owner": { "name": "Your team" },
+  "plugins": [
+    {
+      "name": "team-tools",
+      "source": "./plugins/team-tools",
+      "description": "Shared skills and custom agents",
+      "version": "1.2.0"
+    }
+  ]
+}</code></pre>
+        <p class="small">The relative source and plugin-entry structure follow the <a href="https://docs.github.com/en/copilot/reference/copilot-cli-reference/cli-plugin-reference#marketplacejson">marketplace reference</a>. Names and version numbers here are illustrative.</p>
+        <h3>Existing plugin manifest</h3>
+        <p class="caption">Example: <code>plugins/team-tools/plugin.json</code></p>
+        <pre><code>{
+  "$schema": "https://agent-plugins.org/schemas/1.0.0/plugin.schema.json",
+  "name": "team-tools",
+  "description": "Shared skills and custom agents",
+  "version": "1.2.0"
+}</code></pre>
+        <h3>Agent A: review text supplied in chat</h3>
+        <p class="caption">New file: <code>plugins/team-tools/com.github.copilot/agents/proposal-reviewer.agent.md</code></p>
+        <pre><code>---
+name: proposal-reviewer
+description: Review a supplied proposal for missing decisions and unclear requirements.
+tools: []
+user-invocable: true
+disable-model-invocation: true
+---
+
+Review the proposal supplied in the conversation against the user's stated goal.
+If the proposal or goal is missing, ask for the missing input.
+
+Identify up to five issues that would materially affect implementation.
+For each issue, explain the consequence and recommend a concrete revision.
+Distinguish missing evidence from a demonstrated problem.
+
+Return findings in chat. If there are no material issues, say so and identify
+any assumptions that still need verification. Do not claim to inspect files,
+run checks, or change the project; this agent has no tools.</code></pre>
+        <p>This is a small discovery test: it can perform its stated job using only conversation content. GitHub documents <code>tools: []</code> as disabling tools; omitting <code>tools</code> instead defaults to all available tools. <code>description</code> is required by GitHub’s agent configuration reference. <a href="https://docs.github.com/en/copilot/reference/custom-agents-configuration">Agent configuration</a>.</p>
+        <h3>Agent B: inspect a repository and propose a plan</h3>
+        <p class="caption">New file: <code>plugins/team-tools/com.github.copilot/agents/repository-planner.agent.md</code></p>
+        <pre><code>---
+name: repository-planner
+description: Inspect relevant project files and propose a bounded implementation plan.
+tools: [read, search]
+user-invocable: true
+disable-model-invocation: true
+---
+
+Use the user's requested outcome to identify the smallest relevant area of the
+project. Read applicable repository guidance and inspect the existing behavior.
+If the outcome is unclear, ask a focused question before settling the plan.
+
+Return:
+1. The intended behavior and supporting file references.
+2. The proposed changes, grouped by purpose.
+3. Checks that would demonstrate the requested behavior.
+4. Open decisions and any evidence you could not obtain.
+
+Keep this task to inspection and planning. Do not edit files or claim that
+proposed checks have passed. If reading or searching is unavailable, explain
+the limitation and request the relevant material.</code></pre>
+        <p>The <code>read</code> and <code>search</code> aliases appear in GitHub’s configuration reference. Check the actual tool resolution in each supported client. That reference also documents the two invocation flags; these examples choose manual selection. Unknown tools can be ignored, so successful file parsing is insufficient evidence of usable capabilities. <a href="https://docs.github.com/en/copilot/reference/custom-agents-configuration#tools">Tool configuration</a>.</p>
+        <p>VS Code offers additional features such as model selection, handoffs, and subagent configuration. Those can be added when a role needs them; they introduce additional behavior to validate. These starter definitions deliberately leave the model unspecified and do not orchestrate other agents. <a href="https://code.visualstudio.com/docs/agent-customization/custom-agents">VS Code agent options</a>.</p>
+        <p><strong>Authoring recommendation:</strong> choose tools from the agent’s job, write a concrete output contract, and test a missing-input case. Keep runtime instructions inside the distributed package. If an agent depends on a skill, specify when and how it should use that skill and test the dependency in the client; co-location alone is not a workflow.</p>
+      </section>
+
+      <section id="implementation">
+        <h2>5. Implementation sequence for the receiving agent</h2>
+        <ol>
+          <li><strong>Establish the target.</strong> Read repository instructions, inspect the working tree, and identify the existing marketplace entry, plugin root, format, and intended Copilot clients. Completion: record those facts with paths and client versions.</li>
+          <li><strong>Define the first agent.</strong> Use the owner’s supplied role and behavior. Where those are absent, propose one minimal role and clearly label it as a proposal. Completion: name, inputs, output, tools, invocation choice, and failure behavior are explicit.</li>
+          <li><strong>Add the definition.</strong> Create a single <code>.agent.md</code> file in the format-appropriate directory. Preserve existing skills and other plugin contents. Completion: the new agent is within the selected plugin’s package boundary.</li>
+          <li><strong>Review distribution and checks.</strong> Inspect packaging filters, export steps, validation, version-change detection, and tests. Completion: agent files are included in the shipped package and meaningful validation covers their format. Existing skill checks remain intact.</li>
+          <li><strong>Update relevant documentation.</strong> Explain the agent’s role, how to find it, its requirements, and its limits. Apply the project’s release rules to the bundle. Completion: documentation describes the actual implementation and distinguishes observed support from planned support.</li>
+          <li><strong>Verify the experience.</strong> Run repository checks and client tests from the next section. Completion: report exact checks, versions, observed results, and remaining gaps.</li>
+          <li><strong>Prepare the owner’s review.</strong> Provide the changed files and a concise result. Keep commits, pushes, PR creation, publishing, and merges within the target repository’s authorization rules. Completion: the owner can assess both behavior and remaining release work.</li>
+        </ol>
+        <p>For validators, prefer a small extension to existing checks: require a meaningful description and nonempty body, validate YAML types, detect duplicate identities, and reject an agent misplaced outside the selected package. Check the current supported frontmatter rather than applying a skill-only allowlist to agent files. Add tests only where they verify these actual constraints or release behavior.</p>
+      </section>
+
+      <section id="verification">
+        <h2>6. Verify in Copilot</h2>
+        <h3>Local CLI trial</h3>
+        <p>From the fictional marketplace root, the documented local workflow is:</p>
+        <pre><code>copilot plugin install ./plugins/team-tools
+copilot plugin list
+
+# In a new interactive Copilot CLI session:
+/agent</code></pre>
+        <p>Select the new agent and exercise its task. Local installs are cached; reinstall the local source after edits before retesting. <a href="https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/plugins-creating">Local development workflow</a>. Perform this in the owner’s intended test environment and distinguish any existing installed copy from the local trial.</p>
+        <h3>Local VS Code trial</h3>
+        <p>VS Code documents <code>chat.pluginLocations</code> for local plugin directories. Point it at the actual plugin root, preserving other entries. <a href="https://code.visualstudio.com/docs/agent-customization/agent-plugins#use-local-plugins">Local plugin settings</a>.</p>
+        <pre><code>{
+  "chat.plugins.enabled": true,
+  "chat.pluginLocations": {
+    "C:/path/to/marketplace/plugins/team-tools": true
+  }
+}</code></pre>
+        <p>Use the agent selection/customization interface in the installed VS Code version. Confirm the displayed entry comes from the intended plugin, then start a fresh conversation for the behavior check. Record the version and harness used. <a href="https://code.visualstudio.com/docs/agent-customization/custom-agents">VS Code agent interface</a>.</p>
+        <h3>Acceptance record</h3>
+        <p>This is a proposed test matrix. None of these client tests was run while preparing this handoff.</p>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Check</th><th>Expected evidence</th></tr></thead>
+          <tbody>
+            <tr><td>Package contents</td><td>The tested installed/local package contains the exact new definition and existing skills.</td></tr>
+            <tr><td>Discovery</td><td>The intended agent appears under the expected plugin source, with no accidental duplicate.</td></tr>
+            <tr><td>Normal request</td><td>Proposal reviewer receives a proposal with a stated goal and returns actionable findings tied to it.</td></tr>
+            <tr><td>Missing input</td><td>Proposal reviewer receives “Review my proposal” without a proposal and asks for it.</td></tr>
+            <tr><td>Tool resolution</td><td>Conversation-only reviewer has no tools; repository planner resolves the intended reading/search tools.</td></tr>
+            <tr><td>Role boundary</td><td>Planner explains a requested change and returns a plan without modifying the test repository.</td></tr>
+            <tr><td>Existing behavior</td><td>One existing skill remains discoverable and runs its normal representative request.</td></tr>
+            <tr><td>Update path</td><td>After reloading the updated package in a fresh session, a deliberate agent-description change is visible.</td></tr>
+          </tbody>
+        </table></div>
+        <p>Run the matrix separately for VS Code and CLI if both are claimed. Record “not run” with a reason for unavailable clients. Static validation, a plugin listing, and a successful agent conversation establish different things; report each separately.</p>
+      </section>
+
+      <section id="troubleshooting">
+        <h2>7. Troubleshooting decision guide</h2>
+        <p>These are suggested diagnostic branches, not claims about a particular failure.</p>
+        <div class="table-wrap"><table>
+          <thead><tr><th>Observed symptom</th><th>Next inspection</th></tr></thead>
+          <tbody>
+            <tr><td>Plugin appears; agent does not</td><td>Compare the loaded manifest format with the agent directory. Confirm suffix, YAML, manual visibility flag, packaged file presence, and current client support.</td></tr>
+            <tr><td>Old agent behavior after editing</td><td>Compare loaded package bytes with the source. Refresh the managed test copy and use a fresh session.</td></tr>
+            <tr><td>Two similar agent entries</td><td>Inspect workspace, personal, and plugin definitions; establish source identity before removing anything.</td></tr>
+            <tr><td>Agent appears but cannot inspect code</td><td>Check resolved tools and the active harness. Compare the tool list with current client documentation.</td></tr>
+            <tr><td>Repository validation passes, client discovery fails</td><td>Check whether validation actually parses agent definitions or only inspects existing skills/manifests.</td></tr>
+            <tr><td>Published installation misses the new files</td><td>Inspect marketplace source/ref, release version, package include/exclude rules, and installed revision.</td></tr>
+            <tr><td>Instructions assume an unavailable skill</td><td>Make the dependency explicit, validate discovery/invocation, and supply a clear missing-dependency response.</td></tr>
+          </tbody>
+        </table></div>
+      </section>
+
+      <section id="gt">
+        <h2>8. GT-specific context to carry forward</h2>
+        <p>The following facts were read from the reference checkout on October 13, 2026. They explain the origin of this design; they are not requirements for an unrelated repository.</p>
+        <ul>
+          <li><code>plugins/gt/plugin.json</code> declares Agent Plugins 1.0, plugin name <code>gt</code>, and version <code>0.1.23</code>.</li>
+          <li><code>.claude-plugin/marketplace.json</code> names marketplace <code>andrew-skills</code> and contains a single <code>gt</code> entry pointing to <code>./plugins/gt</code>, with matching version.</li>
+          <li><code>scripts/validate.mjs</code> enforces that single-plugin arrangement, validates manifest fields, and passes discovered skills through skill validation. The inspected validation function has no dedicated custom-agent parser.</li>
+          <li><code>scripts/release-snapshots.mjs</code> reads the <code>plugins/gt</code> tree. A future implementation should still verify agent-only release detection and validation end to end.</li>
+          <li><code>CONTRIBUTING.md</code> is the current authoring/release guide. GT uses per-skill <code>release.yaml</code> metadata and one plugin patch increment per bundle change. It does not establish a per-agent metadata format; do not invent one merely by copying skill packaging.</li>
+          <li>The root <code>AGENTS.md</code> requires maintainer review of GT Help when skills or marketplace guidance change, and dependency-map maintenance for applicable skill/shared-source changes. Apply those procedures when implementing affected changes in GT.</li>
+        </ul>
+        <p>GT Help was inspected for this handoff. Its published guidance remains unchanged because this document proposes future custom-agent support and does not add an agent or change the shipped catalog. A real GT implementation should update affected Help guidance in the same change.</p>
+        <p>The request fulfilled here is a transferable HTML handoff. It makes no claim that GT already ships the example agents. GitHub issue authority granted for the GT repository does not transfer to another project, nor does it authorize Git publication.</p>
+      </section>
+
+      <section id="brief">
+        <h2>9. Brief to give the receiving agent</h2>
+        <div class="brief">
+          <h3>Task: add custom Markdown agents to our existing Copilot plugin</h3>
+          <p>Use this handoff as implementation context. Identify our existing marketplace entry and plugin root, read our repository instructions, and determine the active plugin format. Keep the agents inside the selected plugin alongside its skills.</p>
+          <p>For an Agent Plugins 1.0 package, use <code>com.github.copilot/agents/*.agent.md</code> relative to the plugin root. For another supported format, use its documented agent location. Preserve the current plugin identity and other marketplace entries.</p>
+          <p>Implement the agent roles supplied with this request. If roles have not been supplied, propose a minimal first agent and resolve the missing behavioral requirements before treating example roles as final. Include meaningful descriptions, explicit tool choices, instructions, expected output, and missing-input handling.</p>
+          <p>Review packaging, validation, release handling, and user documentation for the addition. Test discovery and behavior in each Copilot client we intend to support, plus an existing skill. Report unavailable client tests honestly.</p>
+          <p>Return changed paths, the final folder structure, each agent’s purpose, checks and observed results, remaining limitations, and publication steps still awaiting the owner’s authorization. Use our project’s authorization rules for commits, pushes, PRs, merges, and releases.</p>
+        </div>
+        <h3>Definition of done</h3>
+        <ul class="checklist">
+          <li>The correct existing plugin contains the agent definitions.</li>
+          <li>The marketplace still exposes the intended existing plugin identity.</li>
+          <li>The shipped package includes agents and preserves existing skills.</li>
+          <li>Agent purpose, tools, visibility, inputs, and outputs are documented.</li>
+          <li>Validation covers the new file type and relevant release changes.</li>
+          <li>Claimed clients pass discovery and representative behavior tests, or the result is explicitly marked partial with outstanding tests.</li>
+          <li>The final handoff distinguishes implemented work, verified behavior, and pending publication.</li>
+        </ul>
+      </section>
+
+      <section id="sources">
+        <h2>10. Evidence and sources</h2>
+        <p>Official documentation was checked on October 13, 2026. Recheck these references when implementing against a newer client or a different plugin schema. The examples and acceptance plan in this file are original proposed implementation material.</p>
+        <ol>
+          <li><a href="https://code.visualstudio.com/docs/agent-customization/agent-plugins">VS Code — Agent plugins</a>: format detection, namespace layout, manifest conventions, local plugin settings.</li>
+          <li><a href="https://code.visualstudio.com/docs/agent-customization/custom-agents">VS Code — Custom agents</a>: agent files, selection, frontmatter, tools, and optional workflows.</li>
+          <li><a href="https://docs.github.com/en/copilot/reference/copilot-cli-reference/cli-plugin-reference">GitHub — Copilot CLI plugin reference</a>: namespaced components, legacy paths, marketplace entries.</li>
+          <li><a href="https://docs.github.com/en/copilot/how-tos/copilot-cli/customize-copilot/plugins-creating">GitHub — Creating a plugin</a>: supported formats, local installation, agent discovery, cache refresh.</li>
+          <li><a href="https://docs.github.com/en/copilot/reference/custom-agents-configuration">GitHub — Custom agents configuration</a>: descriptions, tool aliases, empty tool lists, invocation flags.</li>
+          <li><a href="https://github.com/AndrewGodlewsky/andrew-skills">GT reference repository</a>: the local observations in section 8 are a dated snapshot, not a promise that the remote repository still has those exact values.</li>
+        </ol>
+        <div class="note"><p><strong>Evidence boundary:</strong> official documentation supports the proposed layout. This handoff records no live Copilot installation, agent-discovery result, or behavioral test. Those remain implementation acceptance work.</p></div>
+      </section>
+      <footer>Custom agents inside an existing Copilot plugin · Implementation handoff · October 13, 2026</footer>
+    </main>
+  </div>
+</div>
+</body>
+</html>
